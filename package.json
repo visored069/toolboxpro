@@ -1,8 +1,5 @@
 {
   "name": "toolboxpro",
   "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "build": "node -e \"const fs=require('fs'),p=require('path');const dir='/vercel/output/static';fs.mkdirSync(dir,{recursive:true});fs.readdirSync('.').filter(f=>!['node_modules','.vercel','deploy','.freebuff','.git','.gitignore','package.json','package-lock.json'].includes(f)).forEach(f=>{const s=fs.statSync(f);if(s.isDirectory()){fs.cpSync(f,p.join(dir,f),{recursive:true})}else{fs.copyFileSync(f,p.join(dir,f))}});console.log('Static files prepared')\""
-  }
+  "private": true
 }
