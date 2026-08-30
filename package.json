@@ -1,8 +1,5 @@
 {
   "name": "toolboxpro",
   "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "vercel-build": "cp -R --no-preserve=mode,ownership . /vercel/output/static/ 2>/dev/null; rm -rf /vercel/output/static/.vercel /vercel/output/static/deploy /vercel/output/static/.freebuff /vercel/output/static/node_modules 2>/dev/null; echo 'Static files copied'"
-  }
+  "private": true
 }
