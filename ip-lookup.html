@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Online IP Address Lookup | ToolBox Pro</title>
+    <meta name="description" content="Free online IP address lookup tool. Check your public IP address, location, ISP, and more. No login required.">
+    <link rel="canonical" href="https://toolboxpro.dev/ip-lookup">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="particles" id="particles"></div>
+
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><i class="fas fa-toolbox"></i></div>
+                <span class="logo-text">ToolBox</span>
+                <span class="logo-badge">PRO</span>
+            </a>
+            <nav>
+                <a href="index.html">Tools</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="privacy.html">Privacy</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="tool-page">
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Tools</a>
+        <h1><i class="fas fa-globe" style="color:var(--accent-1)"></i> IP Lookup</h1>
+        <p class="tool-description">Check your public IP address and get details about your connection. All data is fetched from a free API.</p>
+
+        <div class="btn-group" style="margin-bottom:1.5rem;">
+            <button class="tool-btn btn-primary" onclick="lookupIP()"><i class="fas fa-search"></i> Lookup My IP</button>
+        </div>
+
+        <div id="ip-loading" style="display:none;text-align:center;padding:2rem;color:var(--text-secondary);">
+            <i class="fas fa-spinner fa-spin" style="font-size:1.5rem;"></i>
+            <p style="margin-top:0.5rem;">Fetching IP information...</p>
+        </div>
+
+        <div id="ip-results" style="display:none;">
+            <div class="stats-row" style="margin-bottom:1.5rem;">
+                <div class="stat-box"><div class="value" id="ip-address" style="font-size:1.1rem;">—</div><div class="label">IP Address</div></div>
+                <div class="stat-box"><div class="value" id="ip-city" style="font-size:1.1rem;">—</div><div class="label">City</div></div>
+                <div class="stat-box"><div class="value" id="ip-country" style="font-size:1.1rem;">—</div><div class="label">Country</div></div>
+            </div>
+
+            <div class="tool-input-group">
+                <label>Full Details</label>
+                <div class="tool-output" id="ip-details"></div>
+            </div>
+            <button class="tool-btn btn-primary" onclick="copyElement('ip-details')"><i class="fas fa-copy"></i> Copy</button>
+        </div>
+
+        <div id="ip-error" style="display:none;color:var(--accent-3);text-align:center;padding:2rem;">
+            <i class="fas fa-exclamation-triangle" style="font-size:1.5rem;"></i>
+            <p style="margin-top:0.5rem;">Could not fetch IP information. Please try again.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;">
+            <p>© 2025 ToolBox Pro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="components.js"></script>
+    <script>
+        async function lookupIP() {
+            document.getElementById('ip-loading').style.display = 'block';
+            document.getElementById('ip-results').style.display = 'none';
+            document.getElementById('ip-error').style.display = 'none';
+            try {
+                const resp = await fetch('https://ipapi.co/json/');
+                if (!resp.ok) throw new Error('API error');
+                const data = await resp.json();
+                document.getElementById('ip-address').textContent = data.ip;
+                document.getElementById('ip-city').textContent = data.city || '—';
+                document.getElementById('ip-country').textContent = data.country_name || '—';
+                document.getElementById('ip-details').textContent =
+                    'IP:            ' + data.ip + '\n' +
+                    'City:          ' + (data.city || 'N/A') + '\n' +
+                    'Region:        ' + (data.region || 'N/A') + '\n' +
+                    'Country:       ' + (data.country_name || 'N/A') + '\n' +
+                    'Country Code:  ' + (data.country_code || 'N/A') + '\n' +
+                    'Continent:     ' + (data.continent_code || 'N/A') + '\n' +
+                    'Latitude:      ' + (data.latitude || 'N/A') + '\n' +
+                    'Longitude:     ' + (data.longitude || 'N/A') + '\n' +
+                    'Timezone:      ' + (data.timezone || 'N/A') + '\n' +
+                    'ISP:           ' + (data.org || 'N/A') + '\n' +
+                    'ASN:           ' + (data.asn || 'N/A');
+                document.getElementById('ip-results').style.display = 'block';
+            } catch (e) {
+                document.getElementById('ip-error').style.display = 'block';
+            } finally {
+                document.getElementById('ip-loading').style.display = 'none';
+            }
+        }
+        lookupIP();
+    </script>
+</body>
+</html>
