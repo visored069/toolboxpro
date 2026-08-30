@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Online Text Diff Checker | ToolBox Pro</title>
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://toolboxpro.dev/text-diff-checker">
+    <meta property="og:title" content="Text Diff Checker - ToolBox Pro">
+    <meta property="og:description" content="Free online text diff checker. Compare two texts side by side.">
+    <meta property="og:image" content="https://toolboxpro.dev/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Text Diff Checker - ToolBox Pro">
+    <meta name="twitter:image" content="https://toolboxpro.dev/og-image.png">
     <meta name="description" content="Free online text diff checker. Compare two texts and highlight the differences. No login required.">
     <link rel="canonical" href="https://toolboxpro.dev/text-diff-checker">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -52,24 +60,28 @@
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
     <div class="bg-animation"></div>
     <div class="particles" id="particles"></div>
 
     <header>
         <div class="header-content">
-            <a href="index.html" class="logo">
+            <a href="index.html" class="logo" aria-label="ToolBox Pro Home">
                 <div class="logo-icon"><i class="fas fa-toolbox"></i></div>
                 <span class="logo-text">ToolBox</span>
                 <span class="logo-badge">PRO</span>
             </a>
-            <nav>
+            <nav aria-label="Main navigation">
                 <a href="index.html">Tools</a>
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
                 <a href="privacy.html">Privacy</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-sun"></i></button>
             </nav>
         </div>
     </header>
+
+    <main id="main-content">
 
     <div class="tool-page" style="max-width:1000px;">
         <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Tools</a>
@@ -106,12 +118,16 @@ And an extra line.</textarea>
             <div class="diff-stats" id="diff-stats"></div>
         </div>
     </div>
+    </main>
 
     <footer>
         <div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;">
             <p>© 2025 ToolBox Pro. All rights reserved.</p>
         </div>
     </footer>
+
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+    <div class="analytics-badge" id="analytics-badge"><span class="dot"></span><span class="analytics-count">0</span> views</div>
 
     <script src="components.js"></script>
     <script>

@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Online Lorem Ipsum Generator | ToolBox Pro</title>
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://toolboxpro.dev/lorem-ipsum-generator">
+    <meta property="og:title" content="Lorem Ipsum Generator - ToolBox Pro">
+    <meta property="og:description" content="Free online Lorem Ipsum generator for placeholder text.">
+    <meta property="og:image" content="https://toolboxpro.dev/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Lorem Ipsum Generator - ToolBox Pro">
+    <meta name="twitter:image" content="https://toolboxpro.dev/og-image.png">
     <meta name="description" content="Free online Lorem Ipsum generator. Generate placeholder text for your designs and mockups.">
     <link rel="canonical" href="https://toolboxpro.dev/lorem-ipsum-generator">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,9 +22,12 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
     <div class="bg-animation"></div>
     <div class="particles" id="particles"></div>
-    <header><div class="header-content"><a href="index.html" class="logo"><div class="logo-icon"><i class="fas fa-toolbox"></i></div><span class="logo-text">ToolBox</span><span class="logo-badge">PRO</span></a><nav><a href="index.html" id="nav-tools">Tools</a><a href="about.html" id="nav-about">About</a><a href="contact.html" id="nav-contact">Contact</a><a href="privacy.html" id="nav-privacy">Privacy</a></nav></div></header>
+    <header><div class="header-content"><a href="index.html" class="logo" aria-label="ToolBox Pro Home"><div class="logo-icon"><i class="fas fa-toolbox"></i></div><span class="logo-text">ToolBox</span><span class="logo-badge">PRO</span></a><nav aria-label="Main navigation"><a href="index.html" id="nav-tools">Tools</a><a href="about.html" id="nav-about">About</a><a href="contact.html" id="nav-contact">Contact</a><a href="privacy.html" id="nav-privacy">Privacy</a><button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-sun"></i></button></nav></div></header>
+
+    <main id="main-content">
 
     <div class="tool-page">
         <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Tools</a>
@@ -34,8 +45,11 @@
         <div class="tool-output" id="lorem-output" style="margin-top:1rem;max-height:400px;"></div>
         <button class="tool-btn btn-primary" onclick="copyElement('lorem-output')" style="margin-top:0.5rem;"><i class="fas fa-copy"></i> Copy</button>
     </div>
+    </main>
 
     <footer><div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;"><p>© 2025 ToolBox Pro. All rights reserved.</p></div></footer>
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+    <div class="analytics-badge" id="analytics-badge"><span class="dot"></span><span class="analytics-count">0</span> views</div>
     <script src="components.js"></script>
     <script>
         const loremText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.";
