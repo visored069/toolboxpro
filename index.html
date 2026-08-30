@@ -48,7 +48,24 @@
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to content</a>
+    <!-- Cinematic background layers -->
+    <canvas id="particle-canvas"></canvas>
     <div class="bg-animation"></div>
+    <div class="cosmic-grid"></div>
+    <div class="scanlines"></div>
+    <div class="aurora"></div>
+    <div class="nebula"></div>
+    <div class="cursor-spotlight" id="cursor-spotlight"></div>
+    <div class="cursor-spotlight-ring" id="cursor-spotlight-ring"></div>
+    <div class="click-bursts" id="click-bursts"></div>
+    <div class="floating-shapes" id="floating-shapes"></div>
+    <div class="code-symbols" id="code-symbols"></div>
+    <div class="ambient-blobs">
+        <div class="ambient-blob"></div>
+        <div class="ambient-blob"></div>
+        <div class="ambient-blob"></div>
+        <div class="ambient-blob"></div>
+    </div>
     <div class="particles" id="particles"></div>
 
     <header>
@@ -70,10 +87,11 @@
 
     <main id="main-content">
         <section class="hero">
-            <h1>The Only <span>Developer Toolkit</span><br>You'll Ever Need</h1>
+            <div class="hero-mesh"></div>
+            <h1 class="typewriter-text" id="typewriter-text">The Only <span>Developer Toolkit</span><br>You'll Ever Need</h1>
             <p>Free, fast, and powerful online tools for developers, designers, and everyone. No login required.</p>
             <div class="hero-stats">
-                <div class="stat"><div class="stat-number">20+</div><div class="stat-label">Tools</div></div>
+                <div class="stat"><div class="stat-number" data-count="20">0</div><div class="stat-label">Tools</div></div>
                 <div class="stat"><div class="stat-number">100%</div><div class="stat-label">Free</div></div>
                 <div class="stat"><div class="stat-number">0</div><div class="stat-label">Ads</div></div>
                 <div class="stat"><div class="stat-number">∞</div><div class="stat-label">Usage</div></div>
@@ -83,10 +101,10 @@
         <section class="section" id="tools">
             <div class="section-header"><h2>⚡ All Tools</h2><span class="badge">FREE</span></div>
 
-            <!-- Search Bar -->
-            <div class="search-container">
+            <!-- Search Bar (Morphing Expanding) -->
+            <div class="search-container" id="search-container">
                 <i class="fas fa-search search-icon"></i>
-                <input type="text" class="search-input" id="tool-search" placeholder="Search 20 tools... (e.g. json, password, color)" aria-label="Search tools">
+                <input type="text" class="search-input" id="tool-search" placeholder="Search tools... (e.g. json, password, color)" aria-label="Search tools">
                 <button class="search-clear" id="search-clear" onclick="clearSearch()" aria-label="Clear search"><i class="fas fa-times"></i></button>
                 <div class="search-count" id="search-count" style="display:none;"></div>
             </div>
