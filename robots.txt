@@ -1,11 +1,11 @@
 # Robots.txt for ToolBox Pro
-# https://toolboxpro.dev
+# https://toolboxpro-theta.vercel.app
 
 User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://toolboxpro.dev/sitemap.xml
+Sitemap: https://toolboxpro-theta.vercel.app/sitemap.xml
 
 # Disallow admin pages (if any)
 Disallow: /admin/
