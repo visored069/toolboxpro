@@ -188,6 +188,124 @@ function initBackToTop() {
     });
 }
 
+// --- PWA Install ---
+var deferredPrompt = null;
+
+window.addEventListener('beforeinstallprompt', function(e) {
+    e.preventDefault();
+    deferredPrompt = e;
+    var dismissed = localStorage.getItem('toolboxpro-pwa-dismissed');
+    if (!dismissed) {
+        var banner = document.getElementById('pwa-banner');
+        if (banner) {
+            setTimeout(function() { banner.classList.add('visible'); }, 3000);
+        }
+    }
+});
+
+function installPWA() {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(function(choice) {
+        if (choice.outcome === 'accepted') {
+            showToast('🎉 App installed successfully!');
+        }
+        deferredPrompt = null;
+        dismissPWA();
+    });
+}
+
+function dismissPWA() {
+    var banner = document.getElementById('pwa-banner');
+    if (banner) banner.classList.remove('visible');
+    localStorage.setItem('toolboxpro-pwa-dismissed', '1');
+}
+
+// Register Service Worker
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js').catch(function() {});
+    });
+}
+
+// --- Feedback Widget ---
+function initFeedback() {
+    var fab = document.getElementById('feedback-fab');
+    var panel = document.getElementById('feedback-panel');
+    if (!fab || !panel) return;
+    var selectedEmoji = '';
+
+    fab.addEventListener('click', function() {
+        panel.classList.toggle('open');
+    });
+
+    panel.querySelectorAll('.feedback-emoji').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            panel.querySelectorAll('.feedback-emoji').forEach(function(b) { b.classList.remove('selected'); });
+            this.classList.add('selected');
+            selectedEmoji = this.getAttribute('data-rating');
+        });
+    });
+
+    var submitBtn = document.getElementById('feedback-submit');
+    if (submitBtn) {
+        submitBtn.addEventListener('click', function() {
+            var textarea = document.getElementById('feedback-text');
+            var message = textarea ? textarea.value.trim() : '';
+            if (!selectedEmoji && !message) {
+                showToast('Pick a rating or leave a message!');
+                return;
+            }
+            // Store feedback locally (could be extended with API)
+            var feedback = {
+                page: window.location.pathname,
+                rating: selectedEmoji,
+                message: message,
+                timestamp: new Date().toISOString()
+            };
+            var stored = JSON.parse(localStorage.getItem('toolboxpro-feedback') || '[]');
+            stored.push(feedback);
+            localStorage.setItem('toolboxpro-feedback', JSON.stringify(stored));
+
+            // Show thanks
+            panel.querySelector('.feedback-form').style.display = 'none';
+            var thanks = document.getElementById('feedback-thanks');
+            if (thanks) thanks.style.display = 'block';
+
+            setTimeout(function() {
+                panel.classList.remove('open');
+                panel.querySelector('.feedback-form').style.display = 'block';
+                if (thanks) thanks.style.display = 'none';
+                if (textarea) textarea.value = '';
+                panel.querySelectorAll('.feedback-emoji').forEach(function(b) { b.classList.remove('selected'); });
+                selectedEmoji = '';
+            }, 2500);
+        });
+    }
+}
+
+// --- Performance Monitoring ---
+function initPerformance() {
+    var perfBadge = document.getElementById('perf-badge');
+    if (!perfBadge) return;
+
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            var perf = performance.getEntriesByType('navigation')[0];
+            if (perf) {
+                var loadTime = Math.round(perf.loadEventEnd - perf.startTime);
+                var domReady = Math.round(perf.domContentLoadedEventEnd - perf.startTime);
+                perfBadge.querySelector('.perf-load').textContent = loadTime + 'ms load';
+                perfBadge.querySelector('.perf-dom').textContent = domReady + 'ms DOM';
+                // Color code: green < 1s, yellow < 2s, red > 2s
+                var dot = perfBadge.querySelector('.dot-green');
+                if (loadTime > 2000) dot.style.background = '#e74c3c';
+                else if (loadTime > 1000) dot.style.background = '#fdcb6e';
+            }
+        }, 100);
+    });
+}
+
 // --- Init ---
 document.addEventListener('DOMContentLoaded', function() {
     initTheme();
@@ -195,6 +313,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initSearch();
     initAnalytics();
     initBackToTop();
+    initFeedback();
+    initPerformance();
 
     // Theme toggle button in header
     var themeBtn = document.getElementById('theme-toggle');

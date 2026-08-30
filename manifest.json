@@ -1,0 +1,19 @@
+{
+  "name": "ToolBox Pro - Free Online Developer Tools",
+  "short_name": "ToolBox Pro",
+  "description": "20+ free, fast, and powerful online tools for developers, designers, and everyone.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0f",
+  "theme_color": "#6c5ce7",
+  "orientation": "any",
+  "categories": ["developer", "utilities", "productivity"],
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -18,6 +18,9 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#6c5ce7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -52,8 +55,55 @@
     </main>
 
     <footer><div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;"><p>© 2025 ToolBox Pro. All rights reserved.</p></div></footer>
+    <!-- PWA Install Banner -->
+    <div class="pwa-banner" id="pwa-banner">
+        <div class="pwa-banner-text">
+            <i class="fas fa-download"></i>
+            <span><strong>Install ToolBox Pro</strong> — access tools offline, faster!</span>
+        </div>
+        <button class="pwa-install-btn" onclick="installPWA()">Install</button>
+        <button class="pwa-dismiss" onclick="dismissPWA()" aria-label="Dismiss"><i class="fas fa-times"></i></button>
+    </div>
+
+    <!-- Feedback Widget -->
+    <button class="feedback-fab" id="feedback-fab" aria-label="Give feedback">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+    <div class="feedback-panel" id="feedback-panel">
+        <div class="feedback-form">
+            <h3>💬 How was this tool?</h3>
+            <div class="feedback-emojis">
+                <button class="feedback-emoji" data-rating="love" aria-label="Love it">😍</button>
+                <button class="feedback-emoji" data-rating="good" aria-label="Good">😊</button>
+                <button class="feedback-emoji" data-rating="meh" aria-label="Meh">😐</button>
+                <button class="feedback-emoji" data-rating="bad" aria-label="Bad">😞</button>
+            </div>
+            <textarea class="feedback-textarea" id="feedback-text" placeholder="Tell us more (optional)..."></textarea>
+            <button class="feedback-submit" id="feedback-submit">Send Feedback</button>
+        </div>
+        <div class="feedback-thanks" id="feedback-thanks">
+            <i class="fas fa-heart"></i>
+            <h3>Thanks for your feedback!</h3>
+            <p style="color:var(--text-secondary);font-size:0.85rem;">It helps us improve ToolBox Pro.</p>
+        </div>
+    </div>
+
+    <!-- Back to Top -->
     <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
-    <div class="analytics-badge" id="analytics-badge"><span class="dot"></span><span class="analytics-count">0</span> views</div>
+
+    <!-- Performance Badge -->
+    <div class="perf-badge" id="perf-badge">
+        <span class="dot-green"></span>
+        <span class="perf-load">Loading...</span>
+        <span style="color:var(--border-color);">|</span>
+        <span class="perf-dom">...</span>
+    </div>
+
+    <!-- Analytics Badge -->
+    <div class="analytics-badge" id="analytics-badge">
+        <span class="dot"></span>
+        <span class="analytics-count">0</span> views
+    </div>
     <script src="components.js"></script>
     <script>
         let mode = 'encode';

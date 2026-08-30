@@ -1,0 +1,11 @@
+# Local dev server
+.freebuff/
+server.js
+
+# Git
+.git/
+.gitignore
+
+# OS files
+.DS_Store
+Thumbs.db
