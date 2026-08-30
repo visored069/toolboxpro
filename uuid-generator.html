@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Online UUID Generator | ToolBox Pro</title>
+    <meta name="description" content="Free online UUID/GUID generator. Generate v4 UUIDs instantly for your applications.">
+    <link rel="canonical" href="https://toolboxpro.dev/uuid-generator">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="particles" id="particles"></div>
+    <header><div class="header-content"><a href="index.html" class="logo"><div class="logo-icon"><i class="fas fa-toolbox"></i></div><span class="logo-text">ToolBox</span><span class="logo-badge">PRO</span></a><nav><a href="index.html">Tools</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></nav></div></header>
+
+    <div class="tool-page">
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Tools</a>
+        <h1><i class="fas fa-fingerprint" style="color:var(--accent-1)"></i> UUID Generator</h1>
+        <p class="tool-description">Generate cryptographically secure UUID v4 identifiers. Click to copy each UUID.</p>
+
+        <div class="tool-input-group">
+            <label>How many UUIDs?</label>
+            <div class="range-group">
+                <input type="range" id="uuid-count" min="1" max="100" value="5" oninput="document.getElementById('uuid-count-val').textContent=this.value">
+                <span class="range-value" id="uuid-count-val">5</span>
+            </div>
+        </div>
+        <div class="tool-input-group">
+            <label>Format</label>
+            <div class="toggle-group">
+                <button class="toggle-btn active" id="fmt-standard" onclick="setUuidFormat('standard')">Standard</button>
+                <button class="toggle-btn" id="fmt-nodash" onclick="setUuidFormat('nodash')">No Dashes</button>
+                <button class="toggle-btn" id="fmt-upper" onclick="setUuidFormat('upper')">UPPERCASE</button>
+            </div>
+        </div>
+        <div class="btn-group">
+            <button class="tool-btn btn-primary" onclick="generateUUIDs()"><i class="fas fa-sync"></i> Generate</button>
+            <button class="tool-btn btn-secondary" onclick="copyAllUUIDs()"><i class="fas fa-copy"></i> Copy All</button>
+        </div>
+        <div class="tool-input-group" style="margin-top:1rem;">
+            <label>Generated UUIDs</label>
+            <div class="tool-output" id="uuid-output" style="min-height:150px;"></div>
+        </div>
+    </div>
+
+    <footer><div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;"><p>© 2025 ToolBox Pro. All rights reserved.</p></div></footer>
+    <script src="components.js"></script>
+    <script>
+        let uuidFormat = 'standard';
+        function setUuidFormat(fmt) {
+            uuidFormat = fmt;
+            document.querySelectorAll('#fmt-standard,#fmt-nodash,#fmt-upper').forEach(b => b.className = 'toggle-btn');
+            document.getElementById('fmt-' + fmt).className = 'toggle-btn active';
+            generateUUIDs();
+        }
+        function uuidv4() {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+                const r = crypto.getRandomValues(new Uint8Array(1))[0] % 16;
+                const v = c === 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+        }
+        function generateUUIDs() {
+            const count = parseInt(document.getElementById('uuid-count').value);
+            let uuids = [];
+            for (let i = 0; i < count; i++) {
+                let uuid = uuidv4();
+                if (uuidFormat === 'nodash') uuid = uuid.replace(/-/g, '');
+                else if (uuidFormat === 'upper') uuid = uuid.toUpperCase();
+                uuids.push(uuid);
+            }
+            document.getElementById('uuid-output').textContent = uuids.join('\n');
+        }
+        function copyAllUUIDs() { copyElement('uuid-output'); }
+        generateUUIDs();
+    </script>
+</body>
+</html>

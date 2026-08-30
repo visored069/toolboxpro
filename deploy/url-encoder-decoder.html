@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Online URL Encoder & Decoder | ToolBox Pro</title>
+    <meta name="description" content="Free online URL encoder and decoder. Encode and decode URLs for web development.">
+    <link rel="canonical" href="https://toolboxpro.dev/url-encoder-decoder">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="particles" id="particles"></div>
+    <header><div class="header-content"><a href="index.html" class="logo"><div class="logo-icon"><i class="fas fa-toolbox"></i></div><span class="logo-text">ToolBox</span><span class="logo-badge">PRO</span></a><nav><a href="index.html" id="nav-tools">Tools</a><a href="about.html" id="nav-about">About</a><a href="contact.html" id="nav-contact">Contact</a><a href="privacy.html" id="nav-privacy">Privacy</a></nav></div></header>
+
+    <div class="tool-page">
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Tools</a>
+        <h1><i class="fas fa-link" style="color:var(--accent-3)"></i> URL Encoder/Decoder</h1>
+        <p class="tool-description">Encode and decode URLs for web development. Enter your URL or text below.</p>
+
+        <div class="tool-input-group">
+            <label>Enter URL or text</label>
+            <textarea class="tool-textarea" id="url-input" placeholder="https://example.com/path?query=hello world"></textarea>
+        </div>
+        <div class="btn-group">
+            <button class="tool-btn btn-primary" onclick="processURL('encode')"><i class="fas fa-lock"></i> Encode</button>
+            <button class="tool-btn btn-secondary" onclick="processURL('decode')"><i class="fas fa-unlock"></i> Decode</button>
+        </div>
+        <div class="tool-input-group" style="margin-top:1rem;">
+            <label>Output</label>
+            <div class="tool-output" id="url-output"></div>
+        </div>
+        <button class="tool-btn btn-primary" onclick="copyElement('url-output')"><i class="fas fa-copy"></i> Copy</button>
+    </div>
+
+    <footer><div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;"><p>© 2025 ToolBox Pro. All rights reserved.</p></div></footer>
+    <script src="components.js"></script>
+    <script>
+        function processURL(action) {
+            try {
+                const input = document.getElementById('url-input').value;
+                document.getElementById('url-output').textContent = action==='encode' ? encodeURIComponent(input) : decodeURIComponent(input);
+            } catch(e) { document.getElementById('url-output').textContent = '❌ Error: ' + e.message; }
+        }
+    </script>
+</body>
+</html>

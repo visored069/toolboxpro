@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://toolboxpro.dev/</loc><lastmod>2025-01-15</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://toolboxpro.dev/json-formatter</loc><lastmod>2025-01-15</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://toolboxpro.dev/word-counter</loc><lastmod>2025-01-15</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://toolboxpro.dev/password-generator</loc><lastmod>2025-01-15</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://toolboxpro.dev/color-picker</loc><lastmod>2025-01-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolboxpro.dev/base64-encoder-decoder</loc><lastmod>2025-01-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolboxpro.dev/url-encoder-decoder</loc><lastmod>2025-01-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolboxpro.dev/lorem-ipsum-generator</loc><lastmod>2025-01-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://toolboxpro.dev/qr-code-generator</loc><lastmod>2025-01-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolboxpro.dev/hash-generator</loc><lastmod>2025-01-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://toolboxpro.dev/text-case-converter</loc><lastmod>2025-01-15</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://toolboxpro.dev/uuid-generator</loc><lastmod>2025-01-15</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://toolboxpro.dev/json-to-csv</loc><lastmod>2025-01-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolboxpro.dev/regex-tester</loc><lastmod>2025-01-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolboxpro.dev/markdown-preview</loc><lastmod>2025-01-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolboxpro.dev/about</loc><lastmod>2025-01-15</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://toolboxpro.dev/contact</loc><lastmod>2025-01-15</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://toolboxpro.dev/privacy</loc><lastmod>2025-01-15</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://toolboxpro.dev/terms</loc><lastmod>2025-01-15</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+</urlset>

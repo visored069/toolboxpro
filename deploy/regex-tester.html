@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Online Regex Tester | ToolBox Pro</title>
+    <meta name="description" content="Free online regular expression tester. Test regex patterns with real-time matching.">
+    <link rel="canonical" href="https://toolboxpro.dev/regex-tester">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="particles" id="particles"></div>
+    <header><div class="header-content"><a href="index.html" class="logo"><div class="logo-icon"><i class="fas fa-toolbox"></i></div><span class="logo-text">ToolBox</span><span class="logo-badge">PRO</span></a><nav><a href="index.html">Tools</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></nav></div></header>
+
+    <div class="tool-page">
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Tools</a>
+        <h1><i class="fas fa-search" style="color:var(--accent-3)"></i> Regex Tester</h1>
+        <p class="tool-description">Test regular expressions with real-time matching. Highlights all matches in your text.</p>
+
+        <div class="tool-input-group">
+            <label>Regular Expression</label>
+            <div style="display:flex;gap:0.5rem;align-items:center;">
+                <span style="color:var(--accent-1);font-size:1.2rem;font-weight:700;">/</span>
+                <input type="text" class="tool-input" id="regex-pattern" placeholder="Enter regex pattern..." oninput="testRegex()" style="flex:1;">
+                <span style="color:var(--accent-1);font-size:1.2rem;font-weight:700;">/</span>
+                <input type="text" class="tool-input" id="regex-flags" value="g" placeholder="flags" oninput="testRegex()" style="width:60px;">
+            </div>
+        </div>
+        <div class="tool-input-group">
+            <label>Test String</label>
+            <textarea class="tool-textarea" id="regex-input" placeholder="Enter text to test against..." oninput="testRegex()"></textarea>
+        </div>
+        <div class="tool-input-group">
+            <label>Matches (<span id="match-count">0</span> found)</label>
+            <div class="tool-output" id="regex-output" style="min-height:100px;"></div>
+        </div>
+        <div class="tool-input-group">
+            <label>Common Patterns</label>
+            <div class="btn-group">
+                <button class="tool-btn btn-primary" onclick="setPattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}')">Email</button>
+                <button class="tool-btn btn-secondary" onclick="setPattern('https?://[\\w\\-._~:/?#\\[\\]@!$&\'()*+,;=%]+')">URL</button>
+                <button class="tool-btn btn-danger" onclick="setPattern('\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}')">IP Address</button>
+                <button class="tool-btn btn-primary" onclick="setPattern('\\d{3}[-.]?\\d{3}[-.]?\\d{4}')">Phone Number</button>
+                <button class="tool-btn btn-secondary" onclick="setPattern('#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})')">HEX Color</button>
+            </div>
+        </div>
+    </div>
+
+    <footer><div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;"><p>© 2025 ToolBox Pro. All rights reserved.</p></div></footer>
+    <script src="components.js"></script>
+    <script>
+        function setPattern(p) {
+            document.getElementById('regex-pattern').value = p;
+            testRegex();
+        }
+        function testRegex() {
+            const pattern = document.getElementById('regex-pattern').value;
+            const flags = document.getElementById('regex-flags').value;
+            const text = document.getElementById('regex-input').value;
+            if (!pattern || !text) {
+                document.getElementById('regex-output').textContent = 'Enter a pattern and test string...';
+                document.getElementById('match-count').textContent = '0';
+                return;
+            }
+            try {
+                const regex = new RegExp(pattern, flags);
+                const matches = [...text.matchAll(new RegExp(pattern, flags.includes('g') ? flags : flags + 'g'))];
+                document.getElementById('match-count').textContent = matches.length;
+                if (matches.length === 0) {
+                    document.getElementById('regex-output').textContent = 'No matches found';
+                } else {
+                    document.getElementById('regex-output').textContent = matches.map((m, i) => `Match ${i+1}: "${m[0]}" (index: ${m.index})`).join('\n');
+                }
+            } catch(e) {
+                document.getElementById('regex-output').textContent = '❌ Invalid regex: ' + e.message;
+                document.getElementById('match-count').textContent = '0';
+            }
+        }
+    </script>
+</body>
+</html>
