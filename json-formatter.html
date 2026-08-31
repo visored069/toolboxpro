@@ -39,7 +39,7 @@
                 <span class="logo-text">ToolBox</span>
                 <span class="logo-badge">PRO</span>
             </a>
-            <nav aria-label="Main navigation">
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button><nav aria-label="Main navigation" id="main-nav">
                 <a href="index.html" id="nav-tools">Tools</a>
                 <a href="about.html" id="nav-about">About</a>
                 <a href="contact.html" id="nav-contact">Contact</a>
@@ -110,6 +110,25 @@
             <i class="fas fa-heart"></i>
             <h3>Thanks for your feedback!</h3>
             <p style="color:var(--text-secondary);font-size:0.85rem;">It helps us improve ToolBox Pro.</p>
+        </div>
+    </div>
+
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-banner" id="cookie-banner">
+        <div class="cookie-content"><div class="cookie-icon">🍪</div><div class="cookie-text"><strong>We use cookies</strong><p>We use localStorage to save your preferences. No tracking. <a href="privacy.html">Learn more</a></p></div></div>
+        <div class="cookie-actions"><button class="cookie-btn cookie-accept" onclick="acceptCookies()">Accept</button><button class="cookie-btn cookie-dismiss" onclick="dismissCookies()">Decline</button></div>
+    </div>
+
+    <!-- Keyboard Shortcuts Modal -->
+    <div class="shortcuts-overlay" id="shortcuts-overlay">
+        <div class="shortcuts-modal">
+            <div class="shortcuts-header"><h3><i class="fas fa-keyboard"></i> Keyboard Shortcuts</h3><button class="shortcuts-close" onclick="closeShortcuts()" aria-label="Close"><i class="fas fa-times"></i></button></div>
+            <div class="shortcuts-list">
+                <div class="shortcut-item"><span class="shortcut-desc">Focus search</span><span class="shortcut-keys"><kbd>Ctrl</kbd><kbd>K</kbd></span></div>
+                <div class="shortcut-item"><span class="shortcut-desc">Toggle dark mode</span><span class="shortcut-keys"><kbd>Ctrl</kbd><kbd></kbd></span></div>
+                <div class="shortcut-item"><span class="shortcut-desc">Show shortcuts</span><span class="shortcut-keys"><kbd>?</kbd></span></div>
+                <div class="shortcut-item"><span class="shortcut-desc">Close modal</span><span class="shortcut-keys"><kbd>Esc</kbd></span></div>
+            </div>
         </div>
     </div>
 

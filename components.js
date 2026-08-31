@@ -638,6 +638,173 @@ function initPerformance() {
     });
 }
 
+// --- Cookie Consent Banner ---
+function initCookieBanner() {
+    var banner = document.getElementById('cookie-banner');
+    if (!banner || localStorage.getItem('toolboxpro-cookies-accepted')) return;
+    setTimeout(function() { banner.classList.add('visible'); }, 2000);
+}
+function acceptCookies() {
+    localStorage.setItem('toolboxpro-cookies-accepted', '1');
+    var banner = document.getElementById('cookie-banner');
+    if (banner) banner.classList.remove('visible');
+}
+function dismissCookies() {
+    localStorage.setItem('toolboxpro-cookies-accepted', '1');
+    var banner = document.getElementById('cookie-banner');
+    if (banner) banner.classList.remove('visible');
+}
+
+// --- Mobile Menu ---
+function initMobileMenu() {
+    var toggle = document.getElementById('mobile-menu-toggle');
+    var nav = document.getElementById('main-nav');
+    if (!toggle || !nav) return;
+    // Create overlay
+    var overlay = document.createElement('div');
+    overlay.className = 'nav-overlay';
+    overlay.id = 'nav-overlay';
+    document.body.appendChild(overlay);
+    function closeMenu() {
+        toggle.classList.remove('active');
+        toggle.setAttribute('aria-expanded', 'false');
+        nav.classList.remove('open');
+        overlay.classList.remove('visible');
+    }
+    toggle.addEventListener('click', function() {
+        var isOpen = nav.classList.contains('open');
+        if (isOpen) { closeMenu(); }
+        else {
+            toggle.classList.add('active');
+            toggle.setAttribute('aria-expanded', 'true');
+            nav.classList.add('open');
+            overlay.classList.add('visible');
+        }
+    });
+    overlay.addEventListener('click', closeMenu);
+    nav.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', closeMenu); });
+}
+
+// --- Keyboard Shortcuts ---
+function initKeyboardShortcuts() {
+    document.addEventListener('keydown', function(e) {
+        var searchInput = document.getElementById('tool-search');
+        var isInputFocused = document.activeElement && (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA');
+
+        // Ctrl+K or Cmd+K — focus search
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+            e.preventDefault();
+            if (searchInput) { searchInput.focus(); searchInput.select(); }
+            return;
+        }
+        // / — focus search (when not in input)
+        if (e.key === '/' && !isInputFocused) {
+            e.preventDefault();
+            if (searchInput) { searchInput.focus(); searchInput.select(); }
+            return;
+        }
+        // Ctrl+\ — toggle theme
+        if ((e.ctrlKey || e.metaKey) && e.key === '\') {
+            e.preventDefault();
+            toggleTheme();
+            return;
+        }
+        // Ctrl+Up — scroll to top
+        if ((e.ctrlKey || e.metaKey) && e.key === 'ArrowUp') {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return;
+        }
+        // ? — show shortcuts (when not in input)
+        if (e.key === '?' && !isInputFocused) {
+            e.preventDefault();
+            showShortcuts();
+            return;
+        }
+        // Escape — close modals
+        if (e.key === 'Escape') {
+            closeShortcuts();
+        }
+    });
+}
+function showShortcuts() {
+    var overlay = document.getElementById('shortcuts-overlay');
+    if (overlay) overlay.classList.add('visible');
+}
+function closeShortcuts() {
+    var overlay = document.getElementById('shortcuts-overlay');
+    if (overlay) overlay.classList.remove('visible');
+}
+
+// --- Skeleton Loader ---
+function initSkeletonLoader() {
+    var cards = document.querySelectorAll('.tool-card');
+    if (!cards.length) return;
+    // Add skeleton class to cards
+    cards.forEach(function(card) { card.classList.add('skeleton'); });
+    // Remove skeleton after content loads
+    setTimeout(function() {
+        cards.forEach(function(card, i) {
+            setTimeout(function() { card.classList.remove('skeleton'); }, i * 50);
+        });
+    }, 600);
+}
+
+// --- Password Strength Meter ---
+function calcPasswordStrength(password) {
+    var score = 0;
+    if (!password) return { score: 0, label: '', color: 'transparent', percent: 0 };
+    if (password.length >= 8) score++;
+    if (password.length >= 12) score++;
+    if (password.length >= 16) score++;
+    if (/[a-z]/.test(password) && /[A-Z]/.test(password)) score++;
+    if (/\d/.test(password)) score++;
+    if (/[^a-zA-Z0-9]/.test(password)) score++;
+    var levels = [
+        { label: 'Very Weak', color: '#ef4444', percent: 16 },
+        { label: 'Weak', color: '#f97316', percent: 33 },
+        { label: 'Fair', color: '#eab308', percent: 50 },
+        { label: 'Strong', color: '#22c55e', percent: 75 },
+        { label: 'Very Strong', color: '#10b981', percent: 100 }
+    ];
+    var idx = Math.min(Math.floor(score * 4 / 6), 4);
+    var level = levels[idx];
+    // Deduct for too short
+    if (password.length < 6) { idx = 0; level = levels[0]; }
+    return { score: idx, label: level.label, color: level.color, percent: level.percent };
+}
+function updatePasswordStrength() {
+    var output = document.getElementById('pwd-output');
+    var bar = document.getElementById('strength-bar');
+    var label = document.getElementById('strength-label');
+    if (!output || !bar || !label) return;
+    var password = output.textContent || '';
+    var strength = calcPasswordStrength(password);
+    bar.style.width = strength.percent + '%';
+    bar.style.background = strength.color;
+    label.textContent = strength.label;
+    label.style.color = strength.color;
+}
+
+// --- Password Visibility Toggle ---
+function togglePasswordVisibility() {
+    var output = document.getElementById('pwd-output');
+    var btn = document.getElementById('pwd-visibility-btn');
+    if (!output || !btn) return;
+    var isHidden = output.getAttribute('data-hidden') === 'true';
+    if (isHidden) {
+        output.textContent = output.getAttribute('data-password') || output.textContent;
+        output.setAttribute('data-hidden', 'false');
+        btn.innerHTML = '<i class="fas fa-eye-slash"></i>';
+    } else {
+        output.setAttribute('data-password', output.textContent);
+        var masked = output.textContent.replace(/./g, '•');
+        output.textContent = masked;
+        output.setAttribute('data-hidden', 'true');
+        btn.innerHTML = '<i class="fas fa-eye"></i>';
+    }
+}
+
 // --- Init ---
 document.addEventListener('DOMContentLoaded', function() {
     initTheme();
@@ -659,6 +826,10 @@ document.addEventListener('DOMContentLoaded', function() {
     initBackToTop();
     initFeedback();
     initPerformance();
+    initSkeletonLoader();
+    initCookieBanner();
+    initMobileMenu();
+    initKeyboardShortcuts();
 
     var themeBtn = document.getElementById('theme-toggle');
     if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
