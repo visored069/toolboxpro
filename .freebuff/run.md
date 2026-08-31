@@ -13,3 +13,6 @@ Or use Python:
 
 The site is accessible at http://127.0.0.1:8000/
 Clean URLs supported: /about, /contact, /privacy, etc.
+
+## Additional pages
+- 3D Visual Demo: http://127.0.0.1:8000/3d-demo.html (standalone, showcases premium effects)

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ToolBox Pro — 3D Visual Demo</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET ===== */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#030303;--bg2:#09090b;
+  --card:rgba(255,255,255,0.03);--card-h:rgba(255,255,255,0.06);
+  --border:rgba(255,255,255,0.06);--border-h:rgba(255,255,255,0.12);
+  --text:#fafafa;--text2:#a1a1aa;--text3:#52525b;
+  --indigo:#818cf8;--violet:#a78bfa;--amber:#f59e0b;
+  --g1:linear-gradient(135deg,#818cf8,#c084fc);
+  --g2:linear-gradient(135deg,#6366f1,#818cf8);
+  --g3:linear-gradient(135deg,#a78bfa,#c084fc);
+  --glass:rgba(255,255,255,0.04);
+  --glass-b:rgba(255,255,255,0.08);
+  --spring:cubic-bezier(0.22,1,0.36,1);
+  --bounce:cubic-bezier(0.34,1.56,0.64,1);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',-apple-system,sans-serif;
+  background:var(--bg);color:var(--text);
+  min-height:100vh;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ===== 3D SCENE CONTAINER ===== */
+.scene{perspective:1200px;perspective-origin:50% 50%}
+
+/* ===== ANIMATED BACKGROUND ===== */
+.bg-orbs{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none}
+.bg-orb{
+  position:absolute;border-radius:50%;filter:blur(120px);
+  animation:orbFloat ease-in-out infinite;
+}
+.bg-orb:nth-child(1){width:700px;height:700px;background:rgba(129,140,248,0.1);top:-15%;left:-10%;animation-duration:25s}
+.bg-orb:nth-child(2){width:500px;height:500px;background:rgba(167,139,250,0.08);bottom:-10%;right:-5%;animation-duration:20s;animation-delay:-8s}
+.bg-orb:nth-child(3){width:400px;height:400px;background:rgba(245,158,11,0.05);top:40%;left:50%;animation-duration:22s;animation-delay:-12s}
+@keyframes orbFloat{
+  0%,100%{transform:translate(0,0) scale(1)}
+  33%{transform:translate(40px,-30px) scale(1.1)}
+  66%{transform:translate(-30px,20px) scale(0.95)}
+}
+
+/* ===== GRID OVERLAY ===== */
+.grid-overlay{
+  position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(129,140,248,0.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(129,140,248,0.03) 1px,transparent 1px);
+  background-size:80px 80px;
+  mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,black 10%,transparent 70%);
+}
+
+/* ===== HERO SECTION ===== */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:2rem;position:relative;text-align:center;
+}
+.hero-title{
+  font-size:clamp(2.5rem,7vw,5rem);font-weight:900;
+  line-height:1.05;letter-spacing:-0.04em;
+  margin-bottom:1.5rem;
+}
+.hero-title .gradient{
+  background:var(--g1);-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-sub{
+  font-size:clamp(1rem,2vw,1.3rem);color:var(--text2);
+  max-width:600px;line-height:1.6;margin-bottom:3rem;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  padding:0.5rem 1.2rem;border-radius:100px;
+  background:var(--glass);border:1px solid var(--glass-b);
+  font-size:0.8rem;color:var(--text2);
+  backdrop-filter:blur(20px);margin-bottom:2rem;
+  animation:badgePulse 3s ease-in-out infinite;
+}
+.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:#34d399;animation:dotPulse 2s ease infinite}
+@keyframes badgePulse{0%,100%{box-shadow:0 0 0 0 rgba(129,140,248,0.1)}50%{box-shadow:0 0 30px 5px rgba(129,140,248,0.08)}}
+@keyframes dotPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+
+/* ===== SCROLL INDICATOR ===== */
+.scroll-indicator{
+  position:absolute;bottom:3rem;
+  display:flex;flex-direction:column;align-items:center;gap:0.5rem;
+  color:var(--text3);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;
+  animation:scrollBounce 2s ease-in-out infinite;
+}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--indigo),transparent);animation:scrollLine 2s ease-in-out infinite}
+@keyframes scrollBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+@keyframes scrollLine{0%{opacity:0;transform:scaleY(0);transform-origin:top}50%{opacity:1;transform:scaleY(1)}100%{opacity:0;transform:scaleY(0);transform-origin:bottom}}
+
+/* ===== 3D CARD GRID ===== */
+.section{padding:6rem 2rem;max-width:1300px;margin:0 auto}
+.section-label{
+  font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--indigo);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;
+}
+.section-label::before{content:'';width:20px;height:1px;background:var(--indigo)}
+.section-title{font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:1rem;line-height:1.1}
+.section-desc{color:var(--text2);max-width:550px;line-height:1.7;margin-bottom:3rem;font-size:1.05rem}
+
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem}
+
+/* ===== 3D TILT CARD ===== */
+.tilt-card{
+  position:relative;border-radius:20px;
+  background:var(--card);border:1px solid var(--border);
+  padding:2rem;overflow:hidden;
+  transform-style:preserve-3d;
+  transition:transform 0.4s var(--spring),box-shadow 0.4s var(--spring),border-color 0.3s;
+  cursor:default;
+}
+.tilt-card::before{
+  content:'';position:absolute;inset:0;border-radius:20px;
+  background:radial-gradient(600px circle at var(--mx,50%) var(--my,50%),
+    rgba(129,140,248,0.08),transparent 40%);
+  opacity:0;transition:opacity 0.4s;pointer-events:none;z-index:1;
+}
+.tilt-card:hover::before{opacity:1}
+.tilt-card:hover{
+  border-color:var(--border-h);
+  box-shadow:0 20px 60px rgba(0,0,0,0.4),0 0 40px rgba(129,140,248,0.06);
+}
+.tilt-card .card-icon{
+  width:56px;height:56px;border-radius:14px;
+  background:var(--g1);display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;color:#fff;margin-bottom:1.2rem;
+  transform:translateZ(30px);
+  transition:transform 0.4s var(--bounce);
+}
+.tilt-card:hover .card-icon{transform:translateZ(40px) scale(1.05)}
+.tilt-card h3{
+  font-size:1.2rem;font-weight:700;margin-bottom:0.6rem;
+  transform:translateZ(20px);letter-spacing:-0.02em;
+}
+.tilt-card p{
+  color:var(--text2);font-size:0.9rem;line-height:1.6;
+  transform:translateZ(10px);
+}
+.tilt-card .card-tag{
+  display:inline-block;margin-top:1rem;padding:0.3rem 0.8rem;
+  border-radius:8px;font-size:0.7rem;font-weight:600;
+  background:rgba(129,140,248,0.1);color:var(--indigo);
+  transform:translateZ(15px);
+}
+
+/* ===== 3D FLOATING CUBE ===== */
+.cube-section{
+  padding:6rem 2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-height:80vh;position:relative;
+}
+.cube-scene{width:200px;height:200px;perspective:600px;margin:3rem auto}
+.cube{
+  width:100%;height:100%;position:relative;
+  transform-style:preserve-3d;
+  animation:cubeRotate 12s linear infinite;
+}
+.cube-face{
+  position:absolute;width:200px;height:200px;
+  border:1px solid rgba(129,140,248,0.2);
+  background:rgba(129,140,248,0.03);
+  backdrop-filter:blur(4px);
+  display:flex;align-items:center;justify-content:center;
+  font-size:2.5rem;
+  transition:border-color 0.3s;
+}
+.cube-face:hover{border-color:rgba(129,140,248,0.5)}
+.cube-face:nth-child(1){transform:rotateY(0deg) translateZ(100px)}
+.cube-face:nth-child(2){transform:rotateY(90deg) translateZ(100px)}
+.cube-face:nth-child(3){transform:rotateY(180deg) translateZ(100px)}
+.cube-face:nth-child(4){transform:rotateY(270deg) translateZ(100px)}
+.cube-face:nth-child(5){transform:rotateX(90deg) translateZ(100px)}
+.cube-face:nth-child(6){transform:rotateX(-90deg) translateZ(100px)}
+@keyframes cubeRotate{
+  0%{transform:rotateX(0) rotateY(0)}
+  25%{transform:rotateX(90deg) rotateY(90deg)}
+  50%{transform:rotateX(180deg) rotateY(180deg)}
+  75%{transform:rotateX(270deg) rotateY(270deg)}
+  100%{transform:rotateX(360deg) rotateY(360deg)}
+}
+
+/* ===== GLASSMORPHISM SHOWCASE ===== */
+.glass-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:3rem}
+.glass-card{
+  border-radius:20px;padding:2rem;
+  background:rgba(255,255,255,0.03);
+  backdrop-filter:blur(20px) saturate(1.5);
+  -webkit-backdrop-filter:blur(20px) saturate(1.5);
+  border:1px solid rgba(255,255,255,0.06);
+  position:relative;overflow:hidden;
+  transition:transform 0.4s var(--spring),box-shadow 0.4s;
+}
+.glass-card::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);
+}
+.glass-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 20px 60px rgba(0,0,0,0.3),0 0 30px rgba(129,140,248,0.05);
+}
+.glass-card .glass-icon{font-size:2rem;margin-bottom:1rem}
+.glass-card h3{font-size:1.1rem;font-weight:700;margin-bottom:0.5rem}
+.glass-card p{color:var(--text2);font-size:0.85rem;line-height:1.6}
+
+/* ===== AURORA BORDER CARDS ===== */
+.aurora-card{
+  position:relative;border-radius:20px;padding:2rem;
+  background:var(--bg2);overflow:hidden;
+  transition:transform 0.4s var(--spring);
+}
+.aurora-card::before{
+  content:'';position:absolute;inset:-2px;border-radius:22px;
+  background:conic-gradient(from var(--angle,0deg),#818cf8,#a78bfa,#c084fc,#f59e0b,#818cf8);
+  z-index:-1;animation:auroraBorder 4s linear infinite;
+  opacity:0.6;transition:opacity 0.3s;
+}
+.aurora-card:hover::before{opacity:1}
+.aurora-card:hover{transform:translateY(-4px)}
+.aurora-card h3{font-size:1.1rem;font-weight:700;margin-bottom:0.5rem}
+.aurora-card p{color:var(--text2);font-size:0.85rem;line-height:1.6}
+@keyframes auroraBorder{0%{--angle:0deg}100%{--angle:360deg}}
+@property --angle{syntax:'<angle>';initial-value:0deg;inherits:false}
+
+/* ===== 3D PARALLAX SECTION ===== */
+.parallax-section{
+  padding:6rem 2rem;position:relative;overflow:hidden;
+  min-height:60vh;display:flex;align-items:center;justify-content:center;
+}
+.parallax-layer{position:absolute;inset:0;pointer-events:none;transition:transform 0.1s linear}
+.parallax-shape{
+  position:absolute;border-radius:50%;
+  border:1px solid rgba(129,140,248,0.1);
+}
+
+/* ===== FLOATING RING ANIMATION ===== */
+.ring-container{position:relative;width:400px;height:400px;margin:0 auto}
+.floating-ring{
+  position:absolute;border-radius:50%;
+  border:1px solid rgba(129,140,248,0.15);
+  animation:ringFloat ease-in-out infinite;
+}
+.floating-ring:nth-child(1){inset:0;animation-duration:6s}
+.floating-ring:nth-child(2){inset:30px;animation-duration:5s;animation-delay:-1s;border-color:rgba(167,139,250,0.12)}
+.floating-ring:nth-child(3){inset:60px;animation-duration:4s;animation-delay:-2s;border-color:rgba(245,158,11,0.1)}
+.floating-ring:nth-child(4){inset:90px;animation-duration:7s;animation-delay:-3s;border-color:rgba(129,140,248,0.08)}
+@keyframes ringFloat{
+  0%,100%{transform:rotate(0deg) scale(1)}
+  25%{transform:rotate(5deg) scale(1.02)}
+  50%{transform:rotate(-3deg) scale(0.98)}
+  75%{transform:rotate(2deg) scale(1.01)}
+}
+
+/* ===== SCROLL REVEAL ===== */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s var(--spring),transform 0.8s var(--spring)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+
+/* ===== GLOW BUTTON ===== */
+.glow-btn{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  padding:0.9rem 2rem;border-radius:12px;border:none;
+  background:var(--g1);color:#fff;font-size:0.95rem;font-weight:600;
+  cursor:pointer;position:relative;overflow:hidden;
+  transition:transform 0.3s var(--bounce),box-shadow 0.3s;
+  font-family:inherit;
+}
+.glow-btn:hover{
+  transform:translateY(-2px) scale(1.02);
+  box-shadow:0 10px 40px rgba(129,140,248,0.3);
+}
+.glow-btn::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,0.15),transparent);
+  opacity:0;transition:opacity 0.3s;
+}
+.glow-btn:hover::after{opacity:1}
+
+/* ===== PARTICLE FIELD ===== */
+#particles-canvas{position:fixed;inset:0;z-index:-1;pointer-events:none}
+
+/* ===== NOISE TEXTURE ===== */
+.noise{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  opacity:0.015;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat:repeat;
+}
+
+/* ===== FOOTER ===== */
+.demo-footer{
+  text-align:center;padding:4rem 2rem;
+  border-top:1px solid var(--border);margin-top:4rem;
+}
+.demo-footer p{color:var(--text3);font-size:0.85rem}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .card-grid,.glass-grid{grid-template-columns:1fr}
+  .cube-scene{width:140px;height:140px}
+  .cube-face{width:140px;height:140px;font-size:1.8rem}
+  .cube-face:nth-child(1){transform:rotateY(0deg) translateZ(70px)}
+  .cube-face:nth-child(2){transform:rotateY(90deg) translateZ(70px)}
+  .cube-face:nth-child(3){transform:rotateY(180deg) translateZ(70px)}
+  .cube-face:nth-child(4){transform:rotateY(270deg) translateZ(70px)}
+  .cube-face:nth-child(5){transform:rotateX(90deg) translateZ(70px)}
+  .cube-face:nth-child(6){transform:rotateX(-90deg) translateZ(70px)}
+  .ring-container{width:250px;height:250px}
+}
+</style>
+</head>
+<body>
+
+<!-- Background layers -->
+<div class="bg-orbs">
+  <div class="bg-orb"></div>
+  <div class="bg-orb"></div>
+  <div class="bg-orb"></div>
+</div>
+<div class="grid-overlay"></div>
+<div class="noise"></div>
+<canvas id="particles-canvas"></canvas>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-badge"><span class="dot"></span>3D Visual Demo — Preview Mode</div>
+  <h1 class="hero-title">
+    Build <span class="gradient">Stunning</span><br>3D Experiences
+  </h1>
+  <p class="hero-sub">
+    Premium glassmorphism, 3D tilt cards, aurora borders, floating geometry, and cinematic particle effects — ready to add to ToolBox Pro.
+  </p>
+  <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center">
+    <button class="glow-btn" onclick="document.getElementById('cards').scrollIntoView({behavior:'smooth'})">
+      Explore Effects <span style="font-size:1.1rem">↓</span>
+    </button>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- ===== 3D TILT CARDS ===== -->
+<section class="section" id="cards">
+  <div class="reveal">
+    <div class="section-label">Effect 01</div>
+    <h2 class="section-title">3D Tilt Cards</h2>
+    <p class="section-desc">Cards that follow your cursor with realistic 3D perspective, spotlight gradients, and depth layers. Hover over them.</p>
+  </div>
+  <div class="card-grid">
+    <div class="tilt-card reveal reveal-delay-1" data-tilt>
+      <div class="card-icon">⚡</div>
+      <h3>Lightning Fast</h3>
+      <p>All tools run in-browser with zero latency. No server round-trips, no waiting.</p>
+      <span class="card-tag">Performance</span>
+    </div>
+    <div class="tilt-card reveal reveal-delay-2" data-tilt>
+      <div class="card-icon">🎨</div>
+      <h3>Premium Design</h3>
+      <p>Glassmorphism, aurora borders, and cinematic effects that make your site unforgettable.</p>
+      <span class="card-tag">Visual</span>
+    </div>
+    <div class="tilt-card reveal reveal-delay-3" data-tilt>
+      <div class="card-icon">🔮</div>
+      <h3>3D Depth</h3>
+      <p>Real perspective transforms with mouse-tracking spotlight effects and layered z-depth.</p>
+      <span class="card-tag">Interactive</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 3D ROTATING CUBE ===== -->
+<section class="cube-section">
+  <div class="reveal">
+    <div class="section-label">Effect 02</div>
+    <h2 class="section-title" style="text-align:center">3D Rotating Cube</h2>
+    <p class="section-desc" style="text-align:center;margin-left:auto;margin-right:auto">Pure CSS 3D cube with glass faces — perfect for hero sections, feature showcases, or loading screens.</p>
+  </div>
+  <div class="cube-scene">
+    <div class="cube">
+      <div class="cube-face">🧰</div>
+      <div class="cube-face">⚡</div>
+      <div class="cube-face">🎨</div>
+      <div class="cube-face">🔮</div>
+      <div class="cube-face">🚀</div>
+      <div class="cube-face">💎</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GLASSMORPHISM ===== -->
+<section class="section">
+  <div class="reveal">
+    <div class="section-label">Effect 03</div>
+    <h2 class="section-title">Glassmorphism</h2>
+    <p class="section-desc">Frosted glass cards with backdrop blur, subtle borders, and light reflections. The modern standard for premium UI.</p>
+  </div>
+  <div class="glass-grid">
+    <div class="glass-card reveal reveal-delay-1">
+      <div class="glass-icon">🛡️</div>
+      <h3>Secure by Default</h3>
+      <p>All processing happens locally in your browser. Your data never touches a server.</p>
+    </div>
+    <div class="glass-card reveal reveal-delay-2">
+      <div class="glass-icon">♾️</div>
+      <h3>Unlimited Usage</h3>
+      <p>No quotas, no rate limits, no paywalls. Use every tool as much as you want, forever.</p>
+    </div>
+    <div class="glass-card reveal reveal-delay-3">
+      <div class="glass-icon">📱</div>
+      <h3>Works Everywhere</h3>
+      <p>Fully responsive across desktop, tablet, and mobile. Same premium experience on every device.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AURORA BORDERS ===== -->
+<section class="section">
+  <div class="reveal">
+    <div class="section-label">Effect 04</div>
+    <h2 class="section-title">Aurora Borders</h2>
+    <p class="section-desc">Animated conic-gradient borders that rotate continuously — an eye-catching premium accent for any card or section.</p>
+  </div>
+  <div class="card-grid">
+    <div class="aurora-card reveal reveal-delay-1">
+      <h3>🌀 Gradient Rotation</h3>
+      <p>Smoothly animated conic gradients cycle through your brand colors around any element.</p>
+    </div>
+    <div class="aurora-card reveal reveal-delay-2">
+      <h3>✨ Hover Intensify</h3>
+      <p>Borders brighten on hover, drawing attention and creating a living, breathing UI.</p>
+    </div>
+    <div class="aurora-card reveal reveal-delay-3">
+      <h3>🎭 Brandable</h3>
+      <p>Easily swap colors to match any brand palette. Works with any color scheme.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FLOATING RINGS + PARALLAX ===== -->
+<section class="parallax-section" id="rings">
+  <div class="reveal" style="text-align:center;position:relative;z-index:1">
+    <div class="section-label" style="justify-content:center">Effect 05</div>
+    <h2 class="section-title">Floating Geometry</h2>
+    <p class="section-desc" style="margin-left:auto;margin-right:auto">Animated concentric rings and parallax layers that react to scroll depth — creating a sense of infinite space.</p>
+  </div>
+  <div class="ring-container reveal" id="ring-container">
+    <div class="floating-ring"></div>
+    <div class="floating-ring"></div>
+    <div class="floating-ring"></div>
+    <div class="floating-ring"></div>
+    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3rem">🧰</div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="section" style="text-align:center">
+  <div class="reveal">
+    <div class="section-label" style="justify-content:center">Ready?</div>
+    <h2 class="section-title" style="margin-left:auto;margin-right:auto">Add These to ToolBox Pro</h2>
+    <p class="section-desc" style="margin-left:auto;margin-right:auto;text-align:center">
+      Pick which effects you love and I'll integrate them into your live site. Every effect shown here is lightweight, performant, and production-ready.
+    </p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1rem">
+      <button class="glow-btn" onclick="alert('Tell Buffy which effects to add! 🚀')">✨ Let's Build This</button>
+    </div>
+  </div>
+</section>
+
+<footer class="demo-footer">
+  <p>ToolBox Pro — 3D Visual Demo • All effects are pure CSS + vanilla JS, zero dependencies</p>
+</footer>
+
+<script>
+// ===== PARTICLE FIELD =====
+(function(){
+  const c=document.getElementById('particles-canvas');
+  const ctx=c.getContext('2d');
+  let W,H;
+  function resize(){W=c.width=innerWidth;H=c.height=innerHeight}
+  resize();window.addEventListener('resize',resize);
+
+  const particles=[];
+  const COUNT=Math.min(80,Math.floor(innerWidth/20));
+  for(let i=0;i<COUNT;i++){
+    particles.push({
+      x:Math.random()*innerWidth,y:Math.random()*innerHeight,
+      vx:(Math.random()-0.5)*0.3,vy:(Math.random()-0.5)*0.3,
+      r:Math.random()*1.5+0.5,
+      a:Math.random()*0.3+0.1,
+      color:['129,140,248','167,139,250','245,158,11'][Math.floor(Math.random()*3)]
+    });
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    for(let i=0;i<particles.length;i++){
+      const p=particles[i];
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0)p.x=W;if(p.x>W)p.x=0;
+      if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${p.color},${p.a})`;ctx.fill();
+      // connections
+      for(let j=i+1;j<particles.length;j++){
+        const q=particles[j];
+        const dx=p.x-q.x,dy=p.y-q.y;
+        const d=Math.sqrt(dx*dx+dy*dy);
+        if(d<150){
+          ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);
+          ctx.strokeStyle=`rgba(129,140,248,${0.06*(1-d/150)})`;
+          ctx.lineWidth=0.5;ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// ===== 3D TILT CARDS =====
+document.querySelectorAll('[data-tilt]').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const rect=card.getBoundingClientRect();
+    const x=e.clientX-rect.left;
+    const y=e.clientY-rect.top;
+    const cx=rect.width/2;
+    const cy=rect.height/2;
+    const rotX=(y-cy)/cy*-8;
+    const rotY=(x-cx)/cx*8;
+    card.style.transform=`perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.02,1.02,1.02)`;
+    card.style.setProperty('--mx',`${(x/rect.width)*100}%`);
+    card.style.setProperty('--my',`${(y/rect.height)*100}%`);
+  });
+  card.addEventListener('mouseleave',()=>{
+    card.style.transform='perspective(800px) rotateX(0) rotateY(0) scale3d(1,1,1)';
+  });
+});
+
+// ===== SCROLL REVEAL =====
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// ===== PARALLAX RINGS ON MOUSE =====
+const ringSection=document.getElementById('ring-container');
+if(ringSection){
+  document.addEventListener('mousemove',e=>{
+    const x=(e.clientX/innerWidth-0.5)*20;
+    const y=(e.clientY/innerHeight-0.5)*20;
+    ringSection.querySelectorAll('.floating-ring').forEach((r,i)=>{
+      const depth=(i+1)*0.4;
+      r.style.transform=`translate(${x*depth}px,${y*depth}px)`;
+    });
+  });
+}
+</script>
+</body>
+</html>
