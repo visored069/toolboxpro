@@ -1,4 +1,4 @@
-// ===== ToolBox Pro — Cinematic Components v4 =====
+// ===== ToolBox Pro -- Cinematic Components v4 =====
 
 // --- Canvas Particle Field (60fps, spring physics) ---
 function initParticleCanvas() {
@@ -113,7 +113,7 @@ function initParticleCanvas() {
 
 // --- Toast ---
 function showToast(message) {
-    message = message || '✓ Copied to clipboard!';
+    message = message || '[check] Copied to clipboard!';
     var toast = document.getElementById('copy-toast');
     if (!toast) {
         toast = document.createElement('div');
@@ -567,7 +567,7 @@ function installPWA() {
     if (!deferredPrompt) return;
     deferredPrompt.prompt();
     deferredPrompt.userChoice.then(function(choice) {
-        if (choice.outcome === 'accepted') showToast('🎉 App installed successfully!');
+        if (choice.outcome === 'accepted') showToast('App installed successfully!');
         deferredPrompt = null; dismissPWA();
     });
 }
@@ -685,43 +685,80 @@ function initMobileMenu() {
     nav.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', closeMenu); });
 }
 
+// --- Page Transitions ---
+function initPageTransitions() {
+    // Create overlay if it doesn't exist
+    var overlay = document.getElementById('page-transition');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.className = 'page-transition';
+        overlay.id = 'page-transition';
+        document.body.appendChild(overlay);
+    }
+
+    // Check if we arrived from an internal page (transition in)
+    var referrer = document.referrer;
+    var isInternal = referrer && referrer.indexOf(window.location.origin) !== -1;
+    if (isInternal) {
+        overlay.classList.add('active');
+        requestAnimationFrame(function() {
+            requestAnimationFrame(function() {
+                overlay.classList.remove('active');
+            });
+        });
+    }
+
+    // Intercept clicks on internal links
+    document.addEventListener('click', function(e) {
+        var link = e.target.closest('a[href]');
+        if (!link) return;
+        var href = link.getAttribute('href');
+        if (!href || href.charAt(0) === '#' || href.indexOf('http') === 0 || href.indexOf('mailto:') === 0 || href.indexOf('tel:') === 0) return;
+        // Skip external links, same-page anchors, and feedback/cookie buttons
+        if (link.classList.contains('cookie-btn') || link.classList.contains('pwa-dismiss') || link.classList.contains('pwa-install-btn')) return;
+        e.preventDefault();
+        overlay.classList.add('active');
+        setTimeout(function() { window.location.href = href; }, 300);
+    });
+}
+
 // --- Keyboard Shortcuts ---
 function initKeyboardShortcuts() {
     document.addEventListener('keydown', function(e) {
         var searchInput = document.getElementById('tool-search');
         var isInputFocused = document.activeElement && (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA');
 
-        // Ctrl+K or Cmd+K — focus search
+        // Ctrl+K or Cmd+K -- focus search
         if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
             e.preventDefault();
             if (searchInput) { searchInput.focus(); searchInput.select(); }
             return;
         }
-        // / — focus search (when not in input)
+        // / -- focus search (when not in input)
         if (e.key === '/' && !isInputFocused) {
             e.preventDefault();
             if (searchInput) { searchInput.focus(); searchInput.select(); }
             return;
         }
-        // Ctrl+\ — toggle theme
-        if ((e.ctrlKey || e.metaKey) && e.key === '\') {
+        // Ctrl+\ -- toggle theme
+        if ((e.ctrlKey || e.metaKey) && e.key === '\\') {
             e.preventDefault();
             toggleTheme();
             return;
         }
-        // Ctrl+Up — scroll to top
+        // Ctrl+Up -- scroll to top
         if ((e.ctrlKey || e.metaKey) && e.key === 'ArrowUp') {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
             return;
         }
-        // ? — show shortcuts (when not in input)
+        // ? -- show shortcuts (when not in input)
         if (e.key === '?' && !isInputFocused) {
             e.preventDefault();
             showShortcuts();
             return;
         }
-        // Escape — close modals
+        // Escape -- close modals
         if (e.key === 'Escape') {
             closeShortcuts();
         }
@@ -798,7 +835,7 @@ function togglePasswordVisibility() {
         btn.innerHTML = '<i class="fas fa-eye-slash"></i>';
     } else {
         output.setAttribute('data-password', output.textContent);
-        var masked = output.textContent.replace(/./g, '•');
+        var masked = output.textContent.replace(/./g, '*');
         output.textContent = masked;
         output.setAttribute('data-hidden', 'true');
         btn.innerHTML = '<i class="fas fa-eye"></i>';
@@ -849,4 +886,7 @@ document.addEventListener('DOMContentLoaded', function() {
     else if (path.includes('privacy')) setActiveNav('privacy');
     else if (path.includes('terms')) setActiveNav('terms');
     else setActiveNav('tools');
+
+    // --- Page Transition ---
+    initPageTransitions();
 });
