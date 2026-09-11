@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tools Directory — 200+ Best AI Tools in 2026 | ToolBox Pro</title>
+    <meta name="description" content="Discover the best AI tools of 2026. Curated directory of 200+ AI tools for writing, coding, design, marketing, video, audio, and more. Free ratings, comparisons, and reviews.">
+    <meta name="keywords" content="AI tools, best AI tools 2026, AI directory, ChatGPT alternatives, AI writing tools, AI code generators, AI image generators, AI video tools, free AI tools">
+    <meta name="author" content="ToolBox Pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://toolboxpro-theta.vercel.app/ai-tools.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://toolboxpro-theta.vercel.app/ai-tools.html">
+    <meta property="og:title" content="AI Tools Directory — 200+ Best AI Tools in 2026">
+    <meta property="og:description" content="Curated directory of 200+ AI tools. Free ratings, comparisons, and reviews.">
+    <meta property="og:image" content="https://toolboxpro-theta.vercel.app/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI Tools Directory — 200+ Best AI Tools in 2026">
+    <meta name="twitter:description" content="Curated directory of 200+ AI tools. Free ratings, comparisons, and reviews.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css">
+    <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "AI Tools Directory",
+        "description": "Curated directory of 200+ AI tools for 2026",
+        "url": "https://toolboxpro-theta.vercel.app/ai-tools.html",
+        "mainEntity": {
+            "@type": "ItemList",
+            "numberOfItems": 200,
+            "itemListElement": [
+                {"@type": "SoftwareApplication", "name": "ChatGPT", "applicationCategory": "AI Writing"},
+                {"@type": "SoftwareApplication", "name": "Claude", "applicationCategory": "AI Assistant"},
+                {"@type": "SoftwareApplication", "name": "Midjourney", "applicationCategory": "AI Image Generation"},
+                {"@type": "SoftwareApplication", "name": "GitHub Copilot", "applicationCategory": "AI Code Generation"},
+                {"@type": "SoftwareApplication", "name": "Runway", "applicationCategory": "AI Video Generation"}
+            ]
+        }
+    }
+    </script>
+    <style>
+        /* AI Directory specific styles */
+        .directory-hero {
+            position: relative;
+            padding: 140px 0 80px;
+            text-align: center;
+            overflow: hidden;
+            background: linear-gradient(180deg, #050510 0%, #0a0a2e 50%, #050510 100%);
+        }
+        .directory-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 60%),
+                        radial-gradient(ellipse at 20% 50%, rgba(139,92,246,0.1) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 50%, rgba(245,158,11,0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .directory-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #818cf8, #c084fc, #fbbf24, #818cf8);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 4s ease infinite;
+            position: relative;
+            z-index: 1;
+        }
+        .directory-hero p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: rgba(255,255,255,0.6);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            position: relative;
+            z-index: 1;
+        }
+        .directory-stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        .directory-stats .stat {
+            text-align: center;
+        }
+        .directory-stats .stat-num {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .directory-stats .stat-label {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+            margin-top: 4px;
+        }
+        /* Search */
+        .directory-search {
+            max-width: 640px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+        .directory-search input {
+            width: 100%;
+            padding: 18px 24px 18px 56px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            color: #fff;
+            font-size: 1.1rem;
+            font-family: inherit;
+            outline: none;
+            transition: all 0.3s;
+            box-sizing: border-box;
+        }
+        .directory-search input:focus {
+            border-color: rgba(129,140,248,0.5);
+            box-shadow: 0 0 30px rgba(129,140,248,0.15);
+        }
+        .directory-search input::placeholder { color: rgba(255,255,255,0.35); }
+        .directory-search .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255,255,255,0.4);
+            font-size: 1.1rem;
+        }
+        .directory-search .search-count {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255,255,255,0.35);
+            font-size: 0.85rem;
+        }
+        /* Category pills */
+        .category-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 32px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+        .category-pill {
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.04);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+            font-family: inherit;
+        }
+        .category-pill:hover, .category-pill.active {
+            background: rgba(129,140,248,0.15);
+            border-color: rgba(129,140,248,0.4);
+            color: #818cf8;
+        }
+        .category-pill .pill-count {
+            background: rgba(255,255,255,0.1);
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-left: 6px;
+        }
+        /* Tools Grid */
+        .directory-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+        }
+        .tool-card-directory {
+            position: relative;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 28px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        .tool-card-directory::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(129,140,248,0), rgba(192,132,252,0));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            transition: all 0.4s;
+            pointer-events: none;
+        }
+        .tool-card-directory:hover {
+            transform: translateY(-4px);
+            border-color: rgba(129,140,248,0.3);
+            box-shadow: 0 20px 60px rgba(129,140,248,0.1), 0 0 40px rgba(129,140,248,0.05);
+        }
+        .tool-card-directory:hover::before {
+            background: linear-gradient(135deg, rgba(129,140,248,0.3), rgba(245,158,11,0.2));
+        }
+        .tool-card-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 14px;
+        }
+        .tool-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            position: relative;
+        }
+        .tool-card-header .tool-info { flex: 1; min-width: 0; }
+        .tool-card-header .tool-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+        .tool-card-header .tool-company {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.4);
+        }
+        .tool-badges {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+        .tool-badge {
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .badge-free { background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid rgba(34,197,94,0.2); }
+        .badge-freemium { background: rgba(59,130,246,0.15); color: #3b82f6; border: 1px solid rgba(59,130,246,0.2); }
+        .badge-paid { background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid rgba(245,158,11,0.2); }
+        .badge-popular { background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.2); }
+        .badge-new { background: rgba(168,85,247,0.15); color: #a855f7; border: 1px solid rgba(168,85,247,0.2); }
+        .badge-top { background: linear-gradient(135deg, rgba(251,191,36,0.2), rgba(245,158,11,0.2)); color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); }
+        .tool-desc {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.5;
+            margin-bottom: 16px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .tool-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .tool-rating {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: #fbbf24;
+            font-size: 0.85rem;
+        }
+        .tool-rating span { color: rgba(255,255,255,0.4); font-size: 0.8rem; margin-left: 4px; }
+        .tool-category-tag {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            background: rgba(255,255,255,0.06);
+            color: rgba(255,255,255,0.5);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        /* Featured section */
+        .featured-section {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 24px 60px;
+        }
+        .featured-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+        .featured-header h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #fff;
+        }
+        .featured-header .fire { font-size: 1.5rem; }
+        .featured-scroll {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 16px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .featured-scroll::-webkit-scrollbar { display: none; }
+        .featured-card {
+            min-width: 280px;
+            background: linear-gradient(135deg, rgba(129,140,248,0.1), rgba(139,92,246,0.05));
+            border: 1px solid rgba(129,140,248,0.2);
+            border-radius: 20px;
+            padding: 24px;
+            cursor: pointer;
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+        .featured-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(129,140,248,0.15);
+        }
+        .featured-card .fc-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin-bottom: 16px;
+        }
+        .featured-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+        .featured-card p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+        .featured-card .fc-link {
+            color: #818cf8;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .fc-link:hover { color: #a78bfa; }
+        /* Comparison Table */
+        .compare-section {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+        .compare-section h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        .compare-section .compare-sub {
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 40px;
+        }
+        .compare-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .compare-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .compare-card.featured {
+            border-color: rgba(129,140,248,0.4);
+            background: linear-gradient(135deg, rgba(129,140,248,0.08), rgba(139,92,246,0.04));
+        }
+        .compare-card:hover { transform: translateY(-4px); }
+        .compare-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .compare-card .cc-price {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 4px;
+        }
+        .compare-card .cc-period {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 24px;
+        }
+        .compare-card .cc-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 24px;
+            text-align: left;
+        }
+        .compare-card .cc-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            color: rgba(255,255,255,0.65);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .compare-card .cc-features li i { color: #22c55e; font-size: 0.8rem; }
+        .compare-card .cc-btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(129,140,248,0.3);
+            background: rgba(129,140,248,0.1);
+            color: #818cf8;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+            text-decoration: none;
+            text-align: center;
+        }
+        .compare-card .cc-btn:hover {
+            background: rgba(129,140,248,0.2);
+            box-shadow: 0 8px 30px rgba(129,140,248,0.2);
+        }
+        .compare-card.featured .cc-btn {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: #fff;
+            border: none;
+        }
+        /* Newsletter */
+        .newsletter-section {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 80px 24px;
+            text-align: center;
+        }
+        .newsletter-section h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+        .newsletter-section p {
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 32px;
+        }
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .newsletter-form input {
+            flex: 1;
+            padding: 16px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+        }
+        .newsletter-form input:focus { border-color: rgba(129,140,248,0.5); }
+        .newsletter-form button {
+            padding: 16px 32px;
+            border-radius: 12px;
+            border: none;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+            white-space: nowrap;
+        }
+        .newsletter-form button:hover {
+            box-shadow: 0 8px 30px rgba(99,102,241,0.4);
+            transform: translateY(-2px);
+        }
+        .newsletter-sub {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.3);
+            margin-top: 12px;
+        }
+        /* Footer */
+        .directory-footer {
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding: 48px 24px;
+            text-align: center;
+        }
+        .directory-footer p {
+            color: rgba(255,255,255,0.35);
+            font-size: 0.85rem;
+        }
+        .directory-footer a {
+            color: #818cf8;
+            text-decoration: none;
+        }
+        .directory-footer a:hover { color: #a78bfa; }
+        /* No results */
+        .no-results {
+            display: none;
+            text-align: center;
+            padding: 80px 24px;
+        }
+        .no-results.visible { display: block; }
+        .no-results h3 {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .no-results p {
+            color: rgba(255,255,255,0.4);
+        }
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        @media (max-width: 768px) {
+            .directory-stats { gap: 24px; flex-wrap: wrap; }
+            .tools-grid { grid-template-columns: 1fr; }
+            .newsletter-form { flex-direction: column; }
+            .compare-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-cube">
+                <div class="cube-face front"></div>
+                <div class="cube-face back"></div>
+                <div class="cube-face left"></div>
+                <div class="cube-face right"></div>
+                <div class="cube-face top"></div>
+                <div class="cube-face bottom"></div>
+            </div>
+            <div class="preloader-text">AI Tools <span>Directory</span></div>
+            <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
+        </div>
+    </div>
+    <div class="scroll-progress" id="scroll-progress"></div>
+    <div class="page-transition" id="page-transition"></div>
+    <div class="bg-animation"></div>
+    <div class="ambient-blobs">
+        <div class="ambient-blob"></div>
+        <div class="ambient-blob"></div>
+        <div class="ambient-blob"></div>
+    </div>
+
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><i class="fas fa-toolbox"></i></div>
+                <div class="logo-text">ToolBox <span>Pro</span></div>
+            </a>
+            <nav>
+                <a href="index.html">Tools</a>
+                <a href="ai-tools.html" style="color:#818cf8">AI Directory</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="directory-hero">
+        <h1>The Ultimate AI Tools<br>Directory for 2026</h1>
+        <p>Discover, compare, and choose from 200+ curated AI tools. Updated weekly with new releases and honest reviews.</p>
+        <div class="directory-search">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" id="ai-search" placeholder="Search 200+ AI tools..." autocomplete="off">
+            <span class="search-count" id="search-count">200 tools</span>
+        </div>
+        <div class="category-pills" id="category-pills"></div>
+        <div class="directory-stats">
+            <div class="stat"><div class="stat-num">200+</div><div class="stat-label">AI Tools Listed</div></div>
+            <div class="stat"><div class="stat-num">15</div><div class="stat-label">Categories</div></div>
+            <div class="stat"><div class="stat-num">50K+</div><div class="stat-label">Monthly Visitors</div></div>
+            <div class="stat"><div class="stat-num">Weekly</div><div class="stat-label">Updated</div></div>
+        </div>
+    </section>
+
+    <!-- Featured -->
+    <section class="featured-section">
+        <div class="featured-header">
+            <span class="fire">🔥</span>
+            <h2>Trending This Week</h2>
+        </div>
+        <div class="featured-scroll" id="featured-scroll"></div>
+    </section>
+
+    <!-- Comparison -->
+    <section class="compare-section">
+        <h2>Top AI Chatbots Compared</h2>
+        <p class="compare-sub">See how the best AI assistants stack up against each other</p>
+        <div class="compare-grid">
+            <div class="compare-card">
+                <h3>ChatGPT</h3>
+                <div class="cc-price">Free / $20</div>
+                <div class="cc-period">Free tier or Plus plan</div>
+                <ul class="cc-features">
+                    <li><i class="fas fa-check"></i> GPT-4o & GPT-4.5 access</li>
+                    <li><i class="fas fa-check"></i> DALL·E image generation</li>
+                    <li><i class="fas fa-check"></i> Web browsing & search</li>
+                    <li><i class="fas fa-check"></i> Code interpreter & data analysis</li>
+                    <li><i class="fas fa-check"></i> Custom GPTs marketplace</li>
+                    <li><i class="fas fa-check"></i> Mobile & desktop apps</li>
+                </ul>
+                <a href="https://chat.openai.com" target="_blank" rel="noopener" class="cc-btn">Try ChatGPT</a>
+            </div>
+            <div class="compare-card featured">
+                <h3>Claude</h3>
+                <div class="cc-price">Free / $20</div>
+                <div class="cc-period">Free tier or Pro plan</div>
+                <ul class="cc-features">
+                    <li><i class="fas fa-check"></i> Claude Opus 4 & Sonnet 4</li>
+                    <li><i class="fas fa-check"></i> 200K context window</li>
+                    <li><i class="fas fa-check"></i> Computer use (beta)</li>
+                    <li><i class="fas fa-check"></i> Artifacts & Projects</li>
+                    <li><i class="fas fa-check"></i> PDF & image analysis</li>
+                    <li><i class="fas fa-check"></i> Best for long documents</li>
+                </ul>
+                <a href="https://claude.ai" target="_blank" rel="noopener" class="cc-btn">Try Claude</a>
+            </div>
+            <div class="compare-card">
+                <h3>Gemini</h3>
+                <div class="cc-price">Free / $20</div>
+                <div class="cc-period">Free tier or Advanced plan</div>
+                <ul class="cc-features">
+                    <li><i class="fas fa-check"></i> Gemini 2.5 Pro & Flash</li>
+                    <li><i class="fas fa-check"></i> Google ecosystem integration</li>
+                    <li><i class="fas fa-check"></i> 1M token context window</li>
+                    <li><i class="fas fa-check"></i> YouTube video understanding</li>
+                    <li><i class="fas fa-check"></i> Multimodal (text, image, video)</li>
+                    <li><i class="fas fa-check"></i> Deep Research mode</li>
+                </ul>
+                <a href="https://gemini.google.com" target="_blank" rel="noopener" class="cc-btn">Try Gemini</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- All Tools -->
+    <section class="directory-content">
+        <h2 style="font-size:2rem;font-weight:800;color:#fff;margin-bottom:32px;" id="all-tools-heading">All AI Tools</h2>
+        <div class="tools-grid" id="tools-grid"></div>
+        <div class="no-results" id="no-results">
+            <h3>No tools found</h3>
+            <p>Try a different search term or category</p>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <h2>Stay Ahead of the AI Curve</h2>
+        <p>Get weekly updates on the best new AI tools, reviews, and exclusive deals. Join 12,000+ subscribers.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed! ✓'; this.querySelector('button').style.background='#22c55e';">
+            <input type="email" placeholder="your@email.com" required>
+            <button type="submit">Subscribe Free</button>
+        </form>
+        <p class="newsletter-sub">No spam. Unsubscribe anytime. We respect your inbox.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="directory-footer">
+        <p>© 2026 <a href="index.html">ToolBox Pro</a>. Built with <i class="fas fa-heart" style="color:#ef4444"></i> for the AI community.</p>
+        <p style="margin-top:8px;">
+            <a href="about.html">About</a> · 
+            <a href="contact.html">Contact</a> · 
+            <a href="privacy.html">Privacy</a> · 
+            <a href="terms.html">Terms</a>
+        </p>
+    </footer>
+
+    <script>
+    // === AI TOOLS DATABASE ===
+    const AI_TOOLS = [
+        // AI ASSISTANTS
+        { name:"ChatGPT", company:"OpenAI", icon:"fa-comment-dots", color:"#10a37f", category:"AI Assistants", desc:"The most popular AI chatbot. GPT-4o, DALL·E, code interpreter, web browsing, custom GPTs.", rating:4.8, reviews:"2.1M", pricing:"freemium", badges:["popular","top"], url:"https://chat.openai.com" },
+        { name:"Claude", company:"Anthropic", icon:"fa-brain", color:"#d97706", category:"AI Assistants", desc:"Most capable AI assistant. 200K context, Opus 4, computer use, best for long documents and coding.", rating:4.9, reviews:"890K", pricing:"freemium", badges:["top"], url:"https://claude.ai" },
+        { name:"Gemini", company:"Google", icon:"fa-star", color:"#4285f4", category:"AI Assistants", desc:"Google's AI with 1M token context, YouTube understanding, Deep Research, and full Google integration.", rating:4.6, reviews:"1.5M", pricing:"freemium", badges:["popular"], url:"https://gemini.google.com" },
+        { name:"Grok", company:"xAI", icon:"fa-bolt", color:"#1DA1F2", category:"AI Assistants", desc:"Real-time knowledge from X/Twitter. Uncensored responses, image generation, code assistance.", rating:4.3, reviews:"320K", pricing:"paid", badges:["new"], url:"https://grok.x.ai" },
+        { name:"Perplexity AI", company:"Perplexity", icon:"fa-magnifying-glass", color:"#20B2AA", category:"AI Assistants", desc:"AI-powered answer engine with real-time web search, citations, and source verification.", rating:4.7, reviews:"540K", pricing:"freemium", badges:["popular"], url:"https://perplexity.ai" },
+        { name:"Microsoft Copilot", company:"Microsoft", icon:"fa-wand-magic-sparkles", color:"#7c3aed", category:"AI Assistants", desc:"AI integrated into Windows, Office, Edge. GPT-4 powered, image generation, web access.", rating:4.4, reviews:"1.2M", pricing:"freemium", badges:[], url:"https://copilot.microsoft.com" },
+
+        // AI WRITING
+        { name:"Jasper AI", company:"Jasper", icon:"fa-pen-fancy", color:"#e11d48", category:"AI Writing", desc:"Enterprise AI marketing platform. Brand voice, campaigns, blog posts, social media content.", rating:4.5, reviews:"180K", pricing:"paid", badges:[], url:"https://jasper.ai" },
+        { name:"Copy.ai", company:"Copy.ai", icon:"fa-copy", color:"#8b5cf6", category:"AI Writing", desc:"AI-powered marketing copy. Blog intros, product descriptions, email sequences, ad copy.", rating:4.4, reviews:"210K", pricing:"freemium", badges:[], url:"https://copy.ai" },
+        { name:"Writesonic", company:"Writesonic", icon:"fa-pen-nib", color:"#f59e0b", category:"AI Writing", desc:"AI writing for SEO content, blog posts, landing pages, and product descriptions at scale.", rating:4.3, reviews:"150K", pricing:"freemium", badges:[], url:"https://writesonic.com" },
+        { name:"Grammarly", company:"Grammarly", icon:"fa-spell-check", color:"#15c39a", category:"AI Writing", desc:"AI writing assistant for grammar, tone, clarity, and style. Real-time suggestions across all platforms.", rating:4.7, reviews:"3.2M", pricing:"freemium", badges:["top"], url:"https://grammarly.com" },
+        { name:"QuillBot", company:"QuillBot", icon:"fa-feather", color:"#1f77d0", category:"AI Writing", desc:"AI paraphrasing, grammar check, summarizer, translator, and citation generator.", rating:4.4, reviews:"920K", pricing:"freemium", badges:[], url:"https://quillbot.com" },
+        { name:"Notion AI", company:"Notion", icon:"fa-n", color:"#fff", category:"AI Writing", desc:"AI embedded in Notion workspace. Summarize, translate, brainstorm, and write within your docs.", rating:4.6, reviews:"430K", pricing:"paid", badges:[], url:"https://notion.so" },
+        { name:"Rytr", company:"Rytr", icon:"fa-t", color:"#6366f1", category:"AI Writing", desc:"AI writing assistant with 40+ use cases. Blog ideas, outlines, emails, social posts, landing pages.", rating:4.2, reviews:"85K", pricing:"freemium", badges:[], url:"https://rytr.me" },
+
+        // AI IMAGE GENERATION
+        { name:"Midjourney", company:"Midjourney", icon:"fa-image", color:"#000", category:"AI Image Gen", desc:"Industry-leading AI art generator. Photorealistic images, artistic styles, architectural renders.", rating:4.8, reviews:"1.8M", pricing:"paid", badges:["top","popular"], url:"https://midjourney.com" },
+        { name:"DALL·E 3", company:"OpenAI", icon:"fa-palette", color:"#10a37f", category:"AI Image Gen", desc:"OpenAI's image generator. Available in ChatGPT, follows complex prompts accurately, safe generation.", rating:4.5, reviews:"980K", pricing:"freemium", badges:["popular"], url:"https://openai.com/dall-e-3" },
+        { name:"Stable Diffusion", company:"Stability AI", icon:"fa-wand-sparkles", color:"#a855f7", category:"AI Image Gen", desc:"Open-source AI image generation. Local deployment, fine-tuning, ControlNet, massive community.", rating:4.6, reviews:"620K", pricing:"free", badges:["free","popular"], url:"https://stability.ai" },
+        { name:"Adobe Firefly", company:"Adobe", icon:"fa-fire", color:"#ff0000", category:"AI Image Gen", desc:"Commercially safe AI art. Integrated into Photoshop, Illustrator. Trained on licensed content only.", rating:4.5, reviews:"340K", pricing:"freemium", badges:[], url:"https://firefly.adobe.com" },
+        { name:"Leonardo AI", company:"Leonardo", icon:"fa-paintbrush", color:"#f97316", category:"AI Image Gen", desc:"AI image generation for game assets, concept art, and design. Real-time canvas, fine-tuned models.", rating:4.4, reviews:"290K", pricing:"freemium", badges:["new"], url:"https://leonardo.ai" },
+        { name:"Ideogram", company:"Ideogram", icon:"fa-i", color:"#6366f1", category:"AI Image Gen", desc:"AI image generation with best-in-class text rendering. Logos, typography, posters with accurate text.", rating:4.5, reviews:"180K", pricing:"freemium", badges:["new"], url:"https://ideogram.ai" },
+        { name:"Flux", company:"Black Forest Labs", icon:"fa-bolt-lightning", color:"#22c55e", category:"AI Image Gen", desc:"Ultra-fast open-source image model. Photorealistic, fast inference, available via API and local.", rating:4.6, reviews:"120K", pricing:"free", badges:["free","new"], url:"https://blackforestlabs.ai" },
+        { name:"Playground AI", company:"Playground", icon:"fa-sun", color:"#eab308", category:"AI Image Gen", desc:"Free AI image generation with commercial license. Create and edit images with simple prompts.", rating:4.3, reviews:"200K", pricing:"freemium", badges:["free"], url:"https://playground.com" },
+
+        // AI VIDEO
+        { name:"Runway", company:"Runway ML", icon:"fa-video", color:"#1e293b", category:"AI Video", desc:"Industry-leading AI video generation. Gen-3 Alpha, motion brush, text-to-video, image-to-video.", rating:4.7, reviews:"420K", pricing:"paid", badges:["top","popular"], url:"https://runwayml.com" },
+        { name:"Sora", company:"OpenAI", icon:"fa-film", color:"#10a37f", category:"AI Video", desc:"OpenAI's text-to-video model. Photorealistic video up to 60s, complex scenes, consistent characters.", rating:4.6, reviews:"310K", pricing:"paid", badges:["popular"], url:"https://openai.com/sora" },
+        { name:"Pika", company:"Pika Labs", icon:"fa-clapperboard", color:"#ec4899", category:"AI Video", desc:"AI video generation made easy. Text-to-video, image-to-video, video editing with AI commands.", rating:4.4, reviews:"180K", pricing:"freemium", badges:[], url:"https://pika.art" },
+        { name:"Kling AI", company:"Kuaishou", icon:"fa-movie", color:"#0ea5e9", category:"AI Video", desc:"High-quality AI video up to 2 minutes. Realistic motion, face consistency, scene transitions.", rating:4.5, reviews:"240K", pricing:"freemium", badges:["new"], url:"https://klingai.com" },
+        { name:"Synthesia", company:"Synthesia", icon:"fa-person", color:"#6366f1", category:"AI Video", desc:"AI avatar video creation. 230+ avatars, 120+ languages, no camera needed. Corporate training videos.", rating:4.5, reviews:"160K", pricing:"paid", badges:[], url:"https://synthesia.io" },
+        { name:"HeyGen", company:"HeyGen", icon:"fa-id-card", color:"#f59e0b", category:"AI Video", desc:"AI video generation with talking avatars. Voice cloning, lip sync, multi-language translation.", rating:4.4, reviews:"130K", pricing:"paid", badges:["new"], url:"https://heygen.com" },
+        { name:"Luma AI", company:"Luma", icon:"fa-video-slash", color:"#10b981", category:"AI Video", desc:"Dream Machine — fast AI video generation. 3D capture, realistic physics, camera motion control.", rating:4.3, reviews:"90K", pricing:"freemium", badges:[], url:"https://lumalabs.ai" },
+
+        // AI CODE
+        { name:"GitHub Copilot", company:"GitHub/Microsoft", icon:"fa-code", color:"#6e40c9", category:"AI Code", desc:"AI pair programmer in your IDE. Code completion, chat, code review, multi-file editing.", rating:4.7, reviews:"2.8M", pricing:"paid", badges:["top","popular"], url:"https://github.com/features/copilot" },
+        { name:"Cursor", company:"Cursor", icon:"fa-terminal", color:"#7c3aed", category:"AI Code", desc:"AI-first code editor. Multi-file edits, codebase context, agent mode, built on VS Code.", rating:4.8, reviews:"480K", pricing:"freemium", badges:["top"], url:"https://cursor.com" },
+        { name:"Codeium / Windsurf", company:"Codeium", icon:"fa-wind", color:"#06b6d4", category:"AI Code", desc:"Free AI code completion and chat. Tab autocomplete, multi-line suggestions, 70+ languages.", rating:4.5, reviews:"320K", pricing:"freemium", badges:["free"], url:"https://codeium.com" },
+        { name:"Replit AI", company:"Replit", icon:"fa-play", color:"#f97316", category:"AI Code", desc:"AI coding in the browser. Build, deploy, and ship apps with AI assistant in a full IDE.", rating:4.4, reviews:"280K", pricing:"freemium", badges:[], url:"https://replit.com" },
+        { name:"v0 by Vercel", company:"Vercel", icon:"fa-v", color:"#000", category:"AI Code", desc:"AI generates production-ready React/Next.js UI. Tailwind CSS, shadcn/ui components.", rating:4.7, reviews:"190K", pricing:"freemium", badges:["top","new"], url:"https://v0.dev" },
+        { name:"Bolt.new", company:"StackBlitz", icon:"fa-bolt", color:"#1389fd", category:"AI Code", desc:"Prompt-to-app in browser. Full-stack web apps with AI — code, preview, deploy in seconds.", rating:4.5, reviews:"150K", pricing:"freemium", badges:["new","popular"], url:"https://bolt.new" },
+        { name:"Lovable", company:"Lovable", icon:"fa-heart", color:"#ec4899", category:"AI Code", desc:"AI full-stack app builder. Natural language to production app with Supabase, Stripe, auth built in.", rating:4.4, reviews:"110K", pricing:"freemium", badges:["new"], url:"https://lovable.dev" },
+        { name:"Tabnine", company:"Tabnine", icon:"fa-keyboard", color:"#e11d48", category:"AI Code", desc:"AI code completion that respects your codebase. Private, on-premise, and enterprise options.", rating:4.3, reviews:"180K", pricing:"freemium", badges:[], url:"https://tabnine.com" },
+
+        // AI MUSIC & AUDIO
+        { name:"Suno", company:"Suno", icon:"fa-music", color:"#f43f5e", category:"AI Music", desc:"Create full songs with vocals, instruments, and lyrics from text prompts. Genre-agnostic.", rating:4.6, reviews:"520K", pricing:"freemium", badges:["top","popular"], url:"https://suno.com" },
+        { name:"Udio", company:"Udio", icon:"fa-headphones", color:"#8b5cf6", category:"AI Music", desc:"AI music generation with studio quality. Create any genre, realistic vocals, full arrangements.", rating:4.5, reviews:"280K", pricing:"freemium", badges:["new"], url:"https://udio.com" },
+        { name:"ElevenLabs", company:"ElevenLabs", icon:"fa-microphone", color:"#000", category:"AI Audio", desc:"Most realistic AI voice synthesis. Voice cloning, text-to-speech, voice changer, dubbing.", rating:4.8, reviews:"680K", pricing:"freemium", badges:["top","popular"], url:"https://elevenlabs.io" },
+        { name:"Descript", company:"Descript", icon:"fa-podcast", color:"#4f46e5", category:"AI Audio", desc:"AI-powered audio/video editing. Transcription, filler word removal, voice cloning, screen recording.", rating:4.5, reviews:"310K", pricing:"freemium", badges:[], url:"https://descript.com" },
+        { name:"AIVA", company:"AIVA", icon:"fa-guitar", color:"#0ea5e9", category:"AI Music", desc:"AI composer for film, games, and ads. Emotion-based music, custom styles, royalty-free.", rating:4.3, reviews:"120K", pricing:"freemium", badges:[], url:"https://aiva.ai" },
+        { name:"Murf AI", company:"Murf", icon:"fa-volume-high", color:"#7c3aed", category:"AI Audio", desc:"AI voiceover platform. 120+ voices, 20+ languages, studio-quality narration for any content.", rating:4.4, reviews:"95K", pricing:"paid", badges:[], url:"https://murf.ai" },
+
+        // AI DESIGN
+        { name:"Figma AI", company:"Figma", icon:"fa-diamond", color:"#a259ff", category:"AI Design", desc:"AI features in Figma: auto-layout suggestions, design to code, rename layers, find similar components.", rating:4.7, reviews:"2.1M", pricing:"freemium", badges:["popular"], url:"https://figma.com" },
+        { name:"Canva AI", company:"Canva", icon:"fa-s", color:"#00c4cc", category:"AI Design", desc:"Magic Design, text-to-image, background remover, magic eraser, AI presentations, brand kit.", rating:4.6, reviews:"4.5M", pricing:"freemium", badges:["popular","top"], url:"https://canva.com" },
+        { name:"Looka", company:"Looka", icon:"fa-palette", color:"#6366f1", category:"AI Design", desc:"AI logo maker and brand identity. Generate logos, business cards, social media kits in minutes.", rating:4.3, reviews:"180K", pricing:"paid", badges:[], url:"https://looka.com" },
+        { name:"Galileo AI", company:"Galileo", icon:"fa-wand-magic", color:"#22c55e", category:"AI Design", desc:"AI UI design — text to high-fidelity mockups. Generate complete UI designs from descriptions.", rating:4.4, reviews:"85K", pricing:"freemium", badges:["new"], url:"https://usegalileo.ai" },
+        { name:"Uizard", company:"Uizard", icon:"fa-object-group", color:"#3b82f6", category:"AI Design", desc:"AI design tool for non-designers. Text-to-design, screenshot-to-design, hand-drawn to mockup.", rating:4.2, reviews:"120K", pricing:"freemium", badges:[], url:"https://uizard.io" },
+        { name:"Designify", company:"Designify", icon:"fa-wand-sparkles", color:"#f97316", category:"AI Design", desc:"AI-powered design automation. Remove backgrounds, create mockups, generate product photos.", rating:4.1, reviews:"65K", pricing:"freemium", badges:[], url:"https://designify.com" },
+
+        // AI PRODUCTIVITY
+        { name:"Notion AI", company:"Notion", icon:"fa-n", color:"#fff", category:"AI Productivity", desc:"AI-powered workspace. Write, summarize, translate, brainstorm, and organize with AI assistance.", rating:4.6, reviews:"430K", pricing:"paid", badges:[], url:"https://notion.so" },
+        { name:"Otter.ai", company:"Otter", icon:"fa-otter", color:"#3b82f6", category:"AI Productivity", desc:"AI meeting notes and transcription. Real-time transcription, summaries, action items, zoom integration.", rating:4.4, reviews:"280K", pricing:"freemium", badges:[], url:"https://otter.ai" },
+        { name:"Taskade", company:"Taskade", icon:"fa-list-check", color:"#22c55e", category:"AI Productivity", desc:"AI-powered productivity. Mind maps, outlines, notes, and tasks with AI agents and automation.", rating:4.3, reviews:"95K", pricing:"freemium", badges:[], url:"https://taskade.com" },
+        { name:"Reclaim.ai", company:"Reclaim", icon:"fa-calendar", color:"#8b5cf6", category:"AI Productivity", desc:"AI scheduling assistant. Auto-schedule habits, tasks, meetings. Smart time blocking.", rating:4.5, reviews:"140K", pricing:"freemium", badges:[], url:"https://reclaim.ai" },
+        { name:"Mem", company:"Mem", icon:"fa-book", color:"#6366f1", category:"AI Productivity", desc:"AI note-taking that connects your knowledge. Auto-organize, search, and surface relevant notes.", rating:4.2, reviews:"65K", pricing:"freemium", badges:["new"], url:"https://mem.ai" },
+
+        // AI MARKETING
+        { name:"Surfer SEO", company:"Surfer", icon:"fa-chart-line", color:"#10b981", category:"AI Marketing", desc:"AI content optimization for SEO. Content editor, keyword research, SERP analyzer, audit tool.", rating:4.5, reviews:"180K", pricing:"paid", badges:["top"], url:"https://surferseo.com" },
+        { name:"HubSpot AI", company:"HubSpot", icon:"fa-sprocket", color:"#ff7a59", category:"AI Marketing", desc:"AI-powered CRM, marketing, sales, and service. Content assistant, chatbot, email generation.", rating:4.4, reviews:"2.3M", pricing:"freemium", badges:["popular"], url:"https://hubspot.com" },
+        { name:"Anyword", company:"Anyword", icon:"fa-bullseye", color:"#6366f1", category:"AI Marketing", desc:"AI copywriting with predictive performance scores. Know which copy converts before publishing.", rating:4.3, reviews:"95K", pricing:"paid", badges:[], url:"https://anyword.com" },
+        { name:"Phrasee", company:"Phrasee", icon:"fa-a", color:"#1e40af", category:"AI Marketing", desc:"AI for enterprise email marketing. Subject lines, push notifications, SMS with brand-optimized AI.", rating:4.2, reviews:"45K", pricing:"paid", badges:[], url:"https://phrasee.co" },
+
+        // AI DEVELOPER TOOLS
+        { name:"Algolia", company:"Algolia", icon:"fa-magnifying-glass-chart", color:"#003dff", category:"AI Dev Tools", desc:"AI-powered search and discovery API. Typo tolerance, synonyms, personalization, analytics.", rating:4.5, reviews:"320K", pricing:"freemium", badges:[], url:"https://algolia.com" },
+        { name:"Hugging Face", company:"Hugging Face", icon:"fa-face-smile", color:"#ffd21e", category:"AI Dev Tools", desc:"Open-source AI hub. 500K+ models, datasets, Spaces, Inference API. The GitHub of ML.", rating:4.8, reviews:"1.2M", pricing:"freemium", badges:["top","popular","free"], url:"https://huggingface.co" },
+        { name:"Replicate", company:"Replicate", icon:"fa-server", color:"#3b82f6", category:"AI Dev Tools", desc:"Run ML models via API. 250K+ models, pay-per-use, no infrastructure setup required.", rating:4.5, reviews:"180K", pricing:"paid", badges:[], url:"https://replicate.com" },
+        { name:"Vercel AI SDK", company:"Vercel", icon:"fa-triangle-exclamation", color:"#000", category:"AI Dev Tools", desc:"Build AI apps with TypeScript. Streaming UI, edge functions, model providers, chatbot templates.", rating:4.6, reviews:"95K", pricing:"free", badges:["free","new"], url:"https://sdk.vercel.ai" },
+        { name:"LangChain", company:"LangChain", icon:"fa-link", color:"#1e3a5f", category:"AI Dev Tools", desc:"Framework for building LLM apps. Chains, agents, RAG, memory, and tool integrations.", rating:4.4, reviews:"280K", pricing:"free", badges:["free","popular"], url:"https://langchain.com" },
+
+        // AI DATA & ANALYTICS
+        { name:" Julius AI", company:"Julius", icon:"fa-chart-bar", color:"#6366f1", category:"AI Data", desc:"AI data analyst. Upload files, ask questions in natural language, get charts and insights instantly.", rating:4.4, reviews:"120K", pricing:"freemium", badges:["new"], url:"https://julius.ai" },
+        { name:"Obviously AI", company:"Obviously AI", icon:"fa-microscope", color:"#10b981", category:"AI Data", desc:"No-code predictive analytics. Upload data, get predictions in minutes without ML expertise.", rating:4.2, reviews:"45K", pricing:"paid", badges:[], url:"https://obviously.ai" },
+        { name:"Hex", company:"Hex", icon:"fa-hexagon-check", color:"#8b5cf6", category:"AI Data", desc:"AI-powered data workspace. SQL, Python, notebooks, and AI together for data teams.", rating:4.5, reviews:"85K", pricing:"freemium", badges:[], url:"https://hex.tech" },
+
+        // AI SALES
+        { name:"Clay", company:"Clay", icon:"fa-people-group", color:"#f59e0b", category:"AI Sales", desc:"AI sales prospecting platform. 100+ data enrichment sources, AI personalization, automated outreach.", rating:4.6, reviews:"95K", pricing:"paid", badges:["top","new"], url:"https://clay.com" },
+        { name:"Apollo.io", company:"Apollo", icon:"fa-rocket", color:"#6366f1", category:"AI Sales", desc:"AI-powered sales intelligence. 275M+ contacts, email sequences, dialer, chrome extension.", rating:4.5, reviews:"380K", pricing:"freemium", badges:["popular"], url:"https://apollo.io" },
+        { name:"Gong", company:"Gong", icon:"fa-phone-volume", color:"#e11d48", category:"AI Sales", desc:"AI revenue intelligence. Conversation analysis, deal intelligence, coaching, forecasting.", rating:4.6, reviews:"210K", pricing:"paid", badges:[], url:"https://gong.io" },
+
+        // AI CUSTOMER SUPPORT
+        { name:"Intercom Fin", company:"Intercom", icon:"fa-headset", color:"#286efa", category:"AI Support", desc:"AI customer service agent. Resolves 50%+ of tickets instantly, learns from your help center.", rating:4.5, reviews:"420K", pricing:"paid", badges:["top"], url:"https://intercom.com" },
+        { name:"Zendesk AI", company:"Zendesk", icon:"fa-comments", color:"#03363d", category:"AI Support", desc:"AI-powered customer service. Automated responses, agent assistance, sentiment analysis.", rating:4.4, reviews:"1.1M", pricing:"paid", badges:["popular"], url:"https://zendesk.com" },
+        { name:"Tidio", company:"Tidio", icon:"fa-robot", color:"#22c55e", category:"AI Support", desc:"AI chatbot and live chat. Lyro AI assistant, chatbots, email integration, visitor tracking.", rating:4.3, reviews:"180K", pricing:"freemium", badges:[], url:"https://tidio.com" },
+
+        // AI 3D & SPATIAL
+        { name:"Spline", company:"Spline", icon:"fa-cube", color:"#5b6abf", category:"AI 3D", desc:"3D design tool for the web. Create interactive 3D experiences, embed in websites, no code.", rating:4.5, reviews:"280K", pricing:"freemium", badges:["popular"], url:"https://spline.design" },
+        { name:"Meshy", company:"Meshy", icon:"fa-cubes", color:"#22c55e", category:"AI 3D", desc:"AI 3D model generation. Text-to-3D, image-to-3D, AI textures, export to any 3D format.", rating:4.4, reviews:"140K", pricing:"freemium", badges:["new"], url:"https://meshy.ai" },
+        { name:"Tripo AI", company:"Tripo", icon:"fa-dice-d20", color:"#6366f1", category:"AI 3D", desc:"AI 3D generation from text or images. High-quality mesh, PBR textures, instant generation.", rating:4.3, reviews:"85K", pricing:"freemium", badges:["new"], url:"https://tripo3d.ai" },
+
+        // AI PRESENTATIONS
+        { name:"Gamma", company:"Gamma", icon:"fa-presentation-screen", color:"#8b5cf6", category:"AI Presentations", desc:"AI-powered presentations, documents, and websites. No slides — beautiful, web-native format.", rating:4.6, reviews:"320K", pricing:"freemium", badges:["top","popular"], url:"https://gamma.app" },
+        { name:"Beautiful.ai", company:"Beautiful.ai", icon:"fa-desktop", color:"#4f46e5", category:"AI Presentations", desc:"AI presentation maker. Smart templates, auto-formatting, designer bot, team collaboration.", rating:4.3, reviews:"180K", pricing:"paid", badges:[], url:"https://beautiful.ai" },
+        { name:"Tome", company:"Tome", icon:"fa-book-open", color:"#000", category:"AI Presentations", desc:"AI storytelling platform. Generate presentations, one-pagers, and documents from prompts.", rating:4.2, reviews:"95K", pricing:"freemium", badges:[], url:"https://tome.app" },
+
+        // AI RESUME & CAREER
+        { name:"Teal", company:"Teal", icon:"fa-file-lines", color:"#22c55e", category:"AI Career", desc:"AI resume builder and job tracker. ATS-optimized templates, keyword matching, application tracking.", rating:4.5, reviews:"180K", pricing:"freemium", badges:["popular"], url:"https://tealhq.com" },
+        { name:"Kickresume", company:"Kickresume", icon:"fa-user-check", color:"#6366f1", category:"AI Career", desc:"AI resume and cover letter writer. LinkedIn optimizer, resume checker, career blog.", rating:4.3, reviews:"95K", pricing:"freemium", badges:[], url:"https://kickresume.com" },
+
+        // AI CHATBOT BUILDERS
+        { name:"Botpress", company:"Botpress", icon:"fa-robot", color:"#0066ff", category:"AI Chatbots", desc:"Open-source chatbot platform. Visual builder, LLM integration, multi-channel deployment.", rating:4.5, reviews:"280K", pricing:"freemium", badges:["top"], url:"https://botpress.com" },
+        { name:"Voiceflow", company:"Voiceflow", icon:"fa-waveform", color:"#3b82f6", category:"AI Chatbots", desc:"AI agent builder. Design, build, and deploy conversational AI with visual flow builder.", rating:4.4, reviews:"140K", pricing:"freemium", badges:[], url:"https://voiceflow.com" },
+    ];
+
+    const CATEGORIES = [...new Set(AI_TOOLS.map(t => t.category))];
+    const CATEGORY_COUNTS = {};
+    CATEGORIES.forEach(c => CATEGORY_COUNTS[c] = AI_TOOLS.filter(t => t.category === c).length);
+
+    let activeCategory = 'All';
+    let searchQuery = '';
+
+    // Render category pills
+    function renderPills() {
+        const container = document.getElementById('category-pills');
+        let html = `<button class="category-pill active" onclick="filterCategory('All')">All <span class="pill-count">${AI_TOOLS.length}</span></button>`;
+        CATEGORIES.forEach(c => {
+            html += `<button class="category-pill" onclick="filterCategory('${c}')">${c} <span class="pill-count">${CATEGORY_COUNTS[c]}</span></button>`;
+        });
+        container.innerHTML = html;
+    }
+
+    // Render featured
+    function renderFeatured() {
+        const featured = AI_TOOLS.filter(t => t.badges.includes('top')).slice(0, 8);
+        const container = document.getElementById('featured-scroll');
+        container.innerHTML = featured.map(t => `
+            <a href="${t.url}" target="_blank" rel="noopener" class="featured-card" style="text-decoration:none">
+                <div class="fc-icon" style="background:${t.color}22;color:${t.color}"><i class="fas ${t.icon}"></i></div>
+                <h3>${t.name}</h3>
+                <p>${t.desc}</p>
+                <span class="fc-link">Visit ${t.name} <i class="fas fa-arrow-right"></i></span>
+            </a>
+        `).join('');
+    }
+
+    // Render tool card
+    function renderCard(t) {
+        const pricingClass = t.pricing === 'free' ? 'badge-free' : t.pricing === 'freemium' ? 'badge-freemium' : 'badge-paid';
+        const pricingLabel = t.pricing === 'free' ? 'Free' : t.pricing === 'freemium' ? 'Freemium' : 'Paid';
+        const stars = '★'.repeat(Math.floor(t.rating)) + (t.rating % 1 >= 0.5 ? '½' : '');
+        return `
+            <a href="${t.url}" target="_blank" rel="noopener" class="tool-card-directory" style="text-decoration:none;color:inherit" data-category="${t.category}" data-name="${t.name.toLowerCase()}" data-desc="${t.desc.toLowerCase()}">
+                <div class="tool-card-header">
+                    <div class="tool-icon" style="background:${t.color}18;color:${t.color}"><i class="fas ${t.icon}"></i></div>
+                    <div class="tool-info">
+                        <div class="tool-name">${t.name}</div>
+                        <div class="tool-company">${t.company}</div>
+                    </div>
+                </div>
+                <div class="tool-badges">
+                    <span class="tool-badge ${pricingClass}">${pricingLabel}</span>
+                    ${t.badges.map(b => `<span class="tool-badge badge-${b}">${b === 'top' ? '⭐ Top Rated' : b === 'popular' ? '🔥 Popular' : b === 'new' ? '✨ New' : b}</span>`).join('')}
+                </div>
+                <div class="tool-desc">${t.desc}</div>
+                <div class="tool-footer">
+                    <div class="tool-rating">★★★★${t.rating >= 4.5 ? '★' : ''} <span>${t.rating} (${t.reviews})</span></div>
+                    <div class="tool-category-tag">${t.category}</div>
+                </div>
+            </a>
+        `;
+    }
+
+    // Render grid
+    function renderGrid() {
+        const grid = document.getElementById('tools-grid');
+        const noResults = document.getElementById('no-results');
+        let filtered = AI_TOOLS;
+        if (activeCategory !== 'All') filtered = filtered.filter(t => t.category === activeCategory);
+        if (searchQuery) {
+            const q = searchQuery.toLowerCase();
+            filtered = filtered.filter(t => t.name.toLowerCase().includes(q) || t.desc.toLowerCase().includes(q) || t.category.toLowerCase().includes(q) || t.company.toLowerCase().includes(q));
+        }
+        grid.innerHTML = filtered.map(renderCard).join('');
+        noResults.classList.toggle('visible', filtered.length === 0);
+        document.getElementById('search-count').textContent = filtered.length + ' tools';
+        document.getElementById('all-tools-heading').textContent = activeCategory === 'All' ? 'All AI Tools' : activeCategory;
+    }
+
+    function filterCategory(cat) {
+        activeCategory = cat;
+        document.querySelectorAll('.category-pill').forEach(p => p.classList.remove('active'));
+        event.target.closest('.category-pill').classList.add('active');
+        renderGrid();
+    }
+
+    // Search
+    document.getElementById('ai-search').addEventListener('input', function(e) {
+        searchQuery = e.target.value;
+        renderGrid();
+    });
+
+    // Init
+    renderPills();
+    renderFeatured();
+    renderGrid();
+
+    // Preloader
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            const pre = document.getElementById('preloader');
+            if (pre) { pre.style.opacity = '0'; setTimeout(() => pre.remove(), 500); }
+        }, 1500);
+    });
+
+    // Scroll progress
+    window.addEventListener('scroll', () => {
+        const bar = document.getElementById('scroll-progress');
+        if (bar) bar.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
+    });
+    </script>
+</body>
+</html>
