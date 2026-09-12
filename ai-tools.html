@@ -602,19 +602,24 @@
 
     <header>
         <div class="header-content">
-            <a href="/" class="logo">
+            <a href="/" class="logo" aria-label="ToolBox Pro Home">
                 <div class="logo-icon"><i class="fas fa-toolbox"></i></div>
-                <div class="logo-text">ToolBox <span>Pro</span></div>
+                <span class="logo-text">ToolBox</span>
+                <span class="logo-badge">PRO</span>
             </a>
-            <nav>
-                <a href="/">Tools</a>
-                <a href="ai-tools" style="color:#818cf8">AI Directory</a>
-                <a href="about">About</a>
-                <a href="contact">Contact</a>
-            </nav>
-            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
-                <i class="fas fa-bars"></i>
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
             </button>
+            <nav aria-label="Main navigation" id="main-nav">
+                <a href="/" id="nav-tools">Tools</a>
+                <a href="ai-tools" id="nav-ai" class="active">AI Directory</a>
+                <a href="about" id="nav-about">About</a>
+                <a href="contact" id="nav-contact">Contact</a>
+                <a href="privacy" id="nav-privacy">Privacy</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-sun"></i></button>
+            </nav>
         </div>
     </header>
 
@@ -952,6 +957,27 @@
         const bar = document.getElementById('scroll-progress');
         if (bar) bar.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
     });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('mobile-menu-toggle');
+    const mainNav = document.getElementById('main-nav');
+    if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('open');
+            menuToggle.setAttribute('aria-expanded', mainNav.classList.contains('open'));
+        });
+    }
+
+    // Theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+            const icon = themeToggle.querySelector('i');
+            icon.classList.toggle('fa-sun');
+            icon.classList.toggle('fa-moon');
+        });
+    }
     </script>
 </body>
 </html>
