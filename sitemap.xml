@@ -32,4 +32,10 @@
       <priority>0.7</priority>
       <changefreq>monthly</changefreq>
     </url>
+    <url>
+      <loc>https://toolboxpro-theta.vercel.app/guides</loc>
+      <lastmod>2026-09-13</lastmod>
+      <priority>0.7</priority>
+      <changefreq>monthly</changefreq>
+    </url>
 </urlset>

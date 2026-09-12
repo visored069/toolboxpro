@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guides — ToolBox Pro</title>
+    <meta name="description" content="Comparison guides and deep dives on AI tools from ToolBox Pro.">
+    <meta name="author" content="ToolBox Pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://toolboxpro-theta.vercel.app/guides">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <meta name="theme-color" content="#6c5ce7">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "ToolBox Pro Guides",
+        "description": "Comparison guides and deep dives on AI tools.",
+        "url": "https://toolboxpro-theta.vercel.app/guides"
+    }
+    </script>
+    <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+        --bg-primary: #030303;
+        --bg-secondary: #09090b;
+        --bg-card: rgba(255, 255, 255, 0.02);
+        --bg-card-hover: rgba(255, 255, 255, 0.04);
+        --border-color: rgba(255, 255, 255, 0.05);
+        --border-hover: rgba(255, 255, 255, 0.1);
+        --text-primary: #fafafa;
+        --text-secondary: #a1a1aa;
+        --text-muted: #52525b;
+        --accent-1: #818cf8;
+        --accent-1-rgb: 129, 140, 248;
+        --accent-2: #6366f1;
+        --accent-3: #a78bfa;
+        --gradient-1: linear-gradient(135deg, #818cf8, #c084fc);
+        --gradient-2: linear-gradient(135deg, #6366f1, #818cf8);
+        --glass-bg: rgba(255, 255, 255, 0.02);
+        --glass-border: rgba(255, 255, 255, 0.05);
+        --header-bg: rgba(3, 3, 3, 0.72);
+    }
+
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        min-height: 100vh;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* Cinematic background */
+    .bg-animation {
+        position: fixed; top: 0; left: 0;
+        width: 100%; height: 100%;
+        z-index: -7; overflow: hidden; pointer-events: none;
+    }
+    .bg-animation::before {
+        content: '';
+        position: absolute;
+        top: -60%; left: -60%; width: 220%; height: 220%;
+        background:
+            radial-gradient(ellipse 900px 900px at 15% 10%, rgba(129, 140, 248, 0.09) 0%, transparent 55%),
+            radial-gradient(ellipse 700px 700px at 80% 20%, rgba(167, 139, 250, 0.07) 0%, transparent 50%),
+            radial-gradient(ellipse 600px 600px at 50% 70%, rgba(99, 102, 241, 0.06) 0%, transparent 50%);
+        animation: ambientDrift 30s ease-in-out infinite;
+    }
+    @keyframes ambientDrift {
+        0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+        25% { transform: translate(3%, 2%) scale(1.02) rotate(1deg); }
+        50% { transform: translate(-2%, 3%) scale(0.98) rotate(-0.5deg); }
+        75% { transform: translate(1.5%, -1.5%) scale(1.01) rotate(0.5deg); }
+    }
+
+    header {
+        padding: 1rem 2rem;
+        backdrop-filter: blur(24px) saturate(1.4);
+        -webkit-backdrop-filter: blur(24px) saturate(1.4);
+        background: var(--header-bg);
+        position: sticky; top: 0; z-index: 100;
+        border-bottom: 1px solid var(--glass-border);
+    }
+    .header-content {
+        max-width: 1200px; margin: 0 auto;
+        display: flex; justify-content: space-between; align-items: center;
+    }
+    .logo { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; color: inherit; }
+    .logo-icon {
+        width: 40px; height: 40px;
+        background: var(--gradient-1); border-radius: 10px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1.1rem; color: white;
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .logo:hover .logo-icon { transform: scale(1.08) rotate(-3deg); }
+    .logo-text {
+        font-size: 1.3rem; font-weight: 800;
+        background: linear-gradient(to right, #ffffff, #d4d4d8, #71717a);
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        background-clip: text; letter-spacing: -0.02em;
+    }
+    .logo-badge {
+        font-size: 0.6rem; background: var(--gradient-2);
+        color: white; padding: 0.15rem 0.4rem; border-radius: 20px;
+        font-weight: 700; margin-left: -0.3rem; margin-top: -0.8rem;
+    }
+    nav { display: flex; gap: 0.25rem; align-items: center; }
+    nav a {
+        color: var(--text-secondary); text-decoration: none;
+        padding: 0.5rem 1rem; border-radius: 10px;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); font-size: 0.9rem;
+        border: 1px solid transparent; font-weight: 500;
+    }
+    nav a:hover { color: var(--text-primary); background: rgba(var(--accent-1-rgb), 0.06); }
+    nav a.active {
+        color: var(--text-primary);
+        background: rgba(var(--accent-1-rgb), 0.1);
+        border: 1px solid rgba(var(--accent-1-rgb), 0.2);
+        box-shadow: 0 0 16px rgba(var(--accent-1-rgb), 0.08);
+    }
+    .theme-toggle {
+        width: 38px; height: 38px; border-radius: 10px;
+        border: 1px solid var(--glass-border); background: var(--bg-card);
+        color: var(--text-secondary); cursor: pointer;
+        display: flex; align-items: center; justify-content: center; font-size: 1rem;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); margin-left: 0.5rem; flex-shrink: 0;
+    }
+    .theme-toggle:hover {
+        border-color: var(--accent-1); color: var(--accent-1);
+        background: rgba(var(--accent-1-rgb), 0.08);
+        transform: rotate(30deg) scale(1.05);
+    }
+
+    .wrapper {
+        max-width: 900px; margin: 0 auto; padding: 0 2rem;
+    }
+
+    /* Page hero */
+    .page-hero {
+        padding: 5rem 0 3rem; text-align: center; position: relative; z-index: 1;
+    }
+    .page-hero .eyebrow {
+        display: inline-block;
+        font-size: 0.75rem; font-weight: 600;
+        text-transform: uppercase; letter-spacing: 0.08em;
+        color: var(--accent-1);
+        background: rgba(var(--accent-1-rgb), 0.08);
+        padding: 0.3rem 0.75rem; border-radius: 20px;
+        margin-bottom: 1rem;
+    }
+    .page-hero h1 {
+        font-size: clamp(2rem, 5vw, 3rem); font-weight: 800;
+        margin-bottom: 0.75rem; letter-spacing: -0.03em;
+    }
+    .page-hero p {
+        color: var(--text-secondary); font-size: 1.1rem;
+        max-width: 560px; margin: 0 auto; line-height: 1.7;
+    }
+
+    /* Section */
+    .section {
+        padding: 3rem 0;
+        background: rgba(3, 3, 3, 0.85);
+        backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+        border-radius: 20px;
+    }
+    .section-header {
+        display: flex; align-items: center; justify-content: space-between;
+        margin-bottom: 2rem; padding-bottom: 1.25rem;
+        border-bottom: 1px solid var(--glass-border);
+    }
+    .section-header h2 {
+        font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em;
+    }
+    .section-header .count {
+        font-size: 0.85rem; color: var(--text-muted); font-weight: 500;
+        background: var(--glass-bg); border: 1px solid var(--glass-border);
+        padding: 0.25rem 0.75rem; border-radius: 20px;
+    }
+
+    .guide-list { display: flex; flex-direction: column; gap: 0.75rem; }
+
+    .guide-card {
+        display: flex; align-items: center; gap: 1.25rem;
+        padding: 1.25rem 1.5rem;
+        background: var(--glass-bg); border: 1px solid var(--glass-border);
+        border-radius: 14px; text-decoration: none; color: inherit;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    }
+    .guide-card:hover {
+        border-color: rgba(var(--accent-1-rgb), 0.15);
+        background: var(--bg-card-hover);
+        transform: translateX(4px);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    .guide-icon {
+        width: 44px; height: 44px; border-radius: 10px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1.1rem; color: white; flex-shrink: 0;
+        background: var(--gradient-1);
+    }
+    .guide-info { flex: 1; min-width: 0; }
+    .guide-info h3 {
+        font-size: 1rem; font-weight: 600; margin-bottom: 0.2rem;
+        letter-spacing: -0.01em;
+    }
+    .guide-info p {
+        font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;
+    }
+    .guide-arrow {
+        color: var(--accent-1); font-size: 1rem; flex-shrink: 0;
+        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .guide-card:hover .guide-arrow { transform: translateX(3px); }
+
+    .empty-state {
+        text-align: center; padding: 4rem 2rem; color: var(--text-secondary);
+    }
+    .empty-state i { font-size: 3rem; opacity: 0.2; margin-bottom: 1rem; display: block; }
+    .empty-state p { font-size: 1rem; }
+
+    footer {
+        padding: 2.5rem 2rem; border-top: 1px solid var(--glass-border);
+        background: var(--bg-secondary); margin-top: 3rem;
+    }
+    .footer-content {
+        max-width: 1200px; margin: 0 auto;
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+    }
+    .footer-content h4 { margin-bottom: 1rem; color: var(--text-primary); font-size: 0.9rem; font-weight: 600; }
+    .footer-content ul { list-style: none; padding: 0; }
+    .footer-content li { margin-bottom: 0.5rem; }
+    .footer-content a {
+        color: var(--text-secondary); text-decoration: none;
+        transition: color 0.3s, transform 0.3s; font-size: 0.9rem;
+    }
+    .footer-content a:hover { color: var(--accent-1); transform: translateX(2px); }
+    .footer-bottom {
+        max-width: 1200px; margin: 2rem auto 0;
+        padding-top: 1.5rem; border-top: 1px solid var(--glass-border);
+        display: flex; justify-content: space-between; align-items: center;
+        flex-wrap: wrap; gap: 0.75rem;
+    }
+    .footer-bottom p { color: var(--text-muted); font-size: 0.85rem; }
+    .footer-bottom a {
+        color: var(--text-secondary); text-decoration: underline;
+        transition: color 0.3s; font-size: inherit;
+    }
+    .footer-bottom a:hover { color: var(--accent-1); }
+
+    @media (max-width: 640px) {
+        .wrapper { padding: 0 1.25rem; }
+        header { padding: 0.75rem 1.25rem; }
+        .page-hero { padding: 3rem 0 2rem; }
+        .section { padding: 2rem 0; }
+        .guide-card { padding: 1rem 1.25rem; }
+        .footer-bottom { flex-direction: column; text-align: center; }
+    }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <header>
+        <div class="header-content">
+            <a href="/" class="logo" aria-label="ToolBox Pro Home">
+                <div class="logo-icon"><i class="fas fa-toolbox"></i></div>
+                <span class="logo-text">ToolBox</span>
+                <span class="logo-badge">PRO</span>
+            </a>
+            <nav aria-label="Main navigation">
+                <a href="/" id="nav-tools">Tools</a>
+                <a href="ai-tools" id="nav-ai">AI Directory</a>
+                <a href="guides" id="nav-guides" class="active">Guides</a>
+                <a href="about" id="nav-about">About</a>
+                <a href="contact" id="nav-contact">Contact</a>
+                <a href="privacy" id="nav-privacy">Privacy</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-sun"></i></button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="wrapper">
+        <section class="page-hero">
+            <span class="eyebrow">Guides & Comparisons</span>
+            <h1>In-Depth AI Tool Guides</h1>
+            <p>Thoughtful comparisons and deep dives to help you pick the right AI tools — no fluff, no affiliate-spun noise.</p>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <h2>All Guides</h2>
+                <span class="count" id="guide-count">1 guide</span>
+            </div>
+            <div class="guide-list" id="guide-list">
+                <!-- Guides injected by JS -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;">
+                    <div style="width:35px;height:35px;background:var(--gradient-1);border-radius:8px;display:flex;align-items:center;justify-content:center;">
+                        <i class="fas fa-toolbox" style="color:white;"></i>
+                    </div>
+                    <span style="font-weight:700;font-size:1.1rem;">ToolBox Pro</span>
+                </div>
+                <p style="color:var(--text-secondary);font-size:0.85rem;">Free online developer tools for everyone.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="about">About Us</a></li>
+                    <li><a href="contact">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Guides</h4>
+                <ul>
+                    <li><a href="best-free-ai-image-generators">Best Free AI Image Generators</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="privacy">Privacy Policy</a></li>
+                    <li><a href="terms">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Connect</h4>
+                <div class="social-links">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 ToolBox Pro. All rights reserved. Built with ❤️</p>
+            <p style="margin-top:8px;font-size:inherit;color:inherit;">
+                Built by <a href="https://x.com/portfoliomate/status/2098498135396090165" target="_blank" rel="noopener">Portfolio Mate</a>
+                — I design and build sites like this one.
+                <a href="https://x.com/portfoliomate/status/2098498135396090165" target="_blank" rel="noopener">See my work →</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+        'use strict';
+
+        const guides = [
+            {
+                slug: 'best-free-ai-image-generators',
+                title: 'Best Free AI Image Generators (2026)',
+                description: 'A practical comparison of Leonardo.Ai, Playground AI, Adobe Firefly, Bing Image Creator, and Craiyon — what each is best for, key limitations, and who should use which.',
+                icon: 'fa-wand-magic-sparkles',
+                color: '#b48c6c',
+                date: 'Sep 2026'
+            }
+        ];
+
+        const list = document.getElementById('guide-list');
+        const count = document.getElementById('guide-count');
+
+        function renderGuides() {
+            if (!list) return;
+            if (guides.length === 0) {
+                list.innerHTML = '<div class="empty-state"><i class="fas fa-book-open"></i><p>No guides yet — check back soon.</p></div>';
+                if (count) count.textContent = '0 guides';
+                return;
+            }
+            list.innerHTML = guides.map(g => `
+                <a href="${g.slug}" class="guide-card" style="text-decoration:none;color:inherit">
+                    <div class="guide-icon" style="background:linear-gradient(135deg, ${g.color}, ${g.color}cc);">
+                        <i class="fas ${g.icon}"></i>
+                    </div>
+                    <div class="guide-info">
+                        <h3>${g.title}</h3>
+                        <p>${g.description}</p>
+                    </div>
+                    <div class="guide-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+            `).join('');
+            if (count) count.textContent = guides.length + ' guide' + (guides.length !== 1 ? 's' : '');
+        }
+
+        renderGuides();
+
+        // Header scroll shadow
+        const header = document.querySelector('header');
+        if (header) {
+            window.addEventListener('scroll', function() {
+                header.style.boxShadow = window.scrollY > 20
+                    ? '0 1px 0 rgba(255,255,255,0.05), 0 4px 24px rgba(0,0,0,0.2)'
+                    : 'none';
+            }, { passive: true });
+        }
+
+        // Scroll progress
+        const scrollProgress = document.getElementById('scroll-progress');
+        if (scrollProgress) {
+            window.addEventListener('scroll', function() {
+                const st = window.pageYOffset || document.documentElement.scrollTop;
+                const dh = document.documentElement.scrollHeight - window.innerHeight;
+                scrollProgress.style.width = (dh > 0 ? (st / dh) * 100 : 0) + '%';
+            }, { passive: true });
+        }
+
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('light-theme');
+                const icon = themeToggle.querySelector('i');
+                icon.classList.toggle('fa-sun');
+                icon.classList.toggle('fa-moon');
+            });
+        }
+    })();
+    </script>
+</body>
+</html>

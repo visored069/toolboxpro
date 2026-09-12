@@ -6,6 +6,9 @@ Allow: /
 
 # Sitemap location
 Sitemap: https://toolboxpro-theta.vercel.app/sitemap.xml
+Allow: /guides
+Allow: /best-free-ai-image-generators
+ https://toolboxpro-theta.vercel.app/sitemap.xml
 Allow: /best-free-ai-image-generators
  https://toolboxpro-theta.vercel.app/sitemap.xml
 
