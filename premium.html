@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuralFlow — AI That Thinks Like You</title>
+    <meta name="description" content="The AI platform that understands your workflow. Automate, create, and scale with neural intelligence.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+/* === DESIGN SYSTEM === */
+:root {
+    --bg-deep: #050510;
+    --bg-primary: #0a0a1a;
+    --bg-secondary: #0f0f24;
+    --bg-card: rgba(255,255,255,0.03);
+    --bg-glass: rgba(255,255,255,0.04);
+    --border: rgba(255,255,255,0.06);
+    --border-glow: rgba(99,102,241,0.2);
+    --text-primary: #f0f0f5;
+    --text-secondary: #8888aa;
+    --text-muted: #555577;
+    --accent: #6366f1;
+    --accent-light: #818cf8;
+    --accent-rgb: 99,102,241;
+    --violet: #a78bfa;
+    --amber: #f59e0b;
+    --emerald: #10b981;
+    --gradient-hero: linear-gradient(135deg, #6366f1, #a78bfa, #6366f1);
+    --gradient-glow: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(167,139,250,0.08));
+    --glass: backdrop-filter: blur(20px) saturate(1.5); -webkit-backdrop-filter: blur(20px) saturate(1.5);
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --spring: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--bg-deep); color: var(--text-primary); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+a { text-decoration: none; color: inherit; }
+button { font-family: var(--font); cursor: pointer; border: none; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+/* === PRELOADER === */
+.preloader { position: fixed; inset: 0; z-index: 99999; background: var(--bg-deep); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1.5rem; transition: opacity 0.8s, visibility 0.8s; }
+.preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.preloader-ring { width: 60px; height: 60px; border: 3px solid rgba(var(--accent-rgb),0.1); border-top-color: var(--accent); border-radius: 50%; animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.preloader-text { font-size: 1.2rem; font-weight: 700; background: var(--gradient-hero); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+/* === NAV === */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1rem 2rem; transition: all 0.4s; }
+nav.scrolled { background: rgba(5,5,16,0.85); border-bottom: 1px solid var(--border); }
+.nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+.logo { display: flex; align-items: center; gap: 0.6rem; font-weight: 800; font-size: 1.2rem; }
+.logo-icon { width: 36px; height: 36px; background: var(--gradient-hero); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.9rem; }
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links a { color: var(--text-secondary); font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+.nav-links a:hover { color: var(--text-primary); }
+.btn-primary { padding: 0.6rem 1.5rem; background: var(--gradient-hero); color: white; border-radius: 10px; font-weight: 600; font-size: 0.9rem; transition: transform 0.3s var(--spring), box-shadow 0.3s; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(var(--accent-rgb),0.3); }
+.btn-ghost { padding: 0.6rem 1.5rem; background: transparent; color: var(--text-primary); border: 1px solid var(--border); border-radius: 10px; font-weight: 500; font-size: 0.9rem; transition: all 0.3s; }
+.btn-ghost:hover { border-color: var(--accent); background: rgba(var(--accent-rgb),0.05); }
+
+/* === HERO === */
+.hero { min-height: 100vh; display: flex; align-items: center; position: relative; padding: 8rem 2rem 4rem; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; z-index: 0; }
+.hero-bg canvas { width: 100%; height: 100%; }
+.hero-glow { position: absolute; top: 20%; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(var(--accent-rgb),0.12) 0%, transparent 60%); filter: blur(60px); pointer-events: none; z-index: 1; }
+.hero-content { position: relative; z-index: 2; max-width: 800px; }
+.hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; background: rgba(var(--accent-rgb),0.08); border: 1px solid rgba(var(--accent-rgb),0.15); border-radius: 100px; font-size: 0.8rem; color: var(--accent-light); font-weight: 500; margin-bottom: 2rem; }
+.hero-badge .dot { width: 6px; height: 6px; background: var(--emerald); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.04em; margin-bottom: 1.5rem; }
+h1 .gradient { background: var(--gradient-hero); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+h1 .shimmer { background: linear-gradient(90deg, #6366f1, #a78bfa, #f59e0b, #6366f1); background-size: 300% 100%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shimmer 4s ease-in-out infinite; }
+@keyframes shimmer { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+.hero-sub { font-size: 1.15rem; color: var(--text-secondary); line-height: 1.7; max-width: 550px; margin-bottom: 2.5rem; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-lg { padding: 0.85rem 2rem; font-size: 1rem; border-radius: 12px; }
+.hero-stats { display: flex; gap: 3rem; margin-top: 3rem; }
+.hero-stat { text-align: left; }
+.hero-stat .num { font-size: 2rem; font-weight: 800; background: var(--gradient-hero); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero-stat .label { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+/* === SOCIAL PROOF === */
+.social-proof { padding: 4rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.social-proof .label { text-align: center; font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2rem; }
+.logos { display: flex; justify-content: center; align-items: center; gap: 3rem; flex-wrap: wrap; opacity: 0.4; }
+.logos span { font-size: 1.2rem; font-weight: 700; color: var(--text-secondary); }
+
+/* === FEATURES === */
+.features { padding: 8rem 0; }
+.section-label { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--accent-light); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem; }
+.section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 1rem; }
+.section-desc { color: var(--text-secondary); font-size: 1.05rem; max-width: 600px; line-height: 1.7; margin-bottom: 3rem; }
+.feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+.feature-card { background: var(--bg-glass); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; transition: all 0.4s var(--spring); position: relative; overflow: hidden; transform: perspective(800px); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+.feature-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gradient-hero); transform: scaleX(0); transform-origin: left; transition: transform 0.5s var(--spring); }
+.feature-card:hover { border-color: var(--border-glow); transform: perspective(800px) translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.3), 0 0 40px rgba(var(--accent-rgb),0.05); }
+.feature-card:hover::before { transform: scaleX(1); }
+.feature-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 1.2rem; }
+.feature-icon.indigo { background: rgba(var(--accent-rgb),0.1); color: var(--accent-light); }
+.feature-icon.violet { background: rgba(167,139,250,0.1); color: var(--violet); }
+.feature-icon.amber { background: rgba(245,158,11,0.1); color: var(--amber); }
+.feature-icon.emerald { background: rgba(16,185,129,0.1); color: var(--emerald); }
+.feature-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+.feature-card p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; }
+
+/* === SHOWCASE === */
+.showcase { padding: 8rem 0; position: relative; }
+.showcase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.showcase-visual { aspect-ratio: 4/3; border-radius: 20px; background: var(--bg-card); border: 1px solid var(--border); overflow: hidden; position: relative; }
+.showcase-visual canvas { width: 100%; height: 100%; }
+.showcase-visual .overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(var(--accent-rgb),0.05), transparent); pointer-events: none; }
+.showcase-text h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 1rem; }
+.showcase-text p { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem; }
+.showcase-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+.showcase-list li { display: flex; align-items: center; gap: 0.75rem; color: var(--text-secondary); font-size: 0.95rem; }
+.showcase-list li i { color: var(--emerald); font-size: 0.8rem; }
+
+/* === PRICING === */
+.pricing { padding: 8rem 0; }
+.pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 0 auto; }
+.pricing-card { background: var(--bg-glass); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; position: relative; transition: all 0.4s var(--spring); transform: perspective(800px); }
+.pricing-card.featured { border-color: var(--accent); background: rgba(var(--accent-rgb),0.03); }
+.pricing-card.featured::before { content: 'Most Popular'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--gradient-hero); color: white; padding: 0.3rem 1rem; border-radius: 100px; font-size: 0.75rem; font-weight: 700; }
+.pricing-card:hover { transform: perspective(800px) translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.3); }
+.pricing-card .tier { font-size: 0.85rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+.pricing-card .price { font-size: 3rem; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 0.5rem; }
+.pricing-card .price span { font-size: 1rem; font-weight: 400; color: var(--text-muted); }
+.pricing-card .desc { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 2rem; line-height: 1.6; }
+.pricing-card .features-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; }
+.pricing-card .features-list li { display: flex; align-items: center; gap: 0.6rem; font-size: 0.9rem; color: var(--text-secondary); }
+.pricing-card .features-list li i { color: var(--emerald); font-size: 0.75rem; }
+.pricing-card .btn { width: 100%; text-align: center; padding: 0.8rem; border-radius: 12px; font-weight: 600; font-size: 0.95rem; transition: all 0.3s; }
+.pricing-card .btn-primary { background: var(--gradient-hero); color: white; }
+.pricing-card .btn-ghost { background: transparent; border: 1px solid var(--border); color: var(--text-primary); }
+.pricing-card .btn-ghost:hover { border-color: var(--accent); }
+
+/* === TESTIMONIALS === */
+.testimonials { padding: 8rem 0; }
+.testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+.testimonial-card { background: var(--bg-glass); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; transition: all 0.3s; }
+.testimonial-card:hover { border-color: var(--border-glow); }
+.testimonial-stars { color: var(--amber); font-size: 0.8rem; margin-bottom: 1rem; }
+.testimonial-card blockquote { font-size: 0.95rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic; }
+.testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+.testimonial-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--gradient-hero); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 0.85rem; }
+.testimonial-name { font-weight: 600; font-size: 0.9rem; }
+.testimonial-role { font-size: 0.8rem; color: var(--text-muted); }
+
+/* === CTA === */
+.cta { padding: 8rem 0; text-align: center; position: relative; }
+.cta-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(var(--accent-rgb),0.1) 0%, transparent 60%); filter: blur(80px); pointer-events: none; }
+.cta h2 { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900; letter-spacing: -0.03em; margin-bottom: 1rem; position: relative; z-index: 1; }
+.cta p { color: var(--text-secondary); font-size: 1.1rem; max-width: 500px; margin: 0 auto 2rem; position: relative; z-index: 1; }
+.cta .btn-primary { position: relative; z-index: 1; }
+
+/* === FOOTER === */
+footer { padding: 4rem 2rem 2rem; border-top: 1px solid var(--border); }
+.footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; }
+.footer-brand p { color: var(--text-muted); font-size: 0.85rem; margin-top: 0.75rem; line-height: 1.6; }
+.footer-col h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 1rem; }
+.footer-col a { display: block; color: var(--text-muted); font-size: 0.85rem; padding: 0.3rem 0; transition: color 0.3s; }
+.footer-col a:hover { color: var(--accent-light); }
+.footer-bottom { max-width: 1200px; margin: 3rem auto 0; padding-top: 1.5rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; color: var(--text-muted); font-size: 0.8rem; }
+.footer-social { display: flex; gap: 1rem; }
+.footer-social a { color: var(--text-muted); transition: color 0.3s; }
+.footer-social a:hover { color: var(--accent-light); }
+
+/* === SCROLL PROGRESS === */
+.scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: var(--gradient-hero); z-index: 10001; transition: width 0.1s; box-shadow: 0 0 10px rgba(var(--accent-rgb),0.5); }
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero { padding: 6rem 1.5rem 3rem; }
+    .hero-stats { gap: 1.5rem; }
+    .showcase-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    .feature-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .testimonial-grid { grid-template-columns: 1fr; }
+}
+
+/* === ANIMATION STATES === */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s var(--spring), transform 0.8s var(--spring); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+    </style>
+</head>
+<body>
+
+<!-- Preloader -->
+<div class="preloader" id="preloader">
+    <div class="preloader-ring"></div>
+    <div class="preloader-text">NeuralFlow</div>
+</div>
+
+<!-- Scroll Progress -->
+<div class="scroll-progress" id="scroll-progress"></div>
+
+<!-- Navigation -->
+<nav id="nav" class="liquid-glass-nav">
+    <div class="nav-inner">
+        <a href="#" class="logo">
+            <div class="logo-icon"><i class="fas fa-brain"></i></div>
+            <span>Neural<span style="color:var(--accent-light)">Flow</span></span>
+        </a>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#showcase">Product</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#testimonials">Reviews</a>
+            <button class="btn-primary" onclick="window.location='#cta'">Start Free Trial</button>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero" id="hero">
+    <div class="hero-bg">
+        <canvas id="hero-canvas"></canvas>
+    </div>
+    <div class="hero-glow"></div>
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-badge"><span class="dot"></span> Now in Public Beta — Join 12,000+ teams</div>
+            <h1>AI That <span class="shimmer">Thinks</span> Like You</h1>
+            <p class="hero-sub">NeuralFlow understands your workflow, learns your patterns, and automates the tedious so you can focus on what matters. The AI platform built for builders.</p>
+            <div class="hero-actions">
+                <button class="btn-primary btn-lg"><i class="fas fa-rocket"></i> Start Building Free</button>
+                <button class="btn-ghost btn-lg"><i class="fas fa-play"></i> Watch Demo</button>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat"><div class="num" data-count="12000">0</div><div class="label">Active Teams</div></div>
+                <div class="hero-stat"><div class="num" data-count="99">0</div><div class="label">Uptime %</div></div>
+                <div class="hero-stat"><div class="num" data-count="50">0</div><div class="label">M Actions/mo</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Social Proof -->
+<section class="social-proof">
+    <div class="container">
+        <p class="label">Trusted by forward-thinking teams</p>
+        <div class="logos">
+            <span>Vercel</span><span>Stripe</span><span>Linear</span><span>Notion</span><span>Figma</span><span>Raycast</span>
+        </div>
+    </div>
+</section>
+
+<!-- Features -->
+<section class="features" id="features">
+    <div class="container">
+        <div class="reveal">
+            <div class="section-label"><i class="fas fa-bolt"></i> Features</div>
+            <h2 class="section-title">Everything you need,<br>nothing you don't</h2>
+            <p class="section-desc">Built from the ground up for teams who move fast. Every feature is designed to save you hours every week.</p>
+        </div>
+        <div class="feature-grid">
+            <div class="feature-card reveal reveal-delay-1">
+                <div class="feature-icon indigo"><i class="fas fa-brain"></i></div>
+                <h3>Neural Learning</h3>
+                <p>Our AI adapts to your team's patterns, learns your codebase, and gets smarter with every interaction.</p>
+            </div>
+            <div class="feature-card reveal reveal-delay-2">
+                <div class="feature-icon violet"><i class="fas fa-bolt"></i></div>
+                <h3>Instant Automation</h3>
+                <p>Automate repetitive workflows in seconds. From code reviews to deployments, NeuralFlow handles the busy work.</p>
+            </div>
+            <div class="feature-card reveal reveal-delay-3">
+                <div class="feature-icon amber"><i class="fas fa-shield-halved"></i></div>
+                <h3>Enterprise Security</h3>
+                <p>SOC 2 compliant, end-to-end encrypted, with on-premise deployment options. Your data never leaves your hands.</p>
+            </div>
+            <div class="feature-card reveal reveal-delay-1">
+                <div class="feature-icon emerald"><i class="fas fa-code"></i></div>
+                <h3>Code Intelligence</h3>
+                <p>Deep understanding of 50+ languages. Context-aware suggestions that actually make sense for your project.</p>
+            </div>
+            <div class="feature-card reveal reveal-delay-2">
+                <div class="feature-icon indigo"><i class="fas fa-users"></i></div>
+                <h3>Team Collaboration</h3>
+                <p>Shared contexts, team memories, and collaborative AI sessions. Everyone stays on the same page.</p>
+            </div>
+            <div class="feature-card reveal reveal-delay-3">
+                <div class="feature-icon violet"><i class="fas fa-chart-line"></i></div>
+                <h3>Analytics Dashboard</h3>
+                <p>Track AI usage, measure productivity gains, and optimize your workflow with real-time insights.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Showcase -->
+<section class="showcase" id="showcase">
+    <div class="container">
+        <div class="showcase-grid">
+            <div class="showcase-visual reveal">
+                <canvas id="showcase-canvas"></canvas>
+                <div class="overlay"></div>
+            </div>
+            <div class="showcase-text reveal">
+                <div class="section-label"><i class="fas fa-eye"></i> Product</div>
+                <h2>See it in action</h2>
+                <p>NeuralFlow integrates directly into your existing tools. No context switching, no learning curve — just instant productivity.</p>
+                <ul class="showcase-list">
+                    <li><i class="fas fa-check-circle"></i> VS Code, JetBrains, and Neovim plugins</li>
+                    <li><i class="fas fa-check-circle"></i> GitHub, GitLab, and Bitbucket integration</li>
+                    <li><i class="fas fa-check-circle"></i> Slack, Discord, and Teams notifications</li>
+                    <li><i class="fas fa-check-circle"></i> REST API and webhook support</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing -->
+<section class="pricing" id="pricing">
+    <div class="container" style="text-align:center;">
+        <div class="reveal">
+            <div class="section-label" style="justify-content:center;"><i class="fas fa-tag"></i> Pricing</div>
+            <h2 class="section-title">Simple, transparent pricing</h2>
+            <p class="section-desc" style="margin:0 auto 3rem;">No hidden fees. No surprises. Start free, scale as you grow.</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="pricing-card reveal reveal-delay-1">
+                <div class="tier">Starter</div>
+                <div class="price">$0<span>/mo</span></div>
+                <div class="desc">Perfect for individual developers exploring AI-assisted workflows.</div>
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> 1,000 AI actions/month</li>
+                    <li><i class="fas fa-check"></i> 5 project contexts</li>
+                    <li><i class="fas fa-check"></i> Basic code intelligence</li>
+                    <li><i class="fas fa-check"></i> Community support</li>
+                </ul>
+                <button class="btn btn-ghost">Get Started Free</button>
+            </div>
+            <div class="pricing-card featured reveal reveal-delay-2">
+                <div class="tier">Pro</div>
+                <div class="price">$29<span>/mo</span></div>
+                <div class="desc">For teams that need unlimited AI power and collaboration.</div>
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> Unlimited AI actions</li>
+                    <li><i class="fas fa-check"></i> Unlimited projects</li>
+                    <li><i class="fas fa-check"></i> Advanced code intelligence</li>
+                    <li><i class="fas fa-check"></i> Team collaboration</li>
+                    <li><i class="fas fa-check"></i> Priority support</li>
+                </ul>
+                <button class="btn btn-primary">Start 14-Day Trial</button>
+            </div>
+            <div class="pricing-card reveal reveal-delay-3">
+                <div class="tier">Enterprise</div>
+                <div class="price">Custom</div>
+                <div class="desc">For organizations with custom security and deployment requirements.</div>
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> Everything in Pro</li>
+                    <li><i class="fas fa-check"></i> On-premise deployment</li>
+                    <li><i class="fas fa-check"></i> Custom model training</li>
+                    <li><i class="fas fa-check"></i> SOC 2 & HIPAA compliance</li>
+                    <li><i class="fas fa-check"></i> Dedicated support engineer</li>
+                </ul>
+                <button class="btn btn-ghost">Contact Sales</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials" id="testimonials">
+    <div class="container">
+        <div class="reveal" style="text-align:center;">
+            <div class="section-label" style="justify-content:center;"><i class="fas fa-heart"></i> Testimonials</div>
+            <h2 class="section-title">Loved by builders</h2>
+        </div>
+        <div class="testimonial-grid" style="margin-top:3rem;">
+            <div class="testimonial-card reveal reveal-delay-1">
+                <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <blockquote>"NeuralFlow cut our code review time by 60%. It's like having a senior engineer reviewing every PR in real-time."</blockquote>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">SK</div>
+                    <div><div class="testimonial-name">Sarah Kim</div><div class="testimonial-role">CTO, Vercel</div></div>
+                </div>
+            </div>
+            <div class="testimonial-card reveal reveal-delay-2">
+                <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <blockquote>"We shipped 3x faster after adopting NeuralFlow. The team collaboration features are game-changing for distributed teams."</blockquote>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">JM</div>
+                    <div><div class="testimonial-name">James Mitchell</div><div class="testimonial-role">Engineering Lead, Stripe</div></div>
+                </div>
+            </div>
+            <div class="testimonial-card reveal reveal-delay-3">
+                <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <blockquote>"Finally, an AI tool that actually understands context. It knows our entire codebase and gives suggestions that make sense."</blockquote>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">AL</div>
+                    <div><div class="testimonial-name">Alex Liu</div><div class="testimonial-role">Founder, Linear</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="cta">
+    <div class="cta-glow"></div>
+    <div class="container">
+        <h2 class="reveal">Ready to build<br><span class="shimmer">smarter</span>?</h2>
+        <p class="reveal">Join 12,000+ teams already using NeuralFlow to ship faster and build better software.</p>
+        <button class="btn-primary btn-lg reveal"><i class="fas fa-rocket"></i> Start Free — No Credit Card</button>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-brain"></i></div>
+                <span>Neural<span style="color:var(--accent-light)">Flow</span></span>
+            </div>
+            <p>The AI platform that understands your workflow.<br>Automate, create, and scale with neural intelligence.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Product</h4>
+            <a href="#">Features</a><a href="#">Pricing</a><a href="#">Changelog</a><a href="#">Documentation</a>
+        </div>
+        <div class="footer-col">
+            <h4>Company</h4>
+            <a href="#">About</a><a href="#">Blog</a><a href="#">Careers</a><a href="#">Press</a>
+        </div>
+        <div class="footer-col">
+            <h4>Legal</h4>
+            <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Security</a><a href="#">GDPR</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>&copy; 2026 NeuralFlow. All rights reserved.</span>
+        <div class="footer-social">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-discord"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </div>
+</footer>
+
+<!-- Shader Gradient Canvas -->
+<canvas id="shader-gradient" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;"></canvas>
+
+<!-- Liquid Glass Overlay for Nav -->
+<style>
+.liquid-glass-nav { position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 2rem;backdrop-filter:blur(24px) saturate(1.8);-webkit-backdrop-filter:blur(24px) saturate(1.8);background:rgba(5,5,16,0.6);border-bottom:1px solid rgba(255,255,255,0.05);transition:all 0.4s; }
+.liquid-glass-nav.scrolled { background:rgba(5,5,16,0.85);box-shadow:0 4px 30px rgba(0,0,0,0.3); }
+.liquid-logo-container { position:relative;display:inline-block; }
+.liquid-logo-glow { position:absolute;inset:-4px;background:conic-gradient(from 0deg,#6366f1,#a78bfa,#f59e0b,#10b981,#6366f1);border-radius:14px;filter:blur(8px);opacity:0;transition:opacity 0.5s;animation:logoSpin 4s linear infinite; }
+.liquid-logo-container:hover .liquid-logo-glow { opacity:0.6; }
+@keyframes logoSpin { to { transform:rotate(360deg); } }
+.liquid-card { position:relative;overflow:hidden; }
+.liquid-card::after { content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from var(--card-angle,0deg),transparent,rgba(99,102,241,0.08),transparent,rgba(167,139,250,0.06),transparent);animation:liquidRotate 8s linear infinite;opacity:0;transition:opacity 0.5s;pointer-events:none; }
+.liquid-card:hover::after { opacity:1; }
+@keyframes liquidRotate { to { --card-angle:360deg; } }
+@property --card-angle { syntax:'<angle>';initial-value:0deg;inherits:false; }
+</style>
+
+<!-- Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<script>
+// === PRELOADER ===
+window.addEventListener('load', function() {
+    setTimeout(function() {
+        document.getElementById('preloader').classList.add('hidden');
+        setTimeout(function() { var p = document.getElementById('preloader'); if(p) p.remove(); }, 800);
+    }, 1500);
+});
+setTimeout(function() { var p = document.getElementById('preloader'); if(p && !p.classList.contains('hidden')) p.classList.add('hidden'); }, 4000);
+
+// === SCROLL PROGRESS ===
+var sp = document.getElementById('scroll-progress');
+window.addEventListener('scroll', function() {
+    var s = window.pageYOffset;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    if(sp) sp.style.width = (h > 0 ? (s/h)*100 : 0) + '%';
+}, {passive:true});
+
+// === NAV SCROLL ===
+window.addEventListener('scroll', function() {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+}, {passive:true});
+
+// === STAT COUNTER ===
+function animateCounters() {
+    document.querySelectorAll('[data-count]').forEach(function(el) {
+        var target = parseInt(el.getAttribute('data-count'));
+        var counter = {val:0};
+        var startTime = null;
+        function step(ts) {
+            if(!startTime) startTime = ts;
+            var progress = Math.min((ts - startTime) / 1500, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = Math.round(target * eased).toLocaleString() + (target >= 100 ? '+' : '+');
+            if(progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+    });
+}
+
+// === SCROLL REVEAL ===
+gsap.registerPlugin(ScrollTrigger);
+
+// Hero entrance
+gsap.from('.hero-badge', {opacity:0, y:20, duration:0.8, delay:1.8});
+gsap.from('h1', {opacity:0, y:40, duration:1, delay:2});
+gsap.from('.hero-sub', {opacity:0, y:30, duration:1, delay:2.2});
+gsap.from('.hero-actions', {opacity:0, y:20, duration:0.8, delay:2.4});
+gsap.from('.hero-stats .hero-stat', {opacity:0, y:20, duration:0.8, stagger:0.1, delay:2.6, onComplete: animateCounters});
+
+// Scroll reveals
+document.querySelectorAll('.reveal').forEach(function(el) {
+    ScrollTrigger.create({
+        trigger: el,
+        start: 'top 90%',
+        onEnter: function() { el.classList.add('visible'); },
+        once: true
+    });
+});
+
+// Feature cards tilt
+document.querySelectorAll('.feature-card, .pricing-card').forEach(function(card) {
+    card.addEventListener('mousemove', function(e) {
+        var rect = this.getBoundingClientRect();
+        var x = (e.clientX - rect.left) / rect.width - 0.5;
+        var y = (e.clientY - rect.top) / rect.height - 0.5;
+        this.style.transform = 'perspective(800px) rotateY(' + (x*8) + 'deg) rotateX(' + (-y*8) + 'deg) translateY(-4px)';
+    });
+    card.addEventListener('mouseleave', function() {
+        this.style.transform = 'perspective(800px) rotateY(0) rotateX(0)';
+    });
+});
+
+// === THREE.JS HERO SCENE ===
+(function() {
+    var canvas = document.getElementById('hero-canvas');
+    if(!canvas) return;
+    var renderer = new THREE.WebGLRenderer({canvas: canvas, antialias: true, alpha: true});
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 100);
+    camera.position.z = 5;
+
+    // Lights
+    scene.add(new THREE.AmbientLight(0x404060, 0.5));
+    var pl1 = new THREE.PointLight(0x6366f1, 3, 20); pl1.position.set(5,3,5); scene.add(pl1);
+    var pl2 = new THREE.PointLight(0xa78bfa, 2, 15); pl2.position.set(-4,-2,3); scene.add(pl2);
+
+    // Materials
+    var mat1 = new THREE.MeshStandardMaterial({color:0x6366f1, metalness:0.9, roughness:0.1, emissive:0x6366f1, emissiveIntensity:0.1});
+    var mat2 = new THREE.MeshStandardMaterial({color:0xa78bfa, metalness:0.9, roughness:0.1, emissive:0xa78bfa, emissiveIntensity:0.08});
+    var mat3 = new THREE.MeshStandardMaterial({color:0xf59e0b, metalness:0.9, roughness:0.15, emissive:0xf59e0b, emissiveIntensity:0.06});
+
+    // Objects
+    var objects = [];
+    function addObj(geo, mat, pos, rot) {
+        var m = new THREE.Mesh(geo, mat);
+        m.position.set(pos[0],pos[1],pos[2]);
+        scene.add(m);
+        objects.push({mesh:m, rot:rot});
+    }
+    addObj(new THREE.IcosahedronGeometry(1.2, 1), mat1, [0,0,0], {x:0.003,y:0.005});
+    addObj(new THREE.TorusKnotGeometry(0.6,0.2,100,16), mat2, [3,1.5,-2], {x:0.004,y:0.002});
+    addObj(new THREE.OctahedronGeometry(0.7,0), mat3, [-3.5,-1,-1], {x:0.005,y:0.003});
+    addObj(new THREE.DodecahedronGeometry(0.5,0), mat1, [2,-2,-2], {x:0.002,y:0.004});
+    addObj(new THREE.TorusGeometry(0.7,0.25,16,48), mat2, [-2,2,-3], {x:0.003,y:0.002});
+
+    // Wireframe orbs
+    var w1 = new THREE.Mesh(new THREE.IcosahedronGeometry(3,1), new THREE.MeshBasicMaterial({color:0x6366f1, wireframe:true, transparent:true, opacity:0.04}));
+    scene.add(w1);
+    var w2 = new THREE.Mesh(new THREE.OctahedronGeometry(4,1), new THREE.MeshBasicMaterial({color:0xa78bfa, wireframe:true, transparent:true, opacity:0.03}));
+    scene.add(w2);
+
+    // Particles
+    var pCount = 600, pGeo = new THREE.BufferGeometry(), pPos = new Float32Array(pCount*3);
+    for(var i=0;i<pCount;i++) {
+        pPos[i*3]=(Math.random()-0.5)*30;
+        pPos[i*3+1]=(Math.random()-0.5)*30;
+        pPos[i*3+2]=(Math.random()-0.5)*30;
+    }
+    pGeo.setAttribute('position', new THREE.BufferAttribute(pPos,3));
+    var particles = new THREE.Points(pGeo, new THREE.PointsMaterial({size:0.03, color:0x818cf8, transparent:true, opacity:0.6}));
+    scene.add(particles);
+
+    // Mouse
+    var mx=0,my=0,tmx=0,tmy=0;
+    document.addEventListener('mousemove', function(e) {
+        tmx=(e.clientX/window.innerWidth-0.5)*2;
+        tmy=(e.clientY/window.innerHeight-0.5)*2;
+    });
+
+    // Animate
+    var clock = new THREE.Clock();
+    function animate() {
+        requestAnimationFrame(animate);
+        var t = clock.getElapsedTime();
+        mx+=(tmx-mx)*0.05; my+=(tmy-my)*0.05;
+        camera.position.x=mx*1.5; camera.position.y=-my*1;
+        camera.lookAt(0,0,0);
+        objects.forEach(function(o,i) {
+            o.mesh.rotation.x+=o.rot.x; o.mesh.rotation.y+=o.rot.y;
+            o.mesh.position.y+=Math.sin(t*0.5+i)*0.001;
+        });
+        w1.rotation.x+=0.0005; w1.rotation.y+=0.0008;
+        w2.rotation.x-=0.0004; w2.rotation.z+=0.0003;
+        particles.rotation.y+=0.0001;
+        pl1.position.x=Math.sin(t*0.3)*5; pl1.position.y=Math.cos(t*0.2)*3;
+        renderer.render(scene, camera);
+    }
+    animate();
+
+    window.addEventListener('resize', function() {
+        camera.aspect=window.innerWidth/window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+})();
+
+// === SHADER GRADIENT (ShaderGradient library equivalent) ===
+(function() {
+    var c = document.getElementById('shader-gradient');
+    if(!c) return;
+    var gl = c.getContext('webgl');
+    if(!gl) return;
+    function resize(){ c.width=window.innerWidth*(window.devicePixelRatio||1); c.height=window.innerHeight*(window.devicePixelRatio||1); gl.viewport(0,0,c.width,c.height); }
+    resize(); window.addEventListener('resize',resize);
+    var vs='attribute vec2 p;void main(){gl_Position=vec4(p,0,1);}';
+    var fs='precision mediump float;uniform float t;uniform vec2 r;uniform vec2 m;\n'
+        +'vec3 mod289(vec3 x){return x-floor(x*(1./289.))*289.;}\n'
+        +'vec2 mod289(vec2 x){return x-floor(x*(1./289.))*289.;}\n'
+        +'vec3 permute(vec3 x){return mod289(((x*34.)+1.)*x);}\n'
+        +'float snoise(vec2 v){const vec4 C=vec4(0.211324865405187,0.366025403784439,-0.577350269189626,0.024390243902439);vec2 i=floor(v+dot(v,C.yy));vec2 x0=v-i+dot(i,C.xx);vec2 i1;i1.x>x0.y?i1=vec2(1,0):i1=vec2(0,1);vec4 x12=x0.xyxy+C.xxzz;x12.xy-=i1;i=mod289(i);vec3 p=permute(permute(i.y+vec3(0,i1.y,1))+i.x+vec3(0,i1.x,1));vec3 m=max(.5-vec3(dot(x0,x0),dot(x12.xy,x12.xy),dot(x12.zw,x12.zw)),0.);m=m*m;m=m*m;vec3 x=2.*fract(p*C.www)-1.;vec3 h=abs(x)-.5;vec3 ox=floor(x+.5);vec3 a0=x-ox;m*=1.79284291400159-.85373472095314*(a0*a0+h*h);vec3 g;g.x=a0.x*x0.x+h.x*x0.y;g.yz=a0.yz*x12.xz+h.yz*x12.yw;return 130.*dot(m,g);}\n'
+        +'float fbm(vec2 p){float f=0.;float a=.5;mat2 rot=mat2(.8,.6,-.6,.8);for(int i=0;i<5;i++){f+=a*snoise(p);p=rot*p*2.+vec2(100.);a*=.5;}return f;}\n'
+        +'void main(){vec2 uv=gl_FragCoord.xy/r;vec2 mouse=m/r;float slowT=t*0.03;\n'
+        +'vec2 warp=uv+(mouse-0.5)*0.2;float n1=fbm(warp*1.5+slowT);float n2=fbm(warp*1.2-vec2(slowT*.6,slowT*.4));\n'
+        +'float v=n1*.55+n2*.45;\n'
+        +'vec3 c1=vec3(0.02,0.02,0.06);vec3 c2=vec3(0.12,0.08,0.25);vec3 c3=vec3(0.25,0.22,0.55);vec3 c4=vec3(0.4,0.35,0.7);\n'
+        +'float t2=v*0.5+0.5;vec3 col=mix(c1,c2,smoothstep(0.,0.35,t2));col=mix(col,c3,smoothstep(0.35,0.7,t2));col=mix(col,c4,smoothstep(0.7,1.,t2));\n'
+        +'col*=0.8+0.2*smoothstep(0.3,0.8,t2);gl_FragColor=vec4(col,1.);}';
+    function compile(type,src){var s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);return s;}
+    var pg=gl.createProgram();gl.attachShader(pg,compile(gl.VERTEX_SHADER,vs));gl.attachShader(pg,compile(gl.FRAGMENT_SHADER,fs));gl.linkProgram(pg);gl.useProgram(pg);
+    var buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
+    var pLoc=gl.getAttribLocation(pg,'p');gl.enableVertexAttribArray(pLoc);gl.vertexAttribPointer(pLoc,2,gl.FLOAT,false,0,0);
+    var uT=gl.getUniformLocation(pg,'t'),uR=gl.getUniformLocation(pg,'r'),uM=gl.getUniformLocation(pg,'m');
+    var mmx=0.5,mmy=0.5;
+    document.addEventListener('mousemove',function(e){mmx=e.clientX/window.innerWidth;mmy=1-e.clientY/window.innerHeight;});
+    function render(){requestAnimationFrame(render);gl.uniform1f(uT,performance.now()*0.001);gl.uniform2f(uR,c.width,c.height);gl.uniform2f(uM,mmx,mmy);gl.drawArrays(gl.TRIANGLE_STRIP,0,4);}
+    render();
+})();
+
+// === LIQUID LOGO (Paper Design style) ===
+(function(){
+    var logo = document.querySelector('.logo-icon');
+    if(!logo) return;
+    var canvas = document.createElement('canvas');
+    canvas.width = 80; canvas.height = 80;
+    canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border-radius:12px;pointer-events:none;opacity:0.3;mix-blend-mode:screen;';
+    logo.style.position = 'relative';
+    logo.appendChild(canvas);
+    var gl = canvas.getContext('webgl');
+    if(!gl) return;
+    var vs='attribute vec2 p;void main(){gl_Position=vec4(p,0,1);}';
+    var fs='precision mediump float;uniform float t;uniform vec2 r;\n'
+        +'vec3 mod289(vec3 x){return x-floor(x*(1./289.))*289.;}vec2 mod289(vec2 x){return x-floor(x*(1./289.))*289.;}vec3 permute(vec3 x){return mod289(((x*34.)+1.)*x);}\n'
+        +'float snoise(vec2 v){const vec4 C=vec4(0.211324865405187,0.366025403784439,-0.577350269189626,0.024390243902439);vec2 i=floor(v+dot(v,C.yy));vec2 x0=v-i+dot(i,C.xx);vec2 i1;i1.x>x0.y?i1=vec2(1,0):i1=vec2(0,1);vec4 x12=x0.xyxy+C.xxzz;x12.xy-=i1;i=mod289(i);vec3 p=permute(permute(i.y+vec3(0,i1.y,1))+i.x+vec3(0,i1.x,1));vec3 m=max(.5-vec3(dot(x0,x0),dot(x12.xy,x12.xy),dot(x12.zw,x12.zw)),0.);m=m*m;m=m*m;vec3 x=2.*fract(p*C.www)-1.;vec3 h=abs(x)-.5;vec3 ox=floor(x+.5);vec3 a0=x-ox;m*=1.79284291400159-.85373472095314*(a0*a0+h*h);vec3 g;g.x=a0.x*x0.x+h.x*x0.y;g.yz=a0.yz*x12.xz+h.yz*x12.yw;return 130.*dot(m,g);}\n'
+        +'void main(){vec2 uv=gl_FragCoord.xy/r;float n=snoise(uv*3.+t*0.5);float n2=snoise(uv*5.-t*0.3);float v=n*0.6+n2*0.4;v=v*0.5+0.5;\n'
+        +'vec3 c1=vec3(0.39,0.4,0.95);vec3 c2=vec3(0.65,0.54,0.98);vec3 c3=vec3(0.96,0.62,0.04);\n'
+        +'vec3 col=mix(c1,c2,smoothstep(0.3,0.6,v));col=mix(col,c3,smoothstep(0.6,0.9,v));\n'
+        +'float edge=smoothstep(0.0,0.3,v)*smoothstep(1.0,0.7,v);col*=0.8+0.4*edge;gl_FragColor=vec4(col,edge*0.6);}';
+    function compile(type,src){var s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);return s;}
+    var pg=gl.createProgram();gl.attachShader(pg,compile(gl.VERTEX_SHADER,vs));gl.attachShader(pg,compile(gl.FRAGMENT_SHADER,fs));gl.linkProgram(pg);gl.useProgram(pg);
+    var buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
+    var pLoc=gl.getAttribLocation(pg,'p');gl.enableVertexAttribArray(pLoc);gl.vertexAttribPointer(pLoc,2,gl.FLOAT,false,0,0);
+    var uT=gl.getUniformLocation(pg,'t'),uR=gl.getUniformLocation(pg,'r');
+    function render(){requestAnimationFrame(render);gl.uniform1f(uT,performance.now()*0.001);gl.uniform2f(uR,canvas.width,canvas.height);gl.drawArrays(gl.TRIANGLE_STRIP,0,4);}
+    render();
+})();
+
+// === SHOWCASE 3D SCENE ===
+(function() {
+    var canvas = document.getElementById('showcase-canvas');
+    if(!canvas) return;
+    var rect = canvas.parentElement.getBoundingClientRect();
+    var renderer = new THREE.WebGLRenderer({canvas:canvas, antialias:true, alpha:true});
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+    renderer.setSize(rect.width, rect.height);
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(50, rect.width/rect.height, 0.1, 50);
+    camera.position.z = 4;
+
+    scene.add(new THREE.AmbientLight(0x404060,0.5));
+    var p1 = new THREE.PointLight(0x6366f1,2,15); p1.position.set(3,2,3); scene.add(p1);
+
+    var torusKnot = new THREE.Mesh(
+        new THREE.TorusKnotGeometry(1,0.3,128,32),
+        new THREE.MeshStandardMaterial({color:0x6366f1, metalness:0.8, roughness:0.15, emissive:0x6366f1, emissiveIntensity:0.1})
+    );
+    scene.add(torusKnot);
+
+    var sphere = new THREE.Mesh(
+        new THREE.SphereGeometry(0.5,32,32),
+        new THREE.MeshStandardMaterial({color:0xa78bfa, metalness:0.9, roughness:0.1})
+    );
+    sphere.position.set(2,1,-1);
+    scene.add(sphere);
+
+    var octa = new THREE.Mesh(
+        new THREE.OctahedronGeometry(0.4,0),
+        new THREE.MeshStandardMaterial({color:0xf59e0b, metalness:0.85, roughness:0.15})
+    );
+    octa.position.set(-2,-0.5,-1);
+    scene.add(octa);
+
+    var wire = new THREE.Mesh(
+        new THREE.IcosahedronGeometry(2,1),
+        new THREE.MeshBasicMaterial({color:0x6366f1, wireframe:true, transparent:true, opacity:0.06})
+    );
+    scene.add(wire);
+
+    var clock = new THREE.Clock();
+    function animate() {
+        requestAnimationFrame(animate);
+        var t = clock.getElapsedTime();
+        torusKnot.rotation.x = t*0.2; torusKnot.rotation.y = t*0.3;
+        sphere.position.y = 1+Math.sin(t)*0.3; sphere.rotation.x = t*0.5;
+        octa.position.y = -0.5+Math.cos(t*0.7)*0.2; octa.rotation.y = t*0.4;
+        wire.rotation.x += 0.0003; wire.rotation.y += 0.0005;
+        p1.position.x = Math.sin(t*0.4)*4;
+        renderer.render(scene, camera);
+    }
+    animate();
+
+    window.addEventListener('resize', function() {
+        var r = canvas.parentElement.getBoundingClientRect();
+        camera.aspect = r.width/r.height;
+        camera.updateProjectionMatrix();
+        renderer.setSize(r.width, r.height);
+    });
+})();
+</script>
+</body>
+</html>
