@@ -33,10 +33,10 @@ html.lenis, html.lenis body { height: auto; }
     --accent-3: #a78bfa;          /* Violet-400 */
     --accent-4: #f59e0b;          /* Amber-500 */
     --accent-4-rgb: 245, 158, 11;
-    --gradient-1: linear-gradient(135deg, #818cf8, #c084fc);
-    --gradient-2: linear-gradient(135deg, #6366f1, #818cf8);
-    --gradient-3: linear-gradient(135deg, #a78bfa, #c084fc);
-    --gradient-amber: linear-gradient(135deg, #f59e0b, #fbbf24);
+    --gradient-1: linear-gradient(135deg, #818cf8, #c084fc); /* fallback: linear-gradient(135deg, #818cf8, #c084fc) */
+    --gradient-2: linear-gradient(135deg, #6366f1, #818cf8); /* fallback: linear-gradient(135deg, #6366f1, #818cf8) */
+    --gradient-3: linear-gradient(135deg, #a78bfa, #c084fc); /* fallback: linear-gradient(135deg, #a78bfa, #c084fc) */
+    --gradient-amber: linear-gradient(135deg, #f59e0b, #fbbf24); /* fallback: linear-gradient(135deg, #f59e0b, #fbbf24) */
     /* Metallic silver text */
     --text-metallic: linear-gradient(to right, #ffffff, #d4d4d8, #71717a);
     /* Glass */
@@ -647,8 +647,8 @@ nav a.active {
 }
 .filter-tab:hover { border-color: rgba(var(--accent-1-rgb), 0.25); color: var(--text-primary); transform: translateY(-1px); }
 .filter-tab.active {
-    background: var(--gradient-1); color: white; border-color: transparent;
-    box-shadow: 0 4px 16px rgba(var(--accent-1-rgb), 0.25); transform: translateY(-1px);
+    background: linear-gradient(135deg, #818cf8, #c084fc); color: white; border-color: transparent;
+    box-shadow: 0 4px 16px rgba(129, 140, 248, 0.25); transform: translateY(-1px);
 }
 .filter-tab .tab-count { background: rgba(255, 255, 255, 0.18); padding: 0.1rem 0.4rem; border-radius: 10px; font-size: 0.7rem; margin-left: 0.35rem; }
 .no-results { text-align: center; padding: 4rem 2rem; color: var(--text-secondary); display: none; animation: fadeInUp 0.4s var(--spring-smooth); }
