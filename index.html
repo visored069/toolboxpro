@@ -157,7 +157,7 @@
             </div>
 
             <!-- Category Filters -->
-            <div class="filter-tabs" role="tablist" aria-label="Filter tools by category">
+            <div class="filter-tabs" role="tablist" aria-label="Filter tools by category" id="filter-tabs">
                 <button class="filter-tab active" data-category="all" onclick="setCategory('all')" role="tab" aria-selected="true">All <span class="tab-count">20</span></button>
                 <button class="filter-tab" data-category="Developer" onclick="setCategory('Developer')" role="tab" aria-selected="false">Developer <span class="tab-count">11</span></button>
                 <button class="filter-tab" data-category="Security" onclick="setCategory('Security')" role="tab" aria-selected="false">Security <span class="tab-count">2</span></button>
@@ -167,7 +167,7 @@
             </div>
 
             <!-- No results -->
-            <div class="no-results" id="no-results">
+            <div class="no-results" id="no-results" style="display:none;">
                 <i class="fas fa-search"></i>
                 <h3>No tools found</h3>
                 <p>Try a different search term or category.</p>
@@ -485,8 +485,8 @@
         /* === vanilla-tilt.js on Tool Cards === */
         if (typeof VanillaTilt !== 'undefined') {
             VanillaTilt.init(document.querySelectorAll('.tool-card'), {
-                max: 8, speed: 600, glare: true, 'max-glare': 0.2, scale: 1.03, perspective: 800,
-                easing: 'cubic-bezier(.03,.98,.52,.99)'
+                max: 6, speed: 400, glare: true, 'max-glare': 0.15, scale: 1.02, perspective: 1000,
+                easing: 'cubic-bezier(.03,.98,.52,.99)', direction: 'normal'
             });
         }
 
