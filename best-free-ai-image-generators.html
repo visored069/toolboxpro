@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Free AI Image Generators (2026) — A Practical Comparison</title>
+    <meta name="description" content="A clear, unbiased comparison of the best free AI image generators in 2026 — Leonardo.Ai, Playground AI, Adobe Firefly, Bing Image Creator, and Craiyon. Find the right one for your needs.">
+    <meta name="author" content="ToolBox Pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://toolboxpro-theta.vercel.app/best-free-ai-image-generators">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <meta name="theme-color" content="#fafafa">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Best Free AI Image Generators (2026)",
+        "description": "A practical comparison of the best free AI image generators — Leonardo.Ai, Playground AI, Adobe Firefly, Bing Image Creator, and Craiyon.",
+        "author": { "@type": "Organization", "name": "ToolBox Pro" },
+        "publisher": { "@type": "Organization", "name": "ToolBox Pro" }
+    }
+    </script>
+    <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+        --bg: #fafafa;
+        --bg-card: #ffffff;
+        --bg-soft: #f4f4f5;
+        --border: #e4e4e7;
+        --border-hover: #d4d4d8;
+        --text: #18181b;
+        --text-secondary: #52525b;
+        --text-muted: #a1a1aa;
+        --accent: #6366f1;
+        --accent-hover: #4f46e5;
+        --accent-soft: #eef2ff;
+        --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+        --shadow-md: 0 4px 16px rgba(0,0,0,0.06);
+        --shadow-lg: 0 8px 32px rgba(0,0,0,0.08);
+        --radius-sm: 8px;
+        --radius: 12px;
+        --radius-lg: 16px;
+    }
+
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+        min-height: 100vh;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+        padding: 1rem 2rem;
+        border-bottom: 1px solid var(--border);
+        background: rgba(255,255,255,0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+    .header-inner {
+        max-width: 960px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        text-decoration: none;
+        color: var(--text);
+    }
+    .logo-icon {
+        width: 36px;
+        height: 36px;
+        background: linear-gradient(135deg, #6366f1, #a78bfa);
+        border-radius: 9px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1rem;
+    }
+    .logo-text {
+        font-size: 1.15rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+    }
+    .logo-badge {
+        font-size: 0.55rem;
+        background: linear-gradient(135deg, #6366f1, #818cf8);
+        color: white;
+        padding: 0.12rem 0.35rem;
+        border-radius: 20px;
+        font-weight: 700;
+        margin-left: -0.25rem;
+        margin-top: -0.7rem;
+    }
+    nav { display: flex; gap: 0.25rem; align-items: center; }
+    nav a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        padding: 0.45rem 0.85rem;
+        border-radius: 8px;
+        transition: all 0.2s;
+        font-size: 0.875rem;
+        font-weight: 500;
+    }
+    nav a:hover { color: var(--text); background: var(--bg-soft); }
+    nav a.active {
+        color: var(--accent);
+        background: var(--accent-soft);
+    }
+    .theme-toggle {
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: transparent;
+        color: var(--text-secondary);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        transition: all 0.2s;
+        margin-left: 0.4rem;
+    }
+    .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ===== WRAPPER ===== */
+    .wrapper {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    /* ===== HERO / INTRO ===== */
+    .page-hero {
+        padding: 4rem 0 3rem;
+        text-align: center;
+    }
+    .page-hero .eyebrow {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--accent);
+        background: var(--accent-soft);
+        padding: 0.3rem 0.75rem;
+        border-radius: 20px;
+        margin-bottom: 1rem;
+    }
+    .page-hero h1 {
+        font-size: clamp(1.8rem, 4vw, 2.6rem);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+        color: var(--text);
+    }
+    .page-hero .meta-line {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        font-weight: 500;
+        margin-bottom: 1.5rem;
+    }
+    .page-hero p {
+        max-width: 620px;
+        margin: 0 auto;
+        color: var(--text-secondary);
+        font-size: 1.05rem;
+        line-height: 1.7;
+    }
+
+    /* ===== COMPARISON TABLE ===== */
+    .section {
+        padding: 3rem 0;
+    }
+    .section-label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--text-muted);
+        margin-bottom: 0.75rem;
+    }
+    .section-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin-bottom: 0.5rem;
+    }
+    .section-sub {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
+        max-width: 600px;
+    }
+
+    .tool-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .tool-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem 1.75rem;
+        transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+        display: flex;
+        gap: 1.25rem;
+        align-items: flex-start;
+    }
+    .tool-card:hover {
+        border-color: var(--border-hover);
+        box-shadow: var(--shadow-md);
+        transform: translateY(-1px);
+    }
+
+    .tool-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 12px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        color: white;
+    }
+    .tool-icon.leonardo { background: linear-gradient(135deg, #b48c6c, #d4a87a); }
+    .tool-icon.playground { background: linear-gradient(135deg, #6366f1, #818cf8); }
+    .tool-icon.firefly { background: linear-gradient(135deg, #ff6b35, #ff8c5a); }
+    .tool-icon.bing { background: linear-gradient(135deg, #00897b, #4db6ac); }
+    .tool-icon.craiyon { background: linear-gradient(135deg, #787878, #a3a3a3); }
+
+    .tool-body { flex: 1; min-width: 0; }
+
+    .tool-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 0.4rem;
+        flex-wrap: wrap;
+    }
+    .tool-name {
+        font-size: 1.15rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+    }
+    .tool-link {
+        color: var(--accent);
+        text-decoration: none;
+        font-size: 0.85rem;
+        font-weight: 600;
+        white-space: nowrap;
+        transition: color 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+    }
+    .tool-link:hover { color: var(--accent-hover); }
+
+    .tool-best-for {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 0.35rem;
+    }
+    .tool-best-for .label {
+        font-weight: 500;
+        color: var(--text-muted);
+    }
+    .tool-desc {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin-bottom: 0.6rem;
+    }
+    .tool-limit {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        background: var(--bg-soft);
+        border: 1px solid var(--border);
+        padding: 0.25rem 0.6rem;
+        border-radius: 6px;
+    }
+    .tool-limit i { color: var(--accent); font-size: 0.7rem; }
+
+    /* ===== HOW TO CHOOSE ===== */
+    .choice-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+    .choice-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.5rem;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .choice-card:hover {
+        border-color: var(--border-hover);
+        box-shadow: var(--shadow-sm);
+    }
+    .choice-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        color: white;
+        margin-bottom: 0.85rem;
+    }
+    .choice-icon.quick { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+    .choice-icon.pro { background: linear-gradient(135deg, #6366f1, #818cf8); }
+    .choice-icon.nosignup { background: linear-gradient(135deg, #10b981, #34d399); }
+    .choice-card h3 {
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 0.4rem;
+        letter-spacing: -0.01em;
+    }
+    .choice-card p {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+    }
+    .choice-card .recommendation {
+        display: inline-block;
+        margin-top: 0.75rem;
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--accent);
+        background: var(--accent-soft);
+        padding: 0.2rem 0.6rem;
+        border-radius: 6px;
+    }
+
+    /* ===== DISCLOSURE ===== */
+    .disclosure {
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border);
+        text-align: center;
+    }
+    .disclosure p {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+    }
+    .disclosure a {
+        color: var(--accent);
+        text-decoration: none;
+    }
+    .disclosure a:hover { text-decoration: underline; }
+
+    /* ===== FOOTER ===== */
+    footer {
+        padding: 2.5rem 2rem;
+        border-top: 1px solid var(--border);
+        background: var(--bg-soft);
+        margin-top: 2rem;
+    }
+    .footer-inner {
+        max-width: 960px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    .footer-brand {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+    }
+    .footer-brand .logo-icon { width: 28px; height: 28px; font-size: 0.75rem; border-radius: 7px; }
+    .footer-links { display: flex; gap: 0.25rem; }
+    .footer-links a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 0.85rem;
+        padding: 0.35rem 0.7rem;
+        border-radius: 6px;
+        transition: color 0.2s, background 0.2s;
+    }
+    .footer-links a:hover { color: var(--text); background: var(--bg-card); }
+    .footer-credit {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        text-align: right;
+    }
+    .footer-credit a {
+        color: var(--text-secondary);
+        text-decoration: underline;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 640px) {
+        .wrapper { padding: 0 1.25rem; }
+        header { padding: 0.75rem 1.25rem; }
+        .page-hero { padding: 2.5rem 0 2rem; }
+        .section { padding: 2rem 0; }
+        .tool-card { padding: 1.25rem; gap: 1rem; }
+        .tool-header { flex-direction: column; align-items: flex-start; }
+        .tool-link { white-space: normal; }
+        .footer-inner { flex-direction: column; text-align: center; }
+        .footer-credit { text-align: center; }
+    }
+
+    /* ===== SMOOTH SCROLL ===== */
+    html { scroll-behavior: smooth; }
+
+    /* ===== FOCUS ===== */
+    a:focus-visible, button:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+        border-radius: 6px;
+    }
+
+    /* Light/dark not needed — this is a light-themed guide page */
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <a href="/" class="logo" aria-label="ToolBox Pro Home">
+                <div class="logo-icon"><i class="fas fa-images"></i></div>
+                <span class="logo-text">ToolBox</span>
+                <span class="logo-badge">PRO</span>
+            </a>
+            <nav aria-label="Secondary navigation">
+                <a href="/">Tools</a>
+                <a href="ai-tools">AI Directory</a>
+                <a href="about">About</a>
+                <a href="contact">Contact</a>
+                <a href="privacy">Privacy</a>
+                <button class="theme-toggle" aria-label="Toggle dark mode (not available on this page)" title="This page uses a light theme">
+                    <i class="fas fa-circle-half-stroke"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="wrapper">
+
+            <!-- HERO / INTRO -->
+            <section class="page-hero">
+                <span class="eyebrow">Comparison Guide</span>
+                <h1>Best Free AI Image Generators (2026)</h1>
+                <p class="meta-line">Last updated: September 2026</p>
+                <p>
+                    There are more free AI image generators than ever, but they each pull the
+                    string in a different place — some cap your daily generations, others slap
+                    on watermarks, and a few don't even ask you to sign up. This page cuts
+                    through the noise and compares the most capable free options side by side,
+                    so you can pick the one that fits what you're actually trying to make.
+                </p>
+            </section>
+
+            <!-- COMPARISON SECTION -->
+            <section class="section">
+                <p class="section-label">01 — The Tools</p>
+                <h2 class="section-title">Five free AI image generators, compared</h2>
+                <p class="section-sub">
+                    Each of these has a genuinely usable free tier. The differences are mostly
+                    in how much you can make, what quality you get, and what strings are attached.
+                </p>
+
+                <div class="tool-list">
+
+                    <!-- Leonardo.Ai -->
+                    <article class="tool-card reveal">
+                        <div class="tool-icon leonardo"><i class="fas fa-wand-magic-sparkles"></i></div>
+                        <div class="tool-body">
+                            <div class="tool-header">
+                                <span class="tool-name">Leonardo.Ai</span>
+                                <a class="tool-link" href="https://leonardo.ai" target="_blank" rel="noopener">
+                                    leonardo.ai <i class="fas fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </div>
+                            <p class="tool-best-for"><span class="label">Best for:</span> High-quality, controllable generations</p>
+                            <p class="tool-desc">
+                                Leonardo offers a polished web interface with multiple tuned
+                                models, fine-grained controls like prompt magic and negative
+                                prompts, and image-to-image editing. The free tier gives you
+                                a daily allowance of tokens you can spend on generations.
+                            </p>
+                            <span class="tool-limit"><i class="fas fa-triangle-exclamation"></i> Daily token cap on the free plan — heavy use burns through it quickly</span>
+                        </div>
+                    </article>
+
+                    <!-- Playground AI -->
+                    <article class="tool-card reveal">
+                        <div class="tool-icon playground"><i class="fas fa-palette"></i></div>
+                        <div class="tool-body">
+                            <div class="tool-header">
+                                <span class="tool-name">Playground AI</span>
+                                <a class="tool-link" href="https://playgroundai.com" target="_blank" rel="noopener">
+                                    playgroundai.com <i class="fas fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </div>
+                            <p class="tool-best-for"><span class="label">Best for:</span> Experimenting with lots of models for free</p>
+                            <p class="tool-desc">
+                                Playground gives you access to a wide range of open and
+                                proprietary models behind a single editor. You can tweak
+                                prompt settings, filters, and upscaling, and the free plan
+                                lets you generate a fairly large number of images per day.
+                            </p>
+                            <span class="tool-limit"><i class="fas fa-triangle-exclamation"></i> Free tier has a daily image limit and some advanced features are reserved for paid plans</span>
+                        </div>
+                    </article>
+
+                    <!-- Adobe Firefly -->
+                    <article class="tool-card reveal">
+                        <div class="tool-icon firefly"><i class="fas fa-feather"></i></div>
+                        <div class="tool-body">
+                            <div class="tool-header">
+                                <span class="tool-name">Adobe Firefly</span>
+                                <a class="tool-link" href="https://firefly.adobe.com" target="_blank" rel="noopener">
+                                    firefly.adobe.com <i class="fas fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </div>
+                            <p class="tool-best-for"><span class="label">Best for:</span> Commercial-safe generations</p>
+                            <p class="tool-desc">
+                                Adobe Firefly is trained on Adobe Stock images and openly
+                                licensed content, which is designed to make its outputs safer
+                                to use commercially. The web app offers text-to-image, generative
+                                fill, and a handful of style controls. A limited free web tier
+                                is available.
+                            </p>
+                            <span class="tool-limit"><i class="fas fa-triangle-exclamation"></i> Free web usage is capped — generative credits refresh periodically</span>
+                        </div>
+                    </article>
+
+                    <!-- Bing Image Creator -->
+                    <article class="tool-card reveal">
+                        <div class="tool-icon bing"><i class="fab fa-microsoft"></i></div>
+                        <div class="tool-body">
+                            <div class="tool-header">
+                                <span class="tool-name">Bing Image Creator</span>
+                                <a class="tool-link" href="https://www.bing.com/images/create" target="_blank" rel="noopener">
+                                    bing.com/images/create <i class="fas fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </div>
+                            <p class="tool-best-for"><span class="label">Best for:</span> Fast, no-fuss images with a Microsoft account</p>
+                            <p class="tool-desc">
+                                Powered by DALL-E models, Bing Image Creator is one of the
+                                easiest ways to generate images for free. You type a prompt,
+                                get a set of results, and can refine from there. It runs inside
+                                the Microsoft account ecosystem and gives you a monthly set of
+                                boosts for faster generations.
+                            </p>
+                            <span class="tool-limit"><i class="fas fa-triangle-exclamation"></i> Requires a Microsoft account; once boosts run out, generations slow down but remain free</span>
+                        </div>
+                    </article>
+
+                    <!-- Craiyon -->
+                    <article class="tool-card reveal">
+                        <div class="tool-icon craiyon"><i class="fas fa-sun"></i></div>
+                        <div class="tool-body">
+                            <div class="tool-header">
+                                <span class="tool-name">Craiyon</span>
+                                <a class="tool-link" href="https://www.craiyon.com" target="_blank" rel="noopener">
+                                    craiyon.com <i class="fas fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </div>
+                            <p class="tool-best-for"><span class="label">Best for:</span> Generating images with no sign-up required</p>
+                            <p class="tool-desc">
+                                Craiyon (formerly DALL·E mini) is one of the few options that
+                                lets you type a prompt and get images back without creating an
+                                account first. It's handy for quick tests and low-stakes
+                                experiments, though the image quality and control are more
+                                limited than the others on this list.
+                            </p>
+                            <span class="tool-limit"><i class="fas fa-triangle-exclamation"></i> Ad-supported free tier; image quality and speed are lower than the dedicated tools above</span>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- HOW TO CHOOSE -->
+            <section class="section">
+                <p class="section-label">02 — How to Choose</p>
+                <h2 class="section-title">Which one should you use?</h2>
+                <p class="section-sub">
+                    The "best" generator depends entirely on what you're making and how much
+                    hassle you're willing to put up with. Here's the short version.
+                </p>
+
+                <div class="choice-grid">
+
+                    <div class="choice-card reveal">
+                        <div class="choice-icon quick"><i class="fas fa-bolt"></i></div>
+                        <h3>I just want quick, fun images</h3>
+                        <p>
+                            Bing Image Creator or Craiyon are the easiest on-ramps. Bing gives
+                            you decent quality fast once you're signed in, and Craiyon needs no
+                            account at all — good for a quick experiment or two.
+                        </p>
+                        <span class="recommendation">Start here: Bing Image Creator</span>
+                    </div>
+
+                    <div class="choice-card reveal">
+                        <div class="choice-icon pro"><i class="fas fa-star"></i></div>
+                        <h3>I want the best quality I can get for free</h3>
+                        <p>
+                            Leonardo.Ai and Playground AI both give you access to stronger models
+                            and more control than the quick-and-easy options. Leonardo is a good
+                            pick if you want fine-grained prompt settings; Playground is handy if
+                            you want to compare several models in one place.
+                        </p>
+                        <span class="recommendation">Start here: Leonardo.Ai</span>
+                    </div>
+
+                    <div class="choice-card reveal">
+                        <div class="choice-icon nosignup"><i class="fas fa-user-plus"></i></div>
+                        <h3>I don't want to sign up for anything</h3>
+                        <p>
+                            Craiyon is the standout here — no account needed, just a prompt and
+                            a result. The tradeoff is ad-supported and lower-fidelity output, so
+                            treat it as a sketch tool rather than a production generator.
+                        </p>
+                        <span class="recommendation">Start here: Craiyon</span>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <div class="wrapper">
+        <div class="disclosure">
+            <p>
+                This page is regularly updated. Some links may be affiliate links.
+                Information reflects publicly known details about each tool as of
+                September 2026 and may change — always check the official site for the
+                latest pricing and terms.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="logo-icon"><i class="fas fa-toolbox"></i></div>
+                <span>ToolBox Pro</span>
+            </div>
+            <div class="footer-links">
+                <a href="/">Home</a>
+                <a href="ai-tools">AI Directory</a>
+                <a href="about">About</a>
+                <a href="contact">Contact</a>
+                <a href="privacy">Privacy</a>
+            </div>
+            <div class="footer-credit">
+                Built by <a href="https://x.com/portfoliomate/status/2098498135396090165" target="_blank" rel="noopener">Portfolio Mate</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+        'use strict';
+
+        /* === Scroll Reveal (lightweight IntersectionObserver) === */
+        if ('IntersectionObserver' in window) {
+            var reveals = document.querySelectorAll('.reveal');
+            if (reveals.length) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+                reveals.forEach(function(el) { observer.observe(el); });
+            }
+            // Also reveal anything already visible on load
+            setTimeout(function() {
+                reveals.forEach(function(el) {
+                    var rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight - 80) {
+                        el.classList.add('visible');
+                        observer.unobserve(el);
+                    }
+                });
+            }, 100);
+        } else {
+            document.querySelectorAll('.reveal').forEach(function(el) {
+                el.classList.add('visible');
+            });
+        }
+
+        /* === Header scroll shadow === */
+        var header = document.querySelector('header');
+        if (header) {
+            window.addEventListener('scroll', function() {
+                header.style.boxShadow = window.scrollY > 10
+                    ? '0 1px 0 ' + getComputedStyle(document.documentElement).getPropertyValue('--border') + ', 0 4px 20px rgba(0,0,0,0.06)'
+                    : 'none';
+            }, { passive: true });
+        }
+
+        /* === Set active nav state based on current path === */
+        function setActiveNav() {
+            var path = window.location.pathname.replace(/\/$/, '') || '/';
+            var navLinks = document.querySelectorAll('nav a[href]');
+            navLinks.forEach(function(link) {
+                var href = link.getAttribute('href');
+                if (!href || href.charAt(0) === '#') return;
+                var linkPath = href.startsWith('/') ? href : '/' + href;
+                link.classList.toggle('active', linkPath === path);
+            });
+        }
+        setActiveNav();
+        window.addEventListener('popstate', setActiveNav);
+
+        /* === Keyboard shortcut: focus search on Tools page === */
+        if (window.location.pathname === '/' || window.location.pathname.endsWith('/')) {
+            document.addEventListener('keydown', function(e) {
+                if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                    e.preventDefault();
+                    var search = document.getElementById('tool-search');
+                    if (search) search.focus();
+                }
+                if (e.key === '/' && !['INPUT','TEXTAREA','SELECT'].includes(e.target.tagName)) {
+                    e.preventDefault();
+                    var search = document.getElementById('tool-search');
+                    if (search) search.focus();
+                }
+            });
+        }
+
+    })();
+    </script>
+
+</body>
+</html>
