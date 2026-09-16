@@ -257,6 +257,155 @@
     }
     .footer-bottom a:hover { color: var(--accent-1); }
 
+    /* === Light Theme === */
+    body.light-theme {
+        --bg-primary: #fafafa;
+        --bg-secondary: #f4f4f5;
+        --bg-card: rgba(0, 0, 0, 0.03);
+        --bg-card-hover: rgba(0, 0, 0, 0.05);
+        --border-color: rgba(0, 0, 0, 0.08);
+        --border-hover: rgba(0, 0, 0, 0.15);
+        --text-primary: #18181b;
+        --text-secondary: #52525b;
+        --text-muted: #a1a1aa;
+        --glass-bg: rgba(0, 0, 0, 0.03);
+        --glass-border: rgba(0, 0, 0, 0.08);
+        --header-bg: rgba(250, 250, 250, 0.72);
+    }
+    body.light-theme .logo-text {
+        background: linear-gradient(to right, #18181b, #3f3f46, #71717a);
+        -webkit-background-clip: text; background-clip: text;
+    }
+    body.light-theme .section { background: rgba(255, 255, 255, 0.85); }
+    body.light-theme .preloader { background: #fafafa; }
+    body.light-theme .preloader-text {
+        background: linear-gradient(to right, #18181b, #52525b);
+        -webkit-background-clip: text; background-clip: text;
+    }
+    body.light-theme .preloader-bar { background: rgba(0,0,0,0.08); }
+
+    /* === Preloader === */
+    .preloader {
+        position: fixed; inset: 0; z-index: 10000;
+        background: var(--bg-primary);
+        display: flex; align-items: center; justify-content: center;
+        transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    .preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .preloader-inner { text-align: center; }
+    .preloader-cube {
+        width: 44px; height: 44px; margin: 0 auto 1.25rem;
+        transform-style: preserve-3d; animation: cubeSpin 1.6s linear infinite;
+        position: relative;
+    }
+    .cube-face {
+        position: absolute; inset: 0;
+        background: linear-gradient(135deg, #818cf8, #c084fc);
+        border-radius: 6px; opacity: 0.9;
+    }
+    .cube-face.front  { transform: translateZ(22px); }
+    .cube-face.back   { transform: rotateY(180deg) translateZ(22px); }
+    .cube-face.left   { transform: rotateY(-90deg) translateZ(22px); }
+    .cube-face.right  { transform: rotateY(90deg) translateZ(22px); }
+    .cube-face.top    { transform: rotateX(90deg) translateZ(22px); }
+    .cube-face.bottom { transform: rotateX(-90deg) translateZ(22px); }
+    @keyframes cubeSpin {
+        0%   { transform: rotateX(0deg) rotateY(0deg); }
+        100% { transform: rotateX(360deg) rotateY(360deg); }
+    }
+    .preloader-text {
+        font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em;
+        background: linear-gradient(to right, #ffffff, #a1a1aa);
+        -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .preloader-text span {
+        background: linear-gradient(135deg, #818cf8, #c084fc);
+        -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .preloader-bar {
+        width: 160px; height: 3px; border-radius: 3px;
+        background: rgba(255,255,255,0.08); margin: 1rem auto 0; overflow: hidden;
+    }
+    .preloader-bar-fill {
+        height: 100%; width: 40%; border-radius: 3px;
+        background: linear-gradient(135deg, #818cf8, #c084fc);
+        animation: barLoad 1.4s ease-in-out infinite;
+    }
+    @keyframes barLoad { 0% { width: 5%; } 50% { width: 70%; } 100% { width: 95%; } }
+
+    /* === Scroll Progress === */
+    .scroll-progress {
+        position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+        background: linear-gradient(90deg, #6366f1, #818cf8, #c084fc);
+        z-index: 9999; transition: width 0.1s linear;
+        box-shadow: 0 0 10px rgba(129,140,248,0.5);
+    }
+
+    /* === Ambient Layers === */
+    .ambient-blobs { position: fixed; inset: 0; z-index: -6; pointer-events: none; overflow: hidden; }
+    .ambient-blob {
+        position: absolute; border-radius: 50%; filter: blur(70px); opacity: 0.5;
+        animation: blobFloat 24s ease-in-out infinite;
+    }
+    .ambient-blob:nth-child(1) { width: 380px; height: 380px; top: -80px; left: -100px; background: radial-gradient(circle, rgba(99,102,241,0.35), transparent 70%); }
+    .ambient-blob:nth-child(2) { width: 320px; height: 320px; bottom: -60px; right: -80px; background: radial-gradient(circle, rgba(192,132,252,0.28), transparent 70%); animation-delay: -8s; }
+    .ambient-blob:nth-child(3) { width: 260px; height: 260px; top: 40%; left: 60%; background: radial-gradient(circle, rgba(129,140,248,0.22), transparent 70%); animation-delay: -16s; }
+    @keyframes blobFloat {
+        0%, 100% { transform: translate(0,0) scale(1); }
+        33% { transform: translate(40px, -30px) scale(1.08); }
+        66% { transform: translate(-30px, 25px) scale(0.94); }
+    }
+    .particles, .floating-shapes { position: fixed; inset: 0; z-index: -5; pointer-events: none; overflow: hidden; }
+    .particle {
+        position: absolute; border-radius: 50%;
+        background: rgba(129,140,248,0.6);
+        animation: particleFloat linear infinite;
+    }
+    @keyframes particleFloat {
+        0% { transform: translateY(0) translateX(0); opacity: 0; }
+        10% { opacity: 0.7; }
+        90% { opacity: 0.4; }
+        100% { transform: translateY(-110vh) translateX(30px); opacity: 0; }
+    }
+    .fshape {
+        position: absolute; border: 1px solid rgba(129,140,248,0.18);
+        animation: shapeDrift ease-in-out infinite;
+    }
+    @keyframes shapeDrift {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-30px) rotate(20deg); }
+    }
+    .cursor-glow {
+        position: fixed; width: 400px; height: 400px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(129,140,248,0.07), transparent 65%);
+        pointer-events: none; z-index: -4; opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+    .cursor-glow.active { opacity: 1; }
+
+    /* === Entrance Animations === */
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(24px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .page-hero .eyebrow { animation: fadeUp 0.6s 0.1s cubic-bezier(0.16,1,0.3,1) both; }
+    .page-hero h1 { animation: fadeUp 0.7s 0.22s cubic-bezier(0.16,1,0.3,1) both; }
+    .page-hero p { animation: fadeUp 0.7s 0.34s cubic-bezier(0.16,1,0.3,1) both; }
+    .section { animation: fadeUp 0.8s 0.44s cubic-bezier(0.16,1,0.3,1) both; }
+    .guide-card {
+        opacity: 0;
+        animation: fadeUp 0.6s var(--card-delay, 0.6s) cubic-bezier(0.16,1,0.3,1) both;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+        .preloader { display: none; }
+    }
+
     @media (max-width: 640px) {
         .wrapper { padding: 0 1.25rem; }
         header { padding: 0.75rem 1.25rem; }
@@ -268,7 +417,29 @@
     </style>
 </head>
 <body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-cube">
+                <div class="cube-face front"></div>
+                <div class="cube-face back"></div>
+                <div class="cube-face left"></div>
+                <div class="cube-face right"></div>
+                <div class="cube-face top"></div>
+                <div class="cube-face bottom"></div>
+            </div>
+            <div class="preloader-text">ToolBox <span>PRO</span></div>
+            <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
+        </div>
+    </div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
     <div class="bg-animation"></div>
+    <div class="ambient-blobs"><div class="ambient-blob"></div><div class="ambient-blob"></div><div class="ambient-blob"></div></div>
+    <div class="floating-shapes" id="floating-shapes"></div>
+    <div class="particles" id="particles"></div>
 
     <header>
         <div class="header-content">
@@ -422,16 +593,109 @@
             }, { passive: true });
         }
 
-        // Theme toggle
+        // Theme toggle (with persistence)
         const themeToggle = document.getElementById('theme-toggle');
+        function applyThemeIcon() {
+            if (!themeToggle) return;
+            const icon = themeToggle.querySelector('i');
+            const isLight = document.body.classList.contains('light-theme');
+            icon.classList.toggle('fa-sun', !isLight);
+            icon.classList.toggle('fa-moon', isLight);
+        }
+        if (localStorage.getItem('tb-theme') === 'light') {
+            document.body.classList.add('light-theme');
+        }
+        applyThemeIcon();
         if (themeToggle) {
             themeToggle.addEventListener('click', function() {
                 document.body.classList.toggle('light-theme');
-                const icon = themeToggle.querySelector('i');
-                icon.classList.toggle('fa-sun');
-                icon.classList.toggle('fa-moon');
+                localStorage.setItem('tb-theme', document.body.classList.contains('light-theme') ? 'light' : 'dark');
+                applyThemeIcon();
             });
         }
+
+        // Preloader dismiss
+        window.addEventListener('load', function(){
+            var pl = document.getElementById('preloader');
+            if (pl) {
+                setTimeout(function(){ pl.classList.add('hidden'); }, 900);
+                setTimeout(function(){ if (pl.parentNode) pl.parentNode.removeChild(pl); }, 1700);
+            }
+        });
+        setTimeout(function(){
+            var pl = document.getElementById('preloader');
+            if (pl && !pl.classList.contains('hidden')) {
+                pl.classList.add('hidden');
+                setTimeout(function(){ if (pl.parentNode) pl.parentNode.removeChild(pl); }, 800);
+            }
+        }, 3000);
+
+        // Ambient particles
+        var pWrap = document.getElementById('particles');
+        if (pWrap) {
+            for (var i = 0; i < 26; i++) {
+                var p = document.createElement('div');
+                p.className = 'particle';
+                var size = 2 + Math.random() * 3;
+                p.style.width = size + 'px';
+                p.style.height = size + 'px';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.top = (100 + Math.random() * 20) + '%';
+                p.style.animationDuration = (12 + Math.random() * 14) + 's';
+                p.style.animationDelay = (-Math.random() * 20) + 's';
+                pWrap.appendChild(p);
+            }
+        }
+
+        // Floating shapes
+        var fWrap = document.getElementById('floating-shapes');
+        if (fWrap) {
+            for (var j = 0; j < 7; j++) {
+                var s = document.createElement('div');
+                s.className = 'fshape';
+                var sz = 14 + Math.random() * 30;
+                s.style.width = sz + 'px';
+                s.style.height = sz + 'px';
+                s.style.left = Math.random() * 95 + '%';
+                s.style.top = Math.random() * 95 + '%';
+                s.style.borderRadius = ['50%', '6px', '2px'][j % 3];
+                s.style.animationDuration = (10 + Math.random() * 12) + 's';
+                s.style.animationDelay = (-Math.random() * 10) + 's';
+                fWrap.appendChild(s);
+            }
+        }
+
+        // Cursor glow (desktop only)
+        if (!('ontouchstart' in window)) {
+            var glow = document.createElement('div');
+            glow.className = 'cursor-glow';
+            document.body.appendChild(glow);
+            var gx = 0, gy = 0, tgx = 0, tgy = 0;
+            document.addEventListener('mousemove', function(e){
+                tgx = e.clientX; tgy = e.clientY;
+                glow.classList.add('active');
+            }, { passive: true });
+            document.addEventListener('mouseleave', function(){ glow.classList.remove('active'); });
+            (function animateGlow(){
+                gx += (tgx - gx) * 0.08;
+                gy += (tgy - gy) * 0.08;
+                glow.style.transform = 'translate(' + (gx - 200) + 'px, ' + (gy - 200) + 'px)';
+                requestAnimationFrame(animateGlow);
+            })();
+        }
+
+        // Guide card entrance stagger
+        var gCards = document.querySelectorAll('.guide-card');
+        gCards.forEach(function(c, idx){
+            c.style.setProperty('--card-delay', (0.55 + idx * 0.12) + 's');
+        });
+
+        // Safety: force cards visible if animation didn't run
+        setTimeout(function(){
+            document.querySelectorAll('.guide-card').forEach(function(c){
+                if (parseFloat(getComputedStyle(c).opacity) < 0.1) { c.style.opacity = '1'; }
+            });
+        }, 2500);
     })();
     </script>
 </body>
