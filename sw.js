@@ -1,5 +1,5 @@
 // ===== ToolBox Pro Service Worker =====
-const CACHE_NAME = 'toolboxpro-v1';
+const CACHE_NAME = 'toolboxpro-v2';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -11,6 +11,10 @@ const STATIC_ASSETS = [
   '/contact.html',
   '/privacy.html',
   '/terms.html',
+  '/ai-tools.html',
+  '/guides.html',
+  '/best-free-ai-image-generators.html',
+  '/404.html',
   '/json-formatter.html',
   '/word-counter.html',
   '/password-generator.html',
