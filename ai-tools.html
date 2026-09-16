@@ -567,6 +567,14 @@
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
         }
+        @keyframes guideShimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        @keyframes guidePulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
         @media (max-width: 768px) {
             .directory-stats { gap: 24px; flex-wrap: wrap; }
             .tools-grid { grid-template-columns: 1fr; }
@@ -701,16 +709,17 @@
     </section>
 
     <!-- Guide Cross-Promo -->
-    <div style="max-width:780px;margin:0 auto 2.5rem;padding:1.25rem 1.5rem;background:rgba(99,102,241,0.08);border:1px solid rgba(129,140,248,0.15);border-radius:14px;display:flex;align-items:center;gap:1rem;transition:all 0.3s;">
-        <div style="width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,#6366f1,#a78bfa);display:flex;align-items:center;justify-content:center;color:white;font-size:1.1rem;flex-shrink:0;">
+    <div style="max-width:780px;margin:0 auto 2.5rem;padding:1.4rem 1.6rem;background:linear-gradient(135deg,rgba(99,102,241,0.22),rgba(139,92,246,0.12));border:1px solid rgba(129,140,248,0.45);border-radius:16px;display:flex;align-items:center;gap:1rem;transition:all 0.3s;box-shadow:0 0 40px rgba(99,102,241,0.18), inset 0 1px 0 rgba(255,255,255,0.06);position:relative;overflow:hidden;">
+        <div style="position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(129,140,248,0.08),transparent);animation:guideShimmer 3.5s ease-in-out infinite;pointer-events:none;"></div>
+        <div style="width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,#6366f1,#a78bfa);display:flex;align-items:center;justify-content:center;color:white;font-size:1.1rem;flex-shrink:0;box-shadow:0 0 18px rgba(129,140,248,0.5);">
             <i class="fas fa-book-open"></i>
         </div>
         <div style="flex:1;min-width:0;">
-            <div style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:#818cf8;margin-bottom:0.25rem;">📖 New Guide</div>
-            <div style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:0.2rem;">Best Free AI Image Generators (2026)</div>
+            <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#a5b4fc;margin-bottom:0.3rem;display:flex;align-items:center;gap:0.4rem;"><span style="width:6px;height:6px;border-radius:50%;background:#34d399;box-shadow:0 0 8px rgba(52,211,153,0.9);display:inline-block;animation:guidePulse 2s ease-in-out infinite;"></span>New Guide</div>
+            <div style="font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:0.2rem;">Best Free AI Image Generators (2026)</div>
             <div style="font-size:0.85rem;color:rgba(255,255,255,0.55);line-height:1.5;">A practical comparison of 5 top free image generators — what each is best for, key limitations, and how to choose.</div>
         </div>
-        <a href="best-free-ai-image-generators" style="flex-shrink:0;text-decoration:none;background:linear-gradient(135deg,#6366f1,#818cf8);color:white;padding:0.5rem 1rem;border-radius:8px;font-size:0.85rem;font-weight:600;white-space:nowrap;transition:transform 0.3s,box-shadow 0.3s;">
+        <a href="best-free-ai-image-generators" style="flex-shrink:0;text-decoration:none;background:linear-gradient(135deg,#6366f1,#818cf8);color:white;padding:0.55rem 1.1rem;border-radius:9px;font-size:0.85rem;font-weight:600;white-space:nowrap;transition:transform 0.3s,box-shadow 0.3s;box-shadow:0 0 20px rgba(99,102,241,0.45);">
             Read <i class="fas fa-arrow-right" style="font-size:0.7rem;margin-left:0.3rem;"></i>
         </a>
     </div>
