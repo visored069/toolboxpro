@@ -23,6 +23,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="tool-page-shared.css">
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to content</a>
@@ -51,7 +52,7 @@
     </div>
     </main>
 
-    <footer><div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;"><p>© 2025 ToolBox Pro. All rights reserved.</p></div></footer>
+    <footer><div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;"><p>© 2026 ToolBox Pro. All rights reserved.</p></div></footer>
     <!-- PWA Install Banner -->
     <div class="pwa-banner" id="pwa-banner">
         <div class="pwa-banner-text">
@@ -130,5 +131,15 @@
             document.getElementById('color-hsl').textContent = `hsl(${Math.round(h*360)}, ${Math.round(s*100)}%, ${Math.round(l*100)}%)`;
         }
     </script>
+
+<script src="tool-registry.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.ToolRegistry) {
+        ToolRegistry.renderSharedFooter();
+        ToolRegistry.renderToolFooter('color-picker');
+    }
+});
+</script>
 </body>
 </html>

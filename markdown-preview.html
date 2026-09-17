@@ -45,6 +45,7 @@
         .md-preview th{background:rgba(108,92,231,0.1);color:var(--text-primary);}
         @media(max-width:768px){.md-container{grid-template-columns:1fr;}}
     </style>
+<link rel="stylesheet" href="tool-page-shared.css">
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to content</a>
@@ -74,7 +75,7 @@
     </div>
     </main>
 
-    <footer><div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;"><p>© 2025 ToolBox Pro. All rights reserved.</p></div></footer>
+    <footer><div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;"><p>© 2026 ToolBox Pro. All rights reserved.</p></div></footer>
     <!-- PWA Install Banner -->
     <div class="pwa-banner" id="pwa-banner">
         <div class="pwa-banner-text">
@@ -165,5 +166,15 @@
         document.getElementById('md-input').value = "# Hello World\n\nThis is a **Markdown** preview tool.\n\n## Features\n\n- Real-time preview\n- Supports **bold** and *italic*\n- Code blocks\n- Links and more\n\n### Code Example\n\n```\nconst hello = 'world';\nconsole.log(hello);\n```\n\n> This is a blockquote\n\n---\n\n[Visit Google](https://google.com)";
         renderMarkdown();
     </script>
+
+<script src="tool-registry.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.ToolRegistry) {
+        ToolRegistry.renderSharedFooter();
+        ToolRegistry.renderToolFooter('markdown-preview');
+    }
+});
+</script>
 </body>
 </html>

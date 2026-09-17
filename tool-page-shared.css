@@ -1,0 +1,26 @@
+/* Shared styles for registry-injected sections on tool pages */
+.registry-related { margin-top: 2.5rem; }
+.registry-related h2, .registry-howto h2 {
+    font-size: 1.1rem; font-weight: 700; color: var(--text-primary);
+    margin-bottom: 1rem; letter-spacing: -0.01em;
+}
+.related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.75rem; }
+.related-card {
+    display: flex; align-items: center; gap: 0.6rem;
+    padding: 0.8rem 1rem; border: 1px solid var(--glass-border); border-radius: 12px;
+    background: var(--glass-bg); color: var(--text-secondary); text-decoration: none;
+    font-size: 0.85rem; font-weight: 500; transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.related-card i { color: var(--accent-1); width: 18px; text-align: center; }
+.related-card:hover {
+    border-color: rgba(var(--accent-1-rgb), 0.3); color: var(--text-primary);
+    transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+.related-card:focus-visible { outline: 2px solid var(--accent-1); outline-offset: 2px; }
+.registry-note {
+    margin-top: 2rem; text-align: center; color: var(--text-muted);
+    font-size: 0.8rem; opacity: 0.8;
+}
+html.light .related-card:hover { box-shadow: 0 6px 18px rgba(0,0,0,0.08); }
+@media (prefers-reduced-motion: reduce) { .related-card { transition: none; } }

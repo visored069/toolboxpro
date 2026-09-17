@@ -58,6 +58,7 @@
         .diff-stat.same { background: rgba(108,92,231,0.15); color: #a29bfe; }
         @media (max-width: 768px) { .diff-container { grid-template-columns: 1fr; } }
     </style>
+<link rel="stylesheet" href="tool-page-shared.css">
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to content</a>
@@ -123,7 +124,7 @@ And an extra line.</textarea>
 
     <footer>
         <div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;">
-            <p>© 2025 ToolBox Pro. All rights reserved.</p>
+            <p>© 2026 ToolBox Pro. All rights reserved.</p>
         </div>
     </footer>
 
@@ -258,5 +259,15 @@ And an extra line.</textarea>
 
         compareDiff();
     </script>
+
+<script src="tool-registry.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.ToolRegistry) {
+        ToolRegistry.renderSharedFooter();
+        ToolRegistry.renderToolFooter('text-diff-checker');
+    }
+});
+</script>
 </body>
 </html>

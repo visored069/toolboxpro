@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToolBox Pro - Free Online Developer Tools</title>
-    <meta name="description" content="Free online developer tools + AI Tools Directory with 200+ curated AI tools for writing, coding, design, video, and more. JSON formatter, password generator, QR code creator, and 20+ tools.">
+    <meta name="description" content="Free online developer tools + AI Tools Directory with 80+ curated AI tools for writing, coding, design, video, and more. JSON formatter, password generator, QR code creator, and 20+ tools.">
     <meta name="keywords" content="developer tools, online tools, json formatter, password generator, qr code, color picker, uuid generator, free tools, AI tools, AI directory, best AI tools 2026, ChatGPT, Claude, AI writing tools, AI code generators">
     <meta name="author" content="ToolBox Pro">
     <meta name="robots" content="index, follow">
@@ -531,7 +531,14 @@
     </div>
 
 
+    <script src="tool-registry.js"></script>
     <script src="components.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Category tab counts generated from the central registry — never hardcoded
+        if (window.ToolRegistry) ToolRegistry.updateGridCounts();
+    });
+    </script>
 
     <!-- Animation Libraries (Lenis + GSAP + ScrollTrigger + Tilt + Motion) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>

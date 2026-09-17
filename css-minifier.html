@@ -18,6 +18,7 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="tool-page-shared.css">
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to content</a>
@@ -74,7 +75,7 @@
 
     <footer>
         <div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;">
-            <p>© 2025 ToolBox Pro. All rights reserved.</p>
+            <p>© 2026 ToolBox Pro. All rights reserved.</p>
         </div>
     </footer>
 
@@ -199,5 +200,15 @@
             }
         }
     </script>
+
+<script src="tool-registry.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.ToolRegistry) {
+        ToolRegistry.renderSharedFooter();
+        ToolRegistry.renderToolFooter('css-minifier');
+    }
+});
+</script>
 </body>
 </html>

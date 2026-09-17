@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Tools Directory — 200+ Best AI Tools in 2026 | ToolBox Pro</title>
-    <meta name="description" content="Discover the best AI tools of 2026. Curated directory of 200+ AI tools for writing, coding, design, marketing, video, audio, and more. Free ratings, comparisons, and reviews.">
+    <title>AI Tools Directory — 80+ Best AI Tools in 2026 | ToolBox Pro</title>
+    <meta name="description" content="Discover the best AI tools of 2026. Curated directory of 80+ hand-picked AI tools for writing, coding, design, marketing, video, audio, and more. Free ratings, comparisons, and reviews.">
     <meta name="keywords" content="AI tools, best AI tools 2026, AI directory, ChatGPT alternatives, AI writing tools, AI code generators, AI image generators, AI video tools, free AI tools">
     <meta name="author" content="ToolBox Pro">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://toolboxpro-theta.vercel.app/ai-tools.html">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolboxpro-theta.vercel.app/ai-tools.html">
-    <meta property="og:title" content="AI Tools Directory — 200+ Best AI Tools in 2026">
-    <meta property="og:description" content="Curated directory of 200+ AI tools. Free ratings, comparisons, and reviews.">
+    <meta property="og:title" content="AI Tools Directory — 80+ Best AI Tools in 2026">
+    <meta property="og:description" content="Curated directory of 80+ hand-picked AI tools. Free ratings, comparisons, and reviews.">
     <meta property="og:image" content="https://toolboxpro-theta.vercel.app/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AI Tools Directory — 200+ Best AI Tools in 2026">
-    <meta name="twitter:description" content="Curated directory of 200+ AI tools. Free ratings, comparisons, and reviews.">
+    <meta name="twitter:title" content="AI Tools Directory — 80+ Best AI Tools in 2026">
+    <meta name="twitter:description" content="Curated directory of 80+ hand-picked AI tools. Free ratings, comparisons, and reviews.">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -27,7 +27,7 @@
         "@context": "https://schema.org",
         "@type": "CollectionPage",
         "name": "AI Tools Directory",
-        "description": "Curated directory of 200+ AI tools for 2026",
+        "description": "Curated directory of 80+ hand-picked AI tools for 2026",
         "url": "https://toolboxpro-theta.vercel.app/ai-tools.html",
         "mainEntity": {
             "@type": "ItemList",
@@ -635,15 +635,15 @@
     <!-- Hero -->
     <section class="directory-hero">
         <h1>The Ultimate AI Tools<br>Directory for 2026</h1>
-        <p>Discover, compare, and choose from 200+ curated AI tools. Updated weekly with new releases and honest reviews.</p>
+        <p>Discover, compare, and choose from 80+ hand-picked AI tools, with new tools added as we review them.</p>
         <div class="directory-search">
             <i class="fas fa-search search-icon"></i>
-            <input type="text" id="ai-search" placeholder="Search 200+ AI tools..." autocomplete="off">
+            <input type="text" id="ai-search" placeholder="Search 80+ AI tools..." autocomplete="off">
             <span class="search-count" id="search-count">200 tools</span>
         </div>
         <div class="category-pills" id="category-pills"></div>
         <div class="directory-stats">
-            <div class="stat"><div class="stat-num">200+</div><div class="stat-label">AI Tools Listed</div></div>
+            <div class="stat"><div class="stat-num" id="stat-tools-count">0</div><div class="stat-label">AI Tools Listed</div></div>
             <div class="stat"><div class="stat-num">15</div><div class="stat-label">Categories</div></div>
             <div class="stat"><div class="stat-num">Weekly</div><div class="stat-label">Updated</div></div>
         </div>
@@ -886,9 +886,9 @@
     // Render category pills
     function renderPills() {
         const container = document.getElementById('category-pills');
-        let html = `<button class="category-pill active" onclick="filterCategory('All')">All <span class="pill-count">${AI_TOOLS.length}</span></button>`;
+        let html = `<button class="category-pill active" onclick="filterCategory('All', this)">All <span class="pill-count">${AI_TOOLS.length}</span></button>`;
         CATEGORIES.forEach(c => {
-            html += `<button class="category-pill" onclick="filterCategory('${c}')">${c} <span class="pill-count">${CATEGORY_COUNTS[c]}</span></button>`;
+            html += `<button class="category-pill" onclick="filterCategory('${c}', this)">${c} <span class="pill-count">${CATEGORY_COUNTS[c]}</span></button>`;
         });
         container.innerHTML = html;
     }
@@ -950,10 +950,10 @@
         document.getElementById('all-tools-heading').textContent = activeCategory === 'All' ? 'All AI Tools' : activeCategory;
     }
 
-    function filterCategory(cat) {
+    function filterCategory(cat, btn) {
         activeCategory = cat;
         document.querySelectorAll('.category-pill').forEach(p => p.classList.remove('active'));
-        event.target.closest('.category-pill').classList.add('active');
+        if (btn) btn.classList.add('active');
         renderGrid();
     }
 
@@ -967,6 +967,9 @@
     renderPills();
     renderFeatured();
     renderGrid();
+    // Stat generated from the actual registry — never hardcoded
+    var statCount = document.getElementById('stat-tools-count');
+    if (statCount) statCount.textContent = AI_TOOLS.length + '+';
 
     // Preloader
     window.addEventListener('load', () => {
