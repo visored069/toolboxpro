@@ -161,8 +161,15 @@ function toggleFaq(button) {
     var icon = button.querySelector('i');
     var isOpen = answer.style.display === 'block';
     document.querySelectorAll('.faq-answer').forEach(function(a) { a.style.display = 'none'; });
+    document.querySelectorAll('.faq-item').forEach(function(item) { item.classList.remove('open'); });
+    document.querySelectorAll('.faq-item button').forEach(function(b) { b.setAttribute('aria-expanded', 'false'); });
     document.querySelectorAll('.faq-item button i').forEach(function(i) { i.style.transform = 'rotate(0deg)'; });
-    if (!isOpen) { answer.style.display = 'block'; if (icon) icon.style.transform = 'rotate(180deg)'; }
+    if (!isOpen) {
+        answer.style.display = 'block';
+        button.setAttribute('aria-expanded', 'true');
+        button.closest('.faq-item').classList.add('open');
+        if (icon) icon.style.transform = 'rotate(180deg)';
+    }
 }
 
 // --- Search & Filter ---

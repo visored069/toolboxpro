@@ -68,6 +68,7 @@
     </script>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- Preloader -->
     <div class="preloader" id="preloader">
@@ -96,23 +97,23 @@
     <a href="#main-content" class="skip-link">Skip to content</a>
     <!-- Cinematic background layers -->
     <canvas id="particle-canvas"></canvas>
-    <div class="bg-animation"></div>
+    <div class="bg-animation" aria-hidden="true"></div>
     <div class="cosmic-grid"></div>
     <div class="scanlines"></div>
     <div class="aurora"></div>
     <div class="nebula"></div>
-    <div class="cursor-spotlight" id="cursor-spotlight"></div>
-    <div class="cursor-spotlight-ring" id="cursor-spotlight-ring"></div>
-    <div class="click-bursts" id="click-bursts"></div>
-    <div class="floating-shapes" id="floating-shapes"></div>
-    <div class="code-symbols" id="code-symbols"></div>
-    <div class="ambient-blobs">
+    <div class="cursor-spotlight" id="cursor-spotlight" aria-hidden="true"></div>
+    <div class="cursor-spotlight-ring" id="cursor-spotlight-ring" aria-hidden="true"></div>
+    <div class="click-bursts" id="click-bursts" aria-hidden="true"></div>
+    <div class="floating-shapes" id="floating-shapes" aria-hidden="true"></div>
+    <div class="code-symbols" id="code-symbols" aria-hidden="true"></div>
+    <div class="ambient-blobs" aria-hidden="true">
         <div class="ambient-blob"></div>
         <div class="ambient-blob"></div>
         <div class="ambient-blob"></div>
         <div class="ambient-blob"></div>
     </div>
-    <div class="particles" id="particles"></div>
+    <div class="particles" id="particles" aria-hidden="true"></div>
 
     <header>
         <div class="header-content">
@@ -252,85 +253,85 @@
                     <div class="tool-icon"><i class="fas fa-code"></i></div>
                     <h3>JSON Formatter</h3>
                     <p>Format, validate, and beautify your JSON data instantly.</p>
-                    <span class="tool-tag">Developer</span>
+                    <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="word-counter" class="tool-card" data-name="Word Counter" data-tags="word count characters sentences paragraphs" data-category="Writing">
                     <div class="tool-icon"><i class="fas fa-font"></i></div>
                     <h3>Word Counter</h3>
                     <p>Count words, characters, sentences, and paragraphs.</p>
-                    <span class="tool-tag">Writing</span>
+                    <div class="tool-card-footer"><span class="tool-tag">Writing</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="password-generator" class="tool-card" data-name="Password Generator" data-tags="password generate secure random" data-category="Security">
                     <div class="tool-icon"><i class="fas fa-lock"></i></div>
                     <h3>Password Generator</h3>
                     <p>Generate strong, secure passwords instantly.</p>
-                    <span class="tool-tag">Security</span>
+                    <div class="tool-card-footer"><span class="tool-tag">Security</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="color-picker" class="tool-card" data-name="Color Picker" data-tags="color hex rgb hsl pick palette design" data-category="Design">
                     <div class="tool-icon"><i class="fas fa-palette"></i></div>
                     <h3>Color Picker</h3>
                     <p>Pick colors and get HEX, RGB, HSL values.</p>
-                    <span class="tool-tag">Design</span>
+                    <div class="tool-card-footer"><span class="tool-tag">Design</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="base64-encoder-decoder" class="tool-card" data-name="Base64 Encoder/Decoder" data-tags="base64 encode decode" data-category="Developer">
                     <div class="tool-icon"><i class="fas fa-exchange-alt"></i></div>
                     <h3>Base64 Encoder/Decoder</h3>
                     <p>Encode and decode Base64 strings easily.</p>
-                    <span class="tool-tag">Developer</span>
+                    <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="url-encoder-decoder" class="tool-card" data-name="URL Encoder/Decoder" data-tags="url encode decode percent" data-category="Developer">
                     <div class="tool-icon"><i class="fas fa-link"></i></div>
                     <h3>URL Encoder/Decoder</h3>
                     <p>Encode and decode URLs for web development.</p>
-                    <span class="tool-tag">Developer</span>
+                    <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="lorem-ipsum-generator" class="tool-card" data-name="Lorem Ipsum Generator" data-tags="lorem ipsum placeholder text dummy" data-category="Design">
                     <div class="tool-icon"><i class="fas fa-paragraph"></i></div>
                     <h3>Lorem Ipsum Generator</h3>
                     <p>Generate placeholder text for your designs.</p>
-                    <span class="tool-tag">Design</span>
+                    <div class="tool-card-footer"><span class="tool-tag">Design</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="qr-code-generator" class="tool-card" data-name="QR Code Generator" data-tags="qr code generate scan" data-category="Utility">
                     <div class="tool-icon"><i class="fas fa-qrcode"></i></div>
                     <h3>QR Code Generator</h3>
                     <p>Create QR codes for any text or URL.</p>
-                    <span class="tool-tag">Utility</span>
+                    <div class="tool-card-footer"><span class="tool-tag">Utility</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="hash-generator" class="tool-card" data-name="Hash Generator" data-tags="hash md5 sha1 sha256" data-category="Security">
                     <div class="tool-icon"><i class="fas fa-fingerprint"></i></div>
                     <h3>Hash Generator</h3>
                     <p>Generate MD5, SHA-1, and SHA-256 hashes.</p>
-                    <span class="tool-tag">Security</span>
+                    <div class="tool-card-footer"><span class="tool-tag">Security</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="text-case-converter" class="tool-card" data-name="Text Case Converter" data-tags="text case upper lower title sentence" data-category="Writing">
                     <div class="tool-icon"><i class="fas fa-text-height"></i></div>
                     <h3>Text Case Converter</h3>
                     <p>Convert text to UPPERCASE, lowercase, Title Case & more.</p>
-                    <span class="tool-tag">Writing</span>
+                    <div class="tool-card-footer"><span class="tool-tag">Writing</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="uuid-generator" class="tool-card" data-name="UUID Generator" data-tags="uuid guid generate unique identifier" data-category="Developer">
                     <div class="tool-icon"><i class="fas fa-random"></i></div>
                     <h3>UUID Generator</h3>
                     <p>Generate cryptographically secure UUID v4 identifiers.</p>
-                    <span class="tool-tag">Developer</span>
+                    <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="json-to-csv" class="tool-card" data-name="JSON to CSV" data-tags="json csv convert export spreadsheet" data-category="Developer">
                     <div class="tool-icon"><i class="fas fa-file-csv"></i></div>
                     <h3>JSON to CSV</h3>
                     <p>Convert JSON arrays to CSV format with one click.</p>
-                    <span class="tool-tag">Developer</span>
+                    <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="regex-tester" class="tool-card" data-name="Regex Tester" data-tags="regex regular expression pattern match test" data-category="Developer">
                     <div class="tool-icon"><i class="fas fa-search"></i></div>
                     <h3>Regex Tester</h3>
                     <p>Test regular expressions with real-time matching.</p>
-                    <span class="tool-tag">Developer</span>
+                    <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="markdown-preview" class="tool-card" data-name="Markdown Preview" data-tags="markdown md preview editor render" data-category="Developer">
                     <div class="tool-icon"><i class="fas fa-eye"></i></div>
                     <h3>Markdown Preview</h3>
                     <p>Write Markdown and see live preview instantly.</p>
-                    <span class="tool-tag">Developer</span>
+                    <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <!-- NEW TOOLS -->
                 <a href="css-minifier" class="tool-card" data-name="CSS Minifier" data-tags="css minify compress beautify format stylesheet" data-category="Developer">
@@ -338,42 +339,42 @@
                     <div class="tool-icon"><i class="fas fa-compress-arrows-alt"></i></div>
                     <h3>CSS Minifier</h3>
                     <p>Minify and beautify CSS code to reduce file size.</p>
-                    <span class="tool-tag">Developer</span>
+                    <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="timestamp-converter" class="tool-card" data-name="Timestamp Converter" data-tags="timestamp unix date time convert epoch" data-category="Developer">
                     <span class="tool-new-badge">NEW</span>
                     <div class="tool-icon"><i class="fas fa-clock"></i></div>
                     <h3>Timestamp Converter</h3>
                     <p>Convert Unix timestamps to human-readable dates.</p>
-                    <span class="tool-tag">Developer</span>
+                    <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="ip-lookup" class="tool-card" data-name="IP Lookup" data-tags="ip address lookup location geolocation" data-category="Utility">
                     <span class="tool-new-badge">NEW</span>
                     <div class="tool-icon"><i class="fas fa-globe"></i></div>
                     <h3>IP Lookup</h3>
                     <p>Check your public IP address and connection details.</p>
-                    <span class="tool-tag">Utility</span>
+                    <div class="tool-card-footer"><span class="tool-tag">Utility</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="random-number-generator" class="tool-card" data-name="Random Number Generator" data-tags="random number integer decimal dice" data-category="Utility">
                     <span class="tool-new-badge">NEW</span>
                     <div class="tool-icon"><i class="fas fa-dice"></i></div>
                     <h3>Random Number Generator</h3>
                     <p>Generate secure random integers and decimals.</p>
-                    <span class="tool-tag">Utility</span>
+                    <div class="tool-card-footer"><span class="tool-tag">Utility</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="html-to-text" class="tool-card" data-name="HTML to Text" data-tags="html strip tags text extract convert" data-category="Developer">
                     <span class="tool-new-badge">NEW</span>
                     <div class="tool-icon"><i class="fas fa-file-alt"></i></div>
                     <h3>HTML to Text</h3>
                     <p>Strip HTML tags and extract clean text instantly.</p>
-                    <span class="tool-tag">Developer</span>
+                    <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="text-diff-checker" class="tool-card" data-name="Text Diff Checker" data-tags="text diff compare difference highlight" data-category="Writing">
                     <span class="tool-new-badge">NEW</span>
                     <div class="tool-icon"><i class="fas fa-not-equal"></i></div>
                     <h3>Text Diff Checker</h3>
                     <p>Compare two texts side by side and find differences.</p>
-                    <span class="tool-tag">Writing</span>
+                    <div class="tool-card-footer"><span class="tool-tag">Writing</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
             </div>
         </section>
@@ -381,14 +382,14 @@
         <section class="section" id="faq">
             <div class="section-header"><h2>❓ Frequently Asked Questions</h2><span class="badge">FAQ</span></div>
             <div style="max-width:800px;margin:0 auto;">
-                <div class="faq-item"><button onclick="toggleFaq(this)">Are these tools really free? <i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Yes, absolutely! All tools on ToolBox Pro are 100% free with no hidden charges.</p></div></div>
-                <div class="faq-item"><button onclick="toggleFaq(this)">Do I need to create an account? <i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>No account needed! Simply visit the website and start using any tool instantly.</p></div></div>
-                <div class="faq-item"><button onclick="toggleFaq(this)">Is my data safe and private? <i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Yes! All tools run entirely in your browser. Your data never leaves your device.</p></div></div>
-                <div class="faq-item"><button onclick="toggleFaq(this)">Can I use these tools on mobile? <i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Absolutely! All tools are fully responsive and work on all devices.</p></div></div>
-                <div class="faq-item"><button onclick="toggleFaq(this)">How does the JSON Formatter work? <i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Paste your JSON, click "Format" to beautify, "Minify" to compress, or "Validate" to check.</p></div></div>
-                <div class="faq-item"><button onclick="toggleFaq(this)">Are the generated passwords secure? <i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Yes! Our password generator uses the Web Crypto API for cryptographically secure random numbers.</p></div></div>
-                <div class="faq-item"><button onclick="toggleFaq(this)">Can I use these for commercial purposes? <i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Yes! You're free to use the output of any tool for personal and commercial projects.</p></div></div>
-                <div class="faq-item"><button onclick="toggleFaq(this)">How can I request a new tool? <i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Contact us at support@toolboxpro-theta.vercel.app with your suggestion.</p></div></div>
+                <div class="faq-item"><button onclick="toggleFaq(this)" aria-expanded="false">Are these tools really free? <i class="fas fa-chevron-down" aria-hidden="true"></i></button><div class="faq-answer"><p>Yes, absolutely! All tools on ToolBox Pro are 100% free with no hidden charges.</p></div></div>
+                <div class="faq-item"><button onclick="toggleFaq(this)" aria-expanded="false">Do I need to create an account? <i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>No account needed! Simply visit the website and start using any tool instantly.</p></div></div>
+                <div class="faq-item"><button onclick="toggleFaq(this)" aria-expanded="false">Is my data safe and private? <i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Yes! All tools run entirely in your browser. Your data never leaves your device.</p></div></div>
+                <div class="faq-item"><button onclick="toggleFaq(this)" aria-expanded="false">Can I use these tools on mobile? <i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Absolutely! All tools are fully responsive and work on all devices.</p></div></div>
+                <div class="faq-item"><button onclick="toggleFaq(this)" aria-expanded="false">How does the JSON Formatter work? <i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Paste your JSON, click "Format" to beautify, "Minify" to compress, or "Validate" to check.</p></div></div>
+                <div class="faq-item"><button onclick="toggleFaq(this)" aria-expanded="false">Are the generated passwords secure? <i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Yes! Our password generator uses the Web Crypto API for cryptographically secure random numbers.</p></div></div>
+                <div class="faq-item"><button onclick="toggleFaq(this)" aria-expanded="false">Can I use these for commercial purposes? <i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Yes! You're free to use the output of any tool for personal and commercial projects.</p></div></div>
+                <div class="faq-item"><button onclick="toggleFaq(this)" aria-expanded="false">How can I request a new tool? <i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Contact us at support@toolboxpro-theta.vercel.app with your suggestion.</p></div></div>
             </div>
         </section>
     </main>
@@ -398,18 +399,52 @@
             <div>
                 <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;">
                     <div style="width:35px;height:35px;background:var(--gradient-1);border-radius:8px;display:flex;align-items:center;justify-content:center;">
-                        <i class="fas fa-toolbox" style="color:white;"></i>
+                        <i class="fas fa-toolbox" style="color:white;" aria-hidden="true"></i>
                     </div>
                     <span style="font-weight:700;font-size:1.1rem;">ToolBox Pro</span>
                 </div>
                 <p style="color:var(--text-secondary);font-size:0.85rem;">Free online developer tools for everyone.</p>
             </div>
-            <div><h4>Quick Links</h4><ul><li><a href="/">Home</a></li><li><a href="about">About Us</a></li><li><a href="contact">Contact</a></li></ul></div>
-            <div><h4>Legal</h4><ul><li><a href="privacy">Privacy Policy</a></li><li><a href="terms">Terms of Service</a></li></ul></div>
-            <div><h4>Connect</h4><div class="social-links"><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a><a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a><a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a><div><h4>More</h4><ul><li><a href="best-free-ai-image-generators">AI Image Generators Guide</a></li></ul></div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="ai-tools">AI Tools Directory</a></li>
+                    <li><a href="guides">Guides</a></li>
+                    <li><a href="about">About Us</a></li>
+                    <li><a href="contact">Contact</a></li>
+                </ul>
             </div>
-            <div><h4>Legal</h4><ul><li><a href="privacy">Privacy Policy</a></li><li><a href="terms">Terms of Service</a></li></ul></div>
-            <div><h4>Connect</h4><div class="social-links"><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a><a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a><a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a></div></div>
+            <div>
+                <h4>Popular Tools</h4>
+                <ul>
+                    <li><a href="json-formatter">JSON Formatter</a></li>
+                    <li><a href="password-generator">Password Generator</a></li>
+                    <li><a href="qr-code-generator">QR Code Generator</a></li>
+                    <li><a href="word-counter">Word Counter</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Guides</h4>
+                <ul>
+                    <li><a href="best-free-ai-image-generators">Best Free AI Image Generators (2026)</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="privacy">Privacy Policy</a></li>
+                    <li><a href="terms">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Connect</h4>
+                <div class="social-links">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="Discord"><i class="fab fa-discord" aria-hidden="true"></i></a>
+                </div>
+            </div>
         </div>
         <div class="footer-bottom"><p>© 2026 ToolBox Pro. All rights reserved. Built with ❤️</p><p style="margin-top:8px;font-size:inherit;color:inherit;">Built by <a href="https://x.com/portfoliomate/status/2098498135396090165" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Portfolio Mate</a> — I design and build sites like this one. <a href="https://x.com/portfoliomate/status/2098498135396090165" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">See my work →</a></p></div>
     </footer>
