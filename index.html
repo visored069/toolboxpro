@@ -28,8 +28,12 @@
     <meta name="theme-color" content="#6c5ce7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2">
     <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css">
     <link rel="stylesheet" href="styles.css">
     <style>
@@ -123,7 +127,7 @@
     <header>
         <div class="header-content">
             <a href="/" class="logo" aria-label="ToolBox Pro Home">
-                <div class="logo-icon"><i class="fas fa-toolbox"></i></div>
+                <div class="logo-icon"><i class="fas fa-toolbox" aria-hidden="true"></i></div>
                 <span class="logo-text">ToolBox</span>
                 <span class="logo-badge">PRO</span>
             </a>
@@ -139,7 +143,7 @@
                 <a href="about" id="nav-about">About</a>
                 <a href="contact" id="nav-contact">Contact</a>
                 <a href="privacy" id="nav-privacy">Privacy</a>
-                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-sun"></i></button>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-sun" aria-hidden="true"></i></button>
             </nav>
         </div>
     </header>
@@ -150,8 +154,8 @@
             <h1 class="typewriter-text" id="typewriter-text">Every developer utility.<br><span>One place.</span></h1>
             <p>20+ free tools that run entirely in your browser — fast, private, and always available. No signup, no uploads, no tracking of your data.</p>
             <div class="hero-ctas">
-                <a href="#tools" class="hero-btn primary"><i class="fas fa-compass"></i> Explore Tools</a>
-                <a href="#" id="surprise-btn" class="hero-btn ghost"><i class="fas fa-dice"></i> Surprise Me ⚡</a>
+                <a href="#tools" class="hero-btn primary"><i class="fas fa-compass" aria-hidden="true"></i> Explore Tools</a>
+                <a href="#" id="surprise-btn" class="hero-btn ghost"><i class="fas fa-dice" aria-hidden="true"></i> Surprise Me ⚡</a>
             </div>
             <div class="hero-stats">
                 <div class="stat"><div class="stat-number" data-stat="count">20+</div><div class="stat-label">Tools</div></div>
@@ -171,7 +175,7 @@
                         <div style="font-size:0.85rem;color:rgba(255,255,255,0.5);">Discover the best AI tools for writing, coding, design, video, and more</div>
                     </div>
                 </div>
-                <div style="color:#818cf8;font-weight:600;display:flex;align-items:center;gap:8px;white-space:nowrap;">Explore <i class="fas fa-arrow-right"></i></div>
+                <div style="color:#818cf8;font-weight:600;display:flex;align-items:center;gap:8px;white-space:nowrap;">Explore <i class="fas fa-arrow-right" aria-hidden="true"></i></div>
             </div>
         </a>
 
@@ -228,12 +232,12 @@
 
             <!-- Search Bar (Morphing Expanding) -->
             <div class="search-container" id="search-container">
-                <i class="fas fa-search search-icon"></i>
+                <i class="fas fa-search search-icon" aria-hidden="true"></i>
                 <input type="text" class="search-input" id="tool-search" placeholder="Search tools... (e.g. json, password, color)" aria-label="Search tools" autocomplete="off" role="searchbox">
-                <button class="search-clear" id="search-clear" onclick="clearSearch()" aria-label="Clear search"><i class="fas fa-times"></i></button>
+                <button class="search-clear" id="search-clear" onclick="clearSearch()" aria-label="Clear search"><i class="fas fa-times" aria-hidden="true"></i></button>
                 <div class="search-count" id="search-count" style="display:none;" aria-live="polite"></div>
                 <div class="recent-searches" id="recent-searches" style="display:none;" aria-label="Recent searches">
-                    <span class="recent-label"><i class="fas fa-clock-rotate-left"></i> Recent</span>
+                    <span class="recent-label"><i class="fas fa-clock-rotate-left" aria-hidden="true"></i> Recent</span>
                     <div class="recent-chips" id="recent-chips"></div>
                     <button class="recent-clear" onclick="clearAllRecentSearches()" aria-label="Clear recent searches">Clear</button>
                 </div>
@@ -241,18 +245,18 @@
 
             <!-- Category Filters -->
             <div class="filter-tabs" role="tablist" aria-label="Filter tools by category" id="filter-tabs" tabindex="0">
-                <button class="filter-tab active" data-category="all" onclick="setCategory('all')" role="tab" aria-selected="true"><i class="fas fa-grip"></i> All <span class="tab-count">20</span></button>
-                <button class="filter-tab" data-category="Developer" onclick="setCategory('Developer')" role="tab" aria-selected="false"><i class="fas fa-code"></i> Developer <span class="tab-count">11</span></button>
-                <button class="filter-tab" data-category="Security" onclick="setCategory('Security')" role="tab" aria-selected="false"><i class="fas fa-shield-halved"></i> Security <span class="tab-count">2</span></button>
-                <button class="filter-tab" data-category="Writing" onclick="setCategory('Writing')" role="tab" aria-selected="false"><i class="fas fa-pen-nib"></i> Writing <span class="tab-count">3</span></button>
-                <button class="filter-tab" data-category="Design" onclick="setCategory('Design')" role="tab" aria-selected="false"><i class="fas fa-palette"></i> Design <span class="tab-count">2</span></button>
-                <button class="filter-tab" data-category="Utility" onclick="setCategory('Utility')" role="tab" aria-selected="false"><i class="fas fa-screwdriver-wrench"></i> Utility <span class="tab-count">3</span></button>
+                <button class="filter-tab active" data-category="all" onclick="setCategory('all')" role="tab" aria-selected="true"><i class="fas fa-grip" aria-hidden="true"></i> All <span class="tab-count">20</span></button>
+                <button class="filter-tab" data-category="Developer" onclick="setCategory('Developer')" role="tab" aria-selected="false"><i class="fas fa-code" aria-hidden="true"></i> Developer <span class="tab-count">11</span></button>
+                <button class="filter-tab" data-category="Security" onclick="setCategory('Security')" role="tab" aria-selected="false"><i class="fas fa-shield-halved" aria-hidden="true"></i> Security <span class="tab-count">2</span></button>
+                <button class="filter-tab" data-category="Writing" onclick="setCategory('Writing')" role="tab" aria-selected="false"><i class="fas fa-pen-nib" aria-hidden="true"></i> Writing <span class="tab-count">3</span></button>
+                <button class="filter-tab" data-category="Design" onclick="setCategory('Design')" role="tab" aria-selected="false"><i class="fas fa-palette" aria-hidden="true"></i> Design <span class="tab-count">2</span></button>
+                <button class="filter-tab" data-category="Utility" onclick="setCategory('Utility')" role="tab" aria-selected="false"><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i> Utility <span class="tab-count">3</span></button>
             </div>
 
             <!-- No results (empty state) -->
             <div class="no-results" id="no-results" style="display:none;" role="status">
                 <div class="no-results-icon" aria-hidden="true">
-                    <i class="fas fa-magnifying-glass"></i>
+                    <i class="fas fa-magnifying-glass" aria-hidden="true"></i>
                     <span class="no-results-q" id="no-results-q"></span>
                 </div>
                 <h3 id="no-results-title">No tools found</h3>
@@ -261,91 +265,91 @@
                     <span class="suggestion-label">Popular searches</span>
                     <div class="suggestion-chips" id="suggestion-chips"></div>
                 </div>
-                <button class="btn-primary no-results-reset" onclick="resetAllFilters()"><i class="fas fa-rotate-left"></i> Reset search &amp; filters</button>
+                <button class="btn-primary no-results-reset" onclick="resetAllFilters()"><i class="fas fa-rotate-left" aria-hidden="true"></i> Reset search &amp; filters</button>
             </div>
 
             <!-- Tools Grid -->
             <div class="tools-grid">
                 <a href="json-formatter" class="tool-card" data-name="JSON Formatter" data-tags="json format validate beautify" data-category="Developer">
-                    <div class="tool-icon"><i class="fas fa-code"></i></div>
+                    <div class="tool-icon"><i class="fas fa-code" aria-hidden="true"></i></div>
                     <h3>JSON Formatter</h3>
                     <p>Format, validate, and beautify your JSON data instantly.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="word-counter" class="tool-card" data-name="Word Counter" data-tags="word count characters sentences paragraphs" data-category="Writing">
-                    <div class="tool-icon"><i class="fas fa-font"></i></div>
+                    <div class="tool-icon"><i class="fas fa-font" aria-hidden="true"></i></div>
                     <h3>Word Counter</h3>
                     <p>Count words, characters, sentences, and paragraphs.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Writing</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="password-generator" class="tool-card" data-name="Password Generator" data-tags="password generate secure random" data-category="Security">
-                    <div class="tool-icon"><i class="fas fa-lock"></i></div>
+                    <div class="tool-icon"><i class="fas fa-lock" aria-hidden="true"></i></div>
                     <h3>Password Generator</h3>
                     <p>Generate strong, secure passwords instantly.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Security</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="color-picker" class="tool-card" data-name="Color Picker" data-tags="color hex rgb hsl pick palette design" data-category="Design">
-                    <div class="tool-icon"><i class="fas fa-palette"></i></div>
+                    <div class="tool-icon"><i class="fas fa-palette" aria-hidden="true"></i></div>
                     <h3>Color Picker</h3>
                     <p>Pick colors and get HEX, RGB, HSL values.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Design</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="base64-encoder-decoder" class="tool-card" data-name="Base64 Encoder/Decoder" data-tags="base64 encode decode" data-category="Developer">
-                    <div class="tool-icon"><i class="fas fa-exchange-alt"></i></div>
+                    <div class="tool-icon"><i class="fas fa-exchange-alt" aria-hidden="true"></i></div>
                     <h3>Base64 Encoder/Decoder</h3>
                     <p>Encode and decode Base64 strings easily.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="url-encoder-decoder" class="tool-card" data-name="URL Encoder/Decoder" data-tags="url encode decode percent" data-category="Developer">
-                    <div class="tool-icon"><i class="fas fa-link"></i></div>
+                    <div class="tool-icon"><i class="fas fa-link" aria-hidden="true"></i></div>
                     <h3>URL Encoder/Decoder</h3>
                     <p>Encode and decode URLs for web development.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="lorem-ipsum-generator" class="tool-card" data-name="Lorem Ipsum Generator" data-tags="lorem ipsum placeholder text dummy" data-category="Design">
-                    <div class="tool-icon"><i class="fas fa-paragraph"></i></div>
+                    <div class="tool-icon"><i class="fas fa-paragraph" aria-hidden="true"></i></div>
                     <h3>Lorem Ipsum Generator</h3>
                     <p>Generate placeholder text for your designs.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Design</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="qr-code-generator" class="tool-card" data-name="QR Code Generator" data-tags="qr code generate scan" data-category="Utility">
-                    <div class="tool-icon"><i class="fas fa-qrcode"></i></div>
+                    <div class="tool-icon"><i class="fas fa-qrcode" aria-hidden="true"></i></div>
                     <h3>QR Code Generator</h3>
                     <p>Create QR codes for any text or URL.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Utility</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="hash-generator" class="tool-card" data-name="Hash Generator" data-tags="hash md5 sha1 sha256" data-category="Security">
-                    <div class="tool-icon"><i class="fas fa-fingerprint"></i></div>
+                    <div class="tool-icon"><i class="fas fa-fingerprint" aria-hidden="true"></i></div>
                     <h3>Hash Generator</h3>
                     <p>Generate MD5, SHA-1, and SHA-256 hashes.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Security</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="text-case-converter" class="tool-card" data-name="Text Case Converter" data-tags="text case upper lower title sentence" data-category="Writing">
-                    <div class="tool-icon"><i class="fas fa-text-height"></i></div>
+                    <div class="tool-icon"><i class="fas fa-text-height" aria-hidden="true"></i></div>
                     <h3>Text Case Converter</h3>
                     <p>Convert text to UPPERCASE, lowercase, Title Case & more.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Writing</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="uuid-generator" class="tool-card" data-name="UUID Generator" data-tags="uuid guid generate unique identifier" data-category="Developer">
-                    <div class="tool-icon"><i class="fas fa-random"></i></div>
+                    <div class="tool-icon"><i class="fas fa-random" aria-hidden="true"></i></div>
                     <h3>UUID Generator</h3>
                     <p>Generate cryptographically secure UUID v4 identifiers.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="json-to-csv" class="tool-card" data-name="JSON to CSV" data-tags="json csv convert export spreadsheet" data-category="Developer">
-                    <div class="tool-icon"><i class="fas fa-file-csv"></i></div>
+                    <div class="tool-icon"><i class="fas fa-file-csv" aria-hidden="true"></i></div>
                     <h3>JSON to CSV</h3>
                     <p>Convert JSON arrays to CSV format with one click.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="regex-tester" class="tool-card" data-name="Regex Tester" data-tags="regex regular expression pattern match test" data-category="Developer">
-                    <div class="tool-icon"><i class="fas fa-search"></i></div>
+                    <div class="tool-icon"><i class="fas fa-search" aria-hidden="true"></i></div>
                     <h3>Regex Tester</h3>
                     <p>Test regular expressions with real-time matching.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="markdown-preview" class="tool-card" data-name="Markdown Preview" data-tags="markdown md preview editor render" data-category="Developer">
-                    <div class="tool-icon"><i class="fas fa-eye"></i></div>
+                    <div class="tool-icon"><i class="fas fa-eye" aria-hidden="true"></i></div>
                     <h3>Markdown Preview</h3>
                     <p>Write Markdown and see live preview instantly.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
@@ -353,42 +357,42 @@
                 <!-- NEW TOOLS -->
                 <a href="css-minifier" class="tool-card" data-name="CSS Minifier" data-tags="css minify compress beautify format stylesheet" data-category="Developer">
                     <span class="tool-new-badge">NEW</span>
-                    <div class="tool-icon"><i class="fas fa-compress-arrows-alt"></i></div>
+                    <div class="tool-icon"><i class="fas fa-compress-arrows-alt" aria-hidden="true"></i></div>
                     <h3>CSS Minifier</h3>
                     <p>Minify and beautify CSS code to reduce file size.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="timestamp-converter" class="tool-card" data-name="Timestamp Converter" data-tags="timestamp unix date time convert epoch" data-category="Developer">
                     <span class="tool-new-badge">NEW</span>
-                    <div class="tool-icon"><i class="fas fa-clock"></i></div>
+                    <div class="tool-icon"><i class="fas fa-clock" aria-hidden="true"></i></div>
                     <h3>Timestamp Converter</h3>
                     <p>Convert Unix timestamps to human-readable dates.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="ip-lookup" class="tool-card" data-name="IP Lookup" data-tags="ip address lookup location geolocation" data-category="Utility">
                     <span class="tool-new-badge">NEW</span>
-                    <div class="tool-icon"><i class="fas fa-globe"></i></div>
+                    <div class="tool-icon"><i class="fas fa-globe" aria-hidden="true"></i></div>
                     <h3>IP Lookup</h3>
                     <p>Check your public IP address and connection details.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Utility</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="random-number-generator" class="tool-card" data-name="Random Number Generator" data-tags="random number integer decimal dice" data-category="Utility">
                     <span class="tool-new-badge">NEW</span>
-                    <div class="tool-icon"><i class="fas fa-dice"></i></div>
+                    <div class="tool-icon"><i class="fas fa-dice" aria-hidden="true"></i></div>
                     <h3>Random Number Generator</h3>
                     <p>Generate secure random integers and decimals.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Utility</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="html-to-text" class="tool-card" data-name="HTML to Text" data-tags="html strip tags text extract convert" data-category="Developer">
                     <span class="tool-new-badge">NEW</span>
-                    <div class="tool-icon"><i class="fas fa-file-alt"></i></div>
+                    <div class="tool-icon"><i class="fas fa-file-alt" aria-hidden="true"></i></div>
                     <h3>HTML to Text</h3>
                     <p>Strip HTML tags and extract clean text instantly.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <a href="text-diff-checker" class="tool-card" data-name="Text Diff Checker" data-tags="text diff compare difference highlight" data-category="Writing">
                     <span class="tool-new-badge">NEW</span>
-                    <div class="tool-icon"><i class="fas fa-not-equal"></i></div>
+                    <div class="tool-icon"><i class="fas fa-not-equal" aria-hidden="true"></i></div>
                     <h3>Text Diff Checker</h3>
                     <p>Compare two texts side by side and find differences.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Writing</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
@@ -400,13 +404,13 @@
             <div class="section-header"><h2>❓ Frequently Asked Questions</h2><span class="badge">FAQ</span></div>
             <div style="max-width:800px;margin:0 auto;">
                 <div class="faq-item"><button onclick="toggleFaq(this)" aria-expanded="false">Are these tools really free? <i class="fas fa-chevron-down" aria-hidden="true"></i></button><div class="faq-answer"><p>Yes, absolutely! All tools on ToolBox Pro are 100% free with no hidden charges.</p></div></div>
-                <div class="faq-item"><button onclick="toggleFaq(this)" aria-expanded="false">Do I need to create an account? <i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>No account needed! Simply visit the website and start using any tool instantly.</p></div></div>
-                <div class="faq-item"><button onclick="toggleFaq(this)" aria-expanded="false">Is my data safe and private? <i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Yes! All tools run entirely in your browser. Your data never leaves your device.</p></div></div>
-                <div class="faq-item"><button onclick="toggleFaq(this)" aria-expanded="false">Can I use these tools on mobile? <i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Absolutely! All tools are fully responsive and work on all devices.</p></div></div>
-                <div class="faq-item"><button onclick="toggleFaq(this)" aria-expanded="false">How does the JSON Formatter work? <i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Paste your JSON, click "Format" to beautify, "Minify" to compress, or "Validate" to check.</p></div></div>
-                <div class="faq-item"><button onclick="toggleFaq(this)" aria-expanded="false">Are the generated passwords secure? <i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Yes! Our password generator uses the Web Crypto API for cryptographically secure random numbers.</p></div></div>
-                <div class="faq-item"><button onclick="toggleFaq(this)" aria-expanded="false">Can I use these for commercial purposes? <i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Yes! You're free to use the output of any tool for personal and commercial projects.</p></div></div>
-                <div class="faq-item"><button onclick="toggleFaq(this)" aria-expanded="false">How can I request a new tool? <i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Contact us at support@toolboxpro-theta.vercel.app with your suggestion.</p></div></div>
+                <div class="faq-item"><button onclick="toggleFaq(this)" aria-expanded="false">Do I need to create an account? <i class="fas fa-chevron-down" aria-hidden="true"></i></button><div class="faq-answer"><p>No account needed! Simply visit the website and start using any tool instantly.</p></div></div>
+                <div class="faq-item"><button onclick="toggleFaq(this)" aria-expanded="false">Is my data safe and private? <i class="fas fa-chevron-down" aria-hidden="true"></i></button><div class="faq-answer"><p>Yes! All tools run entirely in your browser. Your data never leaves your device.</p></div></div>
+                <div class="faq-item"><button onclick="toggleFaq(this)" aria-expanded="false">Can I use these tools on mobile? <i class="fas fa-chevron-down" aria-hidden="true"></i></button><div class="faq-answer"><p>Absolutely! All tools are fully responsive and work on all devices.</p></div></div>
+                <div class="faq-item"><button onclick="toggleFaq(this)" aria-expanded="false">How does the JSON Formatter work? <i class="fas fa-chevron-down" aria-hidden="true"></i></button><div class="faq-answer"><p>Paste your JSON, click "Format" to beautify, "Minify" to compress, or "Validate" to check.</p></div></div>
+                <div class="faq-item"><button onclick="toggleFaq(this)" aria-expanded="false">Are the generated passwords secure? <i class="fas fa-chevron-down" aria-hidden="true"></i></button><div class="faq-answer"><p>Yes! Our password generator uses the Web Crypto API for cryptographically secure random numbers.</p></div></div>
+                <div class="faq-item"><button onclick="toggleFaq(this)" aria-expanded="false">Can I use these for commercial purposes? <i class="fas fa-chevron-down" aria-hidden="true"></i></button><div class="faq-answer"><p>Yes! You're free to use the output of any tool for personal and commercial projects.</p></div></div>
+                <div class="faq-item"><button onclick="toggleFaq(this)" aria-expanded="false">How can I request a new tool? <i class="fas fa-chevron-down" aria-hidden="true"></i></button><div class="faq-answer"><p>Contact us at support@toolboxpro-theta.vercel.app with your suggestion.</p></div></div>
             </div>
         </section>
     </main>
@@ -469,7 +473,7 @@
     <!-- PWA Install Banner -->
     <div class="pwa-banner" id="pwa-banner">
         <div class="pwa-banner-text">
-            <i class="fas fa-download"></i>
+            <i class="fas fa-download" aria-hidden="true"></i>
             <span><strong>Install ToolBox Pro</strong> — access tools offline, faster!</span>
         </div>
         <button class="pwa-install-btn" onclick="installPWA()">Install</button>
@@ -478,7 +482,7 @@
 
     <!-- Feedback Widget -->
     <button class="feedback-fab" id="feedback-fab" aria-label="Give feedback">
-        <i class="fas fa-comment-dots"></i>
+        <i class="fas fa-comment-dots" aria-hidden="true"></i>
     </button>
     <div class="feedback-panel" id="feedback-panel">
         <div class="feedback-form">
@@ -493,7 +497,7 @@
             <button class="feedback-submit" id="feedback-submit">Send Feedback</button>
         </div>
         <div class="feedback-thanks" id="feedback-thanks">
-            <i class="fas fa-heart"></i>
+            <i class="fas fa-heart" aria-hidden="true"></i>
             <h3>Thanks for your feedback!</h3>
             <p style="color:var(--text-secondary);font-size:0.85rem;">It helps us improve ToolBox Pro.</p>
         </div>
@@ -503,8 +507,8 @@
     <div class="shortcuts-overlay" id="shortcuts-overlay">
         <div class="shortcuts-modal">
             <div class="shortcuts-header">
-                <h3><i class="fas fa-keyboard"></i> Keyboard Shortcuts</h3>
-                <button class="shortcuts-close" onclick="closeShortcuts()" aria-label="Close shortcuts"><i class="fas fa-times"></i></button>
+                <h3><i class="fas fa-keyboard" aria-hidden="true"></i> Keyboard Shortcuts</h3>
+                <button class="shortcuts-close" onclick="closeShortcuts()" aria-label="Close shortcuts"><i class="fas fa-times" aria-hidden="true"></i></button>
             </div>
             <div class="shortcuts-list">
                 <div class="shortcut-item"><span class="shortcut-desc">Focus search</span><span class="shortcut-keys"><kbd>Ctrl</kbd><kbd>K</kbd></span></div>
@@ -533,7 +537,7 @@
     </div>
 
     <!-- Back to Top -->
-    <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up" aria-hidden="true"></i></button>
 
     <!-- Performance Badge -->
     <div class="perf-badge" id="perf-badge">
@@ -555,15 +559,27 @@
     </script>
 
     <!-- Animation Libraries (Lenis + GSAP + ScrollTrigger + Tilt + Motion) -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
     <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/trig-js@4.2.0/src/trig.js"></script>
     <script>
     (function(){
-        /* === Lenis Smooth Scroll === */
+        var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        /* If CDN animation libs fail to load, bail out safely (preloader dismissed, page fully usable) */
+        if (typeof gsap === 'undefined' || typeof Lenis === 'undefined' || typeof ScrollTrigger === 'undefined') {
+            var pl = document.getElementById('preloader');
+            if (pl) { pl.classList.add('hidden'); setTimeout(function(){ if (pl.parentNode) pl.parentNode.removeChild(pl); }, 700); }
+            document.body.classList.add('loaded');
+            return;
+        }
+        /* === Lenis Smooth Scroll (skipped for reduced-motion users) === */
+        if (!prefersReducedMotion) {
         var lenis = new Lenis({ duration: 1.2, easing: function(t){ return Math.min(1, 1.001 - Math.pow(2, -10 * t)); }, smoothWheel: true });
         function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
         requestAnimationFrame(raf);
@@ -612,31 +628,31 @@
                 if (parseFloat(getComputedStyle(el).opacity) < 0.1) { el.style.opacity = '1'; el.style.transform = 'none'; }
             });
         }, 3000);
+        } /* end reduced-motion skip for scroll/tilt effects */
 
         /* === vanilla-tilt.js on Tool Cards === */
-        if (typeof VanillaTilt !== 'undefined') {
+        if (typeof VanillaTilt !== 'undefined' && !prefersReducedMotion) {
             VanillaTilt.init(document.querySelectorAll('.tool-card'), {
                 max: 6, speed: 400, glare: true, 'max-glare': 0.15, scale: 1.02, perspective: 1000,
                 easing: 'cubic-bezier(.03,.98,.52,.99)', direction: 'normal'
             });
         }
 
-        /* === Preloader Dismiss === */
-        window.addEventListener('load', function(){
+        /* === Preloader Dismiss — never block content longer than 600ms === */
+        var preloaderGone = false;
+        function dismissPreloader() {
+            if (preloaderGone) return;
+            preloaderGone = true;
             var preloader = document.getElementById('preloader');
             if (preloader) {
-                setTimeout(function(){ preloader.classList.add('hidden'); }, 1800);
-                setTimeout(function(){ if (preloader.parentNode) preloader.parentNode.removeChild(preloader); }, 2600);
-            }
-        });
-        // Fallback: dismiss after 4s even if load doesn't fire
-        setTimeout(function(){
-            var preloader = document.getElementById('preloader');
-            if (preloader && !preloader.classList.contains('hidden')) {
                 preloader.classList.add('hidden');
-                setTimeout(function(){ if (preloader.parentNode) preloader.parentNode.removeChild(preloader); }, 800);
+                setTimeout(function(){ if (preloader.parentNode) preloader.parentNode.removeChild(preloader); }, 700);
             }
-        }, 4000);
+            document.body.classList.add('loaded');
+        }
+        if (document.readyState === 'complete') dismissPreloader();
+        else window.addEventListener('load', function(){ setTimeout(dismissPreloader, 400); });
+        setTimeout(dismissPreloader, 600);
 
         /* === Scroll Progress Bar === */
         var scrollProgress = document.getElementById('scroll-progress');
@@ -674,11 +690,11 @@
         // Apply scramble to the heading span after preloader
         setTimeout(function(){
             var heroSpan = document.querySelector('.hero h1 span');
-            if (heroSpan) scrambleText(heroSpan);
-        }, 2200);
+            if (heroSpan && !prefersReducedMotion) scrambleText(heroSpan);
+        }, 700);
 
         /* === Cursor Glow (desktop only) === */
-        if (!('ontouchstart' in window)) {
+        if (!('ontouchstart' in window) && !prefersReducedMotion) {
             var cursorGlow = document.createElement('div');
             cursorGlow.className = 'cursor-glow';
             document.body.appendChild(cursorGlow);
@@ -698,7 +714,7 @@
         }
 
         /* === Anime.js Micro-Animations === */
-        if (typeof anime !== 'undefined') {
+        if (typeof anime !== 'undefined' && !prefersReducedMotion) {
             // Tool icon hover bounce
             document.querySelectorAll('.tool-icon').forEach(function(icon) {
                 icon.addEventListener('mouseenter', function() {
@@ -730,19 +746,12 @@
             });
         }
 
-        /* === Trig-JS: CSS-driven scroll animations === */
-        // Trig-JS adds CSS variables (--trig-y, --trig-p, etc.) to elements
-        // with data-trig attributes. Use CSS to animate based on these vars.
-        // Elements get data-trig and data-trig-axis attributes.
-        if (typeof Trig !== 'undefined') {
-            document.querySelectorAll('.social-links a').forEach(function(el) {
-                el.setAttribute('data-trig', '');
-                el.setAttribute('data-trig-axis', 'y');
+        /* === Animated counters — instant when reduced-motion is on === */
+        if (prefersReducedMotion) {
+            document.querySelectorAll('.stat-number[data-count]').forEach(function(el) {
+                el.textContent = el.getAttribute('data-count') + '+';
             });
-            document.querySelector('.cookie-banner').setAttribute('data-trig', '');
-            document.querySelector('.cookie-banner').setAttribute('data-trig-axis', 'y');
         }
-
     })();
     </script>
 

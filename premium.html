@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NeuralFlow — AI That Thinks Like You</title>
     <meta name="description" content="The AI platform that understands your workflow. Automate, create, and scale with neural intelligence.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2">
     <style>
 /* === DESIGN SYSTEM === */
 :root {
@@ -206,7 +210,7 @@ footer { padding: 4rem 2rem 2rem; border-top: 1px solid var(--border); }
 <nav id="nav" class="liquid-glass-nav">
     <div class="nav-inner">
         <a href="#" class="logo">
-            <div class="logo-icon"><i class="fas fa-brain"></i></div>
+            <div class="logo-icon"><i class="fas fa-brain" aria-hidden="true"></i></div>
             <span>Neural<span style="color:var(--accent-light)">Flow</span></span>
         </a>
         <div class="nav-links">
@@ -232,8 +236,8 @@ footer { padding: 4rem 2rem 2rem; border-top: 1px solid var(--border); }
             <h1>AI That <span class="shimmer">Thinks</span> Like You</h1>
             <p class="hero-sub">NeuralFlow understands your workflow, learns your patterns, and automates the tedious so you can focus on what matters. The AI platform built for builders.</p>
             <div class="hero-actions">
-                <button class="btn-primary btn-lg"><i class="fas fa-rocket"></i> Start Building Free</button>
-                <button class="btn-ghost btn-lg"><i class="fas fa-play"></i> Watch Demo</button>
+                <button class="btn-primary btn-lg"><i class="fas fa-rocket" aria-hidden="true"></i> Start Building Free</button>
+                <button class="btn-ghost btn-lg"><i class="fas fa-play" aria-hidden="true"></i> Watch Demo</button>
             </div>
             <div class="hero-stats">
                 <div class="hero-stat"><div class="num" data-count="12000">0</div><div class="label">Active Teams</div></div>
@@ -258,38 +262,38 @@ footer { padding: 4rem 2rem 2rem; border-top: 1px solid var(--border); }
 <section class="features" id="features">
     <div class="container">
         <div class="reveal">
-            <div class="section-label"><i class="fas fa-bolt"></i> Features</div>
+            <div class="section-label"><i class="fas fa-bolt" aria-hidden="true"></i> Features</div>
             <h2 class="section-title">Everything you need,<br>nothing you don't</h2>
             <p class="section-desc">Built from the ground up for teams who move fast. Every feature is designed to save you hours every week.</p>
         </div>
         <div class="feature-grid">
             <div class="feature-card reveal reveal-delay-1">
-                <div class="feature-icon indigo"><i class="fas fa-brain"></i></div>
+                <div class="feature-icon indigo"><i class="fas fa-brain" aria-hidden="true"></i></div>
                 <h3>Neural Learning</h3>
                 <p>Our AI adapts to your team's patterns, learns your codebase, and gets smarter with every interaction.</p>
             </div>
             <div class="feature-card reveal reveal-delay-2">
-                <div class="feature-icon violet"><i class="fas fa-bolt"></i></div>
+                <div class="feature-icon violet"><i class="fas fa-bolt" aria-hidden="true"></i></div>
                 <h3>Instant Automation</h3>
                 <p>Automate repetitive workflows in seconds. From code reviews to deployments, NeuralFlow handles the busy work.</p>
             </div>
             <div class="feature-card reveal reveal-delay-3">
-                <div class="feature-icon amber"><i class="fas fa-shield-halved"></i></div>
+                <div class="feature-icon amber"><i class="fas fa-shield-halved" aria-hidden="true"></i></div>
                 <h3>Enterprise Security</h3>
                 <p>SOC 2 compliant, end-to-end encrypted, with on-premise deployment options. Your data never leaves your hands.</p>
             </div>
             <div class="feature-card reveal reveal-delay-1">
-                <div class="feature-icon emerald"><i class="fas fa-code"></i></div>
+                <div class="feature-icon emerald"><i class="fas fa-code" aria-hidden="true"></i></div>
                 <h3>Code Intelligence</h3>
                 <p>Deep understanding of 50+ languages. Context-aware suggestions that actually make sense for your project.</p>
             </div>
             <div class="feature-card reveal reveal-delay-2">
-                <div class="feature-icon indigo"><i class="fas fa-users"></i></div>
+                <div class="feature-icon indigo"><i class="fas fa-users" aria-hidden="true"></i></div>
                 <h3>Team Collaboration</h3>
                 <p>Shared contexts, team memories, and collaborative AI sessions. Everyone stays on the same page.</p>
             </div>
             <div class="feature-card reveal reveal-delay-3">
-                <div class="feature-icon violet"><i class="fas fa-chart-line"></i></div>
+                <div class="feature-icon violet"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
                 <h3>Analytics Dashboard</h3>
                 <p>Track AI usage, measure productivity gains, and optimize your workflow with real-time insights.</p>
             </div>
@@ -306,14 +310,14 @@ footer { padding: 4rem 2rem 2rem; border-top: 1px solid var(--border); }
                 <div class="overlay"></div>
             </div>
             <div class="showcase-text reveal">
-                <div class="section-label"><i class="fas fa-eye"></i> Product</div>
+                <div class="section-label"><i class="fas fa-eye" aria-hidden="true"></i> Product</div>
                 <h2>See it in action</h2>
                 <p>NeuralFlow integrates directly into your existing tools. No context switching, no learning curve — just instant productivity.</p>
                 <ul class="showcase-list">
-                    <li><i class="fas fa-check-circle"></i> VS Code, JetBrains, and Neovim plugins</li>
-                    <li><i class="fas fa-check-circle"></i> GitHub, GitLab, and Bitbucket integration</li>
-                    <li><i class="fas fa-check-circle"></i> Slack, Discord, and Teams notifications</li>
-                    <li><i class="fas fa-check-circle"></i> REST API and webhook support</li>
+                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> VS Code, JetBrains, and Neovim plugins</li>
+                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> GitHub, GitLab, and Bitbucket integration</li>
+                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> Slack, Discord, and Teams notifications</li>
+                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> REST API and webhook support</li>
                 </ul>
             </div>
         </div>
@@ -324,7 +328,7 @@ footer { padding: 4rem 2rem 2rem; border-top: 1px solid var(--border); }
 <section class="pricing" id="pricing">
     <div class="container" style="text-align:center;">
         <div class="reveal">
-            <div class="section-label" style="justify-content:center;"><i class="fas fa-tag"></i> Pricing</div>
+            <div class="section-label" style="justify-content:center;"><i class="fas fa-tag" aria-hidden="true"></i> Pricing</div>
             <h2 class="section-title">Simple, transparent pricing</h2>
             <p class="section-desc" style="margin:0 auto 3rem;">No hidden fees. No surprises. Start free, scale as you grow.</p>
         </div>
@@ -334,10 +338,10 @@ footer { padding: 4rem 2rem 2rem; border-top: 1px solid var(--border); }
                 <div class="price">$0<span>/mo</span></div>
                 <div class="desc">Perfect for individual developers exploring AI-assisted workflows.</div>
                 <ul class="features-list">
-                    <li><i class="fas fa-check"></i> 1,000 AI actions/month</li>
-                    <li><i class="fas fa-check"></i> 5 project contexts</li>
-                    <li><i class="fas fa-check"></i> Basic code intelligence</li>
-                    <li><i class="fas fa-check"></i> Community support</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> 1,000 AI actions/month</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> 5 project contexts</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Basic code intelligence</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Community support</li>
                 </ul>
                 <button class="btn btn-ghost">Get Started Free</button>
             </div>
@@ -346,11 +350,11 @@ footer { padding: 4rem 2rem 2rem; border-top: 1px solid var(--border); }
                 <div class="price">$29<span>/mo</span></div>
                 <div class="desc">For teams that need unlimited AI power and collaboration.</div>
                 <ul class="features-list">
-                    <li><i class="fas fa-check"></i> Unlimited AI actions</li>
-                    <li><i class="fas fa-check"></i> Unlimited projects</li>
-                    <li><i class="fas fa-check"></i> Advanced code intelligence</li>
-                    <li><i class="fas fa-check"></i> Team collaboration</li>
-                    <li><i class="fas fa-check"></i> Priority support</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Unlimited AI actions</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Unlimited projects</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Advanced code intelligence</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Team collaboration</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Priority support</li>
                 </ul>
                 <button class="btn btn-primary">Start 14-Day Trial</button>
             </div>
@@ -359,11 +363,11 @@ footer { padding: 4rem 2rem 2rem; border-top: 1px solid var(--border); }
                 <div class="price">Custom</div>
                 <div class="desc">For organizations with custom security and deployment requirements.</div>
                 <ul class="features-list">
-                    <li><i class="fas fa-check"></i> Everything in Pro</li>
-                    <li><i class="fas fa-check"></i> On-premise deployment</li>
-                    <li><i class="fas fa-check"></i> Custom model training</li>
-                    <li><i class="fas fa-check"></i> SOC 2 & HIPAA compliance</li>
-                    <li><i class="fas fa-check"></i> Dedicated support engineer</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Everything in Pro</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> On-premise deployment</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Custom model training</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> SOC 2 & HIPAA compliance</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Dedicated support engineer</li>
                 </ul>
                 <button class="btn btn-ghost">Contact Sales</button>
             </div>
@@ -375,12 +379,12 @@ footer { padding: 4rem 2rem 2rem; border-top: 1px solid var(--border); }
 <section class="testimonials" id="testimonials">
     <div class="container">
         <div class="reveal" style="text-align:center;">
-            <div class="section-label" style="justify-content:center;"><i class="fas fa-heart"></i> Testimonials</div>
+            <div class="section-label" style="justify-content:center;"><i class="fas fa-heart" aria-hidden="true"></i> Testimonials</div>
             <h2 class="section-title">Loved by builders</h2>
         </div>
         <div class="testimonial-grid" style="margin-top:3rem;">
             <div class="testimonial-card reveal reveal-delay-1">
-                <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <div class="testimonial-stars"><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i></div>
                 <blockquote>"NeuralFlow cut our code review time by 60%. It's like having a senior engineer reviewing every PR in real-time."</blockquote>
                 <div class="testimonial-author">
                     <div class="testimonial-avatar">SK</div>
@@ -388,7 +392,7 @@ footer { padding: 4rem 2rem 2rem; border-top: 1px solid var(--border); }
                 </div>
             </div>
             <div class="testimonial-card reveal reveal-delay-2">
-                <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <div class="testimonial-stars"><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i></div>
                 <blockquote>"We shipped 3x faster after adopting NeuralFlow. The team collaboration features are game-changing for distributed teams."</blockquote>
                 <div class="testimonial-author">
                     <div class="testimonial-avatar">JM</div>
@@ -396,7 +400,7 @@ footer { padding: 4rem 2rem 2rem; border-top: 1px solid var(--border); }
                 </div>
             </div>
             <div class="testimonial-card reveal reveal-delay-3">
-                <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <div class="testimonial-stars"><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i></div>
                 <blockquote>"Finally, an AI tool that actually understands context. It knows our entire codebase and gives suggestions that make sense."</blockquote>
                 <div class="testimonial-author">
                     <div class="testimonial-avatar">AL</div>
@@ -413,7 +417,7 @@ footer { padding: 4rem 2rem 2rem; border-top: 1px solid var(--border); }
     <div class="container">
         <h2 class="reveal">Ready to build<br><span class="shimmer">smarter</span>?</h2>
         <p class="reveal">Join 12,000+ teams already using NeuralFlow to ship faster and build better software.</p>
-        <button class="btn-primary btn-lg reveal"><i class="fas fa-rocket"></i> Start Free — No Credit Card</button>
+        <button class="btn-primary btn-lg reveal"><i class="fas fa-rocket" aria-hidden="true"></i> Start Free — No Credit Card</button>
     </div>
 </section>
 
@@ -422,7 +426,7 @@ footer { padding: 4rem 2rem 2rem; border-top: 1px solid var(--border); }
     <div class="footer-inner">
         <div class="footer-brand">
             <div class="logo">
-                <div class="logo-icon"><i class="fas fa-brain"></i></div>
+                <div class="logo-icon"><i class="fas fa-brain" aria-hidden="true"></i></div>
                 <span>Neural<span style="color:var(--accent-light)">Flow</span></span>
             </div>
             <p>The AI platform that understands your workflow.<br>Automate, create, and scale with neural intelligence.</p>
@@ -446,7 +450,7 @@ footer { padding: 4rem 2rem 2rem; border-top: 1px solid var(--border); }
             <a href="#"><i class="fab fa-twitter"></i></a>
             <a href="#"><i class="fab fa-github"></i></a>
             <a href="#"><i class="fab fa-discord"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
         </div>
     </div>
 </footer>

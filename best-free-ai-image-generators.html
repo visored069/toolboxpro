@@ -12,8 +12,12 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <meta name="theme-color" content="#030303">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -531,7 +535,7 @@
     <header>
         <div class="header-inner">
             <a href="/" class="logo" aria-label="ToolBox Pro Home">
-                <div class="logo-icon"><i class="fas fa-toolbox"></i></div>
+                <div class="logo-icon"><i class="fas fa-toolbox" aria-hidden="true"></i></div>
                 <span class="logo-text">ToolBox</span>
                 <span class="logo-badge">PRO</span>
             </a>
@@ -594,7 +598,7 @@
                                 prompts, and image-to-image editing. The free tier gives you
                                 a daily allowance of tokens you can spend on generations.
                             </p>
-                            <span class="tool-limit"><i class="fas fa-triangle-exclamation"></i> Daily token cap on the free plan — heavy use burns through it quickly</span>
+                            <span class="tool-limit"><i class="fas fa-triangle-exclamation" aria-hidden="true"></i> Daily token cap on the free plan — heavy use burns through it quickly</span>
                         </div>
                     </article>
 
@@ -615,7 +619,7 @@
                                 prompt settings, filters, and upscaling, and the free plan
                                 lets you generate a fairly large number of images per day.
                             </p>
-                            <span class="tool-limit"><i class="fas fa-triangle-exclamation"></i> Free tier has a daily image limit and some advanced features are reserved for paid plans</span>
+                            <span class="tool-limit"><i class="fas fa-triangle-exclamation" aria-hidden="true"></i> Free tier has a daily image limit and some advanced features are reserved for paid plans</span>
                         </div>
                     </article>
 
@@ -637,7 +641,7 @@
                                 fill, and a handful of style controls. A limited free web tier
                                 is available.
                             </p>
-                            <span class="tool-limit"><i class="fas fa-triangle-exclamation"></i> Free web usage is capped — generative credits refresh periodically</span>
+                            <span class="tool-limit"><i class="fas fa-triangle-exclamation" aria-hidden="true"></i> Free web usage is capped — generative credits refresh periodically</span>
                         </div>
                     </article>
 
@@ -659,7 +663,7 @@
                                 the Microsoft account ecosystem and gives you a monthly set of
                                 boosts for faster generations.
                             </p>
-                            <span class="tool-limit"><i class="fas fa-triangle-exclamation"></i> Requires a Microsoft account; once boosts run out, generations slow down but remain free</span>
+                            <span class="tool-limit"><i class="fas fa-triangle-exclamation" aria-hidden="true"></i> Requires a Microsoft account; once boosts run out, generations slow down but remain free</span>
                         </div>
                     </article>
 
@@ -681,7 +685,7 @@
                                 experiments, though the image quality and control are more
                                 limited than the others on this list.
                             </p>
-                            <span class="tool-limit"><i class="fas fa-triangle-exclamation"></i> Ad-supported free tier; image quality and speed are lower than the dedicated tools above</span>
+                            <span class="tool-limit"><i class="fas fa-triangle-exclamation" aria-hidden="true"></i> Ad-supported free tier; image quality and speed are lower than the dedicated tools above</span>
                         </div>
                     </article>
 
@@ -705,7 +709,7 @@
                 <div class="choice-grid">
 
                     <div class="choice-card reveal">
-                        <div class="choice-icon quick"><i class="fas fa-bolt"></i></div>
+                        <div class="choice-icon quick"><i class="fas fa-bolt" aria-hidden="true"></i></div>
                         <h3>I just want quick, fun images</h3>
                         <p>
                             Bing Image Creator or Craiyon are the easiest on-ramps. Bing gives
@@ -716,7 +720,7 @@
                     </div>
 
                     <div class="choice-card reveal">
-                        <div class="choice-icon pro"><i class="fas fa-star"></i></div>
+                        <div class="choice-icon pro"><i class="fas fa-star" aria-hidden="true"></i></div>
                         <h3>I want the best quality I can get for free</h3>
                         <p>
                             Leonardo.Ai and Playground AI both give you access to stronger models
@@ -728,7 +732,7 @@
                     </div>
 
                     <div class="choice-card reveal">
-                        <div class="choice-icon nosignup"><i class="fas fa-user-plus"></i></div>
+                        <div class="choice-icon nosignup"><i class="fas fa-user-plus" aria-hidden="true"></i></div>
                         <h3>I don't want to sign up for anything</h3>
                         <p>
                             Craiyon is the standout here — no account needed, just a prompt and
@@ -758,7 +762,7 @@
     <footer>
         <div class="footer-inner">
             <div class="footer-brand">
-                <div class="logo-icon"><i class="fas fa-toolbox"></i></div>
+                <div class="logo-icon"><i class="fas fa-toolbox" aria-hidden="true"></i></div>
                 <span>ToolBox Pro</span>
             </div>
             <div class="footer-links">

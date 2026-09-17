@@ -1,7 +1,11 @@
 // ===== ToolBox Pro -- Cinematic Components v4 =====
 
+// Homepage-only ambient effects: tool pages stay lightweight (INP/LCP budget)
+var IS_HOMEPAGE = !!(document.getElementById('typewriter-text') || document.getElementById('tools-grid'));
+
 // --- Canvas Particle Field (60fps, spring physics) ---
 function initParticleCanvas() {
+    if (!IS_HOMEPAGE) return;
     var canvas = document.getElementById('particle-canvas');
     if (!canvas) return;
     var ctx = canvas.getContext('2d');
@@ -533,6 +537,7 @@ function animateCounter(el, start, end, duration) {
 
 // --- Mouse-follow Ambient Blob ---
 function initAmbientParallax() {
+    if (!IS_HOMEPAGE) return;
     var blobs = document.querySelectorAll('.ambient-blob');
     if (!blobs.length || ('ontouchstart' in window)) return;
     var mouseX = 0, mouseY = 0, currentX = 0, currentY = 0;
@@ -555,6 +560,7 @@ function initAmbientParallax() {
 
 // --- Parallax Scroll ---
 function initParallax() {
+    if (!IS_HOMEPAGE) return;
     var blobs = document.querySelectorAll('.ambient-blob');
     var grid = document.querySelector('.cosmic-grid');
     var nebula = document.querySelector('.nebula');
@@ -579,7 +585,7 @@ function initCardPress() {
 
 // --- Cursor Spotlight (with trailing ring) ---
 function initCursorSpotlight() {
-    if ('ontouchstart' in window) return;
+    if (!IS_HOMEPAGE || 'ontouchstart' in window) return;
     var spotlight = document.getElementById('cursor-spotlight');
     var ring = document.getElementById('cursor-spotlight-ring');
     if (!spotlight) return;
@@ -671,7 +677,7 @@ function initTypewriter() {
 
 // --- Click Particle Burst ---
 function initClickBurst() {
-    if ('ontouchstart' in window) return;
+    if (!IS_HOMEPAGE || 'ontouchstart' in window) return;
     var container = document.getElementById('click-bursts');
     if (!container) return;
     var colors = [
@@ -770,6 +776,7 @@ function initFloatingShapes() {
 
 // --- DOM Particles (Twinkle stars, supplement to canvas) ---
 function createParticles() {
+    if (!IS_HOMEPAGE) return;
     var container = document.getElementById('particles');
     if (!container) return;
     for (var i = 0; i < 60; i++) {
@@ -1008,6 +1015,7 @@ function closeShortcuts() {
 
 // --- Skeleton Loader ---
 function initSkeletonLoader() {
+    if (!IS_HOMEPAGE) return;
     var cards = document.querySelectorAll('.tool-card');
     if (!cards.length) return;
     // Add skeleton class to cards

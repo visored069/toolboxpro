@@ -86,9 +86,13 @@
     <meta name="twitter:image" content="https://toolboxpro-theta.vercel.app/og-image.png">
     <meta name="description" content="Free online text diff checker. Compare two texts and highlight the differences. No login required.">
     <link rel="canonical" href="https://toolboxpro-theta.vercel.app/text-diff-checker">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2">
     <link rel="stylesheet" href="styles.css">
     <style>
         .diff-container { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
@@ -140,7 +144,7 @@
     <header>
         <div class="header-content">
             <a href="/" class="logo" aria-label="ToolBox Pro Home">
-                <div class="logo-icon"><i class="fas fa-toolbox"></i></div>
+                <div class="logo-icon"><i class="fas fa-toolbox" aria-hidden="true"></i></div>
                 <span class="logo-text">ToolBox</span>
                 <span class="logo-badge">PRO</span>
             </a>
@@ -150,7 +154,7 @@
                 <a href="about">About</a>
                 <a href="contact">Contact</a>
                 <a href="privacy">Privacy</a>
-                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-sun"></i></button>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-sun" aria-hidden="true"></i></button>
             </nav>
         </div>
     </header>
@@ -158,19 +162,19 @@
     <main id="main-content">
 
     <div class="tool-page" style="max-width:1000px;">
-        <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Back to Tools</a>
+        <a href="/" class="back-link"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Tools</a>
         <h1><i class="fas fa-not-equal" style="color:var(--accent-1)"></i> Text Diff Checker — Compare Two Texts</h1>
         <p class="tool-description">Compare two pieces of text side by side and instantly see the differences highlighted.</p>
 
         <div class="diff-container">
             <div class="diff-panel">
-                <label><i class="fas fa-file-alt"></i> Original Text</label>
+                <label><i class="fas fa-file-alt" aria-hidden="true"></i> Original Text</label>
                 <textarea id="diff-left" placeholder="Paste the original text here...">Hello World
 This is a sample text.
 It has multiple lines.</textarea>
             </div>
             <div class="diff-panel">
-                <label><i class="fas fa-pen"></i> Modified Text</label>
+                <label><i class="fas fa-pen" aria-hidden="true"></i> Modified Text</label>
                 <textarea id="diff-right" placeholder="Paste the modified text here...">Hello World
 This is a modified text.
 It has multiple lines.
@@ -179,14 +183,14 @@ And an extra line.</textarea>
         </div>
 
         <div class="btn-group" style="margin-top:1.5rem;justify-content:center;">
-            <button class="tool-btn btn-primary" onclick="compareDiff()"><i class="fas fa-search"></i> Compare</button>
-            <button class="tool-btn btn-secondary" onclick="swapDiff()"><i class="fas fa-exchange-alt"></i> Swap</button>
-            <button class="tool-btn btn-danger" onclick="clearDiff()"><i class="fas fa-trash"></i> Clear</button>
+            <button class="tool-btn btn-primary" onclick="compareDiff()"><i class="fas fa-search" aria-hidden="true"></i> Compare</button>
+            <button class="tool-btn btn-secondary" onclick="swapDiff()"><i class="fas fa-exchange-alt" aria-hidden="true"></i> Swap</button>
+            <button class="tool-btn btn-danger" onclick="clearDiff()"><i class="fas fa-trash" aria-hidden="true"></i> Clear</button>
         </div>
 
         <div style="margin-top:1.5rem;">
             <label style="display:block;font-size:0.85rem;font-weight:500;margin-bottom:0.5rem;color:var(--text-secondary);">
-                <i class="fas fa-eye"></i> Differences
+                <i class="fas fa-eye" aria-hidden="true"></i> Differences
             </label>
             <div class="diff-output" id="diff-output"></div>
             <div class="diff-stats" id="diff-stats"></div>
@@ -200,7 +204,7 @@ And an extra line.</textarea>
         <div class="seo-block"><h2 id="example">Reading a diff</h2><p>Lines starting with a minus existed only in the original; plus lines exist only in the new version; unchanged lines appear once between them. This is the same convention git uses.</p><pre class="seo-code"><code>- old line
 + new line</code></pre></div>
         <div class="seo-block"><h2 id="faq">Frequently asked questions</h2><div class="seo-faq"><details class="seo-faq-item"><summary>Does it compare words or whole lines?</summary><p>Line by line — a single changed word marks that line as changed. For word-level granularity, compare shorter passages.</p></details><details class="seo-faq-item"><summary>Can it ignore whitespace changes?</summary><p>Whitespace-only differences can still register as changes depending on normalization. Trim or normalize text first if whitespace noise drowns real edits.</p></details><details class="seo-faq-item"><summary>Is my text stored?</summary><p>No — comparison runs locally in your browser and nothing is sent or saved.</p></details></div></div>
-        <div class="seo-block"><h2 id="related">Related writing tools</h2><div class="related-grid"><a class="related-card" href="word-counter"><i class="fas fa-font"></i><span>Word Counter</span></a><a class="related-card" href="markdown-preview"><i class="fas fa-markdown"></i><span>Markdown Preview</span></a><a class="related-card" href="regex-tester"><i class="fas fa-asterisk"></i><span>Regex Tester</span></a></div></div>
+        <div class="seo-block"><h2 id="related">Related writing tools</h2><div class="related-grid"><a class="related-card" href="word-counter"><i class="fas fa-font" aria-hidden="true"></i><span>Word Counter</span></a><a class="related-card" href="markdown-preview"><i class="fas fa-markdown" aria-hidden="true"></i><span>Markdown Preview</span></a><a class="related-card" href="regex-tester"><i class="fas fa-asterisk" aria-hidden="true"></i><span>Regex Tester</span></a></div></div>
     </section>
     </main>
 
@@ -213,7 +217,7 @@ And an extra line.</textarea>
     <!-- PWA Install Banner -->
     <div class="pwa-banner" id="pwa-banner">
         <div class="pwa-banner-text">
-            <i class="fas fa-download"></i>
+            <i class="fas fa-download" aria-hidden="true"></i>
             <span><strong>Install ToolBox Pro</strong> — access tools offline, faster!</span>
         </div>
         <button class="pwa-install-btn" onclick="installPWA()">Install</button>
@@ -222,7 +226,7 @@ And an extra line.</textarea>
 
     <!-- Feedback Widget -->
     <button class="feedback-fab" id="feedback-fab" aria-label="Give feedback">
-        <i class="fas fa-comment-dots"></i>
+        <i class="fas fa-comment-dots" aria-hidden="true"></i>
     </button>
     <div class="feedback-panel" id="feedback-panel">
         <div class="feedback-form">
@@ -237,7 +241,7 @@ And an extra line.</textarea>
             <button class="feedback-submit" id="feedback-submit">Send Feedback</button>
         </div>
         <div class="feedback-thanks" id="feedback-thanks">
-            <i class="fas fa-heart"></i>
+            <i class="fas fa-heart" aria-hidden="true"></i>
             <h3>Thanks for your feedback!</h3>
             <p style="color:var(--text-secondary);font-size:0.85rem;">It helps us improve ToolBox Pro.</p>
         </div>
@@ -252,7 +256,7 @@ And an extra line.</textarea>
     <!-- Keyboard Shortcuts Modal -->
     <div class="shortcuts-overlay" id="shortcuts-overlay">
         <div class="shortcuts-modal">
-            <div class="shortcuts-header"><h3><i class="fas fa-keyboard"></i> Keyboard Shortcuts</h3><button class="shortcuts-close" onclick="closeShortcuts()" aria-label="Close"><i class="fas fa-times"></i></button></div>
+            <div class="shortcuts-header"><h3><i class="fas fa-keyboard" aria-hidden="true"></i> Keyboard Shortcuts</h3><button class="shortcuts-close" onclick="closeShortcuts()" aria-label="Close"><i class="fas fa-times"></i></button></div>
             <div class="shortcuts-list">
                 <div class="shortcut-item"><span class="shortcut-desc">Focus search</span><span class="shortcut-keys"><kbd>Ctrl</kbd><kbd>K</kbd></span></div>
                 <div class="shortcut-item"><span class="shortcut-desc">Toggle dark mode</span><span class="shortcut-keys"><kbd>Ctrl</kbd><kbd></kbd></span></div>
@@ -263,7 +267,7 @@ And an extra line.</textarea>
     </div>
 
     <!-- Back to Top -->
-    <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up" aria-hidden="true"></i></button>
 
     <!-- Performance Badge -->
     <div class="perf-badge" id="perf-badge">

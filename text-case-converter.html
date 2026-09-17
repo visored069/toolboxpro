@@ -86,7 +86,9 @@
     <meta name="twitter:image" content="https://toolboxpro-theta.vercel.app/og-image.png">
     <meta name="description" content="Free online text case converter. Convert text to UPPERCASE, lowercase, Title Case, Sentence case, and more instantly.">
     <link rel="canonical" href="https://toolboxpro-theta.vercel.app/text-case-converter">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -94,6 +96,8 @@
     <meta name="theme-color" content="#6c5ce7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2">
     <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="tool-page-shared.css">
 </head>
@@ -101,14 +105,14 @@
     <a href="#main-content" class="skip-link">Skip to content</a>
     <div class="bg-animation"></div>
     <div class="particles" id="particles"></div>
-    <header><div class="header-content"><a href="/" class="logo" aria-label="ToolBox Pro Home"><div class="logo-icon"><i class="fas fa-toolbox"></i></div><span class="logo-text">ToolBox</span><span class="logo-badge">PRO</span></a><button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button><nav aria-label="Main navigation" id="main-nav"><a href="/">Tools</a>
+    <header><div class="header-content"><a href="/" class="logo" aria-label="ToolBox Pro Home"><div class="logo-icon"><i class="fas fa-toolbox" aria-hidden="true"></i></div><span class="logo-text">ToolBox</span><span class="logo-badge">PRO</span></a><button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button><nav aria-label="Main navigation" id="main-nav"><a href="/">Tools</a>
                 <a href="guides">Guides</a>
-                <a href="about">About</a><a href="contact">Contact</a><a href="privacy">Privacy</a><button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-sun"></i></button></nav></div></header>
+                <a href="about">About</a><a href="contact">Contact</a><a href="privacy">Privacy</a><button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-sun" aria-hidden="true"></i></button></nav></div></header>
 
     <main id="main-content">
 
     <div class="tool-page">
-        <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Back to Tools</a>
+        <a href="/" class="back-link"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Tools</a>
         <h1><i class="fas fa-text-height" style="color:var(--accent-2)"></i> Text Case Converter</h1>
         <p class="tool-description">Convert your text to any case format instantly. Works with any text length.</p>
 
@@ -118,10 +122,10 @@
         </div>
         
         <div class="btn-group" style="margin-bottom:1.5rem;">
-            <button class="tool-btn btn-primary" onclick="convertCase('upper')"><i class="fas fa-arrow-up"></i> UPPERCASE</button>
-            <button class="tool-btn btn-secondary" onclick="convertCase('lower')"><i class="fas fa-arrow-down"></i> lowercase</button>
-            <button class="tool-btn btn-danger" onclick="convertCase('title')"><i class="fas fa-font"></i> Title Case</button>
-            <button class="tool-btn btn-primary" onclick="convertCase('sentence')"><i class="fas fa-paragraph"></i> Sentence case</button>
+            <button class="tool-btn btn-primary" onclick="convertCase('upper')"><i class="fas fa-arrow-up" aria-hidden="true"></i> UPPERCASE</button>
+            <button class="tool-btn btn-secondary" onclick="convertCase('lower')"><i class="fas fa-arrow-down" aria-hidden="true"></i> lowercase</button>
+            <button class="tool-btn btn-danger" onclick="convertCase('title')"><i class="fas fa-font" aria-hidden="true"></i> Title Case</button>
+            <button class="tool-btn btn-primary" onclick="convertCase('sentence')"><i class="fas fa-paragraph" aria-hidden="true"></i> Sentence case</button>
             <button class="tool-btn btn-secondary" onclick="convertCase('toggle')">aLtErNaTiNg CaSe</button>
             <button class="tool-btn btn-danger" onclick="convertCase('inverse')">iNvErSe CaSe</button>
             <button class="tool-btn btn-primary" onclick="convertCase('capitalized')">Capitalized Case</button>
@@ -131,7 +135,7 @@
             <label>Output</label>
             <div class="tool-output" id="text-output" style="min-height:100px;"></div>
         </div>
-        <button class="tool-btn btn-primary" onclick="copyElement('text-output')"><i class="fas fa-copy"></i> Copy</button>
+        <button class="tool-btn btn-primary" onclick="copyElement('text-output')"><i class="fas fa-copy" aria-hidden="true"></i> Copy</button>
     </div>
     
     <!-- SEO content (static, injected by inject-seo-content.js) -->
@@ -140,7 +144,7 @@
         <div class="seo-block"><h2 id="how-to">How to convert text case</h2><ol class="seo-steps"><li>Paste your text into the input box.</li><li>Click the button for the case you want — the conversion applies immediately.</li><li>Copy the result with one click.</li></ol></div>
         <div class="seo-block"><h2 id="example">Case conversion example</h2><p>Title Case capitalizes each word; Sentence case capitalizes only after sentence endings; alternating and inverse case exist for jokes, styling, and undoing accidental caps lock.</p><pre class="seo-code"><code>the quick brown fox  →  The Quick Brown Fox (Title Case)</code></pre></div>
         <div class="seo-block"><h2 id="faq">Frequently asked questions</h2><div class="seo-faq"><details class="seo-faq-item"><summary>What’s the difference between Title and Sentence case?</summary><p>Title Case: Every Word Starts Big. Sentence case: only the first letter of each sentence — generally more readable for body text.</p></details><details class="seo-faq-item"><summary>Does it handle accented characters?</summary><p>Yes — conversions use Unicode case mappings, so accented letters convert correctly.</p></details><details class="seo-faq-item"><summary>Can I undo a conversion?</summary><p>Inverting case twice returns the original for alternating and inverse case. For Title/Sentence conversions, keep the original text until you’re happy with the result.</p></details></div></div>
-        <div class="seo-block"><h2 id="related">Related writing tools</h2><div class="related-grid"><a class="related-card" href="word-counter"><i class="fas fa-font"></i><span>Word Counter</span></a><a class="related-card" href="text-diff-checker"><i class="fas fa-code-compare"></i><span>Text Diff Checker</span></a><a class="related-card" href="lorem-ipsum-generator"><i class="fas fa-align-left"></i><span>Lorem Ipsum Generator</span></a></div></div>
+        <div class="seo-block"><h2 id="related">Related writing tools</h2><div class="related-grid"><a class="related-card" href="word-counter"><i class="fas fa-font" aria-hidden="true"></i><span>Word Counter</span></a><a class="related-card" href="text-diff-checker"><i class="fas fa-code-compare" aria-hidden="true"></i><span>Text Diff Checker</span></a><a class="related-card" href="lorem-ipsum-generator"><i class="fas fa-align-left" aria-hidden="true"></i><span>Lorem Ipsum Generator</span></a></div></div>
     </section>
     </main>
 
@@ -148,7 +152,7 @@
     <!-- PWA Install Banner -->
     <div class="pwa-banner" id="pwa-banner">
         <div class="pwa-banner-text">
-            <i class="fas fa-download"></i>
+            <i class="fas fa-download" aria-hidden="true"></i>
             <span><strong>Install ToolBox Pro</strong> — access tools offline, faster!</span>
         </div>
         <button class="pwa-install-btn" onclick="installPWA()">Install</button>
@@ -157,7 +161,7 @@
 
     <!-- Feedback Widget -->
     <button class="feedback-fab" id="feedback-fab" aria-label="Give feedback">
-        <i class="fas fa-comment-dots"></i>
+        <i class="fas fa-comment-dots" aria-hidden="true"></i>
     </button>
     <div class="feedback-panel" id="feedback-panel">
         <div class="feedback-form">
@@ -172,7 +176,7 @@
             <button class="feedback-submit" id="feedback-submit">Send Feedback</button>
         </div>
         <div class="feedback-thanks" id="feedback-thanks">
-            <i class="fas fa-heart"></i>
+            <i class="fas fa-heart" aria-hidden="true"></i>
             <h3>Thanks for your feedback!</h3>
             <p style="color:var(--text-secondary);font-size:0.85rem;">It helps us improve ToolBox Pro.</p>
         </div>
@@ -187,7 +191,7 @@
     <!-- Keyboard Shortcuts Modal -->
     <div class="shortcuts-overlay" id="shortcuts-overlay">
         <div class="shortcuts-modal">
-            <div class="shortcuts-header"><h3><i class="fas fa-keyboard"></i> Keyboard Shortcuts</h3><button class="shortcuts-close" onclick="closeShortcuts()" aria-label="Close"><i class="fas fa-times"></i></button></div>
+            <div class="shortcuts-header"><h3><i class="fas fa-keyboard" aria-hidden="true"></i> Keyboard Shortcuts</h3><button class="shortcuts-close" onclick="closeShortcuts()" aria-label="Close"><i class="fas fa-times"></i></button></div>
             <div class="shortcuts-list">
                 <div class="shortcut-item"><span class="shortcut-desc">Focus search</span><span class="shortcut-keys"><kbd>Ctrl</kbd><kbd>K</kbd></span></div>
                 <div class="shortcut-item"><span class="shortcut-desc">Toggle dark mode</span><span class="shortcut-keys"><kbd>Ctrl</kbd><kbd></kbd></span></div>
@@ -198,7 +202,7 @@
     </div>
 
     <!-- Back to Top -->
-    <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up" aria-hidden="true"></i></button>
 
     <!-- Performance Badge -->
     <div class="perf-badge" id="perf-badge">
