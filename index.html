@@ -211,26 +211,39 @@
             <!-- Search Bar (Morphing Expanding) -->
             <div class="search-container" id="search-container">
                 <i class="fas fa-search search-icon"></i>
-                <input type="text" class="search-input" id="tool-search" placeholder="Search tools... (e.g. json, password, color)" aria-label="Search tools">
+                <input type="text" class="search-input" id="tool-search" placeholder="Search tools... (e.g. json, password, color)" aria-label="Search tools" autocomplete="off" role="searchbox">
                 <button class="search-clear" id="search-clear" onclick="clearSearch()" aria-label="Clear search"><i class="fas fa-times"></i></button>
-                <div class="search-count" id="search-count" style="display:none;"></div>
+                <div class="search-count" id="search-count" style="display:none;" aria-live="polite"></div>
+                <div class="recent-searches" id="recent-searches" style="display:none;" aria-label="Recent searches">
+                    <span class="recent-label"><i class="fas fa-clock-rotate-left"></i> Recent</span>
+                    <div class="recent-chips" id="recent-chips"></div>
+                    <button class="recent-clear" onclick="clearAllRecentSearches()" aria-label="Clear recent searches">Clear</button>
+                </div>
             </div>
 
             <!-- Category Filters -->
-            <div class="filter-tabs" role="tablist" aria-label="Filter tools by category" id="filter-tabs">
-                <button class="filter-tab active" data-category="all" onclick="setCategory('all')" role="tab" aria-selected="true">All <span class="tab-count">20</span></button>
-                <button class="filter-tab" data-category="Developer" onclick="setCategory('Developer')" role="tab" aria-selected="false">Developer <span class="tab-count">11</span></button>
-                <button class="filter-tab" data-category="Security" onclick="setCategory('Security')" role="tab" aria-selected="false">Security <span class="tab-count">2</span></button>
-                <button class="filter-tab" data-category="Writing" onclick="setCategory('Writing')" role="tab" aria-selected="false">Writing <span class="tab-count">3</span></button>
-                <button class="filter-tab" data-category="Design" onclick="setCategory('Design')" role="tab" aria-selected="false">Design <span class="tab-count">2</span></button>
-                <button class="filter-tab" data-category="Utility" onclick="setCategory('Utility')" role="tab" aria-selected="false">Utility <span class="tab-count">3</span></button>
+            <div class="filter-tabs" role="tablist" aria-label="Filter tools by category" id="filter-tabs" tabindex="0">
+                <button class="filter-tab active" data-category="all" onclick="setCategory('all')" role="tab" aria-selected="true"><i class="fas fa-grip"></i> All <span class="tab-count">20</span></button>
+                <button class="filter-tab" data-category="Developer" onclick="setCategory('Developer')" role="tab" aria-selected="false"><i class="fas fa-code"></i> Developer <span class="tab-count">11</span></button>
+                <button class="filter-tab" data-category="Security" onclick="setCategory('Security')" role="tab" aria-selected="false"><i class="fas fa-shield-halved"></i> Security <span class="tab-count">2</span></button>
+                <button class="filter-tab" data-category="Writing" onclick="setCategory('Writing')" role="tab" aria-selected="false"><i class="fas fa-pen-nib"></i> Writing <span class="tab-count">3</span></button>
+                <button class="filter-tab" data-category="Design" onclick="setCategory('Design')" role="tab" aria-selected="false"><i class="fas fa-palette"></i> Design <span class="tab-count">2</span></button>
+                <button class="filter-tab" data-category="Utility" onclick="setCategory('Utility')" role="tab" aria-selected="false"><i class="fas fa-screwdriver-wrench"></i> Utility <span class="tab-count">3</span></button>
             </div>
 
-            <!-- No results -->
-            <div class="no-results" id="no-results" style="display:none;">
-                <i class="fas fa-search"></i>
-                <h3>No tools found</h3>
-                <p>Try a different search term or category.</p>
+            <!-- No results (empty state) -->
+            <div class="no-results" id="no-results" style="display:none;" role="status">
+                <div class="no-results-icon" aria-hidden="true">
+                    <i class="fas fa-magnifying-glass"></i>
+                    <span class="no-results-q" id="no-results-q"></span>
+                </div>
+                <h3 id="no-results-title">No tools found</h3>
+                <p id="no-results-msg">Try a different search term or category.</p>
+                <div class="no-results-suggestions" id="no-results-suggestions" aria-label="Suggested searches">
+                    <span class="suggestion-label">Popular searches</span>
+                    <div class="suggestion-chips" id="suggestion-chips"></div>
+                </div>
+                <button class="btn-primary no-results-reset" onclick="resetAllFilters()"><i class="fas fa-rotate-left"></i> Reset search &amp; filters</button>
             </div>
 
             <!-- Tools Grid -->
