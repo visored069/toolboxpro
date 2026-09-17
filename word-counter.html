@@ -4,6 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Online Word & Character Counter | ToolBox Pro</title>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Word Counter",
+      "url": "https://toolboxpro-theta.vercel.app/word-counter",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any (browser-based)",
+      "description": "A real-time counter for words, characters (with and without spaces), sentences, paragraphs, and estimated reading time. Useful for essays with strict limits, tweets and meta descriptions with hard caps, and judging how long a draft takes to read.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ToolBox Pro",
+        "url": "https://toolboxpro-theta.vercel.app/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Tools",
+          "item": "https://toolboxpro-theta.vercel.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Word Counter",
+          "item": "https://toolboxpro-theta.vercel.app/word-counter"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is my text stored anywhere?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Counting happens in your browser and nothing is sent or saved."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it count emoji?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Emoji count toward characters. Whether an emoji counts as a word depends on surrounding whitespace."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I count a book-length text?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — counting runs locally, so very long texts work, limited only by your device’s memory."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolboxpro-theta.vercel.app/word-counter">
     <meta property="og:title" content="Word Counter - ToolBox Pro">
@@ -48,7 +120,7 @@
 
     <div class="tool-page">
         <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Back to Tools</a>
-        <h1><i class="fas fa-font" style="color:var(--accent-2)"></i> Word Counter</h1>
+        <h1><i class="fas fa-font" style="color:var(--accent-2)"></i> Word &amp; Character Counter</h1>
         <p class="tool-description">Count words, characters, sentences, paragraphs, and estimated reading time.</p>
 
         <div class="tool-input-group">
@@ -64,6 +136,15 @@
             <div class="stat-box"><div class="value" id="wc-readtime">0</div><div class="label">Read Time (min)</div></div>
         </div>
     </div>
+    
+    <!-- SEO content (static, injected by inject-seo-content.js) -->
+    <section class="seo-content" aria-label="About this tool">
+                <p class="seo-intro">A real-time counter for words, characters (with and without spaces), sentences, paragraphs, and estimated reading time. Useful for essays with strict limits, tweets and meta descriptions with hard caps, and judging how long a draft takes to read.</p>
+        <div class="seo-block"><h2 id="how-to">How to count words and characters</h2><ol class="seo-steps"><li>Type or paste your text into the box — counts update as you type.</li><li>Watch the stat boxes for words, characters, characters without spaces, sentences, and paragraphs.</li><li>The reading-time estimate assumes roughly 200 words per minute of silent reading.</li></ol></div>
+        <div class="seo-block"><h2 id="example">What counts as a word?</h2><p>Words are split on whitespace, so &quot;don’t&quot; is one word and &quot;state-of-the-art&quot; is also one word. A sentence ends at ., !, or ?. Paragraphs are separated by blank lines. Numbers like 42 count as words too.</p></div>
+        <div class="seo-block"><h2 id="faq">Frequently asked questions</h2><div class="seo-faq"><details class="seo-faq-item"><summary>Is my text stored anywhere?</summary><p>No. Counting happens in your browser and nothing is sent or saved.</p></details><details class="seo-faq-item"><summary>Does it count emoji?</summary><p>Emoji count toward characters. Whether an emoji counts as a word depends on surrounding whitespace.</p></details><details class="seo-faq-item"><summary>Can I count a book-length text?</summary><p>Yes — counting runs locally, so very long texts work, limited only by your device’s memory.</p></details></div></div>
+        <div class="seo-block"><h2 id="related">Related writing tools</h2><div class="related-grid"><a class="related-card" href="text-case-converter"><i class="fas fa-font"></i><span>Text Case Converter</span></a><a class="related-card" href="text-diff-checker"><i class="fas fa-code-compare"></i><span>Text Diff Checker</span></a><a class="related-card" href="lorem-ipsum-generator"><i class="fas fa-align-left"></i><span>Lorem Ipsum Generator</span></a></div></div>
+    </section>
     </main>
 
     <footer><div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;"><p>© 2026 ToolBox Pro. All rights reserved.</p></div></footer>

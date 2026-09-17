@@ -4,6 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Online HTML to Text Converter | ToolBox Pro</title>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "HTML to Text",
+      "url": "https://toolboxpro-theta.vercel.app/html-to-text",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any (browser-based)",
+      "description": "Strip HTML tags from markup and get clean plain text — useful for extracting article content, preparing email-safe text versions, cleaning scraped HTML, or reading a page’s actual words without the tag noise.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ToolBox Pro",
+        "url": "https://toolboxpro-theta.vercel.app/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Tools",
+          "item": "https://toolboxpro-theta.vercel.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "HTML to Text",
+          "item": "https://toolboxpro-theta.vercel.app/html-to-text"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Are scripts and styles removed too?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The extractor targets visible text content — script and style contents don’t appear in the output. Always sanity-check automated extraction on important documents."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will HTML entities like &amp; be converted?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — entities decode to their characters (&amp; becomes &), so the text reads naturally."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my HTML uploaded anywhere?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — extraction runs entirely in your browser."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolboxpro-theta.vercel.app/html-to-text">
     <meta property="og:title" content="HTML to Text - ToolBox Pro">
@@ -47,7 +119,7 @@
 
     <div class="tool-page">
         <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Back to Tools</a>
-        <h1><i class="fas fa-file-alt" style="color:var(--accent-1)"></i> HTML to Text</h1>
+        <h1><i class="fas fa-file-alt" style="color:var(--accent-1)"></i> HTML to Text Converter</h1>
         <p class="tool-description">Strip HTML tags and extract clean, readable text from HTML code. Supports entities and common formatting.</p>
 
         <div class="tool-input-group">
@@ -93,6 +165,15 @@
             <div class="stat-box"><div class="value" id="tags-removed">0</div><div class="label">Tags Removed</div></div>
         </div>
     </div>
+    
+    <!-- SEO content (static, injected by inject-seo-content.js) -->
+    <section class="seo-content" aria-label="About this tool">
+                <p class="seo-intro">Strip HTML tags from markup and get clean plain text — useful for extracting article content, preparing email-safe text versions, cleaning scraped HTML, or reading a page’s actual words without the tag noise.</p>
+        <div class="seo-block"><h2 id="how-to">How to convert HTML to plain text</h2><ol class="seo-steps"><li>Paste your HTML — full documents or fragments both work.</li><li>The plain-text extraction strips tags and keeps the readable content.</li><li>Copy the cleaned text with one click.</li></ol></div>
+        <div class="seo-block"><h2 id="example">Conversion example</h2><p>Tags disappear; their text content remains. Structural tags like paragraphs and line breaks become whitespace so sentences don’t run together.</p><pre class="seo-code"><code>&lt;p&gt;Hello &lt;b&gt;world&lt;/b&gt;&lt;/p&gt;  →  Hello world</code></pre></div>
+        <div class="seo-block"><h2 id="faq">Frequently asked questions</h2><div class="seo-faq"><details class="seo-faq-item"><summary>Are scripts and styles removed too?</summary><p>The extractor targets visible text content — script and style contents don’t appear in the output. Always sanity-check automated extraction on important documents.</p></details><details class="seo-faq-item"><summary>Will HTML entities like &amp;amp; be converted?</summary><p>Yes — entities decode to their characters (&amp;amp; becomes &amp;), so the text reads naturally.</p></details><details class="seo-faq-item"><summary>Is my HTML uploaded anywhere?</summary><p>No — extraction runs entirely in your browser.</p></details></div></div>
+        <div class="seo-block"><h2 id="related">Related text tools</h2><div class="related-grid"><a class="related-card" href="markdown-preview"><i class="fas fa-markdown"></i><span>Markdown Preview</span></a><a class="related-card" href="word-counter"><i class="fas fa-font"></i><span>Word Counter</span></a><a class="related-card" href="text-diff-checker"><i class="fas fa-code-compare"></i><span>Text Diff Checker</span></a></div></div>
+    </section>
     </main>
 
     <footer>

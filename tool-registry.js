@@ -62,16 +62,9 @@
             if (!tool) return;
             var main = document.getElementById('main-content');
             if (!main || document.getElementById('registry-footer')) return;
-            var related = REGISTRY.related(slug);
-            var html = '<div id="registry-footer">';
-            if (related.length) {
-                html += '<section class="registry-related"><h2>Related tools</h2><div class="related-grid">';
-                related.forEach(function (r) {
-                    html += '<a class="related-card" href="' + r.slug + '"><i class="fas ' + r.icon + '"></i><span>' + escapeHtml(r.name) + '</span></a>';
-                });
-                html += '</div></section>';
-            }
-            html += '<p class="registry-note">' + TOOLS.length + ' free tools &middot; Everything runs in your browser</p></div>';
+            // Related tools are rendered statically by inject-seo-content.js;
+            // only the note bar is injected here to avoid duplicate sections.
+            var html = '<div id="registry-footer"><p class="registry-note">' + TOOLS.length + ' free tools &middot; Everything runs in your browser</p></div>';
             main.insertAdjacentHTML('beforeend', html);
         },
         renderFooterCounts: function () {

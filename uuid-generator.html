@@ -4,6 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Online UUID Generator | ToolBox Pro</title>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "UUID Generator",
+      "url": "https://toolboxpro-theta.vercel.app/uuid-generator",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any (browser-based)",
+      "description": "A UUID (Universally Unique Identifier) is a 128-bit identifier that’s practically guaranteed to be unique without any central authority — perfect for database keys, request IDs, file names, and distributed systems. This tool generates random version-4 UUIDs using the Web Crypto API and supports stan",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ToolBox Pro",
+        "url": "https://toolboxpro-theta.vercel.app/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Tools",
+          "item": "https://toolboxpro-theta.vercel.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "UUID Generator",
+          "item": "https://toolboxpro-theta.vercel.app/uuid-generator"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "UUID vs GUID — what’s the difference?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "None, practically. GUID is Microsoft’s name for the same concept; UUID is the standard term."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are generated UUIDs safe to use as database keys?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes for uniqueness, with a caveat: fully random v4 UUIDs scatter across indexes, which can hurt insert performance at very large scale. Some teams prefer ordered UUIDs (v7) for hot indexes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can two UUIDs collide?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Astronomically unlikely — 122 random bits means you’d need to generate trillions before collision odds become worth thinking about."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is generation really random?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — crypto.getRandomValues from the Web Crypto API, generated locally."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolboxpro-theta.vercel.app/uuid-generator">
     <meta property="og:title" content="UUID Generator - ToolBox Pro">
@@ -37,7 +117,7 @@
 
     <div class="tool-page">
         <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Back to Tools</a>
-        <h1><i class="fas fa-fingerprint" style="color:var(--accent-1)"></i> UUID Generator</h1>
+        <h1><i class="fas fa-fingerprint" style="color:var(--accent-1)"></i> UUID Generator (v4 GUID)</h1>
         <p class="tool-description">Generate cryptographically secure UUID v4 identifiers. Click to copy each UUID.</p>
 
         <div class="tool-input-group">
@@ -64,6 +144,15 @@
             <div class="tool-output" id="uuid-output" style="min-height:150px;"></div>
         </div>
     </div>
+    
+    <!-- SEO content (static, injected by inject-seo-content.js) -->
+    <section class="seo-content" aria-label="About this tool">
+                <p class="seo-intro">A UUID (Universally Unique Identifier) is a 128-bit identifier that’s practically guaranteed to be unique without any central authority — perfect for database keys, request IDs, file names, and distributed systems. This tool generates random version-4 UUIDs using the Web Crypto API and supports standard, uppercase, and no-hyphen formats.</p>
+        <div class="seo-block"><h2 id="how-to">How to generate a UUID</h2><ol class="seo-steps"><li>Pick a format: standard lowercase, uppercase, or no hyphens.</li><li>Choose how many UUIDs you need.</li><li>Click Generate — new random UUIDs appear instantly.</li><li>Copy one with its button, or Copy All to grab the whole list.</li></ol></div>
+        <div class="seo-block"><h2 id="example">What a v4 UUID looks like</h2><p>The structure is 8-4-4-4-12 hex digits. In a v4 UUID the third group starts with a 4 (the version) — everything else is pure randomness, giving 122 random bits: you could generate a billion UUIDs per second for a century and stay unlikely to collide.</p><pre class="seo-code"><code>3f8a2c1e-7b4d-4e9a-9c2f-1a5b8d3e7c4f</code></pre></div>
+        <div class="seo-block"><h2 id="faq">Frequently asked questions</h2><div class="seo-faq"><details class="seo-faq-item"><summary>UUID vs GUID — what’s the difference?</summary><p>None, practically. GUID is Microsoft’s name for the same concept; UUID is the standard term.</p></details><details class="seo-faq-item"><summary>Are generated UUIDs safe to use as database keys?</summary><p>Yes for uniqueness, with a caveat: fully random v4 UUIDs scatter across indexes, which can hurt insert performance at very large scale. Some teams prefer ordered UUIDs (v7) for hot indexes.</p></details><details class="seo-faq-item"><summary>Can two UUIDs collide?</summary><p>Astronomically unlikely — 122 random bits means you’d need to generate trillions before collision odds become worth thinking about.</p></details><details class="seo-faq-item"><summary>Is generation really random?</summary><p>Yes — crypto.getRandomValues from the Web Crypto API, generated locally.</p></details></div></div>
+        <div class="seo-block"><h2 id="related">Related developer tools</h2><div class="related-grid"><a class="related-card" href="hash-generator"><i class="fas fa-fingerprint"></i><span>Hash Generator</span></a><a class="related-card" href="random-number-generator"><i class="fas fa-dice"></i><span>Random Number Generator</span></a><a class="related-card" href="password-generator"><i class="fas fa-key"></i><span>Password Generator</span></a></div></div>
+    </section>
     </main>
 
     <footer><div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;"><p>© 2026 ToolBox Pro. All rights reserved.</p></div></footer>

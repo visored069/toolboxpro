@@ -4,6 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Online Hash Generator (MD5, SHA-1, SHA-256) | ToolBox Pro</title>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Hash Generator",
+      "url": "https://toolboxpro-theta.vercel.app/hash-generator",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any (browser-based)",
+      "description": "A hash function converts any text into a fixed-length fingerprint: the same input always yields the same output, and even a one-character change produces a completely different hash. This tool computes MD5, SHA-1, and SHA-256 hashes locally in your browser.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ToolBox Pro",
+        "url": "https://toolboxpro-theta.vercel.app/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Tools",
+          "item": "https://toolboxpro-theta.vercel.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Hash Generator",
+          "item": "https://toolboxpro-theta.vercel.app/hash-generator"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Which hash should I use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SHA-256 for anything new. MD5 and SHA-1 are shown because older systems still require them, but both are cryptographically broken for security purposes — never use them to verify untrusted data."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can a hash be reversed?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not directly — hashing is one-way. Weak passwords hashed with MD5 can be recovered via rainbow tables, which is exactly why password storage uses slower, salted algorithms like bcrypt or Argon2 instead."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my text uploaded?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Hashing happens in your browser using the Web Crypto API."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolboxpro-theta.vercel.app/hash-generator">
     <meta property="og:title" content="Hash Generator - ToolBox Pro">
@@ -36,7 +108,7 @@
 
     <div class="tool-page">
         <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Back to Tools</a>
-        <h1><i class="fas fa-fingerprint" style="color:var(--accent-3)"></i> Hash Generator</h1>
+        <h1><i class="fas fa-fingerprint" style="color:var(--accent-3)"></i> Hash Generator — MD5, SHA-1 &amp; SHA-256</h1>
         <p class="tool-description">Generate MD5, SHA-1, and SHA-256 hashes from any text input.</p>
 
         <div class="tool-input-group">
@@ -67,6 +139,15 @@
             </div>
         </div>
     </div>
+    
+    <!-- SEO content (static, injected by inject-seo-content.js) -->
+    <section class="seo-content" aria-label="About this tool">
+                <p class="seo-intro">A hash function converts any text into a fixed-length fingerprint: the same input always yields the same output, and even a one-character change produces a completely different hash. This tool computes MD5, SHA-1, and SHA-256 hashes locally in your browser.</p>
+        <div class="seo-block"><h2 id="how-to">How to generate a hash</h2><ol class="seo-steps"><li>Type or paste any text into the input box.</li><li>All three hashes (MD5, SHA-1, SHA-256) compute automatically as you type.</li><li>Copy whichever digest you need with its copy button.</li></ol></div>
+        <div class="seo-block"><h2 id="example">The same text always hashes the same</h2><p>Change one letter — &quot;Hello&quot; vs &quot;hello&quot; — and every hash changes completely. That’s the property that makes hashes useful for verifying downloads, detecting duplicate content, and fingerprinting data.</p><pre class="seo-code"><code>hello  →  2cf24dba5fb0a30e26e83b2ac5b9e29e... (SHA-256)</code></pre></div>
+        <div class="seo-block"><h2 id="faq">Frequently asked questions</h2><div class="seo-faq"><details class="seo-faq-item"><summary>Which hash should I use?</summary><p>SHA-256 for anything new. MD5 and SHA-1 are shown because older systems still require them, but both are cryptographically broken for security purposes — never use them to verify untrusted data.</p></details><details class="seo-faq-item"><summary>Can a hash be reversed?</summary><p>Not directly — hashing is one-way. Weak passwords hashed with MD5 can be recovered via rainbow tables, which is exactly why password storage uses slower, salted algorithms like bcrypt or Argon2 instead.</p></details><details class="seo-faq-item"><summary>Is my text uploaded?</summary><p>No. Hashing happens in your browser using the Web Crypto API.</p></details></div></div>
+        <div class="seo-block"><h2 id="related">Related security tools</h2><div class="related-grid"><a class="related-card" href="password-generator"><i class="fas fa-key"></i><span>Password Generator</span></a><a class="related-card" href="base64-encoder-decoder"><i class="fas fa-file-code"></i><span>Base64 Encoder/Decoder</span></a><a class="related-card" href="uuid-generator"><i class="fas fa-dna"></i><span>UUID Generator</span></a></div></div>
+    </section>
     </main>
 
     <footer><div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;"><p>© 2026 ToolBox Pro. All rights reserved.</p></div></footer>

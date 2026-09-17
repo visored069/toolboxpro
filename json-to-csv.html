@@ -4,6 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Online JSON to CSV Converter | ToolBox Pro</title>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "JSON to CSV",
+      "url": "https://toolboxpro-theta.vercel.app/json-to-csv",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any (browser-based)",
+      "description": "Convert JSON arrays of objects into CSV for spreadsheets. Every key found across the array becomes a column; each object becomes a row. Values containing commas or quotes are properly escaped so Excel and Google Sheets parse them cleanly.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ToolBox Pro",
+        "url": "https://toolboxpro-theta.vercel.app/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Tools",
+          "item": "https://toolboxpro-theta.vercel.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "JSON to CSV",
+          "item": "https://toolboxpro-theta.vercel.app/json-to-csv"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does it work with nested JSON?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nested objects and arrays are flattened to their JSON representation inside a cell. For deeply nested data, reshape it to a flat array first for the cleanest CSV."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does my spreadsheet mangle long numbers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Excel converts long digit strings (like IDs) to floats and loses precision. Format those columns as text in your spreadsheet."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a size limit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Conversion runs locally, so the practical limit is your browser’s memory — easily hundreds of thousands of rows."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolboxpro-theta.vercel.app/json-to-csv">
     <meta property="og:title" content="JSON to CSV Converter - ToolBox Pro">
@@ -54,6 +126,17 @@
         </div>
         <button class="tool-btn btn-primary" onclick="copyElement('csv-output')"><i class="fas fa-copy"></i> Copy</button>
     </div>
+    
+    <!-- SEO content (static, injected by inject-seo-content.js) -->
+    <section class="seo-content" aria-label="About this tool">
+                <p class="seo-intro">Convert JSON arrays of objects into CSV for spreadsheets. Every key found across the array becomes a column; each object becomes a row. Values containing commas or quotes are properly escaped so Excel and Google Sheets parse them cleanly.</p>
+        <div class="seo-block"><h2 id="how-to">How to convert JSON to CSV</h2><ol class="seo-steps"><li>Paste a JSON array of objects, e.g. [{&quot;name&quot;:&quot;Ada&quot;},{&quot;name&quot;:&quot;Alan&quot;}].</li><li>Click Convert — the CSV appears with columns derived from all keys.</li><li>Copy the CSV and paste it into a .csv file or straight into a spreadsheet.</li></ol></div>
+        <div class="seo-block"><h2 id="example">Conversion example</h2><pre class="seo-code"><code>[{&quot;name&quot;:&quot;Ada&quot;,&quot;year&quot;:1815},{&quot;name&quot;:&quot;Alan&quot;,&quot;year&quot;:1912}]</code></pre><pre class="seo-code"><code>name,year
+Ada,1815
+Alan,1912</code></pre><p>Objects with different keys still work: the union of all keys becomes the columns, and missing values are left empty.</p></div>
+        <div class="seo-block"><h2 id="faq">Frequently asked questions</h2><div class="seo-faq"><details class="seo-faq-item"><summary>Does it work with nested JSON?</summary><p>Nested objects and arrays are flattened to their JSON representation inside a cell. For deeply nested data, reshape it to a flat array first for the cleanest CSV.</p></details><details class="seo-faq-item"><summary>Why does my spreadsheet mangle long numbers?</summary><p>Excel converts long digit strings (like IDs) to floats and loses precision. Format those columns as text in your spreadsheet.</p></details><details class="seo-faq-item"><summary>Is there a size limit?</summary><p>Conversion runs locally, so the practical limit is your browser’s memory — easily hundreds of thousands of rows.</p></details></div></div>
+        <div class="seo-block"><h2 id="related">Related JSON tools</h2><div class="related-grid"><a class="related-card" href="json-formatter"><i class="fas fa-code"></i><span>JSON Formatter</span></a><a class="related-card" href="markdown-preview"><i class="fas fa-markdown"></i><span>Markdown Preview</span></a><a class="related-card" href="timestamp-converter"><i class="fas fa-clock"></i><span>Timestamp Converter</span></a></div></div>
+    </section>
     </main>
 
     <footer><div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;"><p>© 2026 ToolBox Pro. All rights reserved.</p></div></footer>

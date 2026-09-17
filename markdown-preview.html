@@ -4,6 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Online Markdown Preview | ToolBox Pro</title>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Markdown Preview",
+      "url": "https://toolboxpro-theta.vercel.app/markdown-preview",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any (browser-based)",
+      "description": "Markdown is the lightweight formatting language used everywhere from READMEs to chat apps: # for headings, ** for bold, backticks for code. This tool renders your Markdown side by side with the formatted result as you type, so you can check syntax before publishing.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ToolBox Pro",
+        "url": "https://toolboxpro-theta.vercel.app/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Tools",
+          "item": "https://toolboxpro-theta.vercel.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Markdown Preview",
+          "item": "https://toolboxpro-theta.vercel.app/markdown-preview"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Which Markdown flavor is supported?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Core Markdown: headings, bold, italic, inline code, fenced code blocks, lists, links, images, and blockquotes. Extended features like tables depend on the renderer’s support."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my Markdown saved?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — rendering happens live in your browser with nothing stored or sent. Copy your work before closing the tab."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do GitHub and this preview differ slightly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GitHub adds extensions (task lists, autolinks, table alignment). Core syntax renders identically; extended syntax may differ."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolboxpro-theta.vercel.app/markdown-preview">
     <meta property="og:title" content="Markdown Preview - ToolBox Pro">
@@ -59,7 +131,7 @@
 
     <div class="tool-page">
         <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Back to Tools</a>
-        <h1><i class="fas fa-eye" style="color:var(--accent-1)"></i> Markdown Preview</h1>
+        <h1><i class="fas fa-eye" style="color:var(--accent-1)"></i> Markdown Preview — Live Editor &amp; Renderer</h1>
         <p class="tool-description">Write Markdown on the left, see live preview on the right. Supports full Markdown syntax.</p>
 
         <div class="md-container">
@@ -73,6 +145,18 @@
             </div>
         </div>
     </div>
+    
+    <!-- SEO content (static, injected by inject-seo-content.js) -->
+    <section class="seo-content" aria-label="About this tool">
+                <p class="seo-intro">Markdown is the lightweight formatting language used everywhere from READMEs to chat apps: # for headings, ** for bold, backticks for code. This tool renders your Markdown side by side with the formatted result as you type, so you can check syntax before publishing.</p>
+        <div class="seo-block"><h2 id="how-to">How to preview Markdown</h2><ol class="seo-steps"><li>Type or paste Markdown in the left pane.</li><li>The rendered output updates live in the right pane.</li><li>Use Load Example to see a demo covering headings, bold/italic, code blocks, links, and blockquotes.</li><li>Copy the rendered result when you’re happy with it.</li></ol></div>
+        <div class="seo-block"><h2 id="example">Markdown syntax example</h2><p>That snippet renders as a subheading, bold and italic text, inline code, a bulleted list, and a hyperlink — the 20% of Markdown syntax that covers 95% of everyday writing.</p><pre class="seo-code"><code>## Heading
+**bold** *italic* `code`
+- list item
+[link](https://example.com)</code></pre></div>
+        <div class="seo-block"><h2 id="faq">Frequently asked questions</h2><div class="seo-faq"><details class="seo-faq-item"><summary>Which Markdown flavor is supported?</summary><p>Core Markdown: headings, bold, italic, inline code, fenced code blocks, lists, links, images, and blockquotes. Extended features like tables depend on the renderer’s support.</p></details><details class="seo-faq-item"><summary>Is my Markdown saved?</summary><p>No — rendering happens live in your browser with nothing stored or sent. Copy your work before closing the tab.</p></details><details class="seo-faq-item"><summary>Why do GitHub and this preview differ slightly?</summary><p>GitHub adds extensions (task lists, autolinks, table alignment). Core syntax renders identically; extended syntax may differ.</p></details></div></div>
+        <div class="seo-block"><h2 id="related">Related developer tools</h2><div class="related-grid"><a class="related-card" href="json-formatter"><i class="fas fa-code"></i><span>JSON Formatter</span></a><a class="related-card" href="json-to-csv"><i class="fas fa-table"></i><span>JSON to CSV</span></a><a class="related-card" href="word-counter"><i class="fas fa-font"></i><span>Word Counter</span></a></div></div>
+    </section>
     </main>
 
     <footer><div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;"><p>© 2026 ToolBox Pro. All rights reserved.</p></div></footer>

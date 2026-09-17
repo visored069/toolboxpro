@@ -4,6 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Online Regex Tester | ToolBox Pro</title>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Regex Tester",
+      "url": "https://toolboxpro-theta.vercel.app/regex-tester",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any (browser-based)",
+      "description": "Regular expressions are a pattern language for finding and validating text — email shapes, date formats, log lines, you name it. This tester shows every match live as you type the pattern, so you can iterate quickly instead of guess-and-refresh in code.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ToolBox Pro",
+        "url": "https://toolboxpro-theta.vercel.app/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Tools",
+          "item": "https://toolboxpro-theta.vercel.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Regex Tester",
+          "item": "https://toolboxpro-theta.vercel.app/regex-tester"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Which regex flavor does this use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "JavaScript (ECMAScript) regex, matching what runs in every browser and Node.js. Other languages (Python, PCRE) have small differences like lookbehind support and named-group syntax."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why doesn’t my pattern match across lines?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "By default ^ and $ anchor to the whole string, and . doesn’t match newlines. Enable multiline (m) or dotall (s) flags where available, or use [\\s\\S] instead of a dot."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "My regex works here but not in my code — why?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Check escaping: in many languages the string literal eats one level of backslashes, so \"\\d\" written in code becomes d in the actual pattern."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can regex validate an email perfectly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fully RFC-compliant email regex is famously monstrous. In practice a simple pattern plus a confirmation email is the robust approach."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolboxpro-theta.vercel.app/regex-tester">
     <meta property="og:title" content="Regex Tester - ToolBox Pro">
@@ -37,7 +117,7 @@
 
     <div class="tool-page">
         <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Back to Tools</a>
-        <h1><i class="fas fa-search" style="color:var(--accent-3)"></i> Regex Tester</h1>
+        <h1><i class="fas fa-search" style="color:var(--accent-3)"></i> Regex Tester — Test Regular Expressions Live</h1>
         <p class="tool-description">Test regular expressions with real-time matching. Highlights all matches in your text.</p>
 
         <div class="tool-input-group">
@@ -68,6 +148,15 @@
             </div>
         </div>
     </div>
+    
+    <!-- SEO content (static, injected by inject-seo-content.js) -->
+    <section class="seo-content" aria-label="About this tool">
+                <p class="seo-intro">Regular expressions are a pattern language for finding and validating text — email shapes, date formats, log lines, you name it. This tester shows every match live as you type the pattern, so you can iterate quickly instead of guess-and-refresh in code.</p>
+        <div class="seo-block"><h2 id="how-to">How to test a regular expression</h2><ol class="seo-steps"><li>Type your pattern in the regex field — leading and trailing slashes not needed.</li><li>Paste sample text into the test-string area.</li><li>Matches highlight instantly as you type either side.</li><li>Iterate on the pattern until you capture exactly what you need, then copy it into your code.</li></ol></div>
+        <div class="seo-block"><h2 id="example">A practical regex example</h2><p>\d means any digit, {4} means exactly four of them — so this pattern finds ISO-style dates anywhere in text. Small building blocks like these combine into patterns far more precise than any find-and-replace.</p><pre class="seo-code"><code>\d{4}-\d{2}-\d{2}  matches  2026-09-17</code></pre></div>
+        <div class="seo-block"><h2 id="faq">Frequently asked questions</h2><div class="seo-faq"><details class="seo-faq-item"><summary>Which regex flavor does this use?</summary><p>JavaScript (ECMAScript) regex, matching what runs in every browser and Node.js. Other languages (Python, PCRE) have small differences like lookbehind support and named-group syntax.</p></details><details class="seo-faq-item"><summary>Why doesn’t my pattern match across lines?</summary><p>By default ^ and $ anchor to the whole string, and . doesn’t match newlines. Enable multiline (m) or dotall (s) flags where available, or use [\s\S] instead of a dot.</p></details><details class="seo-faq-item"><summary>My regex works here but not in my code — why?</summary><p>Check escaping: in many languages the string literal eats one level of backslashes, so &quot;\d&quot; written in code becomes d in the actual pattern.</p></details><details class="seo-faq-item"><summary>Can regex validate an email perfectly?</summary><p>Fully RFC-compliant email regex is famously monstrous. In practice a simple pattern plus a confirmation email is the robust approach.</p></details></div></div>
+        <div class="seo-block"><h2 id="related">Related text tools</h2><div class="related-grid"><a class="related-card" href="json-formatter"><i class="fas fa-code"></i><span>JSON Formatter</span></a><a class="related-card" href="text-diff-checker"><i class="fas fa-code-compare"></i><span>Text Diff Checker</span></a><a class="related-card" href="url-encoder-decoder"><i class="fas fa-link"></i><span>URL Encoder/Decoder</span></a></div></div>
+    </section>
     </main>
 
     <footer><div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;"><p>© 2026 ToolBox Pro. All rights reserved.</p></div></footer>

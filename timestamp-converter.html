@@ -4,6 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Online Timestamp Converter | ToolBox Pro</title>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Timestamp Converter",
+      "url": "https://toolboxpro-theta.vercel.app/timestamp-converter",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any (browser-based)",
+      "description": "A Unix timestamp is the number of seconds elapsed since January 1, 1970 UTC — the standard way computers store points in time, immune to time zones and daylight saving ambiguity. Convert timestamps to human-readable dates and back, live as you type.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ToolBox Pro",
+        "url": "https://toolboxpro-theta.vercel.app/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Tools",
+          "item": "https://toolboxpro-theta.vercel.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Timestamp Converter",
+          "item": "https://toolboxpro-theta.vercel.app/timestamp-converter"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Seconds or milliseconds?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Unix timestamps are classically seconds (10 digits today). JavaScript’s Date.now() returns milliseconds (13 digits). If your converted date is wildly off, you probably mixed them up."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do timestamps handle time zones?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A timestamp is an absolute moment — no zone attached. This tool displays it in UTC; the same instant is a different wall-clock time in each time zone."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens in 2038?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "32-bit systems overflow on January 19, 2038 (the Y2K38 problem). Modern 64-bit systems — including every device running this tool — are unaffected for billions of years."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolboxpro-theta.vercel.app/timestamp-converter">
     <meta property="og:title" content="Timestamp Converter - ToolBox Pro">
@@ -47,7 +119,7 @@
 
     <div class="tool-page">
         <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Back to Tools</a>
-        <h1><i class="fas fa-clock" style="color:var(--accent-1)"></i> Timestamp Converter</h1>
+        <h1><i class="fas fa-clock" style="color:var(--accent-1)"></i> Unix Timestamp Converter</h1>
         <p class="tool-description">Convert between Unix timestamps and human-readable dates. Check the current timestamp or convert any date.</p>
 
         <div class="tool-input-group">
@@ -86,6 +158,15 @@
             </div>
         </div>
     </div>
+    
+    <!-- SEO content (static, injected by inject-seo-content.js) -->
+    <section class="seo-content" aria-label="About this tool">
+                <p class="seo-intro">A Unix timestamp is the number of seconds elapsed since January 1, 1970 UTC — the standard way computers store points in time, immune to time zones and daylight saving ambiguity. Convert timestamps to human-readable dates and back, live as you type.</p>
+        <div class="seo-block"><h2 id="how-to">How to convert a Unix timestamp</h2><ol class="seo-steps"><li>Paste a timestamp to see the exact UTC date and time.</li><li>Type a date to get its Unix timestamp in seconds.</li><li>Conversion happens both directions, live as you type.</li><li>Copy either result with its copy button.</li></ol></div>
+        <div class="seo-block"><h2 id="example">Reading a timestamp</h2><p>Bigger numbers are later dates. Timestamps in milliseconds (13 digits instead of 10) are common in JavaScript — if your converted date is wildly wrong, you probably mixed up seconds and milliseconds.</p><pre class="seo-code"><code>0  →  Jan 1 1970 00:00:00 UTC</code></pre></div>
+        <div class="seo-block"><h2 id="faq">Frequently asked questions</h2><div class="seo-faq"><details class="seo-faq-item"><summary>Seconds or milliseconds?</summary><p>Unix timestamps are classically seconds (10 digits today). JavaScript’s Date.now() returns milliseconds (13 digits). If your converted date is wildly off, you probably mixed them up.</p></details><details class="seo-faq-item"><summary>Do timestamps handle time zones?</summary><p>A timestamp is an absolute moment — no zone attached. This tool displays it in UTC; the same instant is a different wall-clock time in each time zone.</p></details><details class="seo-faq-item"><summary>What happens in 2038?</summary><p>32-bit systems overflow on January 19, 2038 (the Y2K38 problem). Modern 64-bit systems — including every device running this tool — are unaffected for billions of years.</p></details></div></div>
+        <div class="seo-block"><h2 id="related">Related utility tools</h2><div class="related-grid"><a class="related-card" href="random-number-generator"><i class="fas fa-dice"></i><span>Random Number Generator</span></a><a class="related-card" href="json-to-csv"><i class="fas fa-table"></i><span>JSON to CSV</span></a><a class="related-card" href="uuid-generator"><i class="fas fa-dna"></i><span>UUID Generator</span></a></div></div>
+    </section>
     </main>
 
     <footer>

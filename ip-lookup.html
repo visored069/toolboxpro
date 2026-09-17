@@ -4,6 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Online IP Address Lookup | ToolBox Pro</title>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "IP Lookup",
+      "url": "https://toolboxpro-theta.vercel.app/ip-lookup",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any (browser-based)",
+      "description": "Every device on the internet has an IP address, and public IPs carry useful metadata: approximate location, internet service provider, organization, and timezone. Look up any public IPv4 or IPv6 address to see that information.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ToolBox Pro",
+        "url": "https://toolboxpro-theta.vercel.app/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Tools",
+          "item": "https://toolboxpro-theta.vercel.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "IP Lookup",
+          "item": "https://toolboxpro-theta.vercel.app/ip-lookup"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How accurate is IP geolocation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Country-level is usually reliable; city-level is approximate and can be off, especially for mobile networks and VPNs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this reveal who someone is?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. An IP identifies a network connection, not a person. Many households and offices share one public IP."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do some IPs return no location?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Reserved ranges, newly allocated blocks, and some corporate networks have no public geolocation records."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolboxpro-theta.vercel.app/ip-lookup">
     <meta property="og:title" content="IP Lookup - ToolBox Pro">
@@ -47,7 +119,7 @@
 
     <div class="tool-page">
         <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Back to Tools</a>
-        <h1><i class="fas fa-globe" style="color:var(--accent-1)"></i> IP Lookup</h1>
+        <h1><i class="fas fa-globe" style="color:var(--accent-1)"></i> IP Address Lookup</h1>
         <p class="tool-description">Check your public IP address and get details about your connection. All data is fetched from a free API.</p>
 
         <div class="btn-group" style="margin-bottom:1.5rem;">
@@ -78,6 +150,15 @@
             <p style="margin-top:0.5rem;">Could not fetch IP information. Please try again.</p>
         </div>
     </div>
+    
+    <!-- SEO content (static, injected by inject-seo-content.js) -->
+    <section class="seo-content" aria-label="About this tool">
+                <p class="seo-intro">Every device on the internet has an IP address, and public IPs carry useful metadata: approximate location, internet service provider, organization, and timezone. Look up any public IPv4 or IPv6 address to see that information.</p>
+        <div class="seo-block"><h2 id="how-to">How to look up an IP address</h2><ol class="seo-steps"><li>Enter a public IP address (IPv4 like 8.8.8.8, or IPv6).</li><li>Run the lookup to see the network’s organization/ISP, country, and region.</li><li>Results come from public IP geolocation data — copy what you need.</li></ol></div>
+        <div class="seo-block"><h2 id="example">What an IP lookup tells you (and what it doesn’t)</h2><p>Geolocation resolves to the network’s registered location — often a city or, for big providers, just a country. It can identify the organization and region but never a precise street address or an individual person.</p><pre class="seo-code"><code>8.8.4.4  →  Google (org), United States (country)</code></pre></div>
+        <div class="seo-block"><h2 id="faq">Frequently asked questions</h2><div class="seo-faq"><details class="seo-faq-item"><summary>How accurate is IP geolocation?</summary><p>Country-level is usually reliable; city-level is approximate and can be off, especially for mobile networks and VPNs.</p></details><details class="seo-faq-item"><summary>Does this reveal who someone is?</summary><p>No. An IP identifies a network connection, not a person. Many households and offices share one public IP.</p></details><details class="seo-faq-item"><summary>Why do some IPs return no location?</summary><p>Reserved ranges, newly allocated blocks, and some corporate networks have no public geolocation records.</p></details></div></div>
+        <div class="seo-block"><h2 id="related">Related network tools</h2><div class="related-grid"><a class="related-card" href="random-number-generator"><i class="fas fa-dice"></i><span>Random Number Generator</span></a><a class="related-card" href="uuid-generator"><i class="fas fa-dna"></i><span>UUID Generator</span></a><a class="related-card" href="timestamp-converter"><i class="fas fa-clock"></i><span>Timestamp Converter</span></a></div></div>
+    </section>
     </main>
 
     <footer>

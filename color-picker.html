@@ -4,6 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Online Color Picker | ToolBox Pro</title>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Color Picker",
+      "url": "https://toolboxpro-theta.vercel.app/color-picker",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any (browser-based)",
+      "description": "Pick a color visually and get instant HEX, RGB, and HSL values, ready to paste into CSS, design tools, or brand guidelines. Colors are the same regardless of format — these are just three ways of writing them.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ToolBox Pro",
+        "url": "https://toolboxpro-theta.vercel.app/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Tools",
+          "item": "https://toolboxpro-theta.vercel.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Color Picker",
+          "item": "https://toolboxpro-theta.vercel.app/color-picker"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Are picked colors exact across devices?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The values are mathematically exact, but screens render colors differently depending on display calibration and color profiles."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I enter an RGB value and get HEX?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — enter any supported format and the equivalents update live."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it support alpha transparency?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The picker works with solid colors. For transparency use rgba()/hsla() in CSS and adjust the alpha channel manually."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolboxpro-theta.vercel.app/color-picker">
     <meta property="og:title" content="Color Picker - ToolBox Pro">
@@ -36,7 +108,7 @@
 
     <div class="tool-page">
         <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Back to Tools</a>
-        <h1><i class="fas fa-palette" style="color:var(--accent-1)"></i> Color Picker</h1>
+        <h1><i class="fas fa-palette" style="color:var(--accent-1)"></i> Color Picker — HEX, RGB &amp; HSL</h1>
         <p class="tool-description">Pick any color and get HEX, RGB, and HSL values. Click on a value to copy it.</p>
 
         <div class="tool-input-group">
@@ -50,6 +122,15 @@
             <div class="color-value" onclick="copyText(document.getElementById('color-hsl').textContent)"><div class="label">HSL</div><div class="value" id="color-hsl">hsl(247, 75%, 63%)</div></div>
         </div>
     </div>
+    
+    <!-- SEO content (static, injected by inject-seo-content.js) -->
+    <section class="seo-content" aria-label="About this tool">
+                <p class="seo-intro">Pick a color visually and get instant HEX, RGB, and HSL values, ready to paste into CSS, design tools, or brand guidelines. Colors are the same regardless of format — these are just three ways of writing them.</p>
+        <div class="seo-block"><h2 id="how-to">How to pick a color and get its codes</h2><ol class="seo-steps"><li>Click the color swatch to open your browser’s native picker, or type a value directly.</li><li>The tool converts live: change HEX and the RGB/HSL values update.</li><li>Copy any format with its copy button and paste into your CSS or design tool.</li></ol></div>
+        <div class="seo-block"><h2 id="example">HEX vs RGB vs HSL</h2><p>All three notations above describe the same purple. HEX is compact and ubiquitous in CSS; RGB maps directly to screen channels; HSL (hue, saturation, lightness) is easiest for humans — want a darker variant? Just lower the L.</p><pre class="seo-code"><code>#6C5CE7  →  rgb(108, 92, 231)  →  hsl(248, 74%, 63%)</code></pre></div>
+        <div class="seo-block"><h2 id="faq">Frequently asked questions</h2><div class="seo-faq"><details class="seo-faq-item"><summary>Are picked colors exact across devices?</summary><p>The values are mathematically exact, but screens render colors differently depending on display calibration and color profiles.</p></details><details class="seo-faq-item"><summary>Can I enter an RGB value and get HEX?</summary><p>Yes — enter any supported format and the equivalents update live.</p></details><details class="seo-faq-item"><summary>Does it support alpha transparency?</summary><p>The picker works with solid colors. For transparency use rgba()/hsla() in CSS and adjust the alpha channel manually.</p></details></div></div>
+        <div class="seo-block"><h2 id="related">Related design tools</h2><div class="related-grid"><a class="related-card" href="random-number-generator"><i class="fas fa-dice"></i><span>Random Number Generator</span></a><a class="related-card" href="lorem-ipsum-generator"><i class="fas fa-align-left"></i><span>Lorem Ipsum Generator</span></a><a class="related-card" href="qr-code-generator"><i class="fas fa-qrcode"></i><span>QR Code Generator</span></a></div></div>
+    </section>
     </main>
 
     <footer><div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;"><p>© 2026 ToolBox Pro. All rights reserved.</p></div></footer>

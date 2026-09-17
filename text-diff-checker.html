@@ -4,6 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Online Text Diff Checker | ToolBox Pro</title>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Text Diff Checker",
+      "url": "https://toolboxpro-theta.vercel.app/text-diff-checker",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any (browser-based)",
+      "description": "Compare two versions of text and see exactly what was added and what was removed — line by line. Perfect for reviewing contract edits, checking two config versions, verifying an email rewrite, or finding what changed between drafts.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ToolBox Pro",
+        "url": "https://toolboxpro-theta.vercel.app/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Tools",
+          "item": "https://toolboxpro-theta.vercel.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Text Diff Checker",
+          "item": "https://toolboxpro-theta.vercel.app/text-diff-checker"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does it compare words or whole lines?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Line by line — a single changed word marks that line as changed. For word-level granularity, compare shorter passages."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can it ignore whitespace changes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Whitespace-only differences can still register as changes depending on normalization. Trim or normalize text first if whitespace noise drowns real edits."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my text stored?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — comparison runs locally in your browser and nothing is sent or saved."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolboxpro-theta.vercel.app/text-diff-checker">
     <meta property="og:title" content="Text Diff Checker - ToolBox Pro">
@@ -87,7 +159,7 @@
 
     <div class="tool-page" style="max-width:1000px;">
         <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Back to Tools</a>
-        <h1><i class="fas fa-not-equal" style="color:var(--accent-1)"></i> Text Diff Checker</h1>
+        <h1><i class="fas fa-not-equal" style="color:var(--accent-1)"></i> Text Diff Checker — Compare Two Texts</h1>
         <p class="tool-description">Compare two pieces of text side by side and instantly see the differences highlighted.</p>
 
         <div class="diff-container">
@@ -120,6 +192,16 @@ And an extra line.</textarea>
             <div class="diff-stats" id="diff-stats"></div>
         </div>
     </div>
+    
+    <!-- SEO content (static, injected by inject-seo-content.js) -->
+    <section class="seo-content" aria-label="About this tool">
+                <p class="seo-intro">Compare two versions of text and see exactly what was added and what was removed — line by line. Perfect for reviewing contract edits, checking two config versions, verifying an email rewrite, or finding what changed between drafts.</p>
+        <div class="seo-block"><h2 id="how-to">How to compare two texts</h2><ol class="seo-steps"><li>Paste the original text in the first box.</li><li>Paste the changed text in the second box.</li><li>Run the comparison — added and removed lines are highlighted.</li><li>Read the diff top to bottom; each change shows its side of the edit.</li></ol></div>
+        <div class="seo-block"><h2 id="example">Reading a diff</h2><p>Lines starting with a minus existed only in the original; plus lines exist only in the new version; unchanged lines appear once between them. This is the same convention git uses.</p><pre class="seo-code"><code>- old line
++ new line</code></pre></div>
+        <div class="seo-block"><h2 id="faq">Frequently asked questions</h2><div class="seo-faq"><details class="seo-faq-item"><summary>Does it compare words or whole lines?</summary><p>Line by line — a single changed word marks that line as changed. For word-level granularity, compare shorter passages.</p></details><details class="seo-faq-item"><summary>Can it ignore whitespace changes?</summary><p>Whitespace-only differences can still register as changes depending on normalization. Trim or normalize text first if whitespace noise drowns real edits.</p></details><details class="seo-faq-item"><summary>Is my text stored?</summary><p>No — comparison runs locally in your browser and nothing is sent or saved.</p></details></div></div>
+        <div class="seo-block"><h2 id="related">Related writing tools</h2><div class="related-grid"><a class="related-card" href="word-counter"><i class="fas fa-font"></i><span>Word Counter</span></a><a class="related-card" href="markdown-preview"><i class="fas fa-markdown"></i><span>Markdown Preview</span></a><a class="related-card" href="regex-tester"><i class="fas fa-asterisk"></i><span>Regex Tester</span></a></div></div>
+    </section>
     </main>
 
     <footer>

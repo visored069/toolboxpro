@@ -4,6 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Online JSON Formatter & Validator | ToolBox Pro</title>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "JSON Formatter",
+      "url": "https://toolboxpro-theta.vercel.app/json-formatter",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any (browser-based)",
+      "description": "JSON (JavaScript Object Notation) is the standard format APIs use to exchange data. In the wild it usually arrives as one long, unreadable line. This tool pretty-prints JSON with proper indentation, minifies it to save bytes, and validates it against JSON syntax — so broken payloads fail loudly with",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ToolBox Pro",
+        "url": "https://toolboxpro-theta.vercel.app/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Tools",
+          "item": "https://toolboxpro-theta.vercel.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "JSON Formatter",
+          "item": "https://toolboxpro-theta.vercel.app/json-formatter"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is my JSON uploaded to a server?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Formatting, minifying, and validating all happen locally in your browser. Your data never leaves your device."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the validator catch?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It catches JSON syntax errors — missing commas, unquoted keys, trailing commas, unescaped quotes, and mismatched brackets. It does not validate a JSON Schema."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does my JSON with comments fail?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "JSON has no comment syntax. Comments are allowed in JSON5 and some config files, but standard JSON parsers — including this one — reject them."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolboxpro-theta.vercel.app/json-formatter">
@@ -57,7 +129,7 @@
 
     <div class="tool-page">
         <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Back to Tools</a>
-        <h1><i class="fas fa-code" style="color:var(--accent-1)"></i> JSON Formatter</h1>
+        <h1><i class="fas fa-code" style="color:var(--accent-1)"></i> JSON Formatter &amp; Validator</h1>
         <p class="tool-description">Format, validate, and beautify your JSON data instantly. Paste your JSON below and choose an action.</p>
 
         <div class="tool-input-group">
@@ -76,6 +148,23 @@
         <button class="tool-btn btn-primary" onclick="copyElement('json-output')"><i class="fas fa-copy"></i> Copy</button>
     </div>
 
+    
+    <!-- SEO content (static, injected by inject-seo-content.js) -->
+    <section class="seo-content" aria-label="About this tool">
+                <p class="seo-intro">JSON (JavaScript Object Notation) is the standard format APIs use to exchange data. In the wild it usually arrives as one long, unreadable line. This tool pretty-prints JSON with proper indentation, minifies it to save bytes, and validates it against JSON syntax — so broken payloads fail loudly with a clear message instead of silently breaking your code.</p>
+        <div class="seo-block"><h2 id="how-to">How to format JSON</h2><ol class="seo-steps"><li>Paste your JSON into the input box (or just start typing).</li><li>Click Format to pretty-print it with 2-space indentation.</li><li>Click Minify to strip all whitespace into a single compact line.</li><li>Click Validate to check the syntax — you’ll get an error message pointing at the problem if the JSON is invalid.</li><li>Click Copy to copy the result to your clipboard.</li></ol></div>
+        <div class="seo-block"><h2 id="example">JSON formatting example</h2><p>This minified JSON:</p><pre class="seo-code"><code>{&quot;name&quot;:&quot;Ada&quot;,&quot;role&quot;:&quot;admin&quot;,&quot;tags&quot;:[&quot;math&quot;,&quot;pioneering&quot;],&quot;active&quot;:true}</code></pre><pre class="seo-code"><code>{
+  &quot;name&quot;: &quot;Ada&quot;,
+  &quot;role&quot;: &quot;admin&quot;,
+  &quot;tags&quot;: [
+    &quot;math&quot;,
+    &quot;pioneering&quot;
+  ],
+  &quot;active&quot;: true
+}</code></pre><p>becomes this when formatted:</p></div>
+        <div class="seo-block"><h2 id="faq">Frequently asked questions</h2><div class="seo-faq"><details class="seo-faq-item"><summary>Is my JSON uploaded to a server?</summary><p>No. Formatting, minifying, and validating all happen locally in your browser. Your data never leaves your device.</p></details><details class="seo-faq-item"><summary>What does the validator catch?</summary><p>It catches JSON syntax errors — missing commas, unquoted keys, trailing commas, unescaped quotes, and mismatched brackets. It does not validate a JSON Schema.</p></details><details class="seo-faq-item"><summary>Why does my JSON with comments fail?</summary><p>JSON has no comment syntax. Comments are allowed in JSON5 and some config files, but standard JSON parsers — including this one — reject them.</p></details></div></div>
+        <div class="seo-block"><h2 id="related">Related JSON tools</h2><div class="related-grid"><a class="related-card" href="json-to-csv"><i class="fas fa-table"></i><span>JSON to CSV</span></a><a class="related-card" href="markdown-preview"><i class="fas fa-markdown"></i><span>Markdown Preview</span></a><a class="related-card" href="regex-tester"><i class="fas fa-asterisk"></i><span>Regex Tester</span></a></div></div>
+    </section>
     </main>
 
     <footer>

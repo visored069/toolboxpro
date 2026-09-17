@@ -4,6 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Online URL Encoder & Decoder | ToolBox Pro</title>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "URL Encoder/Decoder",
+      "url": "https://toolboxpro-theta.vercel.app/url-encoder-decoder",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any (browser-based)",
+      "description": "URLs can only contain a limited set of characters — spaces, ampersands, question marks, hash symbols, and non-English letters must be percent-encoded before they can appear in a link or query string. This tool encodes text for safe use in URLs and decodes percent-encoded strings back to readable tex",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ToolBox Pro",
+        "url": "https://toolboxpro-theta.vercel.app/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Tools",
+          "item": "https://toolboxpro-theta.vercel.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "URL Encoder/Decoder",
+          "item": "https://toolboxpro-theta.vercel.app/url-encoder-decoder"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What exactly gets encoded?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Characters with special meaning in URLs — spaces, &, =, ?, #, %, and non-ASCII letters — get percent-encoded so your value survives intact inside a single URL component."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do I see + instead of %20 sometimes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "HTML form submissions historically encode spaces as +. In query strings both usually work; in path segments use %20."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my data sent anywhere?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Encoding and decoding run entirely in your browser."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolboxpro-theta.vercel.app/url-encoder-decoder">
     <meta property="og:title" content="URL Encoder/Decoder - ToolBox Pro">
@@ -36,7 +108,7 @@
 
     <div class="tool-page">
         <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Back to Tools</a>
-        <h1><i class="fas fa-link" style="color:var(--accent-3)"></i> URL Encoder/Decoder</h1>
+        <h1><i class="fas fa-link" style="color:var(--accent-3)"></i> URL Encoder &amp; Decoder</h1>
         <p class="tool-description">Encode and decode URLs for web development. Enter your URL or text below.</p>
 
         <div class="tool-input-group">
@@ -53,6 +125,15 @@
         </div>
         <button class="tool-btn btn-primary" onclick="copyElement('url-output')"><i class="fas fa-copy"></i> Copy</button>
     </div>
+    
+    <!-- SEO content (static, injected by inject-seo-content.js) -->
+    <section class="seo-content" aria-label="About this tool">
+                <p class="seo-intro">URLs can only contain a limited set of characters — spaces, ampersands, question marks, hash symbols, and non-English letters must be percent-encoded before they can appear in a link or query string. This tool encodes text for safe use in URLs and decodes percent-encoded strings back to readable text.</p>
+        <div class="seo-block"><h2 id="how-to">How to encode and decode URLs</h2><ol class="seo-steps"><li>Paste the text or URL fragment into the input box.</li><li>Click Encode to percent-encode unsafe characters (spaces become %20, etc.).</li><li>Click Decode to turn percent-encoded text back into readable characters.</li><li>Copy the result with one click.</li></ol></div>
+        <div class="seo-block"><h2 id="example">URL encoding example</h2><p>A space becomes %20 and &amp; becomes %26 because &amp; separates query parameters — without encoding, anything after an unencoded &amp; would be treated as a new parameter. This is the difference between a link that works and one that silently truncates.</p><pre class="seo-code"><code>hello world&amp;more  →  hello%20world%26more</code></pre></div>
+        <div class="seo-block"><h2 id="faq">Frequently asked questions</h2><div class="seo-faq"><details class="seo-faq-item"><summary>What exactly gets encoded?</summary><p>Characters with special meaning in URLs — spaces, &amp;, =, ?, #, %, and non-ASCII letters — get percent-encoded so your value survives intact inside a single URL component.</p></details><details class="seo-faq-item"><summary>Why do I see + instead of %20 sometimes?</summary><p>HTML form submissions historically encode spaces as +. In query strings both usually work; in path segments use %20.</p></details><details class="seo-faq-item"><summary>Is my data sent anywhere?</summary><p>No. Encoding and decoding run entirely in your browser.</p></details></div></div>
+        <div class="seo-block"><h2 id="related">Related encoding tools</h2><div class="related-grid"><a class="related-card" href="base64-encoder-decoder"><i class="fas fa-file-code"></i><span>Base64 Encoder/Decoder</span></a><a class="related-card" href="regex-tester"><i class="fas fa-asterisk"></i><span>Regex Tester</span></a><a class="related-card" href="json-formatter"><i class="fas fa-code"></i><span>JSON Formatter</span></a></div></div>
+    </section>
     </main>
 
     <footer><div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;"><p>© 2026 ToolBox Pro. All rights reserved.</p></div></footer>

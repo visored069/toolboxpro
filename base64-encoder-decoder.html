@@ -4,6 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Online Base64 Encoder & Decoder | ToolBox Pro</title>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Base64 Encoder/Decoder",
+      "url": "https://toolboxpro-theta.vercel.app/base64-encoder-decoder",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any (browser-based)",
+      "description": "Base64 turns binary data into plain text using 64 safe characters, which is why it shows up in data URIs, email attachments, JWTs, and API payloads. Encode text to Base64 or decode Base64 back to readable text — instantly, in your browser.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ToolBox Pro",
+        "url": "https://toolboxpro-theta.vercel.app/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Tools",
+          "item": "https://toolboxpro-theta.vercel.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Base64 Encoder/Decoder",
+          "item": "https://toolboxpro-theta.vercel.app/base64-encoder-decoder"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is Base64 encryption?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Base64 is an encoding, not encryption — anyone can decode it instantly. Never use it to hide secrets; use proper cryptography."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does Base64 make text longer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It packs 3 bytes into 4 characters, so output is roughly 33% larger than the input."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can it handle emoji and non-English text?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — encoding and decoding operate on UTF-8, so all Unicode text round-trips correctly."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolboxpro-theta.vercel.app/base64-encoder-decoder">
     <meta property="og:title" content="Base64 Encoder/Decoder - ToolBox Pro">
@@ -36,7 +108,7 @@
 
     <div class="tool-page">
         <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Back to Tools</a>
-        <h1><i class="fas fa-exchange-alt" style="color:var(--accent-2)"></i> Base64 Encoder/Decoder</h1>
+        <h1><i class="fas fa-exchange-alt" style="color:var(--accent-2)"></i> Base64 Encoder &amp; Decoder</h1>
         <p class="tool-description">Encode and decode Base64 strings easily. Enter your text and choose encode or decode.</p>
 
         <div class="tool-input-group">
@@ -54,6 +126,15 @@
         </div>
         <button class="tool-btn btn-primary" onclick="copyElement('base64-output')"><i class="fas fa-copy"></i> Copy</button>
     </div>
+    
+    <!-- SEO content (static, injected by inject-seo-content.js) -->
+    <section class="seo-content" aria-label="About this tool">
+                <p class="seo-intro">Base64 turns binary data into plain text using 64 safe characters, which is why it shows up in data URIs, email attachments, JWTs, and API payloads. Encode text to Base64 or decode Base64 back to readable text — instantly, in your browser.</p>
+        <div class="seo-block"><h2 id="how-to">How to encode and decode Base64</h2><ol class="seo-steps"><li>Paste text into the input box.</li><li>Click Encode to convert it to Base64.</li><li>Click Decode to convert Base64 back to the original text.</li><li>Copy the result with one click.</li></ol></div>
+        <div class="seo-block"><h2 id="example">Base64 example</h2><p>The = signs at the end are padding — Base64 output is always a multiple of 4 characters. Decoding is strict: malformed input produces an error rather than garbage.</p><pre class="seo-code"><code>Hello, World!  →  SGVsbG8sIFdvcmxkIQ==</code></pre></div>
+        <div class="seo-block"><h2 id="faq">Frequently asked questions</h2><div class="seo-faq"><details class="seo-faq-item"><summary>Is Base64 encryption?</summary><p>No. Base64 is an encoding, not encryption — anyone can decode it instantly. Never use it to hide secrets; use proper cryptography.</p></details><details class="seo-faq-item"><summary>Why does Base64 make text longer?</summary><p>It packs 3 bytes into 4 characters, so output is roughly 33% larger than the input.</p></details><details class="seo-faq-item"><summary>Can it handle emoji and non-English text?</summary><p>Yes — encoding and decoding operate on UTF-8, so all Unicode text round-trips correctly.</p></details></div></div>
+        <div class="seo-block"><h2 id="related">Related encoding tools</h2><div class="related-grid"><a class="related-card" href="url-encoder-decoder"><i class="fas fa-link"></i><span>URL Encoder/Decoder</span></a><a class="related-card" href="hash-generator"><i class="fas fa-fingerprint"></i><span>Hash Generator</span></a><a class="related-card" href="json-formatter"><i class="fas fa-code"></i><span>JSON Formatter</span></a></div></div>
+    </section>
     </main>
 
     <footer><div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;"><p>© 2026 ToolBox Pro. All rights reserved.</p></div></footer>

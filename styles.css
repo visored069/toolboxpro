@@ -1681,3 +1681,40 @@ textarea[id], input[id] { touch-action: manipulation; }
     textarea[id] { font-size: 16px; }
     input[type="color"] { height: 50px !important; }
 }
+
+/* === SEO CONTENT SECTIONS (tool pages) === */
+.seo-content { margin-top: 2.5rem; max-width: 780px; }
+.seo-intro { color: var(--text-secondary); line-height: 1.75; font-size: 0.95rem; margin-bottom: 1.75rem; }
+.seo-block { margin-bottom: 2rem; }
+.seo-block h2 {
+    font-size: 1.15rem; font-weight: 700; color: var(--text-primary);
+    margin-bottom: 0.85rem; letter-spacing: -0.01em;
+}
+.seo-steps { padding-left: 1.4rem; color: var(--text-secondary); line-height: 1.8; font-size: 0.92rem; }
+.seo-steps li { margin-bottom: 0.4rem; }
+.seo-block p { color: var(--text-secondary); line-height: 1.75; font-size: 0.92rem; margin-bottom: 0.85rem; }
+.seo-code {
+    background: var(--bg-card, rgba(0,0,0,0.3)); border: 1px solid var(--glass-border);
+    border-radius: 10px; padding: 1rem 1.15rem; overflow-x: auto;
+    font-family: 'Courier New', monospace; font-size: 0.85rem; line-height: 1.6;
+    color: var(--text-primary); margin: 0.85rem 0; white-space: pre-wrap; word-break: break-word;
+}
+.seo-faq { display: flex; flex-direction: column; gap: 0.5rem; }
+.seo-faq-item {
+    border: 1px solid var(--glass-border); border-radius: 12px;
+    background: var(--glass-bg); overflow: hidden;
+    transition: border-color 0.3s;
+}
+.seo-faq-item:hover { border-color: rgba(var(--accent-1-rgb), 0.25); }
+.seo-faq-item summary {
+    padding: 0.9rem 1.1rem; cursor: pointer; font-weight: 600; font-size: 0.9rem;
+    color: var(--text-primary); list-style: none; position: relative; padding-right: 2.5rem;
+}
+.seo-faq-item summary::-webkit-details-marker { display: none; }
+.seo-faq-item summary::after {
+    content: '+'; position: absolute; right: 1.1rem; top: 50%; transform: translateY(-50%);
+    color: var(--accent-1); font-size: 1.2rem; font-weight: 400; transition: transform 0.3s;
+}
+.seo-faq-item[open] summary::after { content: '\2212'; }
+.seo-faq-item[open] summary { color: var(--accent-1); }
+.seo-faq-item p { padding: 0 1.1rem 1rem; margin: 0; font-size: 0.88rem; }
