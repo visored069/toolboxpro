@@ -204,7 +204,8 @@ function getActiveCategory() {
     return active ? active.getAttribute('data-category') : 'all';
 }
 function filterTools(query, category) {
-    var cards = document.querySelectorAll('.tool-card');
+    // Scope to the main grid — dynamic sections (Favorites/Recent) must not be filtered
+    var cards = document.querySelectorAll('.tools-grid .tool-card');
     var visible = 0;
     var firstMatch = null;
     cards.forEach(function(card) {
@@ -230,7 +231,11 @@ function filterTools(query, category) {
     var countEl = document.getElementById('search-count');
     var noResults = document.getElementById('no-results');
     if (countEl) {
-        if (query || category !== 'all') { countEl.innerHTML = 'Showing <strong>' + visible + '</strong> of 20 tools'; countEl.style.display = 'block'; }
+        if (query || category !== 'all') {
+            var total = (window.ToolRegistry ? ToolRegistry.count() : cards.length);
+            countEl.innerHTML = 'Showing <strong>' + visible + '</strong> of ' + total + ' tools';
+            countEl.style.display = 'block';
+        }
         else { countEl.style.display = 'none'; }
     }
     if (noResults) {
@@ -251,7 +256,7 @@ function escapeRegExp(s) {
     return String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 function highlightMatches(query) {
-    var cards = document.querySelectorAll('.tool-card');
+    var cards = document.querySelectorAll('.tools-grid .tool-card');
     cards.forEach(function(card) {
         var h3 = card.querySelector('h3');
         var p = card.querySelector('p');
@@ -387,7 +392,7 @@ if (document.readyState === 'loading') {
 // --- Scroll Reveal ---
 function initScrollReveal() {
     if (!('IntersectionObserver' in window)) { document.querySelectorAll('.tool-card').forEach(function(c) { c.classList.add('reveal'); }); return; }
-    var cards = document.querySelectorAll('.tool-card');
+    var cards = document.querySelectorAll('.tools-grid .tool-card');
     var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {
@@ -409,6 +414,93 @@ function initHeaderScroll() {
     window.addEventListener('scroll', function() {
         header.classList.toggle('scrolled', window.scrollY > 20);
     }, { passive: true });
+}
+
+// --- Favorite Stars on tool cards (homepage) ---
+function initFavStars() {
+    if (!window.ToolRegistry) return;
+    document.querySelectorAll('.tool-card').forEach(function (card) {
+        var slug = card.getAttribute('href');
+        if (!slug || slug.indexOf('/') !== -1 || slug.indexOf('.html') !== -1) return;
+        if (card.querySelector('.fav-star')) return;
+        var btn = document.createElement('button');
+        btn.className = 'fav-star' + (ToolRegistry.isFavorite(slug) ? ' active' : '');
+        btn.setAttribute('aria-label', (ToolRegistry.isFavorite(slug) ? 'Remove ' : 'Add ') + (card.getAttribute('data-name') || 'tool') + (ToolRegistry.isFavorite(slug) ? ' from favorites' : ' to favorites'));
+        btn.setAttribute('aria-pressed', ToolRegistry.isFavorite(slug) ? 'true' : 'false');
+        btn.innerHTML = ToolRegistry.isFavorite(slug) ? '★' : '☆';
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var nowFav = ToolRegistry.toggleFavorite(slug);
+            btn.classList.toggle('active', nowFav);
+            btn.innerHTML = nowFav ? '★' : '☆';
+            btn.setAttribute('aria-pressed', nowFav ? 'true' : 'false');
+            window.dispatchEvent(new Event('toolboxpro:favs-changed'));
+        });
+        card.appendChild(btn);
+    });
+}
+
+// --- Record tool usage on tool pages ---
+function initUsageRecording() {
+    if (!window.ToolRegistry) return;
+    var path = window.location.pathname.replace(/^\//, '').replace(/\.html$/, '');
+    if (path && ToolRegistry.bySlug(path)) ToolRegistry.recordUse(path);
+}
+
+// --- Personal Sections: Favorites & Recently Used ---
+function initPersonalSections() {
+    if (!window.ToolRegistry) return;
+    var favSec = document.getElementById('favorites-section');
+    var recSec = document.getElementById('recent-section');
+    if (!favSec && !recSec) return;
+
+    function cardHtml(t, isFav) {
+        return '<a href="' + t.slug + '" class="tool-card dyn-card reveal" data-name="' + t.name + '" data-tags="' + t.keywords + '" data-category="' + t.category + '">' +
+            '<div class="tool-icon"><i class="fas ' + t.icon + '"></i></div>' +
+            '<h3>' + t.name + '</h3>' +
+            '<p>' + t.description + '</p>' +
+            '<div class="tool-card-footer"><span class="tool-tag">' + t.category + '</span>' +
+            (isFav ? '<span class="dyn-fav-ind" title="Favorite">★</span>' : '') + '</div></a>';
+    }
+    function render() {
+        var favs = ToolRegistry.getFavorites();
+        var rec = ToolRegistry.getRecent().filter(function (s) { return favs.indexOf(s) === -1; });
+        if (favSec) {
+            var grid = document.getElementById('favorites-grid');
+            if (favs.length) {
+                grid.innerHTML = favs.map(function (s) { return cardHtml(ToolRegistry.bySlug(s), true); }).join('');
+                favSec.style.display = 'block';
+            } else { favSec.style.display = 'none'; }
+        }
+        if (recSec) {
+            var rgrid = document.getElementById('recent-grid');
+            if (rec.length) {
+                rgrid.innerHTML = rec.map(function (s) { return cardHtml(ToolRegistry.bySlug(s), false); }).join('');
+                recSec.style.display = 'block';
+            } else { recSec.style.display = 'none'; }
+        }
+    }
+    render();
+    window.addEventListener('toolboxpro:favs-changed', render);
+}
+
+// --- Surprise Me: jump to a random tool ---
+function initSurpriseMe() {
+    var btn = document.getElementById('surprise-btn');
+    if (!btn || !window.ToolRegistry) return;
+    btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var tools = ToolRegistry.tools;
+        var pick = tools[Math.floor(Math.random() * tools.length)];
+        if (window.initPageTransitions && document.getElementById('page-transition')) {
+            var pt = document.getElementById('page-transition');
+            pt.classList.add('active');
+            setTimeout(function () { window.location.href = pick.slug; }, 350);
+        } else {
+            window.location.href = pick.slug;
+        }
+    });
 }
 
 // --- Animated Counter ---
@@ -878,18 +970,9 @@ function initKeyboardShortcuts() {
         var searchInput = document.getElementById('tool-search');
         var isInputFocused = document.activeElement && (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA');
 
-        // Ctrl+K or Cmd+K -- focus search
-        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-            e.preventDefault();
-            if (searchInput) { searchInput.focus(); searchInput.select(); }
-            return;
-        }
-        // / -- focus search (when not in input)
-        if (e.key === '/' && !isInputFocused) {
-            e.preventDefault();
-            if (searchInput) { searchInput.focus(); searchInput.select(); }
-            return;
-        }
+        // Ctrl+K / Cmd+K and "/" are handled by command-palette.js
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') return;
+        if (e.key === '/' && !isInputFocused) return;
         // Ctrl+\ -- toggle theme
         if ((e.ctrlKey || e.metaKey) && e.key === '\\') {
             e.preventDefault();
@@ -995,6 +1078,10 @@ function togglePasswordVisibility() {
 // --- Init ---
 document.addEventListener('DOMContentLoaded', function() {
     initTheme();
+    initPersonalSections();
+    initSurpriseMe();
+    initFavStars();
+    initUsageRecording();
     initParticleCanvas();
     createParticles();
     initTypewriter();

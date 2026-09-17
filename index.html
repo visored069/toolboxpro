@@ -147,33 +147,46 @@
     <main id="main-content">
         <section class="hero">
             <div class="hero-mesh"></div>
-            <h1 class="typewriter-text" id="typewriter-text">The Only <span>Developer Toolkit</span><br>You'll Ever Need</h1>
-            <p>Free, fast, and powerful online tools for developers, designers, and everyone. Everything runs in your browser — no login, no uploads, no tracking of your data.</p>
+            <h1 class="typewriter-text" id="typewriter-text">Every developer utility.<br><span>One place.</span></h1>
+            <p>20+ free tools that run entirely in your browser — fast, private, and always available. No signup, no uploads, no tracking of your data.</p>
             <div class="hero-ctas">
-                <a href="#tools" class="hero-btn primary"><i class="fas fa-bolt"></i> Explore Tools</a>
-                <a href="ai-tools" class="hero-btn ghost"><i class="fas fa-robot"></i> AI Directory <i class="fas fa-arrow-right hero-btn-arrow"></i></a>
+                <a href="#tools" class="hero-btn primary"><i class="fas fa-compass"></i> Explore Tools</a>
+                <a href="#" id="surprise-btn" class="hero-btn ghost"><i class="fas fa-dice"></i> Surprise Me ⚡</a>
             </div>
             <div class="hero-stats">
-                <div class="stat"><div class="stat-number">20+</div><div class="stat-label">Tools</div></div>
+                <div class="stat"><div class="stat-number" data-stat="count">20+</div><div class="stat-label">Tools</div></div>
                 <div class="stat"><div class="stat-number">100%</div><div class="stat-label">Free</div></div>
-                <div class="stat"><div class="stat-number">∞</div><div class="stat-label">Usage</div></div>
+                <div class="stat"><div class="stat-number">No Login</div><div class="stat-label">Private by design</div></div>
+                <div class="stat"><div class="stat-number">Browser-Based</div><div class="stat-label">Nothing leaves your device</div></div>
             </div>
         </section>
 
-        <!-- AI Directory Promo Banner -->
-        <a href="ai-tools" style="display:block;text-decoration:none;margin:0 auto;max-width:800px;padding:24px 32px;border-radius:16px;background:linear-gradient(135deg,rgba(99,102,241,0.12),rgba(139,92,246,0.08));border:1px solid rgba(129,140,248,0.25);transition:all 0.3s;position:relative;overflow:hidden;">
+        <!-- AI Directory Promo Banner -->                <a href="ai-tools" style="display:block;text-decoration:none;margin:0 auto;max-width:800px;padding:24px 32px;border-radius:16px;background:linear-gradient(135deg,rgba(99,102,241,0.12),rgba(139,92,246,0.08));border:1px solid rgba(129,140,248,0.25);transition:all 0.3s;position:relative;overflow:hidden;">
             <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(129,140,248,0.05),rgba(245,158,11,0.05));opacity:0;transition:opacity 0.3s;"></div>
             <div style="display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1;">
                 <div style="display:flex;align-items:center;gap:16px;">
                     <div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#6366f1,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:1.3rem;">🤖</div>
                     <div>
-                        <div style="font-size:1.1rem;font-weight:700;color:#fff;">AI Tools Directory — 200+ Curated AI Tools</div>
+                        <div style="font-size:1.1rem;font-weight:700;color:#fff;">AI Tools Directory — 80+ Curated AI Tools</div>
                         <div style="font-size:0.85rem;color:rgba(255,255,255,0.5);">Discover the best AI tools for writing, coding, design, video, and more</div>
                     </div>
                 </div>
                 <div style="color:#818cf8;font-weight:600;display:flex;align-items:center;gap:8px;white-space:nowrap;">Explore <i class="fas fa-arrow-right"></i></div>
             </div>
         </a>
+
+        <!-- Favorites (rendered from registry; hidden when empty) -->
+        <section class="section" id="favorites-section" style="display:none;">
+            <div class="section-header"><h2 id="favorites-heading">⭐ Your Favorites</h2><span class="badge">LOCAL</span></div>
+            <div class="dyn-grid" id="favorites-grid" aria-labelledby="favorites-heading"></div>
+            <p class="dyn-empty-hint" style="display:none;">Tip: click the ☆ on any tool card to pin it here.</p>
+        </section>
+
+        <!-- Recently Used (rendered from registry; hidden when empty) -->
+        <section class="section" id="recent-section" style="display:none;">
+            <div class="section-header"><h2 id="recent-heading">🕓 Recently Used</h2><span class="badge">THIS DEVICE</span></div>
+            <div class="dyn-grid" id="recent-grid" aria-labelledby="recent-heading"></div>
+        </section>
 
         <!-- Popular Tools -->
         <section class="section popular-section" aria-labelledby="popular-heading">
@@ -532,6 +545,7 @@
 
 
     <script src="tool-registry.js"></script>
+    <script src="command-palette.js" defer></script>
     <script src="components.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {

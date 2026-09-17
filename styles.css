@@ -84,6 +84,8 @@ html.light {
     --scrollbar-track: #fafafa;
 }
 
+html { overflow-x: hidden; scroll-behavior: smooth; }
+
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background: var(--bg-primary);
@@ -1572,3 +1574,110 @@ kbd {
     transition: opacity 0.4s, transform 0.4s;
 }
 .cookie-banner.visible { opacity: 1 !important; transform: translateY(0) !important; }
+
+/* === DYNAMIC PERSONAL SECTIONS (Favorites / Recent) === */
+.dyn-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem; }
+.dyn-card { opacity: 1; }
+.dyn-fav-ind { color: #fbbf24; font-size: 1rem; }
+.dyn-empty-hint { text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-top: 0.75rem; }
+
+/* === FAVORITE STAR ON TOOL CARDS === */
+.fav-star {
+    position: absolute; top: 0.75rem; right: 0.75rem; z-index: 3;
+    width: 34px; height: 34px; border-radius: 10px; border: none; cursor: pointer;
+    background: transparent; color: var(--text-muted); font-size: 0.95rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s var(--spring-bounce);
+}
+.fav-star:hover { color: #fbbf24; background: rgba(251, 191, 36, 0.12); transform: scale(1.12); }
+.fav-star.active { color: #fbbf24; }
+.fav-star:focus-visible { outline: 2px solid var(--accent-1); outline-offset: 2px; }
+
+/* === COMMAND PALETTE === */
+.cmdk-backdrop {
+    position: fixed; inset: 0; z-index: 10002; background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    display: none; align-items: flex-start; justify-content: center; padding: 12vh 1rem 1rem;
+}
+.cmdk-backdrop.open { display: flex; animation: cmdkFade 0.18s ease-out; }
+.cmdk {
+    width: 100%; max-width: 580px; max-height: 65vh; display: flex; flex-direction: column;
+    background: var(--bg-card); border: 1px solid var(--glass-border); border-radius: 16px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5), 0 0 60px rgba(var(--accent-1-rgb), 0.08);
+    overflow: hidden; animation: cmdkPop 0.22s var(--spring-smooth);
+}
+.cmdk-input-row { display: flex; align-items: center; gap: 0.75rem; padding: 1rem 1.15rem; border-bottom: 1px solid var(--glass-border); }
+.cmdk-input-row i { color: var(--text-muted); }
+.cmdk-input { flex: 1; background: transparent; border: none; outline: none; color: var(--text-primary); font-size: 1rem; font-family: 'Inter', sans-serif; }
+.cmdk-input::placeholder { color: var(--text-muted); }
+.cmdk-esc { font-size: 0.68rem; color: var(--text-muted); border: 1px solid var(--glass-border); border-radius: 6px; padding: 0.15rem 0.45rem; }
+.cmdk-list { overflow-y: auto; padding: 0.5rem; flex: 1; }
+.cmdk-group-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); padding: 0.6rem 0.75rem 0.3rem; }
+.cmdk-item {
+    display: flex; align-items: center; gap: 0.8rem; padding: 0.65rem 0.75rem;
+    border-radius: 10px; cursor: pointer; color: var(--text-secondary);
+}
+.cmdk-item i.cmdk-icon { width: 20px; text-align: center; color: var(--accent-1); }
+.cmdk-item .cmdk-name { font-weight: 600; color: var(--text-primary); font-size: 0.9rem; }
+.cmdk-item .cmdk-desc { font-size: 0.78rem; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cmdk-item .cmdk-cat { margin-left: auto; font-size: 0.68rem; color: var(--text-muted); border: 1px solid var(--glass-border); border-radius: 8px; padding: 0.1rem 0.45rem; flex-shrink: 0; }
+.cmdk-item.selected { background: rgba(var(--accent-1-rgb), 0.12); }
+.cmdk-item.selected .cmdk-name { color: var(--accent-1); }
+.cmdk-empty { text-align: center; padding: 2rem 1rem; color: var(--text-muted); font-size: 0.9rem; }
+.cmdk-footer { display: flex; gap: 1rem; padding: 0.6rem 1rem; border-top: 1px solid var(--glass-border); font-size: 0.7rem; color: var(--text-muted); }
+.cmdk-footer b { font-weight: 600; color: var(--text-secondary); }
+@keyframes cmdkFade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes cmdkPop { from { opacity: 0; transform: translateY(-10px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@media (max-width: 640px) {
+    .cmdk-backdrop { padding-top: 6vh; }
+    .cmdk { max-height: 75vh; }
+    .cmdk-item .cmdk-desc { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .cmdk-backdrop, .cmdk { animation: none; }
+    .fav-star { transition: none; }
+}
+
+/* === TOOL PAGE UI SYSTEM (mobile-first polish) === */
+@media (max-width: 768px) {
+    .tool-page { padding: 1.25rem 1rem; }
+    .tool-page h1 { font-size: 1.5rem; }
+    .tool-textarea, .tool-input, .tool-output, .tool-select {
+        font-size: 16px; /* prevents iOS zoom-on-focus */
+        min-height: 44px;
+    }
+    .tool-textarea { min-height: 160px; }
+    .btn-group { flex-wrap: wrap; }
+    .btn-group .tool-btn { flex: 1 1 44%; min-height: 46px; justify-content: center; }
+    .tool-btn { min-height: 44px; }
+    .copy-toast { left: 1rem; right: 1rem; transform: none; text-align: center; }
+}
+.tool-btn { touch-action: manipulation; }
+.tool-textarea { touch-action: manipulation; }
+/* Visible focus for all tool-page interactive elements */
+.tool-btn:focus-visible, .tool-input:focus-visible, .tool-textarea:focus-visible,
+.tool-select:focus-visible, input[type="range"]:focus-visible {
+    outline: 2px solid var(--accent-1); outline-offset: 2px;
+}
+/* Success / error message primitives (used by tools, styled consistently) */
+.tb-msg {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.55rem 0.9rem; border-radius: 10px; font-size: 0.82rem; font-weight: 500;
+    margin-top: 0.75rem; animation: fadeInUp 0.3s var(--spring-smooth);
+}
+.tb-msg.error { background: rgba(239, 68, 68, 0.12); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+.tb-msg.success { background: rgba(34, 197, 94, 0.12); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.3); }
+html.light .tb-msg.error { color: #b91c1c; }
+html.light .tb-msg.success { color: #15803d; }
+
+/* Native tool inputs (color picker, bare textareas) — mobile + focus parity */
+input[type="color"] {
+    min-height: 44px; cursor: pointer;
+    background: transparent; border: none; border-radius: 10px;
+}
+input[type="color"]:focus-visible { outline: 2px solid var(--accent-1); outline-offset: 2px; }
+textarea[id], input[id] { touch-action: manipulation; }
+@media (max-width: 768px) {
+    textarea[id] { font-size: 16px; }
+    input[type="color"] { height: 50px !important; }
+}

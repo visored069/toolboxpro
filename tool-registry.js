@@ -78,6 +78,37 @@
             var el = document.getElementById('footer-tools-count');
             if (el) el.textContent = TOOLS.length + '+ tools';
         },
+        // --- Favorites & Recently Used (localStorage stores slugs only, never user input) ---
+        favKey: 'toolboxpro-favorites',
+        recentKey: 'toolboxpro-recent-tools',
+        _read: function (key) {
+            try {
+                var raw = localStorage.getItem(key);
+                var arr = raw ? JSON.parse(raw) : [];
+                var reg = REGISTRY;
+                return Array.isArray(arr) ? arr.filter(function (s) { return reg.bySlug(s); }) : [];
+            } catch (e) { return []; }
+        },
+        _write: function (key, arr) {
+            try { localStorage.setItem(key, JSON.stringify(arr.slice(0, key === this.recentKey ? 8 : 50))); } catch (e) {}
+        },
+        getFavorites: function () { return this._read(this.favKey); },
+        isFavorite: function (slug) { return this.getFavorites().indexOf(slug) !== -1; },
+        toggleFavorite: function (slug) {
+            if (!REGISTRY.bySlug(slug)) return false;
+            var favs = this.getFavorites();
+            var i = favs.indexOf(slug);
+            if (i === -1) favs.unshift(slug); else favs.splice(i, 1);
+            this._write(this.favKey, favs);
+            return i === -1;
+        },
+        getRecent: function () { return this._read(this.recentKey); },
+        recordUse: function (slug) {
+            if (!REGISTRY.bySlug(slug)) return;
+            var rec = this.getRecent().filter(function (s) { return s !== slug; });
+            rec.unshift(slug);
+            this._write(this.recentKey, rec);
+        },
         renderSharedFooter: function () {
             // Normalize minimal tool-page footers to the full site footer
             var footer = document.querySelector('footer');

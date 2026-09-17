@@ -1,11 +1,12 @@
 // ===== ToolBox Pro Service Worker =====
-const CACHE_NAME = 'toolboxpro-v4';
+const CACHE_NAME = 'toolboxpro-v5';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
   '/styles.css',
   '/components.js',
   '/tool-registry.js',
+  '/command-palette.js',
   '/guides-data.js',
   '/tool-page-shared.css',
   '/manifest.json',
