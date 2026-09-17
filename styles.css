@@ -1035,7 +1035,6 @@ footer {
 }
 
 /* === BADGES === */
-.analytics-badge {
     position: fixed; bottom: 2rem; left: 2rem;
     background: var(--glass-bg); border: 1px solid var(--glass-border);
     border-radius: 10px; padding: 0.5rem 0.75rem; font-size: 0.7rem;
@@ -1043,8 +1042,6 @@ footer {
     display: flex; align-items: center; gap: 0.4rem;
     backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
 }
-.analytics-badge .dot { width: 6px; height: 6px; background: var(--accent-3); border-radius: 50%; animation: dotPulse 2.5s ease-in-out infinite; }
-@keyframes dotPulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.3; transform: scale(0.8); } }
 .perf-badge {
     position: fixed; bottom: 2rem; left: 5.5rem;
     background: var(--glass-bg); border: 1px solid var(--glass-border);
@@ -1158,7 +1155,6 @@ footer {
     .filter-tabs { gap: 0.35rem; }
     .filter-tab { padding: 0.4rem 0.8rem; font-size: 0.75rem; }
     .back-to-top { bottom: 1rem; right: 1rem; }
-    .analytics-badge { display: none; }
     .perf-badge { display: none; }
     .feedback-fab { bottom: 5rem; right: 1rem; width: 42px; height: 42px; }
     .feedback-panel { right: 1rem; left: 1rem; width: auto; bottom: 6.5rem; }

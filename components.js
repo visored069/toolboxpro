@@ -178,6 +178,11 @@ function initSearch() {
     var clearBtn = document.getElementById('search-clear');
     var searchContainer = document.getElementById('search-container');
     if (!searchInput) return;
+    // Safety net: never show the empty state on a fresh load with no query
+    var noResults = document.getElementById('no-results');
+    var countEl = document.getElementById('search-count');
+    if (noResults) noResults.style.display = 'none';
+    if (countEl) countEl.style.display = 'none';
     searchInput.addEventListener('focus', function() { if (searchContainer) searchContainer.classList.add('focused', 'expanded'); });
     searchInput.addEventListener('blur', function() { if (searchContainer) searchContainer.classList.remove('focused', 'expanded'); });
     searchInput.addEventListener('input', function() {
@@ -691,18 +696,6 @@ function createParticles() {
 }
 
 // --- Analytics ---
-function initAnalytics() {
-    var badge = document.getElementById('analytics-badge');
-    if (!badge) return;
-    var key = 'toolboxpro-views-' + window.location.pathname;
-    var count = parseInt(localStorage.getItem(key) || '0', 10) + 1;
-    localStorage.setItem(key, count.toString());
-    var totalKey = 'toolboxpro-total-views';
-    var total = parseInt(localStorage.getItem(totalKey) || '0', 10) + 1;
-    localStorage.setItem(totalKey, total.toString());
-    badge.querySelector('.analytics-count').textContent = count >= 1000 ? (count / 1000).toFixed(1) + 'k' : count;
-}
-
 // --- Back to Top ---
 function initBackToTop() {
     var btn = document.getElementById('back-to-top');
@@ -1016,7 +1009,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initFloatingShapes();
     initCodeSymbols();
     initClickBurst();
-    initAnalytics();
     initBackToTop();
     initFeedback();
     initPerformance();

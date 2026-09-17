@@ -1,5 +1,5 @@
 // ===== ToolBox Pro Service Worker =====
-const CACHE_NAME = 'toolboxpro-v2';
+const CACHE_NAME = 'toolboxpro-v3';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
