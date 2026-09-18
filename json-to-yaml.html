@@ -60,6 +60,9 @@
     <main id="main-content">
 
     <div class="tool-page">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Tools</a><span class="crumb-sep" aria-hidden="true">/</span><span aria-current="page">JSON to YAML</span>
+        </nav>
         <a href="/" class="back-link"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Tools</a>
         <h1><i class="fas fa-right-left" style="color:var(--accent-1)"></i> JSON ⇄ YAML Converter</h1>
         <p class="tool-description">Convert between JSON and YAML in both directions. Paste your data and convert — everything happens in your browser.</p>
@@ -85,6 +88,8 @@
 
     <!-- SEO content (static, crawlable) -->
     <section class="seo-content" aria-label="About this tool">
+        <div class="guide-callout"><i class="fas fa-book-open" aria-hidden="true"></i><span>Learn more: <a href="json-vs-yaml">Deciding between JSON and YAML? Read the full comparison</a></span></div>
+
         <p class="seo-intro">JSON and YAML describe the same data in different shapes: JSON is strict and bracket-heavy, while YAML trades brackets for indentation so config files stay readable. This tool converts in both directions — paste JSON to get clean block-style YAML for a config file, or paste YAML to get JSON an API can accept. The conversion runs entirely in your browser; nothing is uploaded.</p>
         <div class="seo-block"><h2 id="how-to">How to convert JSON to YAML</h2><ol class="seo-steps"><li>Paste JSON into the input box — or switch the toggle to YAML → JSON first.</li><li>Click Convert. In JSON → YAML mode you get block-style YAML with 2-space indentation.</li><li>In YAML → JSON mode the parser handles nested mappings, lists, numbers, booleans, nulls, and quoted strings.</li><li>Click Copy output to copy the result to your clipboard.</li></ol></div>
         <div class="seo-block"><h2 id="example">JSON to YAML example</h2><p>This JSON:</p><pre class="seo-code"><code>{&quot;service&quot;: &quot;api&quot;, &quot;replicas&quot;: 3, &quot;features&quot;: [&quot;cache&quot;, &quot;metrics&quot;], &quot;debug&quot;: false}</code></pre><p>becomes this YAML:</p><pre class="seo-code"><code>service: api
@@ -100,7 +105,7 @@ debug: false</code></pre></div>
 
     <footer>
         <div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;">
-            <p>© 2026 ToolBox Pro. All rights reserved.</p>
+            <p>© <span id="footer-year">2026</span> ToolBox Pro. All rights reserved.</p>
         </div>
     </footer>
 

@@ -60,6 +60,9 @@
     <main id="main-content">
 
     <div class="tool-page">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Tools</a><span class="crumb-sep" aria-hidden="true">/</span><span aria-current="page">JWT Decoder</span>
+        </nav>
         <a href="/" class="back-link"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Tools</a>
         <h1><i class="fas fa-id-card" style="color:var(--accent-1)"></i> JWT Decoder &amp; Inspector</h1>
         <p class="tool-description">Paste a JWT to inspect its header and payload. Decoding happens locally — tokens are never sent anywhere.</p>
@@ -90,6 +93,8 @@
 
     <!-- SEO content (static, crawlable) -->
     <section class="seo-content" aria-label="About this tool">
+        <div class="guide-callout"><i class="fas fa-book-open" aria-hidden="true"></i><span>Learn more: <a href="how-base64-encoding-works">JWTs use Base64URL — see how the encoding works</a></span></div>
+
         <p class="seo-intro">A JSON Web Token (JWT) is the credential most APIs hand your browser after login — three Base64URL sections separated by dots: a header naming the signing algorithm, a payload of claims (who you are, when it expires), and a signature. Because the first two sections are encoded rather than encrypted, anyone holding the token can read them. This tool decodes them instantly so you can debug auth flows and check expiry — without pasting production tokens into an unknown website, because decoding runs entirely in your browser.</p>
         <div class="seo-block"><h2 id="how-to">How to decode a JWT</h2><ol class="seo-steps"><li>Paste the full token (all dot-separated sections) into the input box.</li><li>Click Decode Token to see the decoded header and payload.</li><li>If the payload contains <code>exp</code> or <code>iat</code> claims, the tool also shows issue time, expiry time, and whether the token is currently valid.</li><li>Decode happens locally, so private tokens stay on your machine — nothing is transmitted.</li></ol></div>
         <div class="seo-block"><h2 id="example">What a decoded JWT looks like</h2><p>Given this token:</p><pre class="seo-code"><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkFkYSIsImlhdCI6MTcwMDAwMDAwMH0.abc123</code></pre><p>the header and payload decode to:</p><pre class="seo-code"><code>// header
@@ -111,7 +116,7 @@
 
     <footer>
         <div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;">
-            <p>© 2026 ToolBox Pro. All rights reserved.</p>
+            <p>© <span id="footer-year">2026</span> ToolBox Pro. All rights reserved.</p>
         </div>
     </footer>
 

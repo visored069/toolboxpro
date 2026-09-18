@@ -60,6 +60,9 @@
     <main id="main-content">
 
     <div class="tool-page">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Tools</a><span class="crumb-sep" aria-hidden="true">/</span><span aria-current="page">Image to Base64</span>
+        </nav>
         <a href="/" class="back-link"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Tools</a>
         <h1><i class="fas fa-image" style="color:var(--accent-1)"></i> Image to Base64 Converter</h1>
         <p class="tool-description">Drop an image in to get a Base64 data URI ready for CSS or HTML. The file never leaves your device.</p>
@@ -87,6 +90,8 @@
 
     <!-- SEO content (static, crawlable) -->
     <section class="seo-content" aria-label="About this tool">
+        <div class="guide-callout"><i class="fas fa-book-open" aria-hidden="true"></i><span>Learn more: <a href="how-base64-encoding-works">Why Base64 makes files 33% bigger (and when it’s worth it)</a></span></div>
+
         <p class="seo-intro">Embedding small images as Base64 data URIs removes an HTTP request and makes assets self-contained — handy for CSS backgrounds, email-safe HTML, and single-file demos. This tool converts any image (PNG, JPEG, GIF, WebP, SVG) into a ready-to-paste data URI using the FileReader API, shows a preview and the exact size overhead Base64 adds (~33%), and offers two copies: the full URI for CSS/HTML or the bare Base64 for JSON payloads. The image is read locally — it is never uploaded.</p>
         <div class="seo-block"><h2 id="how-to">How to convert an image to Base64</h2><ol class="seo-steps"><li>Click Choose File and pick an image — PNG, JPEG, GIF, WebP, or SVG.</li><li>Click Convert. A preview appears along with the full <code>data:image/…;base64,…</code> string.</li><li>Check the size line: Base64 is about 33% larger than the original binary, so this works best for icons and small images (under ~10 KB is a common rule of thumb).</li><li>Use Copy data URI for CSS (background-image) or HTML (img src), or Copy Base64 only for JSON and API payloads.</li></ol></div>
         <div class="seo-block"><h2 id="example">Using the output</h2><p>The tool produces a data URI like this (truncated here):</p><pre class="seo-code"><code>data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA…</code></pre><p>drop it straight into CSS or HTML:</p><pre class="seo-code"><code>/* CSS */
@@ -101,7 +106,7 @@
 
     <footer>
         <div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;">
-            <p>© 2026 ToolBox Pro. All rights reserved.</p>
+            <p>© <span id="footer-year">2026</span> ToolBox Pro. All rights reserved.</p>
         </div>
     </footer>
 

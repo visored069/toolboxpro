@@ -60,6 +60,9 @@
     <main id="main-content">
 
     <div class="tool-page">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Tools</a><span class="crumb-sep" aria-hidden="true">/</span><span aria-current="page">HTML Entity Converter</span>
+        </nav>
         <a href="/" class="back-link"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Tools</a>
         <h1><i class="fas fa-code" style="color:var(--accent-1)"></i> HTML Entity Converter</h1>
         <p class="tool-description">Escape HTML into safe entities, or unescape entities back into characters. One toggle, instant results.</p>
@@ -95,7 +98,7 @@
 
     <footer>
         <div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;">
-            <p>© 2026 ToolBox Pro. All rights reserved.</p>
+            <p>© <span id="footer-year">2026</span> ToolBox Pro. All rights reserved.</p>
         </div>
     </footer>
 
@@ -188,7 +191,7 @@ function heConvert() {
             .replace(/&(amp;)+/g, '&')
             .replace(/&#x([0-9a-fA-F]+);/g, function (_, h) { return String.fromCodePoint(parseInt(h, 16)); })
             .replace(/&#(\d+);/g, function (_, d) { return String.fromCodePoint(parseInt(d, 10)); })
-            .replace(/&(quot|apos|nbsp);/g, function (_, n) { return HE_REVERSE['&' + n]; })
+            .replace(/&(quot|apos|nbsp);/g, function (_, n) { return HE_REVERSE['&' + n + ';']; })
             .replace(/&amp;/g, '&');
     }
 }

@@ -60,6 +60,9 @@
     <main id="main-content">
 
     <div class="tool-page">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Tools</a><span class="crumb-sep" aria-hidden="true">/</span><span aria-current="page">URL Parser</span>
+        </nav>
         <a href="/" class="back-link"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Tools</a>
         <h1><i class="fas fa-scissors" style="color:var(--accent-1)"></i> URL Parser &amp; Query Inspector</h1>
         <p class="tool-description">Break any URL into its parts — protocol, host, path, and every query parameter — live as you paste.</p>
@@ -86,6 +89,8 @@
 
     <!-- SEO content (static, crawlable) -->
     <section class="seo-content" aria-label="About this tool">
+        <div class="guide-callout"><i class="fas fa-book-open" aria-hidden="true"></i><span>Learn more: <a href="regex-testing-guide">Extracting URL parts with regex? Read the testing guide</a></span></div>
+
         <p class="seo-intro">Long URLs hide their structure: tracking parameters, campaign tags, session IDs, and API keys all ride along in the query string. This tool breaks any URL into its parts — protocol, host, port, path, fragment, and every query parameter decoded and listed — so you can debug routes, audit UTM tags, or extract values without eyeballing a 300-character string. Parsing uses the browser’s native URL API and runs entirely on your device.</p>
         <div class="seo-block"><h2 id="how-to">How to parse a URL</h2><ol class="seo-steps"><li>Paste the full URL — including the protocol (https://…) — into the input box.</li><li>Click Parse. The parts panel shows protocol, host, port, path, and fragment.</li><li>Every query parameter is listed decoded, one per line, in original order.</li><li>Combine with the URL Encoder/Decoder when you need to re-encode a cleaned-up URL.</li></ol></div>
         <div class="seo-block"><h2 id="example">URL parsing example</h2><p>Given this URL:</p><pre class="seo-code"><code>https://example.com:8080/products?category=shoes&amp;sort=price&amp;utm_source=newsletter</code></pre><p>the parser reports:</p><pre class="seo-code"><code>protocol:  https:
@@ -104,7 +109,7 @@ utm_source = newsletter</code></pre></div>
 
     <footer>
         <div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;">
-            <p>© 2026 ToolBox Pro. All rights reserved.</p>
+            <p>© <span id="footer-year">2026</span> ToolBox Pro. All rights reserved.</p>
         </div>
     </footer>
 

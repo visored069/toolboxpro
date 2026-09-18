@@ -1112,6 +1112,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initMobileMenu();
     initKeyboardShortcuts();
 
+    var yearEl = document.getElementById('footer-year');
+    if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
     var themeBtn = document.getElementById('theme-toggle');
     if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
 

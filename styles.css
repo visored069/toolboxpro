@@ -1718,3 +1718,13 @@ textarea[id], input[id] { touch-action: manipulation; }
 .seo-faq-item[open] summary::after { content: '\2212'; }
 .seo-faq-item[open] summary { color: var(--accent-1); }
 .seo-faq-item p { padding: 0 1.1rem 1rem; margin: 0; font-size: 0.88rem; }
+
+/* === ENDGAME: breadcrumbs + guide callout === */
+.breadcrumb { display:flex; align-items:center; gap:0.5rem; font-size:0.82rem; color:var(--text-secondary); margin-bottom:1rem; }
+.breadcrumb a { color:var(--text-secondary); text-decoration:none; }
+.breadcrumb a:hover { color:var(--accent-1); text-decoration:underline; }
+.breadcrumb [aria-current="page"] { color:var(--text-primary); font-weight:500; }
+.crumb-sep { opacity:0.5; }
+.guide-callout { display:flex; align-items:flex-start; gap:0.6rem; background:rgba(108,92,231,0.08); border:1px solid rgba(108,92,231,0.25); border-radius:10px; padding:0.85rem 1.1rem; margin:0 0 1.5rem; font-size:0.9rem; }
+.guide-callout i { color:var(--accent-1); margin-top:0.15rem; }
+.guide-callout a { color:var(--accent-1); font-weight:500; }

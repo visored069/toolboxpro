@@ -120,6 +120,9 @@
     <main id="main-content">
 
     <div class="tool-page">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Tools</a><span class="crumb-sep" aria-hidden="true">/</span><span aria-current="page">Regex Tester</span>
+        </nav>
         <a href="/" class="back-link"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Tools</a>
         <h1><i class="fas fa-search" style="color:var(--accent-3)"></i> Regex Tester — Test Regular Expressions Live</h1>
         <p class="tool-description">Test regular expressions with real-time matching. Highlights all matches in your text.</p>
@@ -155,6 +158,8 @@
     
     <!-- SEO content (static, injected by inject-seo-content.js) -->
     <section class="seo-content" aria-label="About this tool">
+        <div class="guide-callout"><i class="fas fa-book-open" aria-hidden="true"></i><span>Learn more: <a href="regex-testing-guide">How to test regular expressions properly</a></span></div>
+
                 <p class="seo-intro">Regular expressions are a pattern language for finding and validating text — email shapes, date formats, log lines, you name it. This tester shows every match live as you type the pattern, so you can iterate quickly instead of guess-and-refresh in code.</p>
         <div class="seo-block"><h2 id="how-to">How to test a regular expression</h2><ol class="seo-steps"><li>Type your pattern in the regex field — leading and trailing slashes not needed.</li><li>Paste sample text into the test-string area.</li><li>Matches highlight instantly as you type either side.</li><li>Iterate on the pattern until you capture exactly what you need, then copy it into your code.</li></ol></div>
         <div class="seo-block"><h2 id="example">A practical regex example</h2><p>\d means any digit, {4} means exactly four of them — so this pattern finds ISO-style dates anywhere in text. Small building blocks like these combine into patterns far more precise than any find-and-replace.</p><pre class="seo-code"><code>\d{4}-\d{2}-\d{2}  matches  2026-09-17</code></pre></div>
@@ -163,7 +168,7 @@
     </section>
     </main>
 
-    <footer><div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;"><p>© 2026 ToolBox Pro. All rights reserved.</p></div></footer>
+    <footer><div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;"><p>© <span id="footer-year">2026</span> ToolBox Pro. All rights reserved.</p></div></footer>
     <!-- PWA Install Banner -->
     <div class="pwa-banner" id="pwa-banner">
         <div class="pwa-banner-text">
