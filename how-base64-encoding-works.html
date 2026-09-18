@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Base64 Encoding Works (and When to Use It) | ToolBox Pro Guides</title>
+    <meta name="description" content="Base64 explained simply: how the encoding works, why it makes data 33% bigger, and when to use it for images, tokens, and API payloads — with examples.">
+    <link rel="canonical" href="https://toolboxpro-theta.vercel.app/how-base64-encoding-works">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://toolboxpro-theta.vercel.app/how-base64-encoding-works">
+    <meta property="og:title" content="How Base64 Encoding Works (and When to Use It)">
+    <meta property="og:description" content="Base64 explained simply: how the encoding works, why it makes data 33% bigger, and when to use it for images, tokens, and API payloads — with examples.">
+    <meta property="og:image" content="https://toolboxpro-theta.vercel.app/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How Base64 Encoding Works (and When to Use It)">
+    <meta name="twitter:description" content="Base64 explained simply: how the encoding works, why it makes data 33% bigger, and when to use it for images, tokens, and API payloads — with examples.">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"How Base64 encoding works (and when to use it)","description":"Base64 explained simply: how the encoding works, why it makes data 33% bigger, and when to use it for images, tokens, and API payloads — with examples.","datePublished":"2026-09-18","dateModified":"2026-09-18","author":{"@type":"Organization","name":"ToolBox Pro"},"publisher":{"@type":"Organization","name":"ToolBox Pro"},"mainEntityOfPage":"https://toolboxpro-theta.vercel.app/how-base64-encoding-works"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolboxpro-theta.vercel.app/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://toolboxpro-theta.vercel.app/guides"},{"@type":"ListItem","position":3,"name":"How Base64 encoding works (and when to use it)","item":"https://toolboxpro-theta.vercel.app/how-base64-encoding-works"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is Base64 encryption?","acceptedAnswer":{"@type":"Answer","text":"No. Encryption protects data with a key; Base64 is a reversible, key-free text encoding. \"Decoding\" takes one line of code in any language."}},{"@type":"Question","name":"Why does the encoded string end with = signs?","acceptedAnswer":{"@type":"Answer","text":"Padding. The algorithm works on 3-byte groups, and leftover bytes are padded with = so the output length is always a multiple of 4. One = means 2 leftover bytes; two means 1."}},{"@type":"Question","name":"Does Base64 compress data?","acceptedAnswer":{"@type":"Answer","text":"The opposite — it inflates data by ~33%. If you need smaller payloads, compress first (gzip), then Base64 the compressed bytes."}}]}]}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#6c5ce7">
+    <link rel="stylesheet" href="guide.css">
+</head>
+<body>
+
+    <!-- Ambient background -->
+    <div class="ambient-blobs"><div class="ambient-blob"></div><div class="ambient-blob"></div><div class="ambient-blob"></div></div>
+    <div class="particles" id="particles"></div>
+
+    <header>
+        <div class="header-inner">
+            <a href="/" class="logo" aria-label="ToolBox Pro Home">
+                <div class="logo-icon"><i class="fas fa-toolbox" aria-hidden="true"></i></div>
+                <span class="logo-text">ToolBox</span>
+                <span class="logo-badge">PRO</span>
+            </a>
+            <nav aria-label="Main navigation">
+                <a href="/">Tools</a>
+                <a href="guides" class="active">Guides</a>
+                <a href="ai-tools">AI Directory</a>
+                <a href="about">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="wrapper">
+
+            <section class="page-hero">
+                <span class="eyebrow">Explainer</span>
+                <h1>How Base64 encoding works (and when to use it)</h1>
+                <p class="meta-line">Updated: September 2026</p>
+                <p>Base64 appears everywhere — in data URIs, JWT tokens, email attachments, and API payloads — yet it is often mistaken for encryption. This guide explains what it actually does, why encoded data is a third bigger than the original, and the few cases where reaching for it is the right call.</p>
+            </section>
+
+<section class="section">
+<p class="section-label">01 — The core idea</p><h2 class="section-title">64 safe characters for any bytes</h2><p>Some channels — email, URLs, JSON strings — were built for text and mangle raw binary. Base64 solves this by re-encoding <em>any</em> data using just 64 characters that survive every text channel: <code>A–Z</code>, <code>a–z</code>, <code>0–9</code>, <code>+</code> and <code>/</code> (with <code>=</code> as padding).</p><p>The algorithm reads the input 3 bytes (24 bits) at a time and splits them into four 6-bit chunks. Each chunk — values 0 to 63 — maps to one character of the alphabet. That is the entire trick.</p><pre class="gcode"><code>Input bytes:  | 101010 | 110101 | (3 bytes = 24 bits, split into 4 × 6 bits)
+Alphabet:     A-Z a-z 0-9 + /   → each 6-bit value picks one character</code></pre><div class="callout"><i class="fas fa-triangle-exclamation" aria-hidden="true"></i><p>Base64 is encoding, not encryption. Anyone can decode it instantly — never use it to hide passwords, keys, or secrets.</p></div>
+            </section>
+
+<section class="section">
+<p class="section-label">02 — The size cost</p><h2 class="section-title">Why Base64 is 33% bigger</h2><p>Three bytes become four characters, so the output is exactly 4/3 the size — about 33% larger — before counting the optional padding <code>=</code> characters. For the word <code>Mme</code> (3 bytes) you get <code>TW1l</code> (4 characters); larger data follows the same ratio.</p><p>This is why embedding big images as Base64 is usually a mistake: a 500 KB photo becomes roughly 667 KB of text, travels inside your HTML or CSS, and loses cacheability. Small icons and logos are fine; anything over ~10 KB should stay a separate file.</p>
+            </section>
+
+<section class="section">
+<p class="section-label">03 — Everyday uses</p><h2 class="section-title">Where you will actually meet it</h2><table class="gtable"><thead><tr><th>Use</th><th>Example</th><th>Note</th></tr></thead><tbody><tr><td>Data URIs</td><td><code>data:image/png;base64,…</code> in CSS/HTML</td><td>Best for small images; saves an HTTP request</td></tr><tr><td>JWT tokens</td><td>Header and payload are Base64URL-encoded</td><td>URL-safe variant: <code>-</code> and <code>_</code> replace <code>+</code> and <code>/</code></td></tr><tr><td>Email attachments</td><td>MIME base64 transfer encoding</td><td>The reason attachments are ~33% larger</td></tr><tr><td>API payloads</td><td>Binary fields inside JSON</td><td>JSON cannot carry raw bytes</td></tr></tbody></table>
+            </section>
+
+<section class="section">
+<div class="tool-chips"><a class="tool-chip" href="base64-encoder-decoder"><i class="fas fa-file-code" aria-hidden="true"></i> Try the Base64 encoder/decoder</a><a class="tool-chip" href="image-to-base64"><i class="fas fa-image" aria-hidden="true"></i> Image to Base64 converter</a><a class="tool-chip" href="jwt-decoder"><i class="fas fa-id-card" aria-hidden="true"></i> JWT decoder (Base64URL inside)</a></div>
+            </section>
+
+<section class="section">
+<p class="section-label">04 — Variants</p><h2 class="section-title">Standard vs URL-safe Base64</h2><p>Standard Base64 uses <code>+</code> and <code>/</code>, which have special meaning in URLs. The URL-safe variant swaps them for <code>-</code> and <code>_</code> and usually drops the padding. They are otherwise identical — when decoding a token that fails, try converting <code>-</code>→<code>+</code>, <code>_</code>→<code>/</code> and re-adding <code>=</code> padding. JWTs use the URL-safe form.</p>
+            </section>
+
+<section class="section">
+                <p class="section-label">FAQ</p>
+                <h2 class="section-title">Frequently asked questions</h2>
+                <details class="gfaq"><summary>Is Base64 encryption?</summary><p>No. Encryption protects data with a key; Base64 is a reversible, key-free text encoding. "Decoding" takes one line of code in any language.</p></details>
+                <details class="gfaq"><summary>Why does the encoded string end with = signs?</summary><p>Padding. The algorithm works on 3-byte groups, and leftover bytes are padded with = so the output length is always a multiple of 4. One = means 2 leftover bytes; two means 1.</p></details>
+                <details class="gfaq"><summary>Does Base64 compress data?</summary><p>The opposite — it inflates data by ~33%. If you need smaller payloads, compress first (gzip), then Base64 the compressed bytes.</p></details>
+            </section>
+
+            <!-- Related guides -->
+            <section class="section">
+                <p class="section-label">Keep reading</p>
+                <h2 class="section-title">Related guides</h2>
+                <div class="related-guides"><a href="json-vs-yaml"><i class="fas fa-right-left" aria-hidden="true"></i> JSON vs YAML: which to use?</a><a href="regex-testing-guide"><i class="fas fa-asterisk" aria-hidden="true"></i> A practical regex testing guide</a></div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="logo-icon"><i class="fas fa-toolbox" aria-hidden="true"></i></div>
+                <span>ToolBox Pro</span>
+            </div>
+            <div class="footer-links">
+                <a href="/">Home</a>
+                <a href="ai-tools">AI Directory</a>
+                <a href="guides">Guides</a>
+                <a href="privacy">Privacy</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 ToolBox Pro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll shadow
+        var header = document.querySelector('header');
+        if (header) {
+            window.addEventListener('scroll', function() {
+                header.style.boxShadow = window.scrollY > 10 ? '0 1px 0 var(--border), 0 4px 20px rgba(0,0,0,0.15)' : 'none';
+            }, { passive: true });
+        }
+    </script>
+
+</body>
+</html>

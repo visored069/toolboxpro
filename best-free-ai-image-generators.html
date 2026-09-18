@@ -245,6 +245,27 @@
     .section {
         padding: 3rem 0;
     }
+    .related-guides {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1rem;
+        margin-top: 1.25rem;
+    }
+    .related-guides a {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1rem 1.25rem;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        text-decoration: none;
+        color: inherit;
+        font-weight: 500;
+        font-size: 0.95rem;
+        transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+    .related-guides a:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .related-guides a i { color: var(--accent); }
     .section-label {
         font-size: 0.75rem;
         font-weight: 600;
@@ -742,6 +763,17 @@
                         <span class="recommendation">Start here: Craiyon</span>
                     </div>
 
+                </div>
+            </section>
+
+            <!-- MORE GUIDES -->
+            <section class="section">
+                <p class="section-label">Keep reading</p>
+                <h2 class="section-title">More developer guides</h2>
+                <div class="related-guides">
+                    <a href="json-vs-yaml"><i class="fas fa-right-left" aria-hidden="true"></i> JSON vs YAML: which to use?</a>
+                    <a href="how-base64-encoding-works"><i class="fas fa-lock" aria-hidden="true"></i> How Base64 encoding works</a>
+                    <a href="regex-testing-guide"><i class="fas fa-asterisk" aria-hidden="true"></i> How to test regular expressions</a>
                 </div>
             </section>
 

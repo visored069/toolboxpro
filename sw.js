@@ -1,5 +1,5 @@
 // ===== ToolBox Pro Service Worker =====
-const CACHE_NAME = 'toolboxpro-v5';
+const CACHE_NAME = 'toolboxpro-v6';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -17,6 +17,10 @@ const STATIC_ASSETS = [
   '/terms.html',
   '/ai-tools.html',
   '/guides.html',
+  '/guide.css',
+  '/json-vs-yaml.html',
+  '/how-base64-encoding-works.html',
+  '/regex-testing-guide.html',
   '/best-free-ai-image-generators.html',
   '/404.html',
   '/json-formatter.html',
@@ -38,7 +42,13 @@ const STATIC_ASSETS = [
   '/ip-lookup.html',
   '/random-number-generator.html',
   '/html-to-text.html',
-  '/text-diff-checker.html'
+  '/text-diff-checker.html',
+  '/json-to-yaml.html',
+  '/jwt-decoder.html',
+  '/xml-formatter.html',
+  '/url-parser.html',
+  '/html-entity-converter.html',
+  '/image-to-base64.html'
 ];
 
 // Install: pre-cache all static assets

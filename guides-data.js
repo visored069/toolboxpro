@@ -15,6 +15,30 @@
             icon: 'fa-wand-magic-sparkles',
             color: '#b48c6c',
             date: 'Sep 2026'
+        },
+        {
+            slug: 'json-vs-yaml',
+            title: 'JSON vs YAML: Which Format Should You Use?',
+            description: 'Where the two formats differ, what each is good at, and how to convert between them without breaking types — with real config and API examples.',
+            icon: 'fa-right-left',
+            color: '#818cf8',
+            date: 'Sep 2026'
+        },
+        {
+            slug: 'how-base64-encoding-works',
+            title: 'How Base64 Encoding Works (and When to Use It)',
+            description: 'The 64-character alphabet explained, why encoded data is 33% bigger, and the everyday uses — data URIs, JWTs, email attachments, API payloads.',
+            icon: 'fa-lock',
+            color: '#34d399',
+            date: 'Sep 2026'
+        },
+        {
+            slug: 'regex-testing-guide',
+            title: 'How to Test Regular Expressions',
+            description: 'A practical workflow: test cases first, anchors everywhere, and the four patterns that break in production — with a cheatsheet of proven patterns.',
+            icon: 'fa-asterisk',
+            color: '#f472b6',
+            date: 'Sep 2026'
         }
     ];
 })(window);

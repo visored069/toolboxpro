@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON vs YAML: Which Format Should You Use? | ToolBox Pro Guides</title>
+    <meta name="description" content="A practical comparison of JSON and YAML: syntax differences, when each format wins, and how to convert between them. With real examples from config files and APIs.">
+    <link rel="canonical" href="https://toolboxpro-theta.vercel.app/json-vs-yaml">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://toolboxpro-theta.vercel.app/json-vs-yaml">
+    <meta property="og:title" content="JSON vs YAML: Which Format Should You Use?">
+    <meta property="og:description" content="A practical comparison of JSON and YAML: syntax differences, when each format wins, and how to convert between them. With real examples from config files and APIs.">
+    <meta property="og:image" content="https://toolboxpro-theta.vercel.app/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="JSON vs YAML: Which Format Should You Use?">
+    <meta name="twitter:description" content="A practical comparison of JSON and YAML: syntax differences, when each format wins, and how to convert between them. With real examples from config files and APIs.">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"JSON vs YAML: which format should you use?","description":"A practical comparison of JSON and YAML: syntax differences, when each format wins, and how to convert between them. With real examples from config files and APIs.","datePublished":"2026-09-18","dateModified":"2026-09-18","author":{"@type":"Organization","name":"ToolBox Pro"},"publisher":{"@type":"Organization","name":"ToolBox Pro"},"mainEntityOfPage":"https://toolboxpro-theta.vercel.app/json-vs-yaml"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolboxpro-theta.vercel.app/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://toolboxpro-theta.vercel.app/guides"},{"@type":"ListItem","position":3,"name":"JSON vs YAML: which format should you use?","item":"https://toolboxpro-theta.vercel.app/json-vs-yaml"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is YAML a superset of JSON?","acceptedAnswer":{"@type":"Answer","text":"Technically yes — standard YAML parsers accept flow-style JSON. In practice, tooling often accepts only one, so explicit conversion is the safe route."}},{"@type":"Question","name":"Which is faster to parse?","acceptedAnswer":{"@type":"Answer","text":"JSON, by a wide margin. Its grammar is simple enough for highly optimized parsers, while YAML parsing is complex and whitespace-dependent."}},{"@type":"Question","name":"Can I add comments to JSON?","acceptedAnswer":{"@type":"Answer","text":"Not in standard JSON. If you need comments in a config that must also parse as JSON, some ecosystems accept JSONC (JSON with comments) or rely on a sidecar documentation file."}}]}]}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#6c5ce7">
+    <link rel="stylesheet" href="guide.css">
+</head>
+<body>
+
+    <!-- Ambient background -->
+    <div class="ambient-blobs"><div class="ambient-blob"></div><div class="ambient-blob"></div><div class="ambient-blob"></div></div>
+    <div class="particles" id="particles"></div>
+
+    <header>
+        <div class="header-inner">
+            <a href="/" class="logo" aria-label="ToolBox Pro Home">
+                <div class="logo-icon"><i class="fas fa-toolbox" aria-hidden="true"></i></div>
+                <span class="logo-text">ToolBox</span>
+                <span class="logo-badge">PRO</span>
+            </a>
+            <nav aria-label="Main navigation">
+                <a href="/">Tools</a>
+                <a href="guides" class="active">Guides</a>
+                <a href="ai-tools">AI Directory</a>
+                <a href="about">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="wrapper">
+
+            <section class="page-hero">
+                <span class="eyebrow">Explainer</span>
+                <h1>JSON vs YAML: which format should you use?</h1>
+                <p class="meta-line">Updated: September 2026</p>
+                <p>JSON and YAML both describe structured data, and every developer eventually has to pick between them — most often when a tool accepts both (Docker Compose, GitHub Actions, Kubernetes) or when a config file needs to become an API payload. This guide shows exactly where the formats differ, what each is good at, and how to convert safely.</p>
+            </section>
+
+<section class="section">
+<p class="section-label">01 — The same data, two shapes</p><h2 class="section-title">One dataset, written both ways</h2><p>Here is the same configuration in JSON:</p><pre class="gcode"><code>{
+  "service": "api",
+  "replicas": 3,
+  "features": ["cache", "metrics"],
+  "debug": false
+}</code></pre><p>and in YAML:</p><pre class="gcode"><code>service: api
+replicas: 3
+features:
+  - cache
+  - metrics
+debug: false</code></pre><p>Both parse to the identical data structure. The difference is philosophy: JSON spends characters on brackets and quotes so machines can parse it unambiguously; YAML spends indentation so humans can read it quickly.</p>
+            </section>
+
+<section class="section">
+<p class="section-label">02 — Trade-offs</p><h2 class="section-title">Where each format wins</h2><table class="gtable"><thead><tr><th>Aspect</th><th>JSON</th><th>YAML</th></tr></thead><tbody><tr><td>Readability at small scale</td><td>Dense; brackets add noise</td><td>Very clean — indentation carries structure</td></tr><tr><td>Machine parsing</td><td>Trivial and universal</td><td>Harder: whitespace-sensitive, many edge cases</td></tr><tr><td>Comments</td><td>Not supported</td><td>Yes — <code># comment</code></td></tr><tr><td>Error feedback</td><td>Precise: parsers point at the exact character</td><td>Often vague — a wrong indent breaks everything below it</td></tr><tr><td>Ecosystem</td><td>APIs, browsers, databases, logs</td><td>Config: Kubernetes, CI pipelines, Docker Compose</td></tr><tr><td>Size</td><td>Larger (explicit syntax)</td><td>Smaller for nested data</td></tr><tr><td>Safety</td><td>Predictable</td><td>Historic footguns (the "Norway problem": <code>no</code> parses as false)</td></tr></tbody></table><div class="callout"><i class="fas fa-lightbulb" aria-hidden="true"></i><p>Rule of thumb: machines write and read JSON, humans write YAML. That is why most APIs speak JSON while most config files are YAML.</p></div>
+            </section>
+
+<section class="section">
+<p class="section-label">03 — Decision guide</p><h2 class="section-title">When to use which</h2><p><strong>Use JSON when:</strong> data crosses a network boundary (APIs, webhooks, storage), when strict validation matters, or when the file is generated by a tool rather than edited by hand.</p><p><strong>Use YAML when:</strong> humans maintain the file — CI/CD pipelines, Kubernetes manifests, Docker Compose, OpenAPI definitions — especially when it contains comments explaining <em>why</em>.</p><p>And when you need to move between the two — turning a hand-written YAML config into an API payload, or vice versa — conversion is lossless for the common subset: mappings, lists, strings, numbers, booleans, and nulls.</p>
+            </section>
+
+<section class="section">
+<div class="tool-chips"><a class="tool-chip" href="json-to-yaml"><i class="fas fa-right-left" aria-hidden="true"></i> Try the JSON ⇄ YAML converter</a><a class="tool-chip" href="json-formatter"><i class="fas fa-code" aria-hidden="true"></i> Format & validate JSON</a><a class="tool-chip" href="json-to-csv"><i class="fas fa-table" aria-hidden="true"></i> JSON to CSV</a></div>
+            </section>
+
+<section class="section">
+<p class="section-label">04 — Conversion pitfalls</p><h2 class="section-title">What breaks during conversion</h2><p><strong>Type coercion:</strong> YAML treats <code>on</code>, <code>yes</code>, and <code>no</code> as booleans in some parsers — JSON has no such ambiguity. A version number like <code>1.20</code> becomes the number 1.2 in JSON unless quoted. When converting, quote anything that must stay a string.</p><p><strong>Multi-document files:</strong> YAML allows several documents separated by <code>---</code>; JSON allows exactly one. Convert documents one at a time.</p><p><strong>Anchors and aliases:</strong> YAML’s <code>&amp;</code>/<code>*</code> reuse syntax has no JSON equivalent — these must be expanded before converting.</p>
+            </section>
+
+<section class="section">
+                <p class="section-label">FAQ</p>
+                <h2 class="section-title">Frequently asked questions</h2>
+                <details class="gfaq"><summary>Is YAML a superset of JSON?</summary><p>Technically yes — standard YAML parsers accept flow-style JSON. In practice, tooling often accepts only one, so explicit conversion is the safe route.</p></details>
+                <details class="gfaq"><summary>Which is faster to parse?</summary><p>JSON, by a wide margin. Its grammar is simple enough for highly optimized parsers, while YAML parsing is complex and whitespace-dependent.</p></details>
+                <details class="gfaq"><summary>Can I add comments to JSON?</summary><p>Not in standard JSON. If you need comments in a config that must also parse as JSON, some ecosystems accept JSONC (JSON with comments) or rely on a sidecar documentation file.</p></details>
+            </section>
+
+            <!-- Related guides -->
+            <section class="section">
+                <p class="section-label">Keep reading</p>
+                <h2 class="section-title">Related guides</h2>
+                <div class="related-guides"><a href="how-base64-encoding-works"><i class="fas fa-lock" aria-hidden="true"></i> How Base64 encoding works</a><a href="regex-testing-guide"><i class="fas fa-asterisk" aria-hidden="true"></i> A practical regex testing guide</a></div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="logo-icon"><i class="fas fa-toolbox" aria-hidden="true"></i></div>
+                <span>ToolBox Pro</span>
+            </div>
+            <div class="footer-links">
+                <a href="/">Home</a>
+                <a href="ai-tools">AI Directory</a>
+                <a href="guides">Guides</a>
+                <a href="privacy">Privacy</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 ToolBox Pro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll shadow
+        var header = document.querySelector('header');
+        if (header) {
+            window.addEventListener('scroll', function() {
+                header.style.boxShadow = window.scrollY > 10 ? '0 1px 0 var(--border), 0 4px 20px rgba(0,0,0,0.15)' : 'none';
+            }, { passive: true });
+        }
+    </script>
+
+</body>
+</html>

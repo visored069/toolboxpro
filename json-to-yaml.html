@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON to YAML Converter | ToolBox Pro</title>
+    <meta name="description" content="Convert JSON to YAML and YAML to JSON instantly, free and in your browser. No signup, no uploads — built for config files and API payloads.">
+    <link rel="canonical" href="https://toolboxpro-theta.vercel.app/json-to-yaml">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://toolboxpro-theta.vercel.app/json-to-yaml">
+    <meta property="og:title" content="JSON to YAML Converter - ToolBox Pro">
+    <meta property="og:description" content="Convert JSON to YAML and YAML to JSON instantly, free and in your browser. No signup, no uploads — built for config files and API payloads.">
+    <meta property="og:image" content="https://toolboxpro-theta.vercel.app/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="JSON to YAML Converter - ToolBox Pro">
+    <meta name="twitter:description" content="Convert JSON to YAML and YAML to JSON instantly, free and in your browser. No signup, no uploads — built for config files and API payloads.">
+    <meta name="twitter:image" content="https://toolboxpro-theta.vercel.app/og-image.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"JSON to YAML","url":"https://toolboxpro-theta.vercel.app/json-to-yaml","description":"Convert between JSON and YAML instantly — both directions, in your browser.","applicationCategory":"DeveloperApplication","operatingSystem":"Any (browser-based)","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tools","item":"https://toolboxpro-theta.vercel.app/"},{"@type":"ListItem","position":2,"name":"JSON to YAML","item":"https://toolboxpro-theta.vercel.app/json-to-yaml"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which YAML features are supported?","acceptedAnswer":{"@type":"Answer","text":"Plain mappings, lists, nested structures, numbers, booleans, nulls (~ or null), and quoted strings — the everyday config subset. Block scalars (| and >), anchors (&), and multi-document files (---) are not supported."}},{"@type":"Question","name":"Why did my YAML fail to parse?","acceptedAnswer":{"@type":"Answer","text":"The parser needs consistent indentation (2 spaces is standard) and one top-level document. Tabs, mixed indentation widths, and flow style with nested quotes are the usual culprits."}},{"@type":"Question","name":"Is my data uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Both conversion directions run locally in your browser — your config never leaves your device."}}]}]}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#6c5ce7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2">
+    <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="tool-page-shared.css">
+</head>
+<body>
+    <!-- Page Transition Overlay -->
+    <div class="page-transition" id="page-transition"></div>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <div class="bg-animation"></div>
+    <div class="particles" id="particles"></div>
+
+    <header>
+        <div class="header-content">
+            <a href="/" class="logo" aria-label="ToolBox Pro Home">
+                <div class="logo-icon"><i class="fas fa-toolbox" aria-hidden="true"></i></div>
+                <span class="logo-text">ToolBox</span>
+                <span class="logo-badge">PRO</span>
+            </a>
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button><nav aria-label="Main navigation" id="main-nav">
+                <a href="/" id="nav-tools">Tools</a>
+                <a href="guides" id="nav-guides">Guides</a>
+                <a href="about" id="nav-about">About</a>
+                <a href="contact" id="nav-contact">Contact</a>
+                <a href="privacy" id="nav-privacy">Privacy</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-sun" aria-hidden="true"></i></button>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+    <div class="tool-page">
+        <a href="/" class="back-link"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Tools</a>
+        <h1><i class="fas fa-right-left" style="color:var(--accent-1)"></i> JSON ⇄ YAML Converter</h1>
+        <p class="tool-description">Convert between JSON and YAML in both directions. Paste your data and convert — everything happens in your browser.</p>
+
+        <div class="tool-input-group">
+            <label for="jy-input">Input (JSON or YAML)</label>
+            <textarea class="tool-textarea" id="jy-input" placeholder='{"name": "Ada", "role": "admin"}' spellcheck="false"></textarea>
+        </div>
+        <div class="toggle-group" role="group" aria-label="Conversion direction">
+            <button type="button" class="toggle-btn active" id="jy-json2yaml" onclick="jySet('j2y')">JSON → YAML</button>
+            <button type="button" class="toggle-btn" id="jy-yaml2json" onclick="jySet('y2j')">YAML → JSON</button>
+        </div>
+        <div class="btn-group">
+            <button class="tool-btn btn-primary" onclick="jyConvert()"><i class="fas fa-right-left" aria-hidden="true"></i> Convert</button>
+            <button class="tool-btn btn-secondary" onclick="jyClear()"><i class="fas fa-eraser" aria-hidden="true"></i> Clear</button>
+        </div>
+        <div class="tool-input-group" style="margin-top:1rem;">
+            <label for="jy-output">Output</label>
+            <div class="tool-output" id="jy-output" aria-live="polite"></div>
+        </div>
+        <button class="tool-btn btn-primary" onclick="copyElement('jy-output')"><i class="fas fa-copy" aria-hidden="true"></i> Copy output</button>
+    </div>
+
+    <!-- SEO content (static, crawlable) -->
+    <section class="seo-content" aria-label="About this tool">
+        <p class="seo-intro">JSON and YAML describe the same data in different shapes: JSON is strict and bracket-heavy, while YAML trades brackets for indentation so config files stay readable. This tool converts in both directions — paste JSON to get clean block-style YAML for a config file, or paste YAML to get JSON an API can accept. The conversion runs entirely in your browser; nothing is uploaded.</p>
+        <div class="seo-block"><h2 id="how-to">How to convert JSON to YAML</h2><ol class="seo-steps"><li>Paste JSON into the input box — or switch the toggle to YAML → JSON first.</li><li>Click Convert. In JSON → YAML mode you get block-style YAML with 2-space indentation.</li><li>In YAML → JSON mode the parser handles nested mappings, lists, numbers, booleans, nulls, and quoted strings.</li><li>Click Copy output to copy the result to your clipboard.</li></ol></div>
+        <div class="seo-block"><h2 id="example">JSON to YAML example</h2><p>This JSON:</p><pre class="seo-code"><code>{&quot;service&quot;: &quot;api&quot;, &quot;replicas&quot;: 3, &quot;features&quot;: [&quot;cache&quot;, &quot;metrics&quot;], &quot;debug&quot;: false}</code></pre><p>becomes this YAML:</p><pre class="seo-code"><code>service: api
+replicas: 3
+features:
+  - cache
+  - metrics
+debug: false</code></pre></div>
+        <div class="seo-block"><h2 id="faq">Frequently asked questions</h2><div class="seo-faq"><details class="seo-faq-item"><summary>Which YAML features are supported?</summary><p>Plain mappings, lists, nested structures, numbers, booleans, nulls (~ or null), and quoted strings — the everyday config subset. Block scalars (| and >), anchors (&), and multi-document files (---) are not supported.</p></details><details class="seo-faq-item"><summary>Why did my YAML fail to parse?</summary><p>The parser needs consistent indentation (2 spaces is standard) and one top-level document. Tabs, mixed indentation widths, and flow style with nested quotes are the usual culprits.</p></details><details class="seo-faq-item"><summary>Is my data uploaded anywhere?</summary><p>No. Both conversion directions run locally in your browser — your config never leaves your device.</p></details></div></div>
+        <div class="seo-block"><h2 id="related">Related JSON tools</h2><div class="related-grid"><a class="related-card" href="json-formatter"><i class="fas fa-code" aria-hidden="true"></i><span>JSON Formatter</span></a><a class="related-card" href="json-to-csv"><i class="fas fa-table" aria-hidden="true"></i><span>JSON to CSV</span></a><a class="related-card" href="markdown-preview"><i class="fas fa-markdown" aria-hidden="true"></i><span>Markdown Preview</span></a></div></div>
+    </section>
+    </main>
+
+    <footer>
+        <div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;">
+            <p>© 2026 ToolBox Pro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- PWA Install Banner -->
+    <div class="pwa-banner" id="pwa-banner">
+        <div class="pwa-banner-text">
+            <i class="fas fa-download" aria-hidden="true"></i>
+            <span><strong>Install ToolBox Pro</strong> — access tools offline, faster!</span>
+        </div>
+        <button class="pwa-install-btn" onclick="installPWA()">Install</button>
+        <button class="pwa-dismiss" onclick="dismissPWA()" aria-label="Dismiss"><i class="fas fa-times"></i></button>
+    </div>
+
+    <!-- Feedback Widget -->
+    <button class="feedback-fab" id="feedback-fab" aria-label="Give feedback">
+        <i class="fas fa-comment-dots" aria-hidden="true"></i>
+    </button>
+    <div class="feedback-panel" id="feedback-panel">
+        <div class="feedback-form">
+            <h3>💬 How was this tool?</h3>
+            <div class="feedback-emojis">
+                <button class="feedback-emoji" data-rating="love" aria-label="Love it">😍</button>
+                <button class="feedback-emoji" data-rating="good" aria-label="Good">😊</button>
+                <button class="feedback-emoji" data-rating="meh" aria-label="Meh">😐</button>
+                <button class="feedback-emoji" data-rating="bad" aria-label="Bad">😞</button>
+            </div>
+            <textarea class="feedback-textarea" id="feedback-text" placeholder="Tell us more (optional)..."></textarea>
+            <button class="feedback-submit" id="feedback-submit">Send Feedback</button>
+        </div>
+        <div class="feedback-thanks" id="feedback-thanks">
+            <i class="fas fa-heart" aria-hidden="true"></i>
+            <h3>Thanks for your feedback!</h3>
+            <p style="color:var(--text-secondary);font-size:0.85rem;">It helps us improve ToolBox Pro.</p>
+        </div>
+    </div>
+
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-banner" id="cookie-banner">
+        <div class="cookie-content"><div class="cookie-icon">🍪</div><div class="cookie-text"><strong>We use cookies</strong><p>We use localStorage to save your preferences. No tracking. <a href="privacy">Learn more</a></p></div></div>
+        <div class="cookie-actions"><button class="cookie-btn cookie-accept" onclick="acceptCookies()">Accept</button><button class="cookie-btn cookie-dismiss" onclick="dismissCookies()">Decline</button></div>
+    </div>
+
+    <!-- Keyboard Shortcuts Modal -->
+    <div class="shortcuts-overlay" id="shortcuts-overlay">
+        <div class="shortcuts-modal">
+            <div class="shortcuts-header"><h3><i class="fas fa-keyboard" aria-hidden="true"></i> Keyboard Shortcuts</h3><button class="shortcuts-close" onclick="closeShortcuts()" aria-label="Close"><i class="fas fa-times"></i></button></div>
+            <div class="shortcuts-list">
+                <div class="shortcut-item"><span class="shortcut-desc">Focus search</span><span class="shortcut-keys"><kbd>Ctrl</kbd><kbd>K</kbd></span></div>
+                <div class="shortcut-item"><span class="shortcut-desc">Toggle dark mode</span><span class="shortcut-keys"><kbd>Ctrl</kbd><kbd></kbd></span></div>
+                <div class="shortcut-item"><span class="shortcut-desc">Show shortcuts</span><span class="shortcut-keys"><kbd>?</kbd></span></div>
+                <div class="shortcut-item"><span class="shortcut-desc">Close modal</span><span class="shortcut-keys"><kbd>Esc</kbd></span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up" aria-hidden="true"></i></button>
+
+    <!-- Performance Badge -->
+    <div class="perf-badge" id="perf-badge">
+        <span class="dot-green"></span>
+        <span class="perf-load">Loading...</span>
+        <span style="color:var(--border-color);">|</span>
+        <span class="perf-dom">...</span>
+    </div>
+
+    <script src="components.js"></script>
+    <script>
+var jyMode = 'j2y';
+function jySet(mode) {
+    jyMode = mode;
+    document.getElementById('jy-json2yaml').classList.toggle('active', mode === 'j2y');
+    document.getElementById('jy-yaml2json').classList.toggle('active', mode === 'y2j');
+}
+function jyClear() {
+    document.getElementById('jy-input').value = '';
+    document.getElementById('jy-output').textContent = '';
+}
+function jyConvert() {
+    var out = document.getElementById('jy-output');
+    var val = document.getElementById('jy-input').value;
+    if (!val.trim()) { out.textContent = '⚠ Enter some JSON or YAML first.'; return; }
+    try {
+        out.textContent = jyMode === 'j2y' ? jyStringify(jyParseJson(val)) : JSON.stringify(jyParseYaml(val), null, 2);
+    } catch (e) {
+        out.textContent = '❌ ' + e.message;
+    }
+}
+function jyParseJson(text) {
+    var v;
+    try { v = JSON.parse(text); } catch (e) { throw new Error('Invalid JSON: ' + e.message); }
+    return v;
+}
+// --- JSON → YAML emitter (block style, 2-space indent) ---
+function jyNeedsQuotes(s) {
+    return s === '' || /(?:^(?:true|false|null|~)$)|(?:(?:^|\s)[\-?\[\]{},!&*])|(?:^[-?:%,@`])|(?::\s)|(?:\s#)|(?:[0-9](?:[eE][+\-]?))/.test(s) || s !== s.trim();
+}
+function jyScalar(v) {
+    if (v === null) return 'null';
+    if (typeof v === 'boolean') return v ? 'true' : 'false';
+    if (typeof v === 'number') return String(v);
+    var s = String(v);
+    return jyNeedsQuotes(s) ? JSON.stringify(s) : s;
+}
+function jyStringify(v) { return jyBlock(v, 0); }
+function jyBlock(v, indent) {
+    var pad = new Array(indent + 1).join('  ');
+    var padIn = new Array(indent + 2).join('  ');
+    if (v === null || typeof v !== 'object') return pad + jyScalar(v);
+    var keys = Array.isArray(v) ? v.map(function (_, i) { return i; }) : Object.keys(v);
+    if (!keys.length) return Array.isArray(v) ? pad + '[]' : pad + '{}';
+    var lines = [];
+    if (Array.isArray(v)) {
+        keys.forEach(function (k) {
+            var item = v[k];
+            if (item && typeof item === 'object') {
+                var inner = jyBlock(item, indent + 1);
+                lines.push(pad + '- ' + inner.trimStart());
+            } else {
+                lines.push(pad + '- ' + jyScalar(item));
+            }
+        });
+    } else {
+        keys.forEach(function (key) {
+            var val = v[key];
+            var k = jyNeedsQuotes(key) ? JSON.stringify(key) : key;
+            if (val && typeof val === 'object' && Object.keys(val).length) {
+                lines.push(pad + k + ':');
+                lines.push(jyBlock(val, indent + 1).replace(/^[ ]+/, padIn));
+            } else if (val && typeof val === 'object') {
+                lines.push(pad + k + ': ' + (Array.isArray(val) ? '[]' : '{}'));
+            } else {
+                lines.push(pad + k + ': ' + jyScalar(val));
+            }
+        });
+    }
+    return lines.join('\n');
+}
+// --- YAML → JSON parser (mappings, lists, scalars) ---
+function jyParseYaml(text) {
+    if (text.trim().charAt(0) === '{' || text.trim().charAt(0) === '[') {
+        try { return JSON.parse(text); } catch (e) { throw new Error('This looks like flow style YAML with syntax JSON cannot accept — check quotes and commas.'); }
+    }
+    var raw = text.replace(/\t/g, '  ').split('\n');
+    var lines = [];
+    raw.forEach(function (l) { if (l.trim() && l.trim().charAt(0) !== '#') lines.push(l); });
+    if (!lines.length) throw new Error('No YAML content found.');
+    var pos = 0;
+    function indentOf(s) { return s.match(/^ */)[0].length; }
+    function parseScalar(rawStr) {
+        var s = rawStr.trim();
+        if (s === '' || s === '~' || /^(?:null|Null|NULL)$/.test(s)) return null;
+        if (s === '[]') return [];
+        if (s === '{}') return {};
+        var q = s.charAt(0);
+        if ((q === '"' || q === "'") && s.charAt(s.length - 1) === q) {
+            var body = s.slice(1, -1);
+            if (q === '"') { try { return JSON.parse(s); } catch (e) { return body; } }
+            return body;
+        }
+        if (/^[-+]?\d+$/.test(s)) return parseInt(s, 10);
+        if (/^[-+]?(?:\d+\.\d*|\d*)(?:[eE][-+]?\d+)?$/.test(s) && /\d/.test(s)) return parseFloat(s);
+        if (/^(?:true|True|TRUE)$/.test(s)) return true;
+        if (/^(?:false|False|FALSE)$/.test(s)) return false;
+        return s;
+    }
+    function parseBlock(indent) {
+        if (pos >= lines.length) return null;
+        var isList = /^-(?: |$)/.test(lines[pos].trim());
+        var obj = isList ? [] : {};
+        while (pos < lines.length) {
+            var line = lines[pos];
+            var ind = indentOf(line);
+            if (ind < indent) break;
+            if (ind > indent) { pos++; continue; }
+            var t = line.trim();
+            if (isList) {
+                if (!/^-(?: |$)/.test(t)) break;
+                pos++;
+                var rest = t.replace(/^-\s*/, '');
+                if (rest) {
+                    var m = rest.match(/^([^:]+):\s*(.*)$/);
+                    if (m && m[2] === '' && !rest.trim().match(/^["']/)) {
+                        var item = {};
+                        var sub = parseBlock(indent + 1);
+                        item[m[1].trim()] = sub;
+                        obj.push(item);
+                    } else if (m && !rest.trim().match(/^["']/)) {
+                        var item2 = {};
+                        item2[m[1].trim()] = parseScalar(m[2]);
+                        obj.push(item2);
+                    } else {
+                        obj.push(parseScalar(rest));
+                    }
+                } else {
+                    obj.push(parseBlock(indent + 1));
+                }
+            } else {
+                var m2 = t.match(/^("(?:[^"\\]|\\.)*"|'[^']*'|[^:]+):\s*(.*)$/);
+                if (!m2) throw new Error('Cannot parse line: "' + t.slice(0, 40) + '"');
+                var key = parseScalar(m2[1]);
+                var rest2 = m2[2];
+                if (rest2 === '') {
+                    pos++;
+                    var nextInd = pos < lines.length ? indentOf(lines[pos]) : -1;
+                    if (nextInd > ind) { obj[key] = parseBlock(nextInd); }
+                    else { obj[key] = null; }
+                    continue;
+                }
+                obj[key] = parseScalar(rest2);
+                pos++;
+            }
+        }
+        return obj;
+    }
+    var result = parseBlock(indentOf(lines[0]));
+    return result;
+}
+    </script>
+
+<script src="tool-registry.js"></script>
+<script src="command-palette.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.ToolRegistry) {
+        ToolRegistry.renderSharedFooter();
+        ToolRegistry.renderToolFooter('json-to-yaml');
+    }
+});
+</script>
+</body>
+</html>

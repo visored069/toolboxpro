@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Test Regular Expressions (A Practical Guide) | ToolBox Pro Guides</title>
+    <meta name="description" content="Learn a practical workflow for testing regular expressions: anchor your patterns, test the negative cases, avoid catastrophic backtracking, and use common patterns safely.">
+    <link rel="canonical" href="https://toolboxpro-theta.vercel.app/regex-testing-guide">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://toolboxpro-theta.vercel.app/regex-testing-guide">
+    <meta property="og:title" content="How to Test Regular Expressions (A Practical Guide)">
+    <meta property="og:description" content="Learn a practical workflow for testing regular expressions: anchor your patterns, test the negative cases, avoid catastrophic backtracking, and use common patterns safely.">
+    <meta property="og:image" content="https://toolboxpro-theta.vercel.app/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Test Regular Expressions (A Practical Guide)">
+    <meta name="twitter:description" content="Learn a practical workflow for testing regular expressions: anchor your patterns, test the negative cases, avoid catastrophic backtracking, and use common patterns safely.">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"How to test regular expressions — a practical workflow","description":"Learn a practical workflow for testing regular expressions: anchor your patterns, test the negative cases, avoid catastrophic backtracking, and use common patterns safely.","datePublished":"2026-09-18","dateModified":"2026-09-18","author":{"@type":"Organization","name":"ToolBox Pro"},"publisher":{"@type":"Organization","name":"ToolBox Pro"},"mainEntityOfPage":"https://toolboxpro-theta.vercel.app/regex-testing-guide"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolboxpro-theta.vercel.app/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://toolboxpro-theta.vercel.app/guides"},{"@type":"ListItem","position":3,"name":"How to test regular expressions — a practical workflow","item":"https://toolboxpro-theta.vercel.app/regex-testing-guide"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I test a regex before shipping it?","acceptedAnswer":{"@type":"Answer","text":"Write a fixed table of must-match and must-reject strings, run both columns against the pattern in a tester, and keep the table as a unit test. A pattern is done when the whole rejection column fails to match."}},{"@type":"Question","name":"Why does my regex match only the first occurrence?","acceptedAnswer":{"@type":"Answer","text":"Most APIs require a global flag to find all matches: /g in JavaScript, re.findall in Python, preg_match_all in PHP. Without it the engine stops after the first match by design."}},{"@type":"Question","name":"How can I tell if my pattern is vulnerable to backtracking?","acceptedAnswer":{"@type":"Answer","text":"Look for a quantifier inside a group that itself has a quantifier, like (\\d+)* or (a|a)*$. Feed it a long non-matching string of the repeated character — if it takes noticeably longer as the string grows, restructure it."}}]}]}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#6c5ce7">
+    <link rel="stylesheet" href="guide.css">
+</head>
+<body>
+
+    <!-- Ambient background -->
+    <div class="ambient-blobs"><div class="ambient-blob"></div><div class="ambient-blob"></div><div class="ambient-blob"></div></div>
+    <div class="particles" id="particles"></div>
+
+    <header>
+        <div class="header-inner">
+            <a href="/" class="logo" aria-label="ToolBox Pro Home">
+                <div class="logo-icon"><i class="fas fa-toolbox" aria-hidden="true"></i></div>
+                <span class="logo-text">ToolBox</span>
+                <span class="logo-badge">PRO</span>
+            </a>
+            <nav aria-label="Main navigation">
+                <a href="/">Tools</a>
+                <a href="guides" class="active">Guides</a>
+                <a href="ai-tools">AI Directory</a>
+                <a href="about">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="wrapper">
+
+            <section class="page-hero">
+                <span class="eyebrow">How-To</span>
+                <h1>How to test regular expressions — a practical workflow</h1>
+                <p class="meta-line">Updated: September 2026</p>
+                <p>Most regex bugs are not syntax errors — they are matches that succeed when they should fail. A pattern that works on your one test string can silently accept the wrong input in production. This guide is a workflow: how to build a pattern against a checklist of positive and negative cases, and the handful of pitfalls that cause most real-world failures.</p>
+            </section>
+
+<section class="section">
+<p class="section-label">01 — The workflow</p><h2 class="section-title">Test cases first, pattern second</h2><p>Before writing a single character of pattern, write down what the regex <em>must match</em> and — more importantly — what it <em>must reject</em>. For a date pattern like <code>\d{4}-\d{2}-\d{2}</code>:</p><pre class="gcode"><code>MUST match:      2026-09-18   1999-12-31
+MUST NOT match:  26-09-18   2026-9-18   2026-13-45   hello</code></pre><p>Then build the pattern while watching the negative column, not just the positive one. A pattern that only passes the "must match" list is usually halfway done.</p>
+            </section>
+
+<section class="section">
+<p class="section-label">02 — Anchors</p><h2 class="section-title">Anchor everything</h2><p>The single most common regex bug: forgetting that a search finds matches <em>anywhere</em> in the input. <code>\d{4}-\d{2}-\d{2}</code> happily matches the date inside <code>id9999-00-00x</code>. Anchors fix it:</p><table class="gtable"><thead><tr><th>Anchor</th><th>Meaning</th><th>Example</th></tr></thead><tbody><tr><td><code>^…$</code></td><td>Start / end of line</td><td><code>^\d{4}-\d{2}-\d{2}$</code> — the whole line must be a date</td></tr><tr><td><code>\b</code></td><td>Word boundary</td><td><code>\bcat\b</code> — "cat" but not "category"</td></tr><tr><td><code>\A \z</code></td><td>Start / end of string (some flavors)</td><td>Safer than <code>^$</code> for multi-line input</td></tr></tbody></table><div class="callout"><i class="fas fa-lightbulb" aria-hidden="true"></i><p>When validating input (forms, tokens, IDs), always anchor with ^ and $. When extracting, anchor with \b where possible to avoid substring surprises.</p></div>
+            </section>
+
+<section class="section">
+<p class="section-label">03 — Iterating</p><h2 class="section-title">Refine against live matches</h2><p>Type your pattern and sample text into a tester, look at <em>what matched and where</em>, then tighten. Typical iteration for validating a username (letters, digits, underscore, 3–16 chars):</p><pre class="gcode"><code>v1:  \w{3,16}        → fails: matches inside "  bad--input  ", accepts unicode \w
+v2:  ^\w{3,16}$       → better: anchored; still allow-list by default
+v3:  ^[a-zA-Z0-9_]{3,16}$  → explicit allow-list, no \w surprises</code></pre><p>Each pass closes one loophole the previous version accepted. This is also exactly how the ToolBox Pro tester works: paste the pattern, paste the sample, and inspect the highlighted matches — including the ones you did not intend.</p>
+            </section>
+
+<section class="section">
+<div class="tool-chips"><a class="tool-chip" href="regex-tester"><i class="fas fa-asterisk" aria-hidden="true"></i> Try the Regex Tester</a><a class="tool-chip" href="text-diff-checker"><i class="fas fa-code-compare" aria-hidden="true"></i> Diff two texts after a regex edit</a><a class="tool-chip" href="url-parser"><i class="fas fa-scissors" aria-hidden="true"></i> Inspect URLs you are pattern-matching</a></div>
+            </section>
+
+<section class="section">
+<p class="section-label">04 — Pitfalls</p><h2 class="section-title">The four patterns that break in production</h2><p><strong>1. Catastrophic backtracking.</strong> Nested quantifiers like <code>(a+)+$</code> explode exponentially on non-matching input — a 30-character string can hang a server. Keep quantifiers atomic and possessive where the flavor allows (<code>++</code>, <code>*+</code>), and never nest <code>+</code>/<code>*</code> inside another quantifier without need.</p><p><strong>2. The dot.</strong> <code>.*</code> is greedy and crosses lines more often than expected. Use <code>[^\n]*</code> for "anything on this line" or make the dot lazy with <code>.*?</code> when you need the shortest match.</p><p><strong>3. Unescaped metacharacters.</strong> A period, plus, or question mark in the text you are matching (URLs are full of them) must be escaped: <code>example\.com</code>, not <code>example.com</code> — which also matches <code>examplexcom</code>.</p><p><strong>4. Trusting regex for validation.</strong> Regex can check shape, not truth: an email that matches a pattern can still not exist. Use regex to reject obviously wrong input; confirm with a real check (send the email, call the API).</p>
+            </section>
+
+<section class="section">
+<p class="section-label">05 — Cheatsheet</p><h2 class="section-title">Patterns worth keeping</h2><table class="gtable"><thead><tr><th>Task</th><th>Pattern</th><th>Notes</th></tr></thead><tbody><tr><td>Date (YYYY-MM-DD)</td><td><code>^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$</code></td><td>Rejects month 13 — shape and range</td></tr><tr><td>Hex color</td><td><code>^#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})$</code></td><td>3- or 6-digit forms</td></tr><tr><td>Trailing whitespace</td><td><code>[ \t]+$</code></td><td>For lint rules; no anchors needed</td></tr><tr><td>URL slug</td><td><code>^[a-z0-9]+(?:-[a-z0-9]+)*$</code></td><td>No leading/trailing/multiple hyphens</td></tr></tbody></table><div class="callout"><i class="fas fa-triangle-exclamation" aria-hidden="true"></i><p>Regex flavors differ. JavaScript has no lookbehind in older browsers and no \A/\z; PCRE has both. Test in the engine you will actually ship.</p></div>
+            </section>
+
+<section class="section">
+                <p class="section-label">FAQ</p>
+                <h2 class="section-title">Frequently asked questions</h2>
+                <details class="gfaq"><summary>How do I test a regex before shipping it?</summary><p>Write a fixed table of must-match and must-reject strings, run both columns against the pattern in a tester, and keep the table as a unit test. A pattern is done when the whole rejection column fails to match.</p></details>
+                <details class="gfaq"><summary>Why does my regex match only the first occurrence?</summary><p>Most APIs require a global flag to find all matches: /g in JavaScript, re.findall in Python, preg_match_all in PHP. Without it the engine stops after the first match by design.</p></details>
+                <details class="gfaq"><summary>How can I tell if my pattern is vulnerable to backtracking?</summary><p>Look for a quantifier inside a group that itself has a quantifier, like (\d+)* or (a|a)*$. Feed it a long non-matching string of the repeated character — if it takes noticeably longer as the string grows, restructure it.</p></details>
+            </section>
+
+            <!-- Related guides -->
+            <section class="section">
+                <p class="section-label">Keep reading</p>
+                <h2 class="section-title">Related guides</h2>
+                <div class="related-guides"><a href="json-vs-yaml"><i class="fas fa-right-left" aria-hidden="true"></i> JSON vs YAML: which to use?</a><a href="how-base64-encoding-works"><i class="fas fa-lock" aria-hidden="true"></i> How Base64 encoding works</a></div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="logo-icon"><i class="fas fa-toolbox" aria-hidden="true"></i></div>
+                <span>ToolBox Pro</span>
+            </div>
+            <div class="footer-links">
+                <a href="/">Home</a>
+                <a href="ai-tools">AI Directory</a>
+                <a href="guides">Guides</a>
+                <a href="privacy">Privacy</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 ToolBox Pro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll shadow
+        var header = document.querySelector('header');
+        if (header) {
+            window.addEventListener('scroll', function() {
+                header.style.boxShadow = window.scrollY > 10 ? '0 1px 0 var(--border), 0 4px 20px rgba(0,0,0,0.15)' : 'none';
+            }, { passive: true });
+        }
+    </script>
+
+</body>
+</html>

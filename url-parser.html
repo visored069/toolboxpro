@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Parser &amp; Query String Inspector | ToolBox Pro</title>
+    <meta name="description" content="Break any URL into protocol, host, port, path, and query parameters. Debug query strings and UTM tags instantly — free and in your browser.">
+    <link rel="canonical" href="https://toolboxpro-theta.vercel.app/url-parser">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://toolboxpro-theta.vercel.app/url-parser">
+    <meta property="og:title" content="URL Parser &amp; Query String Inspector - ToolBox Pro">
+    <meta property="og:description" content="Break any URL into protocol, host, port, path, and query parameters. Debug query strings and UTM tags instantly — free and in your browser.">
+    <meta property="og:image" content="https://toolboxpro-theta.vercel.app/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="URL Parser &amp; Query String Inspector - ToolBox Pro">
+    <meta name="twitter:description" content="Break any URL into protocol, host, port, path, and query parameters. Debug query strings and UTM tags instantly — free and in your browser.">
+    <meta name="twitter:image" content="https://toolboxpro-theta.vercel.app/og-image.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"URL Parser","url":"https://toolboxpro-theta.vercel.app/url-parser","description":"Break any URL into protocol, host, path, and query parameters.","applicationCategory":"DeveloperApplication","operatingSystem":"Any (browser-based)","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tools","item":"https://toolboxpro-theta.vercel.app/"},{"@type":"ListItem","position":2,"name":"URL Parser","item":"https://toolboxpro-theta.vercel.app/url-parser"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why does my URL fail to parse?","acceptedAnswer":{"@type":"Answer","text":"The parser needs an absolute URL with a protocol. \"example.com/page\" fails; \"https://example.com/page\" works. Relative URLs have no host to parse."}},{"@type":"Question","name":"Does it handle encoded characters?","acceptedAnswer":{"@type":"Answer","text":"Yes — query values are shown URL-decoded (e.g. %20 appears as a space), exactly as a server would receive them after decoding."}},{"@type":"Question","name":"Is anything sent to a server?","acceptedAnswer":{"@type":"Answer","text":"No. Parsing uses your browser’s built-in URL API; the URL never leaves your device."}}]}]}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#6c5ce7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2">
+    <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="tool-page-shared.css">
+</head>
+<body>
+    <!-- Page Transition Overlay -->
+    <div class="page-transition" id="page-transition"></div>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <div class="bg-animation"></div>
+    <div class="particles" id="particles"></div>
+
+    <header>
+        <div class="header-content">
+            <a href="/" class="logo" aria-label="ToolBox Pro Home">
+                <div class="logo-icon"><i class="fas fa-toolbox" aria-hidden="true"></i></div>
+                <span class="logo-text">ToolBox</span>
+                <span class="logo-badge">PRO</span>
+            </a>
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button><nav aria-label="Main navigation" id="main-nav">
+                <a href="/" id="nav-tools">Tools</a>
+                <a href="guides" id="nav-guides">Guides</a>
+                <a href="about" id="nav-about">About</a>
+                <a href="contact" id="nav-contact">Contact</a>
+                <a href="privacy" id="nav-privacy">Privacy</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-sun" aria-hidden="true"></i></button>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+    <div class="tool-page">
+        <a href="/" class="back-link"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Tools</a>
+        <h1><i class="fas fa-scissors" style="color:var(--accent-1)"></i> URL Parser &amp; Query Inspector</h1>
+        <p class="tool-description">Break any URL into its parts — protocol, host, path, and every query parameter — live as you paste.</p>
+
+        <div class="tool-input-group">
+            <label for="up-input">URL</label>
+            <input type="text" class="tool-input" id="up-input" placeholder="https://example.com:8080/products?category=shoes&amp;sort=price&amp;utm_source=newsletter" spellcheck="false" autocomplete="off">
+        </div>
+        <div class="btn-group">
+            <button class="tool-btn btn-primary" onclick="upParse()"><i class="fas fa-scissors" aria-hidden="true"></i> Parse</button>
+            <button class="tool-btn btn-secondary" onclick="upClear()"><i class="fas fa-eraser" aria-hidden="true"></i> Clear</button>
+        </div>
+        <div id="up-results" style="margin-top:1rem; display:none;">
+            <div class="tool-input-group">
+                <label>URL parts</label>
+                <div class="tool-output" id="up-parts" aria-live="polite"></div>
+            </div>
+            <div class="tool-input-group">
+                <label>Query parameters</label>
+                <div class="tool-output" id="up-query" aria-live="polite"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEO content (static, crawlable) -->
+    <section class="seo-content" aria-label="About this tool">
+        <p class="seo-intro">Long URLs hide their structure: tracking parameters, campaign tags, session IDs, and API keys all ride along in the query string. This tool breaks any URL into its parts — protocol, host, port, path, fragment, and every query parameter decoded and listed — so you can debug routes, audit UTM tags, or extract values without eyeballing a 300-character string. Parsing uses the browser’s native URL API and runs entirely on your device.</p>
+        <div class="seo-block"><h2 id="how-to">How to parse a URL</h2><ol class="seo-steps"><li>Paste the full URL — including the protocol (https://…) — into the input box.</li><li>Click Parse. The parts panel shows protocol, host, port, path, and fragment.</li><li>Every query parameter is listed decoded, one per line, in original order.</li><li>Combine with the URL Encoder/Decoder when you need to re-encode a cleaned-up URL.</li></ol></div>
+        <div class="seo-block"><h2 id="example">URL parsing example</h2><p>Given this URL:</p><pre class="seo-code"><code>https://example.com:8080/products?category=shoes&amp;sort=price&amp;utm_source=newsletter</code></pre><p>the parser reports:</p><pre class="seo-code"><code>protocol:  https:
+hostname:  example.com
+port:      8080
+pathname:  /products
+
+query parameters:
+category = shoes
+sort = price
+utm_source = newsletter</code></pre></div>
+        <div class="seo-block"><h2 id="faq">Frequently asked questions</h2><div class="seo-faq"><details class="seo-faq-item"><summary>Why does my URL fail to parse?</summary><p>The parser needs an absolute URL with a protocol. "example.com/page" fails; "https://example.com/page" works. Relative URLs have no host to parse.</p></details><details class="seo-faq-item"><summary>Does it handle encoded characters?</summary><p>Yes — query values are shown URL-decoded (e.g. %20 appears as a space), exactly as a server would receive them after decoding.</p></details><details class="seo-faq-item"><summary>Is anything sent to a server?</summary><p>No. Parsing uses your browser’s built-in URL API; the URL never leaves your device.</p></details></div></div>
+        <div class="seo-block"><h2 id="related">Related developer tools</h2><div class="related-grid"><a class="related-card" href="url-encoder-decoder"><i class="fas fa-link" aria-hidden="true"></i><span>URL Encoder/Decoder</span></a><a class="related-card" href="regex-tester"><i class="fas fa-asterisk" aria-hidden="true"></i><span>Regex Tester</span></a><a class="related-card" href="json-formatter"><i class="fas fa-code" aria-hidden="true"></i><span>JSON Formatter</span></a></div></div>
+    </section>
+    </main>
+
+    <footer>
+        <div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;">
+            <p>© 2026 ToolBox Pro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- PWA Install Banner -->
+    <div class="pwa-banner" id="pwa-banner">
+        <div class="pwa-banner-text">
+            <i class="fas fa-download" aria-hidden="true"></i>
+            <span><strong>Install ToolBox Pro</strong> — access tools offline, faster!</span>
+        </div>
+        <button class="pwa-install-btn" onclick="installPWA()">Install</button>
+        <button class="pwa-dismiss" onclick="dismissPWA()" aria-label="Dismiss"><i class="fas fa-times"></i></button>
+    </div>
+
+    <!-- Feedback Widget -->
+    <button class="feedback-fab" id="feedback-fab" aria-label="Give feedback">
+        <i class="fas fa-comment-dots" aria-hidden="true"></i>
+    </button>
+    <div class="feedback-panel" id="feedback-panel">
+        <div class="feedback-form">
+            <h3>💬 How was this tool?</h3>
+            <div class="feedback-emojis">
+                <button class="feedback-emoji" data-rating="love" aria-label="Love it">😍</button>
+                <button class="feedback-emoji" data-rating="good" aria-label="Good">😊</button>
+                <button class="feedback-emoji" data-rating="meh" aria-label="Meh">😐</button>
+                <button class="feedback-emoji" data-rating="bad" aria-label="Bad">😞</button>
+            </div>
+            <textarea class="feedback-textarea" id="feedback-text" placeholder="Tell us more (optional)..."></textarea>
+            <button class="feedback-submit" id="feedback-submit">Send Feedback</button>
+        </div>
+        <div class="feedback-thanks" id="feedback-thanks">
+            <i class="fas fa-heart" aria-hidden="true"></i>
+            <h3>Thanks for your feedback!</h3>
+            <p style="color:var(--text-secondary);font-size:0.85rem;">It helps us improve ToolBox Pro.</p>
+        </div>
+    </div>
+
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-banner" id="cookie-banner">
+        <div class="cookie-content"><div class="cookie-icon">🍪</div><div class="cookie-text"><strong>We use cookies</strong><p>We use localStorage to save your preferences. No tracking. <a href="privacy">Learn more</a></p></div></div>
+        <div class="cookie-actions"><button class="cookie-btn cookie-accept" onclick="acceptCookies()">Accept</button><button class="cookie-btn cookie-dismiss" onclick="dismissCookies()">Decline</button></div>
+    </div>
+
+    <!-- Keyboard Shortcuts Modal -->
+    <div class="shortcuts-overlay" id="shortcuts-overlay">
+        <div class="shortcuts-modal">
+            <div class="shortcuts-header"><h3><i class="fas fa-keyboard" aria-hidden="true"></i> Keyboard Shortcuts</h3><button class="shortcuts-close" onclick="closeShortcuts()" aria-label="Close"><i class="fas fa-times"></i></button></div>
+            <div class="shortcuts-list">
+                <div class="shortcut-item"><span class="shortcut-desc">Focus search</span><span class="shortcut-keys"><kbd>Ctrl</kbd><kbd>K</kbd></span></div>
+                <div class="shortcut-item"><span class="shortcut-desc">Toggle dark mode</span><span class="shortcut-keys"><kbd>Ctrl</kbd><kbd></kbd></span></div>
+                <div class="shortcut-item"><span class="shortcut-desc">Show shortcuts</span><span class="shortcut-keys"><kbd>?</kbd></span></div>
+                <div class="shortcut-item"><span class="shortcut-desc">Close modal</span><span class="shortcut-keys"><kbd>Esc</kbd></span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up" aria-hidden="true"></i></button>
+
+    <!-- Performance Badge -->
+    <div class="perf-badge" id="perf-badge">
+        <span class="dot-green"></span>
+        <span class="perf-load">Loading...</span>
+        <span style="color:var(--border-color);">|</span>
+        <span class="perf-dom">...</span>
+    </div>
+
+    <script src="components.js"></script>
+    <script>
+function upClear() {
+    document.getElementById('up-input').value = '';
+    document.getElementById('up-results').style.display = 'none';
+}
+function upParse() {
+    var raw = document.getElementById('up-input').value.trim();
+    var res = document.getElementById('up-results');
+    var parts = document.getElementById('up-parts');
+    var query = document.getElementById('up-query');
+    if (!raw) { res.style.display = 'block'; parts.textContent = '⚠ Enter a URL first.'; query.textContent = ''; return; }
+    try {
+        var u = new URL(raw);
+        var lines = [
+            'protocol:  ' + u.protocol,
+            'host:      ' + u.host + (u.port ? '' : ''),
+            'hostname:  ' + u.hostname,
+            'port:      ' + (u.port || '(default)'),
+            'pathname:  ' + u.pathname,
+            'hash:      ' + (u.hash || '(none)')
+        ];
+        parts.textContent = lines.join('\n');
+        var params = Array.from(u.searchParams.entries());
+        if (!params.length) {
+            query.textContent = '(no query parameters)';
+        } else {
+            query.textContent = params.map(function (p) { return p[0] + ' = ' + p[1]; }).join('\n');
+        }
+        res.style.display = 'block';
+    } catch (e) {
+        res.style.display = 'block';
+        parts.textContent = '❌ Not a valid absolute URL. Include the protocol, e.g. https://example.com';
+        query.textContent = '';
+    }
+}
+    </script>
+
+<script src="tool-registry.js"></script>
+<script src="command-palette.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.ToolRegistry) {
+        ToolRegistry.renderSharedFooter();
+        ToolRegistry.renderToolFooter('url-parser');
+    }
+});
+</script>
+</body>
+</html>

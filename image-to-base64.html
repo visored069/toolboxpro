@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image to Base64 Data URI Converter | ToolBox Pro</title>
+    <meta name="description" content="Convert images to Base64 data URIs for inline embedding in CSS or HTML. Free, private, no uploads — everything happens in your browser.">
+    <link rel="canonical" href="https://toolboxpro-theta.vercel.app/image-to-base64">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://toolboxpro-theta.vercel.app/image-to-base64">
+    <meta property="og:title" content="Image to Base64 Data URI Converter - ToolBox Pro">
+    <meta property="og:description" content="Convert images to Base64 data URIs for inline embedding in CSS or HTML. Free, private, no uploads — everything happens in your browser.">
+    <meta property="og:image" content="https://toolboxpro-theta.vercel.app/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Image to Base64 Data URI Converter - ToolBox Pro">
+    <meta name="twitter:description" content="Convert images to Base64 data URIs for inline embedding in CSS or HTML. Free, private, no uploads — everything happens in your browser.">
+    <meta name="twitter:image" content="https://toolboxpro-theta.vercel.app/og-image.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Image to Base64","url":"https://toolboxpro-theta.vercel.app/image-to-base64","description":"Convert any image to a Base64 data URI — private, in your browser.","applicationCategory":"DeveloperApplication","operatingSystem":"Any (browser-based)","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tools","item":"https://toolboxpro-theta.vercel.app/"},{"@type":"ListItem","position":2,"name":"Image to Base64","item":"https://toolboxpro-theta.vercel.app/image-to-base64"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"When should I embed an image instead of linking it?","acceptedAnswer":{"@type":"Answer","text":"For small, frequently used assets: icons, logos, tiny backgrounds. Embedding avoids an extra HTTP request but inflates the HTML/CSS size by ~33% and blocks caching — large images should stay as separate files."}},{"@type":"Question","name":"Is my image uploaded?","acceptedAnswer":{"@type":"Answer","text":"No. The file is read with the browser’s FileReader API entirely on your device; nothing is transmitted or stored."}},{"@type":"Question","name":"Why is the Base64 bigger than my file?","acceptedAnswer":{"@type":"Answer","text":"Base64 encodes every 3 bytes into 4 characters, adding roughly 33% overhead plus the data: prefix. That’s the trade-off for embedding binary data as text."}}]}]}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#6c5ce7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2">
+    <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="tool-page-shared.css">
+</head>
+<body>
+    <!-- Page Transition Overlay -->
+    <div class="page-transition" id="page-transition"></div>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <div class="bg-animation"></div>
+    <div class="particles" id="particles"></div>
+
+    <header>
+        <div class="header-content">
+            <a href="/" class="logo" aria-label="ToolBox Pro Home">
+                <div class="logo-icon"><i class="fas fa-toolbox" aria-hidden="true"></i></div>
+                <span class="logo-text">ToolBox</span>
+                <span class="logo-badge">PRO</span>
+            </a>
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button><nav aria-label="Main navigation" id="main-nav">
+                <a href="/" id="nav-tools">Tools</a>
+                <a href="guides" id="nav-guides">Guides</a>
+                <a href="about" id="nav-about">About</a>
+                <a href="contact" id="nav-contact">Contact</a>
+                <a href="privacy" id="nav-privacy">Privacy</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-sun" aria-hidden="true"></i></button>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+    <div class="tool-page">
+        <a href="/" class="back-link"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Tools</a>
+        <h1><i class="fas fa-image" style="color:var(--accent-1)"></i> Image to Base64 Converter</h1>
+        <p class="tool-description">Drop an image in to get a Base64 data URI ready for CSS or HTML. The file never leaves your device.</p>
+
+        <div class="tool-input-group">
+            <label for="ib-file">Choose an image</label>
+            <input type="file" class="tool-input" id="ib-file" accept="image/*" aria-describedby="ib-note">
+            <p id="ib-note" style="font-size:0.8rem;color:var(--text-secondary);margin-top:0.5rem;">PNG, JPEG, GIF, WebP, or SVG — read locally, never uploaded.</p>
+        </div>
+        <button class="tool-btn btn-primary" onclick="ibConvert()"><i class="fas fa-image" aria-hidden="true"></i> Convert</button>
+        <div class="tool-input-group" style="margin-top:1rem;">
+            <label>Preview</label>
+            <div id="ib-preview" style="min-height:80px;display:flex;align-items:center;justify-content:center;background:var(--input-bg);border:1px dashed var(--border-color);border-radius:12px;padding:1rem;"></div>
+        </div>
+        <div class="tool-input-group">
+            <label for="ib-output">Base64 output</label>
+            <textarea class="tool-textarea" id="ib-output" readonly placeholder="data:image/png;base64,iVBORw0KGgo…"></textarea>
+        </div>
+        <div class="btn-group">
+            <button class="tool-btn btn-primary" onclick="ibCopy('data-uri')"><i class="fas fa-copy" aria-hidden="true"></i> Copy data URI</button>
+            <button class="tool-btn btn-secondary" onclick="ibCopy('bare')"><i class="fas fa-copy" aria-hidden="true"></i> Copy Base64 only</button>
+        </div>
+        <p id="ib-stats" style="font-size:0.85rem;color:var(--text-secondary);margin-top:0.75rem;"></p>
+    </div>
+
+    <!-- SEO content (static, crawlable) -->
+    <section class="seo-content" aria-label="About this tool">
+        <p class="seo-intro">Embedding small images as Base64 data URIs removes an HTTP request and makes assets self-contained — handy for CSS backgrounds, email-safe HTML, and single-file demos. This tool converts any image (PNG, JPEG, GIF, WebP, SVG) into a ready-to-paste data URI using the FileReader API, shows a preview and the exact size overhead Base64 adds (~33%), and offers two copies: the full URI for CSS/HTML or the bare Base64 for JSON payloads. The image is read locally — it is never uploaded.</p>
+        <div class="seo-block"><h2 id="how-to">How to convert an image to Base64</h2><ol class="seo-steps"><li>Click Choose File and pick an image — PNG, JPEG, GIF, WebP, or SVG.</li><li>Click Convert. A preview appears along with the full <code>data:image/…;base64,…</code> string.</li><li>Check the size line: Base64 is about 33% larger than the original binary, so this works best for icons and small images (under ~10 KB is a common rule of thumb).</li><li>Use Copy data URI for CSS (background-image) or HTML (img src), or Copy Base64 only for JSON and API payloads.</li></ol></div>
+        <div class="seo-block"><h2 id="example">Using the output</h2><p>The tool produces a data URI like this (truncated here):</p><pre class="seo-code"><code>data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA…</code></pre><p>drop it straight into CSS or HTML:</p><pre class="seo-code"><code>/* CSS */
+.logo { background-image: url(&quot;data:image/png;base64,iVBORw0…&quot;); }
+
+&lt;!-- HTML --&gt;
+&lt;img src=&quot;data:image/png;base64,iVBORw0…&quot; alt=&quot;Logo&quot;&gt;</code></pre></div>
+        <div class="seo-block"><h2 id="faq">Frequently asked questions</h2><div class="seo-faq"><details class="seo-faq-item"><summary>When should I embed an image instead of linking it?</summary><p>For small, frequently used assets: icons, logos, tiny backgrounds. Embedding avoids an extra HTTP request but inflates the HTML/CSS size by ~33% and blocks caching — large images should stay as separate files.</p></details><details class="seo-faq-item"><summary>Is my image uploaded?</summary><p>No. The file is read with the browser’s FileReader API entirely on your device; nothing is transmitted or stored.</p></details><details class="seo-faq-item"><summary>Why is the Base64 bigger than my file?</summary><p>Base64 encodes every 3 bytes into 4 characters, adding roughly 33% overhead plus the data: prefix. That’s the trade-off for embedding binary data as text.</p></details></div></div>
+        <div class="seo-block"><h2 id="related">Related developer tools</h2><div class="related-grid"><a class="related-card" href="base64-encoder-decoder"><i class="fas fa-file-code" aria-hidden="true"></i><span>Base64 Encoder/Decoder</span></a><a class="related-card" href="qr-code-generator"><i class="fas fa-qrcode" aria-hidden="true"></i><span>QR Code Generator</span></a><a class="related-card" href="color-picker"><i class="fas fa-palette" aria-hidden="true"></i><span>Color Picker</span></a></div></div>
+    </section>
+    </main>
+
+    <footer>
+        <div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;">
+            <p>© 2026 ToolBox Pro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- PWA Install Banner -->
+    <div class="pwa-banner" id="pwa-banner">
+        <div class="pwa-banner-text">
+            <i class="fas fa-download" aria-hidden="true"></i>
+            <span><strong>Install ToolBox Pro</strong> — access tools offline, faster!</span>
+        </div>
+        <button class="pwa-install-btn" onclick="installPWA()">Install</button>
+        <button class="pwa-dismiss" onclick="dismissPWA()" aria-label="Dismiss"><i class="fas fa-times"></i></button>
+    </div>
+
+    <!-- Feedback Widget -->
+    <button class="feedback-fab" id="feedback-fab" aria-label="Give feedback">
+        <i class="fas fa-comment-dots" aria-hidden="true"></i>
+    </button>
+    <div class="feedback-panel" id="feedback-panel">
+        <div class="feedback-form">
+            <h3>💬 How was this tool?</h3>
+            <div class="feedback-emojis">
+                <button class="feedback-emoji" data-rating="love" aria-label="Love it">😍</button>
+                <button class="feedback-emoji" data-rating="good" aria-label="Good">😊</button>
+                <button class="feedback-emoji" data-rating="meh" aria-label="Meh">😐</button>
+                <button class="feedback-emoji" data-rating="bad" aria-label="Bad">😞</button>
+            </div>
+            <textarea class="feedback-textarea" id="feedback-text" placeholder="Tell us more (optional)..."></textarea>
+            <button class="feedback-submit" id="feedback-submit">Send Feedback</button>
+        </div>
+        <div class="feedback-thanks" id="feedback-thanks">
+            <i class="fas fa-heart" aria-hidden="true"></i>
+            <h3>Thanks for your feedback!</h3>
+            <p style="color:var(--text-secondary);font-size:0.85rem;">It helps us improve ToolBox Pro.</p>
+        </div>
+    </div>
+
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-banner" id="cookie-banner">
+        <div class="cookie-content"><div class="cookie-icon">🍪</div><div class="cookie-text"><strong>We use cookies</strong><p>We use localStorage to save your preferences. No tracking. <a href="privacy">Learn more</a></p></div></div>
+        <div class="cookie-actions"><button class="cookie-btn cookie-accept" onclick="acceptCookies()">Accept</button><button class="cookie-btn cookie-dismiss" onclick="dismissCookies()">Decline</button></div>
+    </div>
+
+    <!-- Keyboard Shortcuts Modal -->
+    <div class="shortcuts-overlay" id="shortcuts-overlay">
+        <div class="shortcuts-modal">
+            <div class="shortcuts-header"><h3><i class="fas fa-keyboard" aria-hidden="true"></i> Keyboard Shortcuts</h3><button class="shortcuts-close" onclick="closeShortcuts()" aria-label="Close"><i class="fas fa-times"></i></button></div>
+            <div class="shortcuts-list">
+                <div class="shortcut-item"><span class="shortcut-desc">Focus search</span><span class="shortcut-keys"><kbd>Ctrl</kbd><kbd>K</kbd></span></div>
+                <div class="shortcut-item"><span class="shortcut-desc">Toggle dark mode</span><span class="shortcut-keys"><kbd>Ctrl</kbd><kbd></kbd></span></div>
+                <div class="shortcut-item"><span class="shortcut-desc">Show shortcuts</span><span class="shortcut-keys"><kbd>?</kbd></span></div>
+                <div class="shortcut-item"><span class="shortcut-desc">Close modal</span><span class="shortcut-keys"><kbd>Esc</kbd></span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up" aria-hidden="true"></i></button>
+
+    <!-- Performance Badge -->
+    <div class="perf-badge" id="perf-badge">
+        <span class="dot-green"></span>
+        <span class="perf-load">Loading...</span>
+        <span style="color:var(--border-color);">|</span>
+        <span class="perf-dom">...</span>
+    </div>
+
+    <script src="components.js"></script>
+    <script>
+var ibDataUri = '';
+function ibConvert() {
+    var input = document.getElementById('ib-file');
+    if (!input.files || !input.files[0]) { document.getElementById('ib-stats').textContent = '⚠ Choose an image first.'; return; }
+    var file = input.files[0];
+    var reader = new FileReader();
+    reader.onload = function () {
+        ibDataUri = reader.result;
+        document.getElementById('ib-output').value = ibDataUri;
+        var img = document.createElement('img');
+        img.src = ibDataUri;
+        img.alt = 'Preview of converted image';
+        img.style.maxWidth = '180px';
+        img.style.maxHeight = '180px';
+        img.style.borderRadius = '8px';
+        var prev = document.getElementById('ib-preview');
+        prev.innerHTML = '';
+        prev.appendChild(img);
+        var b64 = ibDataUri.split(',')[1] || '';
+        document.getElementById('ib-stats').textContent =
+            'Original: ' + (file.size / 1024).toFixed(1) + ' KB · Base64: ' + (b64.length / 1024).toFixed(1) + ' KB (≈' + Math.round(b64.length / file.size * 100) + '% of original)';
+    };
+    reader.onerror = function () { document.getElementById('ib-stats').textContent = '❌ Could not read that file.'; };
+    reader.readAsDataURL(file);
+}
+function ibCopy(which) {
+    var el = document.getElementById('ib-output');
+    if (!el.value) { document.getElementById('ib-stats').textContent = '⚠ Convert an image first.'; return; }
+    el.select();
+    if (which === 'bare') {
+        var bare = el.value.split(',')[1] || '';
+        if (navigator.clipboard) navigator.clipboard.writeText(bare);
+        document.getElementById('ib-stats').textContent = '✅ Base64 (no prefix) copied.';
+    } else {
+        if (navigator.clipboard) navigator.clipboard.writeText(el.value);
+        document.getElementById('ib-stats').textContent = '✅ Data URI copied.';
+    }
+}
+    </script>
+
+<script src="tool-registry.js"></script>
+<script src="command-palette.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.ToolRegistry) {
+        ToolRegistry.renderSharedFooter();
+        ToolRegistry.renderToolFooter('image-to-base64');
+    }
+});
+</script>
+</body>
+</html>
