@@ -1119,22 +1119,16 @@ document.addEventListener('DOMContentLoaded', function() {
     if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
 
     var path = window.location.pathname;
-    if (path.includes('json-formatter')) setActiveNav('json-formatter');
-    else if (path.includes('word-counter')) setActiveNav('word-counter');
-    else if (path.includes('password-generator')) setActiveNav('password-generator');
-    else if (path.includes('color-picker')) setActiveNav('color-picker');
-    else if (path.includes('base64')) setActiveNav('base64');
-    else if (path.includes('url-encoder')) setActiveNav('url-encoder');
-    else if (path.includes('lorem')) setActiveNav('lorem');
-    else if (path.includes('qr-code')) setActiveNav('qr-code');
-    else if (path.includes('hash')) setActiveNav('hash');
+    if (path.indexOf('developer-tools') === 0 ||
+        path.includes('json-formatter') || path.includes('word-counter') ||
+        path.includes('password-generator') || path.includes('color-picker') ||
+        path.includes('base64') || path.includes('url-encoder') ||
+        path.includes('lorem') || path.includes('qr-code') || path.includes('hash')) setActiveNav('devtools');
+    else if (path.includes('ai-tools')) setActiveNav('ai');
     else if (path.includes('about')) setActiveNav('about');
     else if (path.includes('contact')) setActiveNav('contact');
-    else if (path.includes('privacy')) setActiveNav('privacy');
-    else if (path.includes('terms')) setActiveNav('terms');
-    else if (path.includes('ai-tools')) setActiveNav('ai');
     else if (path.includes('guides') || path.includes('json-vs-yaml') || path.includes('how-base64') || path.includes('regex-testing')) setActiveNav('guides');
-    else setActiveNav('tools');
+    // homepage & legal pages: no nav item highlighted (logo = home)
 
     // --- Page Transition ---
     initPageTransitions();

@@ -9,6 +9,14 @@
     'use strict';
     global.GUIDES_DATA = [
         {
+            slug: 'best-ai-coding-tools',
+            title: 'Best AI Coding Tools (2026)',
+            description: 'Cursor, Copilot, Claude, Codeium and more compared by how they actually fit your workflow — plus what AI coding tools are still bad at.',
+            icon: 'fa-code',
+            color: '#818cf8',
+            date: 'Sep 2026'
+        },
+        {
             slug: 'best-free-ai-image-generators',
             title: 'Best Free AI Image Generators (2026)',
             description: 'A practical comparison of Leonardo.Ai, Playground AI, Adobe Firefly, Bing Image Creator, and Craiyon — what each is best for, key limitations, and who should use which.',

@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - ToolBox Pro | Free Developer Tools</title>
-    <meta name="description" content="Learn about ToolBox Pro - a free online platform providing essential developer and designer tools.">
-    <link rel="canonical" href="https://toolboxpro-theta.vercel.app/about">
+    <title>About AI Directories</title>
+    <meta name="description" content="AI Directories is a curated collection of useful AI tools and free browser-based developer utilities — honest descriptions, no fake ratings.">
+    <link rel="canonical" href="https://aidirectories.in/about">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#6c5ce7">
+    <meta name="theme-color" content="#6366f1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2">
@@ -23,15 +23,30 @@
 <body>
     <div class="bg-animation"></div>
     <div class="particles" id="particles"></div>
-    <header><div class="header-content"><a href="/" class="logo" aria-label="ToolBox Pro Home"><div class="logo-icon"><i class="fas fa-toolbox" aria-hidden="true"></i></div><span class="logo-text">ToolBox</span><span class="logo-badge">PRO</span></a><button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button><nav aria-label="Main navigation" id="main-nav"><a href="/" id="nav-tools">Tools</a><a href="ai-tools" id="nav-ai">AI Directory</a><a href="guides" id="nav-guides">Guides</a>
-                <a href="about" id="nav-about" class="active">About</a><a href="contact" id="nav-contact">Contact</a><a href="privacy" id="nav-privacy">Privacy</a></nav></div></header>
+    <header>
+        <div class="header-content">
+            <a href="/" class="logo" aria-label="AI Directories Home">
+                <div class="logo-icon"><i class="fas fa-compass" aria-hidden="true"></i></div>
+                <span class="logo-text">AI Directories</span>
+            </a>
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button><nav aria-label="Main navigation" id="main-nav">
+                <a href="ai-tools/" id="nav-ai">AI Tools</a>
+                <a href="developer-tools" id="nav-devtools">Developer Tools</a>
+                <a href="guides" id="nav-guides">Guides</a>
+                <a href="about" id="nav-about">About</a>
+                <a href="contact" id="nav-contact">Contact</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-sun" aria-hidden="true"></i></button>
+            </nav>
+        </div>
+    </header>
 
     <div class="content-page">
         <a href="/" class="back-link"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Tools</a>
         <h1>About Us</h1>
 
-        <h3>Welcome to ToolBox Pro</h3>
-        <p>ToolBox Pro is a free online platform providing essential developer and designer tools. Our mission is to make productivity tools accessible to everyone, completely free of charge.</p>
+        <h3>Welcome to AI Directories</h3>
+        <p>AI Directories helps people discover useful AI tools across coding, writing, design, video, audio, productivity and more. Every listing is hand-picked with an honest, original description and a direct link to the official site — no fake ratings, no sponsored rankings, no hype.</p>
+        <p>Alongside the directory, we build and maintain 26 free browser-based developer utilities — JSON, regex, JWT, Base64, hashes and more — that run entirely on your device. They're the tools we use ourselves while evaluating AI tools and building software.</p>
 
         <h3>Our Mission</h3>
         <p>We believe that powerful tools shouldn't require expensive subscriptions or complex installations. That's why we've built a collection of high-quality, easy-to-use tools that work directly in your browser.</p>
@@ -64,38 +79,29 @@
             <div>
                 <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;">
                     <div style="width:35px;height:35px;background:var(--gradient-1);border-radius:8px;display:flex;align-items:center;justify-content:center;">
-                        <i class="fas fa-toolbox" style="color:white;" aria-hidden="true"></i>
+                        <i class="fas fa-compass" style="color:white;" aria-hidden="true"></i>
                     </div>
-                    <span style="font-weight:700;font-size:1.1rem;">ToolBox Pro</span>
+                    <span style="font-weight:700;font-size:1.1rem;">AI Directories</span>
                 </div>
-                <p style="color:var(--text-secondary);font-size:0.85rem;">Free online developer tools for everyone.</p>
+                <p style="color:var(--text-secondary);font-size:0.85rem;">Discover useful AI tools — hand-picked and honestly described.</p>
             </div>
             <div>
-                <h4>Quick Links</h4>
+                <h4>Explore</h4>
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="ai-tools">AI Tools Directory</a></li>
-                    <li><a href="guides">Guides</a></li>
-                    <li><a href="about">About Us</a></li>
-                    <li><a href="contact">Contact</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Popular Tools</h4>
-                <ul>
-                    <li><a href="json-formatter">JSON Formatter</a></li>
-                    <li><a href="password-generator">Password Generator</a></li>
-                    <li><a href="qr-code-generator">QR Code Generator</a></li>
-                    <li><a href="word-counter">Word Counter</a></li>
+                    <li><a href="ai-tools/">All AI Tools</a></li>
+                    <li><a href="ai-tools/ai-writing/">AI Writing Tools</a></li>
+                    <li><a href="ai-tools/ai-code/">AI Coding Tools</a></li>
+                    <li><a href="ai-tools/ai-image-gen/">AI Image Generators</a></li>
+                    <li><a href="developer-tools">Developer Tools</a></li>
                 </ul>
             </div>
             <div>
                 <h4>Guides</h4>
                 <ul>
-                    <li><a href="best-free-ai-image-generators">Best Free AI Image Generators (2026)</a></li>
+                    <li><a href="best-ai-coding-tools">Best AI Coding Tools</a></li>
+                    <li><a href="best-free-ai-image-generators">Best Free AI Image Generators</a></li>
                     <li><a href="json-vs-yaml">JSON vs YAML</a></li>
-                    <li><a href="how-base64-encoding-works">How Base64 Encoding Works</a></li>
-                    <li><a href="regex-testing-guide">How to Test Regex</a></li>
+                    <li><a href="guides">All guides →</a></li>
                 </ul>
             </div>
             <div>
@@ -103,11 +109,13 @@
                 <ul>
                     <li><a href="privacy">Privacy Policy</a></li>
                     <li><a href="terms">Terms of Service</a></li>
+                    <li><a href="about">About</a></li>
+                    <li><a href="contact">Contact</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© <span id="footer-year">2026</span> ToolBox Pro. All rights reserved. Built with ❤️</p>
+            <p>© <span id="footer-year">2026</span> AI Directories. All rights reserved. Built with ❤️</p>
             <p style="margin-top:8px;font-size:inherit;color:inherit;">Built by <a href="https://x.com/portfoliomate/status/2098498135396090165" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Portfolio Mate</a> — I design and build sites like this one. <a href="https://x.com/portfoliomate/status/2098498135396090165" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">See my work →</a></p>
         </div>
     </footer>

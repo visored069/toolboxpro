@@ -1,5 +1,5 @@
-// ===== ToolBox Pro Service Worker =====
-const CACHE_NAME = 'toolboxpro-v6';
+// ===== AI Directories Service Worker =====
+const CACHE_NAME = 'ai-directories-v7';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -16,6 +16,11 @@ const STATIC_ASSETS = [
   '/privacy.html',
   '/terms.html',
   '/ai-tools.html',
+  '/ai-registry.js',
+  '/ai-tools/',
+  '/ai-tools/ai-code/',
+  '/ai-tools/chatgpt/',
+  '/developer-tools/',
   '/guides.html',
   '/guide.css',
   '/json-vs-yaml.html',

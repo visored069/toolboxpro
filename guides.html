@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guides — ToolBox Pro</title>
-    <meta name="description" content="Comparison guides and deep dives on AI tools from ToolBox Pro.">
-    <meta name="author" content="ToolBox Pro">
+    <title>Guides — AI & Developer Guides | AI Directories</title>
+    <meta name="description" content="Practical guides for choosing and using AI tools, plus developer explainers on JSON, Base64, regex, and more. Genuinely useful, no filler.">
+    <meta name="author" content="AI Directories">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://toolboxpro-theta.vercel.app/guides">
+    <link rel="canonical" href="https://aidirectories.in/guides">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <meta name="theme-color" content="#6c5ce7">
+    <meta name="theme-color" content="#6366f1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -22,9 +22,9 @@
     {
         "@context": "https://schema.org",
         "@type": "CollectionPage",
-        "name": "ToolBox Pro Guides",
+        "name": "AI Directories Guides",
         "description": "Comparison guides and deep dives on AI tools.",
-        "url": "https://toolboxpro-theta.vercel.app/guides"
+        "url": "https://aidirectories.in/guides"
     }
     </script>
     <style>
@@ -475,7 +475,7 @@
                 <div class="cube-face top"></div>
                 <div class="cube-face bottom"></div>
             </div>
-            <div class="preloader-text">ToolBox <span>PRO</span></div>
+            <div class="preloader-text">AI Directories <span>PRO</span></div>
             <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
         </div>
     </div>
@@ -490,18 +490,16 @@
 
     <header>
         <div class="header-content">
-            <a href="/" class="logo" aria-label="ToolBox Pro Home">
-                <div class="logo-icon"><i class="fas fa-toolbox" aria-hidden="true"></i></div>
-                <span class="logo-text">ToolBox</span>
-                <span class="logo-badge">PRO</span>
+            <a href="/" class="logo" aria-label="AI Directories Home">
+                <div class="logo-icon"><i class="fas fa-compass" aria-hidden="true"></i></div>
+                <span class="logo-text">AI Directories</span>
             </a>
             <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button><nav aria-label="Main navigation" id="main-nav">
-                <a href="/" id="nav-tools">Tools</a>
-                <a href="ai-tools" id="nav-ai">AI Directory</a>
-                <a href="guides" id="nav-guides" class="active">Guides</a>
+                <a href="ai-tools/" id="nav-ai">AI Tools</a>
+                <a href="developer-tools" id="nav-devtools">Developer Tools</a>
+                <a href="guides" id="nav-guides">Guides</a>
                 <a href="about" id="nav-about">About</a>
                 <a href="contact" id="nav-contact">Contact</a>
-                <a href="privacy" id="nav-privacy">Privacy</a>
                 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-sun" aria-hidden="true"></i></button>
             </nav>
         </div>
@@ -517,10 +515,22 @@
         <section class="section">
             <div class="section-header">
                 <h2>All Guides</h2>
-                <span class="count" id="guide-count">4 guides</span>
+                <span class="count" id="guide-count">5 guides</span>
             </div>
             <div class="guide-list" id="guide-list">
                 <!-- STATIC:PRERENDERED -->
+                <a href="best-ai-coding-tools" class="guide-card" style="text-decoration:none;color:inherit">
+                    <div class="guide-icon" style="background:linear-gradient(135deg, #818cf8, #818cf8cc);">
+                        <i class="fas fa-code" aria-hidden="true"></i>
+                    </div>
+                    <div class="guide-info">
+                        <h3>Best AI Coding Tools (2026)</h3>
+                        <p>Cursor, Copilot, Claude, Codeium and more compared by how they actually fit your workflow — plus what AI coding tools are still bad at.</p>
+                    </div>
+                    <div class="guide-arrow">
+                        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </div>
+                </a>
                 <a href="best-free-ai-image-generators" class="guide-card" style="text-decoration:none;color:inherit">
                     <div class="guide-icon" style="background:linear-gradient(135deg, #b48c6c, #b48c6ccc);">
                         <i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i>
@@ -580,38 +590,29 @@
             <div>
                 <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;">
                     <div style="width:35px;height:35px;background:var(--gradient-1);border-radius:8px;display:flex;align-items:center;justify-content:center;">
-                        <i class="fas fa-toolbox" style="color:white;" aria-hidden="true"></i>
+                        <i class="fas fa-compass" style="color:white;" aria-hidden="true"></i>
                     </div>
-                    <span style="font-weight:700;font-size:1.1rem;">ToolBox Pro</span>
+                    <span style="font-weight:700;font-size:1.1rem;">AI Directories</span>
                 </div>
-                <p style="color:var(--text-secondary);font-size:0.85rem;">Free online developer tools for everyone.</p>
+                <p style="color:var(--text-secondary);font-size:0.85rem;">Discover useful AI tools — hand-picked and honestly described.</p>
             </div>
             <div>
-                <h4>Quick Links</h4>
+                <h4>Explore</h4>
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="ai-tools">AI Tools Directory</a></li>
-                    <li><a href="guides">Guides</a></li>
-                    <li><a href="about">About Us</a></li>
-                    <li><a href="contact">Contact</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Popular Tools</h4>
-                <ul>
-                    <li><a href="json-formatter">JSON Formatter</a></li>
-                    <li><a href="password-generator">Password Generator</a></li>
-                    <li><a href="qr-code-generator">QR Code Generator</a></li>
-                    <li><a href="word-counter">Word Counter</a></li>
+                    <li><a href="ai-tools/">All AI Tools</a></li>
+                    <li><a href="ai-tools/ai-writing/">AI Writing Tools</a></li>
+                    <li><a href="ai-tools/ai-code/">AI Coding Tools</a></li>
+                    <li><a href="ai-tools/ai-image-gen/">AI Image Generators</a></li>
+                    <li><a href="developer-tools">Developer Tools</a></li>
                 </ul>
             </div>
             <div>
                 <h4>Guides</h4>
                 <ul>
-                    <li><a href="best-free-ai-image-generators">Best Free AI Image Generators (2026)</a></li>
+                    <li><a href="best-ai-coding-tools">Best AI Coding Tools</a></li>
+                    <li><a href="best-free-ai-image-generators">Best Free AI Image Generators</a></li>
                     <li><a href="json-vs-yaml">JSON vs YAML</a></li>
-                    <li><a href="how-base64-encoding-works">How Base64 Encoding Works</a></li>
-                    <li><a href="regex-testing-guide">How to Test Regex</a></li>
+                    <li><a href="guides">All guides →</a></li>
                 </ul>
             </div>
             <div>
@@ -619,11 +620,13 @@
                 <ul>
                     <li><a href="privacy">Privacy Policy</a></li>
                     <li><a href="terms">Terms of Service</a></li>
+                    <li><a href="about">About</a></li>
+                    <li><a href="contact">Contact</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© <span id="footer-year">2026</span> ToolBox Pro. All rights reserved. Built with ❤️</p>
+            <p>© <span id="footer-year">2026</span> AI Directories. All rights reserved. Built with ❤️</p>
             <p style="margin-top:8px;font-size:inherit;color:inherit;">Built by <a href="https://x.com/portfoliomate/status/2098498135396090165" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Portfolio Mate</a> — I design and build sites like this one. <a href="https://x.com/portfoliomate/status/2098498135396090165" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">See my work →</a></p>
         </div>
     </footer>

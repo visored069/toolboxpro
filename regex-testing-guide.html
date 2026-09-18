@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How to Test Regular Expressions (A Practical Guide) | ToolBox Pro Guides</title>
+    <title>How to Test Regular Expressions (A Practical Guide) | AI Directories Guides</title>
     <meta name="description" content="Learn a practical workflow for testing regular expressions: anchor your patterns, test the negative cases, avoid catastrophic backtracking, and use common patterns safely.">
-    <link rel="canonical" href="https://toolboxpro-theta.vercel.app/regex-testing-guide">
+    <link rel="canonical" href="https://aidirectories.in/regex-testing-guide">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://toolboxpro-theta.vercel.app/regex-testing-guide">
+    <meta property="og:url" content="https://aidirectories.in/regex-testing-guide">
     <meta property="og:title" content="How to Test Regular Expressions (A Practical Guide)">
     <meta property="og:description" content="Learn a practical workflow for testing regular expressions: anchor your patterns, test the negative cases, avoid catastrophic backtracking, and use common patterns safely.">
-    <meta property="og:image" content="https://toolboxpro-theta.vercel.app/og-image.png">
+    <meta property="og:image" content="https://aidirectories.in/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="How to Test Regular Expressions (A Practical Guide)">
     <meta name="twitter:description" content="Learn a practical workflow for testing regular expressions: anchor your patterns, test the negative cases, avoid catastrophic backtracking, and use common patterns safely.">
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"How to test regular expressions — a practical workflow","description":"Learn a practical workflow for testing regular expressions: anchor your patterns, test the negative cases, avoid catastrophic backtracking, and use common patterns safely.","datePublished":"2026-09-18","dateModified":"2026-09-18","author":{"@type":"Organization","name":"ToolBox Pro"},"publisher":{"@type":"Organization","name":"ToolBox Pro"},"mainEntityOfPage":"https://toolboxpro-theta.vercel.app/regex-testing-guide"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolboxpro-theta.vercel.app/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://toolboxpro-theta.vercel.app/guides"},{"@type":"ListItem","position":3,"name":"How to test regular expressions — a practical workflow","item":"https://toolboxpro-theta.vercel.app/regex-testing-guide"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I test a regex before shipping it?","acceptedAnswer":{"@type":"Answer","text":"Write a fixed table of must-match and must-reject strings, run both columns against the pattern in a tester, and keep the table as a unit test. A pattern is done when the whole rejection column fails to match."}},{"@type":"Question","name":"Why does my regex match only the first occurrence?","acceptedAnswer":{"@type":"Answer","text":"Most APIs require a global flag to find all matches: /g in JavaScript, re.findall in Python, preg_match_all in PHP. Without it the engine stops after the first match by design."}},{"@type":"Question","name":"How can I tell if my pattern is vulnerable to backtracking?","acceptedAnswer":{"@type":"Answer","text":"Look for a quantifier inside a group that itself has a quantifier, like (\\d+)* or (a|a)*$. Feed it a long non-matching string of the repeated character — if it takes noticeably longer as the string grows, restructure it."}}]}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"How to test regular expressions — a practical workflow","description":"Learn a practical workflow for testing regular expressions: anchor your patterns, test the negative cases, avoid catastrophic backtracking, and use common patterns safely.","datePublished":"2026-09-18","dateModified":"2026-09-18","author":{"@type":"Organization","name":"AI Directories"},"publisher":{"@type":"Organization","name":"AI Directories"},"mainEntityOfPage":"https://aidirectories.in/regex-testing-guide"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://aidirectories.in/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://aidirectories.in/guides"},{"@type":"ListItem","position":3,"name":"How to test regular expressions — a practical workflow","item":"https://aidirectories.in/regex-testing-guide"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I test a regex before shipping it?","acceptedAnswer":{"@type":"Answer","text":"Write a fixed table of must-match and must-reject strings, run both columns against the pattern in a tester, and keep the table as a unit test. A pattern is done when the whole rejection column fails to match."}},{"@type":"Question","name":"Why does my regex match only the first occurrence?","acceptedAnswer":{"@type":"Answer","text":"Most APIs require a global flag to find all matches: /g in JavaScript, re.findall in Python, preg_match_all in PHP. Without it the engine stops after the first match by design."}},{"@type":"Question","name":"How can I tell if my pattern is vulnerable to backtracking?","acceptedAnswer":{"@type":"Answer","text":"Look for a quantifier inside a group that itself has a quantifier, like (\\d+)* or (a|a)*$. Feed it a long non-matching string of the repeated character — if it takes noticeably longer as the string grows, restructure it."}}]}]}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -22,7 +22,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#6c5ce7">
+    <meta name="theme-color" content="#6366f1">
     <link rel="stylesheet" href="guide.css">
 </head>
 <body>
@@ -32,19 +32,18 @@
     <div class="particles" id="particles"></div>
 
     <header>
-        <div class="header-inner">
-            <a href="/" class="logo" aria-label="ToolBox Pro Home">
-                <div class="logo-icon"><i class="fas fa-toolbox" aria-hidden="true"></i></div>
-                <span class="logo-text">ToolBox</span>
-                <span class="logo-badge">PRO</span>
+        <div class="header-content">
+            <a href="/" class="logo" aria-label="AI Directories Home">
+                <div class="logo-icon"><i class="fas fa-compass" aria-hidden="true"></i></div>
+                <span class="logo-text">AI Directories</span>
             </a>
             <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button><nav aria-label="Main navigation" id="main-nav">
-                <a href="/">Tools</a>
-                <a href="ai-tools">AI Directory</a>
-                <a href="guides" class="active">Guides</a>
-                <a href="about">About</a>
-                <a href="contact">Contact</a>
-                <a href="privacy">Privacy</a>
+                <a href="ai-tools/" id="nav-ai">AI Tools</a>
+                <a href="developer-tools" id="nav-devtools">Developer Tools</a>
+                <a href="guides" id="nav-guides">Guides</a>
+                <a href="about" id="nav-about">About</a>
+                <a href="contact" id="nav-contact">Contact</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-sun" aria-hidden="true"></i></button>
             </nav>
         </div>
     </header>
@@ -71,7 +70,7 @@ MUST NOT match:  26-09-18   2026-9-18   2026-13-45   hello</code></pre><p>Then b
 <section class="section">
 <p class="section-label">03 — Iterating</p><h2 class="section-title">Refine against live matches</h2><p>Type your pattern and sample text into a tester, look at <em>what matched and where</em>, then tighten. Typical iteration for validating a username (letters, digits, underscore, 3–16 chars):</p><pre class="gcode"><code>v1:  \w{3,16}        → fails: matches inside "  bad--input  ", accepts unicode \w
 v2:  ^\w{3,16}$       → better: anchored; still allow-list by default
-v3:  ^[a-zA-Z0-9_]{3,16}$  → explicit allow-list, no \w surprises</code></pre><p>Each pass closes one loophole the previous version accepted. This is also exactly how the ToolBox Pro tester works: paste the pattern, paste the sample, and inspect the highlighted matches — including the ones you did not intend.</p>
+v3:  ^[a-zA-Z0-9_]{3,16}$  → explicit allow-list, no \w surprises</code></pre><p>Each pass closes one loophole the previous version accepted. This is also exactly how the AI Directories tester works: paste the pattern, paste the sample, and inspect the highlighted matches — including the ones you did not intend.</p>
             </section>
 
 <section class="section">
@@ -105,24 +104,51 @@ v3:  ^[a-zA-Z0-9_]{3,16}$  → explicit allow-list, no \w surprises</code></pre>
     </main>
 
     <footer>
-        <div class="footer-inner">
-            <div class="footer-brand">
-                <div class="logo-icon"><i class="fas fa-toolbox" aria-hidden="true"></i></div>
-                <span>ToolBox Pro</span>
+        <div class="footer-content">
+            <div>
+                <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;">
+                    <div style="width:35px;height:35px;background:var(--gradient-1);border-radius:8px;display:flex;align-items:center;justify-content:center;">
+                        <i class="fas fa-compass" style="color:white;" aria-hidden="true"></i>
+                    </div>
+                    <span style="font-weight:700;font-size:1.1rem;">AI Directories</span>
+                </div>
+                <p style="color:var(--text-secondary);font-size:0.85rem;">Discover useful AI tools — hand-picked and honestly described.</p>
             </div>
-            <div class="footer-links">
-                <a href="/">Home</a>
-                <a href="ai-tools">AI Directory</a>
-                <a href="guides">Guides</a>
-                <a href="privacy">Privacy</a>
+            <div>
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="ai-tools/">All AI Tools</a></li>
+                    <li><a href="ai-tools/ai-writing/">AI Writing Tools</a></li>
+                    <li><a href="ai-tools/ai-code/">AI Coding Tools</a></li>
+                    <li><a href="ai-tools/ai-image-gen/">AI Image Generators</a></li>
+                    <li><a href="developer-tools">Developer Tools</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Guides</h4>
+                <ul>
+                    <li><a href="best-ai-coding-tools">Best AI Coding Tools</a></li>
+                    <li><a href="best-free-ai-image-generators">Best Free AI Image Generators</a></li>
+                    <li><a href="json-vs-yaml">JSON vs YAML</a></li>
+                    <li><a href="guides">All guides →</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="privacy">Privacy Policy</a></li>
+                    <li><a href="terms">Terms of Service</a></li>
+                    <li><a href="about">About</a></li>
+                    <li><a href="contact">Contact</a></li>
+                </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 ToolBox Pro. All rights reserved.</p>
+            <p>© <span id="footer-year">2026</span> AI Directories. All rights reserved. Built with ❤️</p>
+            <p style="margin-top:8px;font-size:inherit;color:inherit;">Built by <a href="https://x.com/portfoliomate/status/2098498135396090165" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Portfolio Mate</a> — I design and build sites like this one. <a href="https://x.com/portfoliomate/status/2098498135396090165" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">See my work →</a></p>
         </div>
     </footer>
-
-    <script>
+    <script>document.querySelectorAll('#footer-year').forEach(function(e){e.textContent=new Date().getFullYear();});</script><script>
         // Mobile menu toggle
         var mt = document.getElementById("mobile-menu-toggle");
         if (mt) {

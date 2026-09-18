@@ -1,13 +1,13 @@
 {
-  "name": "ToolBox Pro - Free Online Developer Tools",
-  "short_name": "ToolBox Pro",
-  "description": "20+ free, fast, and powerful online tools for developers, designers, and everyone.",
+  "name": "AI Directories — Discover Useful AI Tools",
+  "short_name": "AI Directories",
+  "description": "81 curated AI tools across 9 categories, plus 26 free browser-based developer tools.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0a0a0f",
-  "theme_color": "#6c5ce7",
+  "theme_color": "#6366f1",
   "orientation": "any",
-  "categories": ["developer", "utilities", "productivity"],
+  "categories": ["productivity", "developer", "utilities"],
   "icons": [
     {
       "src": "favicon.svg",

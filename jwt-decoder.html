@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JWT Decoder &amp; Inspector | ToolBox Pro</title>
+    <title>JWT Decoder &amp; Inspector | AI Directories</title>
     <meta name="description" content="Decode JSON Web Tokens instantly. Inspect the header, payload, and expiry time locally in your browser — your tokens are never uploaded.">
-    <link rel="canonical" href="https://toolboxpro-theta.vercel.app/jwt-decoder">
+    <link rel="canonical" href="https://aidirectories.in/jwt-decoder">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://toolboxpro-theta.vercel.app/jwt-decoder">
-    <meta property="og:title" content="JWT Decoder &amp; Inspector - ToolBox Pro">
+    <meta property="og:url" content="https://aidirectories.in/jwt-decoder">
+    <meta property="og:title" content="JWT Decoder &amp; Inspector - AI Directories">
     <meta property="og:description" content="Decode JSON Web Tokens instantly. Inspect the header, payload, and expiry time locally in your browser — your tokens are never uploaded.">
-    <meta property="og:image" content="https://toolboxpro-theta.vercel.app/og-image.png">
+    <meta property="og:image" content="https://aidirectories.in/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="JWT Decoder &amp; Inspector - ToolBox Pro">
+    <meta name="twitter:title" content="JWT Decoder &amp; Inspector - AI Directories">
     <meta name="twitter:description" content="Decode JSON Web Tokens instantly. Inspect the header, payload, and expiry time locally in your browser — your tokens are never uploaded.">
-    <meta name="twitter:image" content="https://toolboxpro-theta.vercel.app/og-image.png">
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"JWT Decoder","url":"https://toolboxpro-theta.vercel.app/jwt-decoder","description":"Decode JWT tokens and inspect headers, payloads, and expiry dates locally.","applicationCategory":"DeveloperApplication","operatingSystem":"Any (browser-based)","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tools","item":"https://toolboxpro-theta.vercel.app/"},{"@type":"ListItem","position":2,"name":"JWT Decoder","item":"https://toolboxpro-theta.vercel.app/jwt-decoder"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does this tool verify the signature?","acceptedAnswer":{"@type":"Answer","text":"No — by design. Signature verification requires the secret or public key, which only your backend has. This tool reads the token contents; trust validation happens on your server."}},{"@type":"Question","name":"Is decoding a JWT safe? Can you read my token?","acceptedAnswer":{"@type":"Answer","text":"Decoding is safe because JWTs are encoded, not encrypted — anyone with the token could already read it. Still, never paste production tokens into tools you don’t trust. This one runs the decode locally; the token is never transmitted."}},{"@type":"Question","name":"Why does my token show \"EXPIRED\"?","acceptedAnswer":{"@type":"Answer","text":"The \u003ccode>exp\u003c/code> claim is a Unix timestamp after which the token must not be accepted. The tool compares it with your device’s clock and shows how long ago it lapsed."}}]}]}</script>
+    <meta name="twitter:image" content="https://aidirectories.in/og-image.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"JWT Decoder","url":"https://aidirectories.in/jwt-decoder","description":"Decode JWT tokens and inspect headers, payloads, and expiry dates locally.","applicationCategory":"DeveloperApplication","operatingSystem":"Any (browser-based)","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tools","item":"https://aidirectories.in/"},{"@type":"ListItem","position":2,"name":"JWT Decoder","item":"https://aidirectories.in/jwt-decoder"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does this tool verify the signature?","acceptedAnswer":{"@type":"Answer","text":"No — by design. Signature verification requires the secret or public key, which only your backend has. This tool reads the token contents; trust validation happens on your server."}},{"@type":"Question","name":"Is decoding a JWT safe? Can you read my token?","acceptedAnswer":{"@type":"Answer","text":"Decoding is safe because JWTs are encoded, not encrypted — anyone with the token could already read it. Still, never paste production tokens into tools you don’t trust. This one runs the decode locally; the token is never transmitted."}},{"@type":"Question","name":"Why does my token show \"EXPIRED\"?","acceptedAnswer":{"@type":"Answer","text":"The \u003ccode>exp\u003c/code> claim is a Unix timestamp after which the token must not be accepted. The tool compares it with your device’s clock and shows how long ago it lapsed."}}]}]}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -23,7 +23,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#6c5ce7">
+    <meta name="theme-color" content="#6366f1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2">
@@ -40,18 +40,16 @@
 
     <header>
         <div class="header-content">
-            <a href="/" class="logo" aria-label="ToolBox Pro Home">
-                <div class="logo-icon"><i class="fas fa-toolbox" aria-hidden="true"></i></div>
-                <span class="logo-text">ToolBox</span>
-                <span class="logo-badge">PRO</span>
+            <a href="/" class="logo" aria-label="AI Directories Home">
+                <div class="logo-icon"><i class="fas fa-compass" aria-hidden="true"></i></div>
+                <span class="logo-text">AI Directories</span>
             </a>
             <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button><nav aria-label="Main navigation" id="main-nav">
-                <a href="/" id="nav-tools">Tools</a>
-                <a href="ai-tools" id="nav-ai">AI Directory</a>
+                <a href="ai-tools/" id="nav-ai">AI Tools</a>
+                <a href="developer-tools" id="nav-devtools">Developer Tools</a>
                 <a href="guides" id="nav-guides">Guides</a>
                 <a href="about" id="nav-about">About</a>
                 <a href="contact" id="nav-contact">Contact</a>
-                <a href="privacy" id="nav-privacy">Privacy</a>
                 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-sun" aria-hidden="true"></i></button>
             </nav>
         </div>
@@ -115,16 +113,55 @@
     </main>
 
     <footer>
-        <div class="footer-bottom" style="border-top:none;margin-top:0;padding-top:0;">
-            <p>© <span id="footer-year">2026</span> ToolBox Pro. All rights reserved.</p>
+        <div class="footer-content">
+            <div>
+                <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;">
+                    <div style="width:35px;height:35px;background:var(--gradient-1);border-radius:8px;display:flex;align-items:center;justify-content:center;">
+                        <i class="fas fa-compass" style="color:white;" aria-hidden="true"></i>
+                    </div>
+                    <span style="font-weight:700;font-size:1.1rem;">AI Directories</span>
+                </div>
+                <p style="color:var(--text-secondary);font-size:0.85rem;">Discover useful AI tools — hand-picked and honestly described.</p>
+            </div>
+            <div>
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="ai-tools/">All AI Tools</a></li>
+                    <li><a href="ai-tools/ai-writing/">AI Writing Tools</a></li>
+                    <li><a href="ai-tools/ai-code/">AI Coding Tools</a></li>
+                    <li><a href="ai-tools/ai-image-gen/">AI Image Generators</a></li>
+                    <li><a href="developer-tools">Developer Tools</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Guides</h4>
+                <ul>
+                    <li><a href="best-ai-coding-tools">Best AI Coding Tools</a></li>
+                    <li><a href="best-free-ai-image-generators">Best Free AI Image Generators</a></li>
+                    <li><a href="json-vs-yaml">JSON vs YAML</a></li>
+                    <li><a href="guides">All guides →</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="privacy">Privacy Policy</a></li>
+                    <li><a href="terms">Terms of Service</a></li>
+                    <li><a href="about">About</a></li>
+                    <li><a href="contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© <span id="footer-year">2026</span> AI Directories. All rights reserved. Built with ❤️</p>
+            <p style="margin-top:8px;font-size:inherit;color:inherit;">Built by <a href="https://x.com/portfoliomate/status/2098498135396090165" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Portfolio Mate</a> — I design and build sites like this one. <a href="https://x.com/portfoliomate/status/2098498135396090165" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">See my work →</a></p>
         </div>
     </footer>
-
-    <!-- PWA Install Banner -->
+    <script>document.querySelectorAll('#footer-year').forEach(function(e){e.textContent=new Date().getFullYear();});</script><!-- PWA Install Banner -->
     <div class="pwa-banner" id="pwa-banner">
         <div class="pwa-banner-text">
             <i class="fas fa-download" aria-hidden="true"></i>
-            <span><strong>Install ToolBox Pro</strong> — access tools offline, faster!</span>
+            <span><strong>Install AI Directories</strong> — access tools offline, faster!</span>
         </div>
         <button class="pwa-install-btn" onclick="installPWA()">Install</button>
         <button class="pwa-dismiss" onclick="dismissPWA()" aria-label="Dismiss"><i class="fas fa-times"></i></button>
@@ -149,7 +186,7 @@
         <div class="feedback-thanks" id="feedback-thanks">
             <i class="fas fa-heart" aria-hidden="true"></i>
             <h3>Thanks for your feedback!</h3>
-            <p style="color:var(--text-secondary);font-size:0.85rem;">It helps us improve ToolBox Pro.</p>
+            <p style="color:var(--text-secondary);font-size:0.85rem;">It helps us improve AI Directories.</p>
         </div>
     </div>
 
@@ -240,7 +277,8 @@ function jwtDecode() {
     </script>
 
 <script src="tool-registry.js"></script>
-<script src="command-palette.js" defer></script>
+<script src="ai-registry.js" defer></script>
+    <script src="command-palette.js" defer></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     if (window.ToolRegistry) {

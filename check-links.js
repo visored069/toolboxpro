@@ -9,7 +9,17 @@
 const fs = require('fs');
 const path = require('path');
 
-const files = fs.readdirSync('.').filter(f => f.endsWith('.html'));
+function walk(dir) {
+    let out = [];
+    for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+        if (e.name === 'node_modules' || e.name === '.git' || e.name === '.freebuff' || e.name === 'facelessforge') continue;
+        const p = dir === '.' ? e.name : dir + '/' + e.name;
+        if (e.isDirectory()) out = out.concat(walk(p));
+        else if (e.name.endsWith('.html')) out.push(p);
+    }
+    return out;
+}
+const files = walk('.');
 const SRC_REF = /(?:src|href)\s*=\s*["']([^"']+)["']/g;
 const CSS_URL = /url\(\s*['"]?([^'")]+)['"]?\s*\)/g;
 

@@ -1,31 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
   <defs>
-    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#6c5ce7"/>
-      <stop offset="100%" stop-color="#a29bfe"/>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
     </linearGradient>
-    <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#00cec9"/>
-      <stop offset="100%" stop-color="#81ecec"/>
+    <linearGradient id="needle" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="50%" stop-color="rgba(255,255,255,0.9)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0.9)"/>
     </linearGradient>
   </defs>
-  <rect width="512" height="512" rx="96" fill="url(#g1)"/>
-  <g transform="translate(256,240)">
-    <!-- Toolbox body -->
-    <rect x="-140" y="-40" width="280" height="120" rx="16" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="3"/>
-    <!-- Handle -->
-    <rect x="-60" y="-80" width="120" height="45" rx="12" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="3"/>
-    <!-- Divider lines -->
-    <line x1="-20" y1="-30" x2="-20" y2="70" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
-    <line x1="20" y1="-30" x2="20" y2="70" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
-    <!-- Wrench icon (left) -->
-    <path d="M-90,-10 L-80,-20 L-70,-10 L-70,10 L-80,20 L-90,10 Z" fill="url(#g2)" opacity="0.9"/>
-    <!-- Code icon (center) -->
-    <text x="0" y="15" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-family="monospace" font-size="32" font-weight="bold">&lt;/&gt;</text>
-    <!-- Star icon (right) -->
-    <polygon points="75,-5 80,5 90,7 83,14 84,24 75,19 66,24 67,14 60,7 70,5" fill="url(#g2)" opacity="0.9"/>
-  </g>
-  <!-- PRO badge -->
-  <rect x="330" y="380" width="120" height="40" rx="20" fill="url(#g2)"/>
-  <text x="390" y="406" text-anchor="middle" fill="#0a0a0f" font-family="Arial,sans-serif" font-size="20" font-weight="800">PRO</text>
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <!-- compass ring -->
+  <circle cx="256" cy="256" r="170" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="14"/>
+  <circle cx="256" cy="256" r="196" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="6"/>
+  <!-- N marker -->
+  <text x="256" y="118" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-family="Arial, sans-serif" font-size="52" font-weight="bold">N</text>
+  <!-- needle (north = amber, south = white) -->
+  <polygon points="256,136 288,256 256,376 224,256" fill="url(#needle)"/>
+  <polygon points="136,256 256,224 376,256 256,288" fill="rgba(255,255,255,0.35)"/>
+  <!-- center pin -->
+  <circle cx="256" cy="256" r="26" fill="#ffffff"/>
+  <circle cx="256" cy="256" r="12" fill="#6366f1"/>
 </svg>

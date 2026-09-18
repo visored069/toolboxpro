@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Page Not Found | ToolBox Pro</title>
-    <meta name="description" content="The page you're looking for doesn't exist. Go back to ToolBox Pro for free developer tools.">
+    <title>Page Not Found | AI Directories</title>
+    <meta name="description" content="The page you were looking for does not exist. Explore 81 curated AI tools or 26 free developer tools.">
     <meta name="robots" content="noindex, nofollow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +30,22 @@
 <body>
     <div class="bg-animation"></div>
     <div class="particles" id="particles"></div>
-    <header><div class="header-content"><a href="/" class="logo"><div class="logo-icon"><i class="fas fa-toolbox" aria-hidden="true"></i></div><span class="logo-text">ToolBox</span><span class="logo-badge">PRO</span></a><nav><a href="/">Tools</a><a href="ai-tools">AI Directory</a><a href="guides">Guides</a><a href="about">About</a><a href="contact">Contact</a><a href="privacy">Privacy</a></nav></div></header>
+    <header>
+        <div class="header-content">
+            <a href="/" class="logo" aria-label="AI Directories Home">
+                <div class="logo-icon"><i class="fas fa-compass" aria-hidden="true"></i></div>
+                <span class="logo-text">AI Directories</span>
+            </a>
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button><nav aria-label="Main navigation" id="main-nav">
+                <a href="ai-tools/" id="nav-ai">AI Tools</a>
+                <a href="developer-tools" id="nav-devtools">Developer Tools</a>
+                <a href="guides" id="nav-guides">Guides</a>
+                <a href="about" id="nav-about">About</a>
+                <a href="contact" id="nav-contact">Contact</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-sun" aria-hidden="true"></i></button>
+            </nav>
+        </div>
+    </header>
 
     <div class="error-page">
         <div class="error-code">404</div>
@@ -38,15 +53,15 @@
         <p>Oops! The page you're looking for doesn't exist or has been moved.</p>
         <a href="/" class="tool-btn btn-primary"><i class="fas fa-home" aria-hidden="true"></i> Back to Home</a>
         <div class="error-links" style="margin-top:2rem;">
-            <a href="json-formatter"><i class="fas fa-code" aria-hidden="true"></i> JSON Formatter</a>
-            <a href="password-generator"><i class="fas fa-lock" aria-hidden="true"></i> Password Generator</a>
-            <a href="qr-code-generator"><i class="fas fa-qrcode" aria-hidden="true"></i> QR Code Generator</a>
-            <a href="color-picker"><i class="fas fa-palette" aria-hidden="true"></i> Color Picker</a>
+            <a href="/ai-tools/chatgpt/"><i class="fas fa-robot" aria-hidden="true"></i> ChatGPT</a>
+            <a href="/ai-tools/cursor/"><i class="fas fa-code" aria-hidden="true"></i> Cursor</a>
+            <a href="/ai-tools/midjourney/"><i class="fas fa-image" aria-hidden="true"></i> Midjourney</a>
+            <a href="json-formatter"><i class="fas fa-wrench" aria-hidden="true"></i> JSON Formatter</a>
         </div>
         <div style="margin-top:1.5rem;color:var(--text-secondary);font-size:0.95rem;">
-            Or explore all <strong>26 free tools</strong> on the <a href="/" style="color:var(--accent-1);">homepage</a>,
-            browse the <a href="ai-tools" style="color:var(--accent-1);">AI Directory</a>, or read a
-            <a href="guides" style="color:var(--accent-1);">developer guide</a>.
+            Or explore all <strong>81 curated AI tools</strong> in the <a href="ai-tools/" style="color:var(--accent-1);">AI Directory</a>,
+            all <strong>26 free developer tools</strong> on the <a href="/" style="color:var(--accent-1);">homepage</a>, or read a
+            <a href="guides" style="color:var(--accent-1);">guide</a>.
         </div>
     </div>
 

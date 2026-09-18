@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSON vs YAML: Which Format Should You Use? | ToolBox Pro Guides</title>
+    <title>JSON vs YAML: Which Format Should You Use? | AI Directories Guides</title>
     <meta name="description" content="A practical comparison of JSON and YAML: syntax differences, when each format wins, and how to convert between them. With real examples from config files and APIs.">
-    <link rel="canonical" href="https://toolboxpro-theta.vercel.app/json-vs-yaml">
+    <link rel="canonical" href="https://aidirectories.in/json-vs-yaml">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://toolboxpro-theta.vercel.app/json-vs-yaml">
+    <meta property="og:url" content="https://aidirectories.in/json-vs-yaml">
     <meta property="og:title" content="JSON vs YAML: Which Format Should You Use?">
     <meta property="og:description" content="A practical comparison of JSON and YAML: syntax differences, when each format wins, and how to convert between them. With real examples from config files and APIs.">
-    <meta property="og:image" content="https://toolboxpro-theta.vercel.app/og-image.png">
+    <meta property="og:image" content="https://aidirectories.in/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="JSON vs YAML: Which Format Should You Use?">
     <meta name="twitter:description" content="A practical comparison of JSON and YAML: syntax differences, when each format wins, and how to convert between them. With real examples from config files and APIs.">
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"JSON vs YAML: which format should you use?","description":"A practical comparison of JSON and YAML: syntax differences, when each format wins, and how to convert between them. With real examples from config files and APIs.","datePublished":"2026-09-18","dateModified":"2026-09-18","author":{"@type":"Organization","name":"ToolBox Pro"},"publisher":{"@type":"Organization","name":"ToolBox Pro"},"mainEntityOfPage":"https://toolboxpro-theta.vercel.app/json-vs-yaml"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolboxpro-theta.vercel.app/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://toolboxpro-theta.vercel.app/guides"},{"@type":"ListItem","position":3,"name":"JSON vs YAML: which format should you use?","item":"https://toolboxpro-theta.vercel.app/json-vs-yaml"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is YAML a superset of JSON?","acceptedAnswer":{"@type":"Answer","text":"Technically yes — standard YAML parsers accept flow-style JSON. In practice, tooling often accepts only one, so explicit conversion is the safe route."}},{"@type":"Question","name":"Which is faster to parse?","acceptedAnswer":{"@type":"Answer","text":"JSON, by a wide margin. Its grammar is simple enough for highly optimized parsers, while YAML parsing is complex and whitespace-dependent."}},{"@type":"Question","name":"Can I add comments to JSON?","acceptedAnswer":{"@type":"Answer","text":"Not in standard JSON. If you need comments in a config that must also parse as JSON, some ecosystems accept JSONC (JSON with comments) or rely on a sidecar documentation file."}}]}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"JSON vs YAML: which format should you use?","description":"A practical comparison of JSON and YAML: syntax differences, when each format wins, and how to convert between them. With real examples from config files and APIs.","datePublished":"2026-09-18","dateModified":"2026-09-18","author":{"@type":"Organization","name":"AI Directories"},"publisher":{"@type":"Organization","name":"AI Directories"},"mainEntityOfPage":"https://aidirectories.in/json-vs-yaml"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://aidirectories.in/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://aidirectories.in/guides"},{"@type":"ListItem","position":3,"name":"JSON vs YAML: which format should you use?","item":"https://aidirectories.in/json-vs-yaml"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is YAML a superset of JSON?","acceptedAnswer":{"@type":"Answer","text":"Technically yes — standard YAML parsers accept flow-style JSON. In practice, tooling often accepts only one, so explicit conversion is the safe route."}},{"@type":"Question","name":"Which is faster to parse?","acceptedAnswer":{"@type":"Answer","text":"JSON, by a wide margin. Its grammar is simple enough for highly optimized parsers, while YAML parsing is complex and whitespace-dependent."}},{"@type":"Question","name":"Can I add comments to JSON?","acceptedAnswer":{"@type":"Answer","text":"Not in standard JSON. If you need comments in a config that must also parse as JSON, some ecosystems accept JSONC (JSON with comments) or rely on a sidecar documentation file."}}]}]}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -22,7 +22,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#6c5ce7">
+    <meta name="theme-color" content="#6366f1">
     <link rel="stylesheet" href="guide.css">
 </head>
 <body>
@@ -32,19 +32,18 @@
     <div class="particles" id="particles"></div>
 
     <header>
-        <div class="header-inner">
-            <a href="/" class="logo" aria-label="ToolBox Pro Home">
-                <div class="logo-icon"><i class="fas fa-toolbox" aria-hidden="true"></i></div>
-                <span class="logo-text">ToolBox</span>
-                <span class="logo-badge">PRO</span>
+        <div class="header-content">
+            <a href="/" class="logo" aria-label="AI Directories Home">
+                <div class="logo-icon"><i class="fas fa-compass" aria-hidden="true"></i></div>
+                <span class="logo-text">AI Directories</span>
             </a>
             <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button><nav aria-label="Main navigation" id="main-nav">
-                <a href="/">Tools</a>
-                <a href="ai-tools">AI Directory</a>
-                <a href="guides" class="active">Guides</a>
-                <a href="about">About</a>
-                <a href="contact">Contact</a>
-                <a href="privacy">Privacy</a>
+                <a href="ai-tools/" id="nav-ai">AI Tools</a>
+                <a href="developer-tools" id="nav-devtools">Developer Tools</a>
+                <a href="guides" id="nav-guides">Guides</a>
+                <a href="about" id="nav-about">About</a>
+                <a href="contact" id="nav-contact">Contact</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-sun" aria-hidden="true"></i></button>
             </nav>
         </div>
     </header>
@@ -108,24 +107,51 @@ debug: false</code></pre><p>Both parse to the identical data structure. The diff
     </main>
 
     <footer>
-        <div class="footer-inner">
-            <div class="footer-brand">
-                <div class="logo-icon"><i class="fas fa-toolbox" aria-hidden="true"></i></div>
-                <span>ToolBox Pro</span>
+        <div class="footer-content">
+            <div>
+                <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;">
+                    <div style="width:35px;height:35px;background:var(--gradient-1);border-radius:8px;display:flex;align-items:center;justify-content:center;">
+                        <i class="fas fa-compass" style="color:white;" aria-hidden="true"></i>
+                    </div>
+                    <span style="font-weight:700;font-size:1.1rem;">AI Directories</span>
+                </div>
+                <p style="color:var(--text-secondary);font-size:0.85rem;">Discover useful AI tools — hand-picked and honestly described.</p>
             </div>
-            <div class="footer-links">
-                <a href="/">Home</a>
-                <a href="ai-tools">AI Directory</a>
-                <a href="guides">Guides</a>
-                <a href="privacy">Privacy</a>
+            <div>
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="ai-tools/">All AI Tools</a></li>
+                    <li><a href="ai-tools/ai-writing/">AI Writing Tools</a></li>
+                    <li><a href="ai-tools/ai-code/">AI Coding Tools</a></li>
+                    <li><a href="ai-tools/ai-image-gen/">AI Image Generators</a></li>
+                    <li><a href="developer-tools">Developer Tools</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Guides</h4>
+                <ul>
+                    <li><a href="best-ai-coding-tools">Best AI Coding Tools</a></li>
+                    <li><a href="best-free-ai-image-generators">Best Free AI Image Generators</a></li>
+                    <li><a href="json-vs-yaml">JSON vs YAML</a></li>
+                    <li><a href="guides">All guides →</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="privacy">Privacy Policy</a></li>
+                    <li><a href="terms">Terms of Service</a></li>
+                    <li><a href="about">About</a></li>
+                    <li><a href="contact">Contact</a></li>
+                </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 ToolBox Pro. All rights reserved.</p>
+            <p>© <span id="footer-year">2026</span> AI Directories. All rights reserved. Built with ❤️</p>
+            <p style="margin-top:8px;font-size:inherit;color:inherit;">Built by <a href="https://x.com/portfoliomate/status/2098498135396090165" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Portfolio Mate</a> — I design and build sites like this one. <a href="https://x.com/portfoliomate/status/2098498135396090165" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">See my work →</a></p>
         </div>
     </footer>
-
-    <script>
+    <script>document.querySelectorAll('#footer-year').forEach(function(e){e.textContent=new Date().getFullYear();});</script><script>
         // Mobile menu toggle
         var mt = document.getElementById("mobile-menu-toggle");
         if (mt) {
