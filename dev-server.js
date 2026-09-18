@@ -23,11 +23,18 @@ const MIME = {
 http.createServer((req, res) => {
   let urlPath = decodeURIComponent(req.url.split('?')[0]);
   if (urlPath.endsWith('/')) urlPath += 'index.html';
-  // clean URLs: /json-formatter -> json-formatter.html
+  // clean URLs: /json-formatter -> json-formatter.html; /ai-tools/chatgpt -> ai-tools/chatgpt/index.html
   let filePath = path.join(ROOT, urlPath);
-  if (!path.extname(filePath) && !fs.existsSync(filePath)) {
-    const withHtml = filePath + '.html';
-    if (fs.existsSync(withHtml)) filePath = withHtml;
+  if (!path.extname(filePath)) {
+    if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) {
+      const idx = path.join(filePath, 'index.html');
+      if (fs.existsSync(idx)) filePath = idx;
+    } else if (!fs.existsSync(filePath)) {
+      const withHtml = filePath + '.html';
+      const withIndex = path.join(filePath, 'index.html');
+      if (fs.existsSync(withHtml)) filePath = withHtml;
+      else if (fs.existsSync(withIndex)) filePath = withIndex;
+    }
   }
   fs.readFile(filePath, (err, data) => {
     if (err) {
