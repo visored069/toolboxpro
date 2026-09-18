@@ -511,7 +511,7 @@
         <section class="page-hero">
             <span class="eyebrow">Guides & Comparisons</span>
             <h1>In-Depth AI Tool Guides</h1>
-            <p>Thoughtful comparisons and deep dives to help you pick the right AI tools — no fluff, no affiliate-spun noise.</p>
+            <p>Thoughtful comparisons and deep dives to help you pick the right AI tools — no fluff, no affiliate-spun noise. A focused library, growing one genuinely useful guide at a time.</p>
         </section>
 
         <section class="section">
@@ -580,7 +580,7 @@
             <div>
                 <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;">
                     <div style="width:35px;height:35px;background:var(--gradient-1);border-radius:8px;display:flex;align-items:center;justify-content:center;">
-                        <i class="fas fa-toolbox" style="color:white;"></i>
+                        <i class="fas fa-toolbox" style="color:white;" aria-hidden="true"></i>
                     </div>
                     <span style="font-weight:700;font-size:1.1rem;">ToolBox Pro</span>
                 </div>
@@ -590,17 +590,28 @@
                 <h4>Quick Links</h4>
                 <ul>
                     <li><a href="/">Home</a></li>
+                    <li><a href="ai-tools">AI Tools Directory</a></li>
+                    <li><a href="guides">Guides</a></li>
                     <li><a href="about">About Us</a></li>
                     <li><a href="contact">Contact</a></li>
                 </ul>
             </div>
             <div>
+                <h4>Popular Tools</h4>
+                <ul>
+                    <li><a href="json-formatter">JSON Formatter</a></li>
+                    <li><a href="password-generator">Password Generator</a></li>
+                    <li><a href="qr-code-generator">QR Code Generator</a></li>
+                    <li><a href="word-counter">Word Counter</a></li>
+                </ul>
+            </div>
+            <div>
                 <h4>Guides</h4>
                 <ul>
-                    <li><a href="best-free-ai-image-generators">Best Free AI Image Generators</a></li>
+                    <li><a href="best-free-ai-image-generators">Best Free AI Image Generators (2026)</a></li>
                     <li><a href="json-vs-yaml">JSON vs YAML</a></li>
                     <li><a href="how-base64-encoding-works">How Base64 Encoding Works</a></li>
-                    <li><a href="regex-testing-guide">How to Test Regular Expressions</a></li>
+                    <li><a href="regex-testing-guide">How to Test Regex</a></li>
                 </ul>
             </div>
             <div>
@@ -610,24 +621,13 @@
                     <li><a href="terms">Terms of Service</a></li>
                 </ul>
             </div>
-            <div>
-                <h4>Connect</h4>
-                <div class="social-links">
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-                    <a href="#" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
-                    <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
-                </div>
-            </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 ToolBox Pro. All rights reserved. Built with ❤️</p>
-            <p style="margin-top:8px;font-size:inherit;color:inherit;">
-                Built by <a href="https://x.com/portfoliomate/status/2098498135396090165" target="_blank" rel="noopener">Portfolio Mate</a>
-                — I design and build sites like this one.
-                <a href="https://x.com/portfoliomate/status/2098498135396090165" target="_blank" rel="noopener">See my work →</a>
-            </p>
+            <p>© <span id="footer-year">2026</span> ToolBox Pro. All rights reserved. Built with ❤️</p>
+            <p style="margin-top:8px;font-size:inherit;color:inherit;">Built by <a href="https://x.com/portfoliomate/status/2098498135396090165" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Portfolio Mate</a> — I design and build sites like this one. <a href="https://x.com/portfoliomate/status/2098498135396090165" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">See my work →</a></p>
         </div>
     </footer>
+    <script>document.querySelectorAll('#footer-year').forEach(function(e){e.textContent=new Date().getFullYear();});</script>
 
     <script src="guides-data.js"></script>
     <script>
