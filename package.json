@@ -1,9 +1,9 @@
 {
-  "name": "toolboxpro",
-  "version": "1.0.0",
+  "name": "ai-directories",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
-    "build": "cp -r . /vercel/output/ && rm -rf /vercel/output/node_modules /vercel/output/.vercel /vercel/output/.freebuff /vercel/output/deploy /vercel/output/.git 2>/dev/null; echo done"
+    "build": "echo 'static site: no build step required'"
   },
   "dependencies": {}
 }
