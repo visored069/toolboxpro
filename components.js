@@ -1129,6 +1129,8 @@ document.addEventListener('DOMContentLoaded', function() {
     else if (path.includes('contact')) setActiveNav('contact');
     else if (path.includes('privacy')) setActiveNav('privacy');
     else if (path.includes('terms')) setActiveNav('terms');
+    else if (path.includes('ai-tools')) setActiveNav('ai');
+    else if (path.includes('guides') || path.includes('json-vs-yaml') || path.includes('how-base64') || path.includes('regex-testing')) setActiveNav('guides');
     else setActiveNav('tools');
 
     // --- Page Transition ---

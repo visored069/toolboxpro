@@ -38,11 +38,13 @@
                 <span class="logo-text">ToolBox</span>
                 <span class="logo-badge">PRO</span>
             </a>
-            <nav aria-label="Main navigation">
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button><nav aria-label="Main navigation" id="main-nav">
                 <a href="/">Tools</a>
-                <a href="guides" class="active">Guides</a>
                 <a href="ai-tools">AI Directory</a>
+                <a href="guides" class="active">Guides</a>
                 <a href="about">About</a>
+                <a href="contact">Contact</a>
+                <a href="privacy">Privacy</a>
             </nav>
         </div>
     </header>
@@ -121,6 +123,17 @@ v3:  ^[a-zA-Z0-9_]{3,16}$  → explicit allow-list, no \w surprises</code></pre>
     </footer>
 
     <script>
+        // Mobile menu toggle
+        var mt = document.getElementById("mobile-menu-toggle");
+        if (mt) {
+            mt.addEventListener("click", function() {
+                var nav = document.getElementById("main-nav");
+                var open = nav.classList.toggle("open");
+                mt.classList.toggle("open", open);
+                mt.setAttribute("aria-expanded", open ? "true" : "false");
+            });
+        }
+
         // Header scroll shadow
         var header = document.querySelector('header');
         if (header) {
