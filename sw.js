@@ -1,5 +1,5 @@
 // ===== AI Directories Service Worker =====
-const CACHE_NAME = 'ai-directories-v15';
+const CACHE_NAME = 'ai-directories-v16';
 const STATIC_ASSETS = [
   '/',
   '/index.html',

@@ -5,6 +5,8 @@ on:
     branches: [master]
   pull_request:
     branches: [master]
+  schedule:
+    - cron: '0 6 * * 1'  # weekly Monday 06:00 UTC — external link-rot check
 
 jobs:
   checks:
@@ -33,3 +35,44 @@ jobs:
 
       - name: Internal link integrity
         run: node check-links.js
+
+  deploy:
+    # Gate: production deploys only after checks pass (on master pushes).
+    # Requires two repo secrets (Settings → Secrets → Actions):
+    #   VERCEL_DEPLOY_HOOK_URL — from Vercel → Settings → Git Integration → Deploy Hook
+    #   (optional) VERCEL_TOKEN — to verify the deployment URL afterwards
+    needs: checks
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel production deploy
+        if: ${{ vars.VERCEL_DEPLOY_GATE != 'manual-only' }}
+        env:
+          HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "::warning::VERCEL_DEPLOY_HOOK_URL secret not set — Vercel's own Git integration deployed this push before CI could gate it. Add the hook to enforce the gate."
+            exit 0
+          fi
+          HTTP=$(curl -s -o /dev/null -w "%{http_code}" -X POST "$HOOK")
+          echo "deploy hook responded: $HTTP"
+          [ "$HTTP" = "200" ] || { echo "::error::Deploy hook failed ($HTTP)"; exit 1; }
+
+  link-rot:
+    # Weekly external URL check for the whole directory (AI + dev tools).
+    # Warnings (bot-walls/timeouts) don't fail; genuinely dead links do.
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Check external registry URLs
+        run: node check-external-links.js
+      - name: Upload link report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: link-report
+          path: link-report.md
