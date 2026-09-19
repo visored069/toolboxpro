@@ -472,10 +472,21 @@ function initPersonalSections() {
         var rec = ToolRegistry.getRecent().filter(function (s) { return favs.indexOf(s) === -1; });
         if (favSec) {
             var grid = document.getElementById('favorites-grid');
-            if (favs.length) {
-                grid.innerHTML = favs.map(function (s) { return cardHtml(ToolRegistry.bySlug(s), true); }).join('');
+            var aiFavs = [];
+            if (window.AIRegistry) {
+                aiFavs = AIRegistry.getFavorites().map(function (t) {
+                    return { slug: 'ai-tools/' + t.slug + '/', name: t.name, description: t.desc, icon: t.icon, category: t.category, keywords: (t.tags || []).join(' ') + ' ' + t.category };
+                });
+            }
+            if (favs.length || aiFavs.length) {
+                grid.innerHTML = aiFavs.map(function (t) { return cardHtml(t, true); }).join('') +
+                    favs.map(function (s) { return cardHtml(ToolRegistry.bySlug(s), true); }).join('');
                 favSec.style.display = 'block';
-            } else { favSec.style.display = 'none'; }
+                if (window.AIRegistry) AIRegistry.syncFavButtons(grid);
+            } else {
+                grid.innerHTML = '<div class="dyn-empty"><i class="fas fa-star" aria-hidden="true"></i><p>No favorites yet — tap the ☆ on any card to pin it here.</p></div>';
+                favSec.style.display = 'none';
+            }
         }
         if (recSec) {
             var rgrid = document.getElementById('recent-grid');
@@ -487,6 +498,7 @@ function initPersonalSections() {
     }
     render();
     window.addEventListener('toolboxpro:favs-changed', render);
+    document.addEventListener('aid:favs-changed', render);
 }
 
 // --- Surprise Me: jump to a random tool ---

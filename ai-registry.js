@@ -158,6 +158,28 @@
     function isFavorite(slug) { return lsGet('aid_fav_ai').indexOf(slug) !== -1; }
     function getFavorites() { return lsGet('aid_fav_ai').map(bySlug).filter(Boolean); }
 
+    // --- Delegated favorite-star handler for .ai-card-fav buttons (directory, homepage, detail) ---
+    function syncFavButtons(root) {
+        (root || document).querySelectorAll('.ai-card-fav[data-fav]').forEach(function (btn) {
+            var on = isFavorite(btn.getAttribute('data-fav'));
+            btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+    }
+    document.addEventListener('click', function (e) {
+        var btn = e.target.closest ? e.target.closest('.ai-card-fav[data-fav]') : null;
+        if (!btn) return;
+        e.preventDefault();
+        e.stopPropagation();
+        var slug = btn.getAttribute('data-fav');
+        var on = toggleFavorite(slug);
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        var label = btn.getAttribute('aria-label') || '';
+        btn.setAttribute('aria-label', on ? label.replace('Save', 'Remove') : label.replace('Remove', 'Save'));
+        try { document.dispatchEvent(new CustomEvent('aid:favs-changed', { detail: { slug: slug, on: on } })); } catch (err) {}
+    }, true);
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { syncFavButtons(); });
+    else syncFavButtons();
+
     global.AIRegistry = {
         tools: TOOLS,
         featured: FEATURED,
@@ -172,6 +194,7 @@
         getRecent: getRecent,
         toggleFavorite: toggleFavorite,
         isFavorite: isFavorite,
-        getFavorites: getFavorites
+        getFavorites: getFavorites,
+        syncFavButtons: syncFavButtons
     };
 })(window);

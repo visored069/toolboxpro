@@ -144,8 +144,14 @@
     <main id="main-content">
         <section class="hero">
             <div class="hero-mesh"></div>
-            <h1 class="typewriter-text" id="typewriter-text">Discover the Best AI Tools</h1>
-            <p>Explore 80 hand-picked AI tools for coding, writing, design, video, audio, productivity, research and more — honestly described, no hype. Plus 26 free browser-based developer tools.</p>
+            <h1 class="typewriter-text" id="typewriter-text">Discover AI Tools That Actually Help</h1>
+            <p>Curated AI tools and free browser utilities for coding, writing, design, productivity, research and more.</p>
+            <div class="ai-quick-search" role="search">
+                <i class="fas fa-magnifying-glass ai-qs-icon" aria-hidden="true"></i>
+                <input type="text" id="ai-quick-search" placeholder="Search AI tools — name, category, or what you need…"
+                       autocomplete="off" aria-label="Search AI tools">
+                <button class="ai-qs-kbd" id="ai-qs-kbd" type="button" aria-label="Open command palette (Ctrl+K)" title="Ctrl+K">⌘K</button>
+            </div>
             <div class="hero-ctas">
                 <a href="ai-tools/" class="hero-btn primary"><i class="fas fa-compass" aria-hidden="true"></i> Explore AI Tools</a>
                 <a href="developer-tools" class="hero-btn ghost"><i class="fas fa-code" aria-hidden="true"></i> Developer Tools</a>
@@ -159,6 +165,13 @@
         </section>
 
         <!-- Popular Tools -->
+<div class="ai-qs-results" id="ai-qs-results" style="display:none;" role="status" aria-live="polite"></div>
+            <div class="ai-qs-zero" id="ai-qs-zero" style="display:none;" role="status">
+                <div class="ai-qs-zero-icon" aria-hidden="true"><i class="fas fa-ghost"></i></div>
+                <h3>No AI tools match &quot;<span id="ai-qs-zero-q"></span>&quot;</h3>
+                <p>Try a shorter term, or browse the categories below.</p>
+                <button type="button" class="hero-btn ghost" id="ai-qs-clear"><i class="fas fa-rotate-left" aria-hidden="true"></i> Clear search</button>
+            </div>
 <section class="section" aria-labelledby="ai-cats-heading">
             <div class="section-header"><h2 id="ai-cats-heading">🧭 Browse AI Tools by Category</h2><span class="badge" data-stat="ai-count-badge">80 TOOLS</span></div>
             <div class="ai-cats-grid">
@@ -249,6 +262,7 @@
             <div class="section-header"><h2 id="featured-heading">⭐ Featured AI Tools</h2><span class="badge">HAND-PICKED</span></div>
             <div class="ai-feat-grid">
                     <a class="ai-feat-card" href="ai-tools/chatgpt">
+                        <button class="ai-card-fav" type="button" data-fav="chatgpt" aria-label="Save to favorites" aria-pressed="false"><i class="far fa-star" aria-hidden="true"></i></button>
                         <div class="ai-feat-icon" style="background:#10a37f22;color:#10a37f;"><i class="fas fa-comment-dots" aria-hidden="true"></i></div>
                         <div class="ai-feat-body">
                             <span class="ai-feat-name">ChatGPT</span>
@@ -259,6 +273,7 @@
                     </a>
 
                     <a class="ai-feat-card" href="ai-tools/claude">
+                        <button class="ai-card-fav" type="button" data-fav="claude" aria-label="Save to favorites" aria-pressed="false"><i class="far fa-star" aria-hidden="true"></i></button>
                         <div class="ai-feat-icon" style="background:#d9770622;color:#d97706;"><i class="fas fa-brain" aria-hidden="true"></i></div>
                         <div class="ai-feat-body">
                             <span class="ai-feat-name">Claude</span>
@@ -269,6 +284,7 @@
                     </a>
 
                     <a class="ai-feat-card" href="ai-tools/grammarly">
+                        <button class="ai-card-fav" type="button" data-fav="grammarly" aria-label="Save to favorites" aria-pressed="false"><i class="far fa-star" aria-hidden="true"></i></button>
                         <div class="ai-feat-icon" style="background:#15c39a22;color:#15c39a;"><i class="fas fa-spell-check" aria-hidden="true"></i></div>
                         <div class="ai-feat-body">
                             <span class="ai-feat-name">Grammarly</span>
@@ -279,6 +295,7 @@
                     </a>
 
                     <a class="ai-feat-card" href="ai-tools/midjourney">
+                        <button class="ai-card-fav" type="button" data-fav="midjourney" aria-label="Save to favorites" aria-pressed="false"><i class="far fa-star" aria-hidden="true"></i></button>
                         <div class="ai-feat-icon" style="background:#00022;color:#000;"><i class="fas fa-image" aria-hidden="true"></i></div>
                         <div class="ai-feat-body">
                             <span class="ai-feat-name">Midjourney</span>
@@ -289,6 +306,7 @@
                     </a>
 
                     <a class="ai-feat-card" href="ai-tools/runway">
+                        <button class="ai-card-fav" type="button" data-fav="runway" aria-label="Save to favorites" aria-pressed="false"><i class="far fa-star" aria-hidden="true"></i></button>
                         <div class="ai-feat-icon" style="background:#1e293b22;color:#1e293b;"><i class="fas fa-video" aria-hidden="true"></i></div>
                         <div class="ai-feat-body">
                             <span class="ai-feat-name">Runway</span>
@@ -299,6 +317,7 @@
                     </a>
 
                     <a class="ai-feat-card" href="ai-tools/github-copilot">
+                        <button class="ai-card-fav" type="button" data-fav="github-copilot" aria-label="Save to favorites" aria-pressed="false"><i class="far fa-star" aria-hidden="true"></i></button>
                         <div class="ai-feat-icon" style="background:#6e40c922;color:#6e40c9;"><i class="fas fa-code" aria-hidden="true"></i></div>
                         <div class="ai-feat-body">
                             <span class="ai-feat-name">GitHub Copilot</span>
@@ -309,6 +328,7 @@
                     </a>
 
                     <a class="ai-feat-card" href="ai-tools/cursor">
+                        <button class="ai-card-fav" type="button" data-fav="cursor" aria-label="Save to favorites" aria-pressed="false"><i class="far fa-star" aria-hidden="true"></i></button>
                         <div class="ai-feat-icon" style="background:#7c3aed22;color:#7c3aed;"><i class="fas fa-terminal" aria-hidden="true"></i></div>
                         <div class="ai-feat-body">
                             <span class="ai-feat-name">Cursor</span>
@@ -319,6 +339,7 @@
                     </a>
 
                     <a class="ai-feat-card" href="ai-tools/v0-by-vercel">
+                        <button class="ai-card-fav" type="button" data-fav="v0-by-vercel" aria-label="Save to favorites" aria-pressed="false"><i class="far fa-star" aria-hidden="true"></i></button>
                         <div class="ai-feat-icon" style="background:#00022;color:#000;"><i class="fas fa-v" aria-hidden="true"></i></div>
                         <div class="ai-feat-body">
                             <span class="ai-feat-name">v0 by Vercel</span>
@@ -793,6 +814,53 @@
             var dn = window.ToolRegistry.tools.length;
             document.querySelectorAll('[data-stat="dev-count"]').forEach(function (e) { e.textContent = dn; });
         }
+    });
+    </script>
+
+    <script>
+    // Homepage AI quick search — instant, derived from AIRegistry (single source of truth)
+    document.addEventListener('DOMContentLoaded', function() {
+        var input = document.getElementById('ai-quick-search');
+        var out = document.getElementById('ai-qs-results');
+        var zero = document.getElementById('ai-qs-zero');
+        if (!input || !window.AIRegistry) return;
+        var TOOLS = AIRegistry.tools;
+        var DEBOUNCE = null;
+
+        function card(t) {
+            var price = t.pricing === 'free' ? 'Free' : t.pricing === 'freemium' ? 'Freemium' : 'Paid';
+            return '<a class="ai-qs-card" href="ai-tools/' + t.slug + '/">' +
+                '<span class="ai-qs-ic" style="background:' + t.color + '18;color:' + t.color + '"><i class="fas ' + t.icon + '" aria-hidden="true"></i></span>' +
+                '<span class="ai-qs-body"><span class="ai-qs-name">' + t.name + '</span>' +
+                '<span class="ai-qs-desc">' + t.desc + '</span></span>' +
+                '<span class="ai-qs-meta"><span class="ai-qs-price">' + price + '</span>' +
+                '<span class="ai-qs-cat">' + t.category + '</span></span></a>';
+        }
+        function run() {
+            var q = input.value.toLowerCase().trim();
+            var kbd = document.getElementById('ai-qs-kbd');
+            if (kbd) kbd.style.display = q ? 'none' : '';
+            if (!q) { out.style.display = 'none'; out.innerHTML = ''; zero.style.display = 'none'; return; }
+            var terms = q.split(/\s+/);
+            var hits = TOOLS.filter(function (t) {
+                var hay = (t.name + ' ' + t.category + ' ' + t.desc + ' ' + (t.tags || []).join(' ')).toLowerCase();
+                return terms.every(function (w) { return hay.indexOf(w) !== -1; });
+            }).slice(0, 6);
+            if (hits.length) {
+                out.innerHTML = '<div class="ai-qs-count">' + hits.length + (hits.length === 6 ? '+' : '') + ' result' + (hits.length === 1 ? '' : 's') + ' — <a href="ai-tools/">see all</a></div>' +
+                    hits.map(card).join('');
+                out.style.display = 'block'; zero.style.display = 'none';
+            } else {
+                out.style.display = 'none';
+                var zq = document.getElementById('ai-qs-zero-q'); if (zq) zq.textContent = input.value.trim();
+                zero.style.display = 'block';
+            }
+        }
+        input.addEventListener('input', function () { clearTimeout(DEBOUNCE); DEBOUNCE = setTimeout(run, 90); });
+        var clearBtn = document.getElementById('ai-qs-clear');
+        if (clearBtn) clearBtn.addEventListener('click', function () { input.value = ''; run(); input.focus(); });
+        var kbdBtn = document.getElementById('ai-qs-kbd');
+        if (kbdBtn) kbdBtn.addEventListener('click', function () { if (window.ToolBoxPalette) ToolBoxPalette.open(); });
     });
     </script>
 
