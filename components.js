@@ -1132,7 +1132,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
 
     var path = window.location.pathname;
-    if (path.indexOf('developer-tools') === 0 ||
+    if (path === '/' || path === '/index' || path === '') setActiveNav('home');
+    else if (path.indexOf('developer-tools') === 0 ||
         path.includes('json-formatter') || path.includes('word-counter') ||
         path.includes('password-generator') || path.includes('color-picker') ||
         path.includes('base64') || path.includes('url-encoder') ||
@@ -1141,7 +1142,7 @@ document.addEventListener('DOMContentLoaded', function() {
     else if (path.includes('about')) setActiveNav('about');
     else if (path.includes('contact')) setActiveNav('contact');
     else if (path.includes('guides') || path.includes('json-vs-yaml') || path.includes('how-base64') || path.includes('regex-testing')) setActiveNav('guides');
-    // homepage & legal pages: no nav item highlighted (logo = home)
+    // legal pages: no nav item highlighted
 
     // --- Page Transition ---
     initPageTransitions();

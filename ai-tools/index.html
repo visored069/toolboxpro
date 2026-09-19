@@ -53,8 +53,9 @@
             padding: 140px 0 80px;
             text-align: center;
             overflow: hidden;
-            background: linear-gradient(180deg, #050510 0%, #0a0a2e 50%, #050510 100%);
+            background: linear-gradient(180deg, var(--bg-primary) 0%, #12122a 50%, var(--bg-primary) 100%);
         }
+        html.light .directory-hero { background: linear-gradient(180deg, #f4f4f8 0%, #e8e8f8 50%, #f4f4f8 100%); }
         .directory-hero::before {
             content: '';
             position: absolute;
@@ -69,7 +70,7 @@
             font-weight: 900;
             letter-spacing: -0.04em;
             margin-bottom: 20px;
-            background: linear-gradient(135deg, #818cf8, #c084fc, #fbbf24, #818cf8);
+            background: linear-gradient(135deg, #818cf8, #a78bfa);
             background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -80,9 +81,10 @@
         }
         .directory-hero p {
             font-size: clamp(1rem, 2vw, 1.25rem);
-            color: rgba(255,255,255,0.6);
+            color: var(--text-secondary);
             max-width: 600px;
             margin: 0 auto 40px;
+        }
             position: relative;
             z-index: 1;
         }
@@ -122,7 +124,7 @@
             padding: 18px 24px 18px 56px;
             border-radius: 16px;
             border: 1px solid rgba(255,255,255,0.1);
-            background: rgba(255,255,255,0.05);
+            background: var(--bg-card);
             backdrop-filter: blur(20px);
             color: #fff;
             font-size: 1.1rem;
@@ -167,7 +169,7 @@
             padding: 10px 20px;
             border-radius: 50px;
             border: 1px solid rgba(255,255,255,0.1);
-            background: rgba(255,255,255,0.04);
+            background: var(--bg-card);
             color: rgba(255,255,255,0.7);
             font-size: 0.9rem;
             cursor: pointer;
@@ -200,8 +202,8 @@
         }
         .tool-card-directory {
             position: relative;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.08);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
             border-radius: 20px;
             padding: 28px;
             cursor: pointer;
@@ -307,9 +309,9 @@
             padding: 4px 12px;
             border-radius: 20px;
             font-size: 0.72rem;
-            background: rgba(255,255,255,0.06);
+            background: var(--bg-card-hover);
             color: rgba(255,255,255,0.5);
-            border: 1px solid rgba(255,255,255,0.08);
+            border: 1px solid var(--border);
         }
         /* Featured section */
         .featured-section {
@@ -408,8 +410,8 @@
             gap: 24px;
         }
         .compare-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.08);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
             border-radius: 20px;
             padding: 32px;
             text-align: center;
@@ -509,7 +511,7 @@
             padding: 16px 20px;
             border-radius: 12px;
             border: 1px solid rgba(255,255,255,0.1);
-            background: rgba(255,255,255,0.05);
+            background: var(--bg-card);
             color: #fff;
             font-size: 1rem;
             font-family: inherit;
@@ -586,7 +588,28 @@
             .newsletter-form { flex-direction: column; }
             .compare-grid { grid-template-columns: 1fr; }
         }
-    </style>
+            /* Light theme (unified) — appended overrides */
+        html.light .directory-search input { color: #09090b; background: #ffffff; border-color: rgba(0,0,0,0.12); }
+        html.light .directory-search input::placeholder { color: #8e8e9c; }
+        html.light .directory-search .search-count { color: #8e8e9c; }
+        html.light .directory-stats .stat-label { color: #52525b; }
+        html.light .directory-hero p { color: #3f3f46; }
+        html.light .category-pill { background: #ffffff; border-color: rgba(0,0,0,0.12); color: #3f3f46; }
+        html.light .category-pill .pill-count, html.light .category-pill span { color: #71717a; }
+        html.light .category-pill.active { background: rgba(99,102,241,0.10); border-color: rgba(99,102,241,0.45); color: #4f46e5; }
+        /* === Light theme (unified) === */
+        html.light .tool-card-directory { background: #ffffff; border-color: rgba(0,0,0,0.10); box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        html.light .tool-card-directory:hover { border-color: rgba(0,0,0,0.18); }
+        html.light .category-pill { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.10); color: #3f3f46; }
+        html.light .category-pill.active { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.4); color: #4f46e5; }
+        html.light .tool-name { color: #09090b; }
+        html.light .tool-desc { color: #52525b; }
+        html.light .featured-card { background: #ffffff; border-color: rgba(0,0,0,0.10); }
+        html.light .newsletter-section { background: #ffffff; border-color: rgba(0,0,0,0.10); }
+        html.light .compare-section table, html.light .compare-table { background: #ffffff; color: #09090b; }
+        html.light .fc-link { color: #4f46e5; }
+</style>
+    <script>try{if(localStorage.getItem('toolboxpro-theme')==='light'||(!localStorage.getItem('toolboxpro-theme')&&window.matchMedia('(prefers-color-scheme: light)').matches))document.documentElement.classList.add('light');}catch(e){}</script>
 </head>
 <body>
     <!-- Preloader -->
@@ -620,11 +643,12 @@
                 <span class="logo-text">AI Directories</span>
             </a>
             <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button><nav aria-label="Main navigation" id="main-nav">
-                <a href="ai-tools" id="nav-ai">AI Tools</a>
-                <a href="developer-tools" id="nav-devtools">Developer Tools</a>
-                <a href="guides" id="nav-guides">Guides</a>
-                <a href="about" id="nav-about">About</a>
-                <a href="contact" id="nav-contact">Contact</a>
+                <a href="../" id="nav-home">Home</a>
+                <a href="/ai-tools" id="nav-ai">AI Tools</a>
+                <a href="/developer-tools/" id="nav-devtools">Developer Tools</a>
+                <a href="/guides" id="nav-guides">Guides</a>
+                <a href="/about" id="nav-about">About</a>
+                <a href="/contact" id="nav-contact">Contact</a>
                 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-sun" aria-hidden="true"></i></button>
             </nav>
         </div>
@@ -641,9 +665,9 @@
         </div>
         <div class="category-pills" id="category-pills"></div>
         <div class="directory-stats">
-            <div class="stat"><div class="stat-num" id="stat-tools-count">80</div><div class="stat-label">AI Tools Listed</div></div>
-            <div class="stat"><div class="stat-num">15</div><div class="stat-label">Categories</div></div>
-            <div class="stat"><div class="stat-num">Weekly</div><div class="stat-label">Updated</div></div>
+            <div class="stat"><div class="stat-num" data-stat="ai-count">80</div><div class="stat-label">AI Tools Listed</div></div>
+            <div class="stat"><div class="stat-num" data-stat="category-count">9</div><div class="stat-label">Categories</div></div>
+            <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Free to Browse</div></div>
         </div>
     </section>
 
@@ -717,7 +741,7 @@
             <div style="font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:0.2rem;">Best Free AI Image Generators (2026)</div>
             <div style="font-size:0.85rem;color:rgba(255,255,255,0.55);line-height:1.5;">A practical comparison of 5 top free image generators — what each is best for, key limitations, and how to choose.</div>
         </div>
-        <a href="best-free-ai-image-generators" style="flex-shrink:0;text-decoration:none;background:linear-gradient(135deg,#6366f1,#818cf8);color:white;padding:0.55rem 1.1rem;border-radius:9px;font-size:0.85rem;font-weight:600;white-space:nowrap;transition:transform 0.3s,box-shadow 0.3s;box-shadow:0 0 20px rgba(99,102,241,0.45);">
+        <a href="/best-free-ai-image-generators" style="flex-shrink:0;text-decoration:none;background:linear-gradient(135deg,#6366f1,#818cf8);color:white;padding:0.55rem 1.1rem;border-radius:9px;font-size:0.85rem;font-weight:600;white-space:nowrap;transition:transform 0.3s,box-shadow 0.3s;box-shadow:0 0 20px rgba(99,102,241,0.45);">
             Read <i class="fas fa-arrow-right" style="font-size:0.7rem;margin-left:0.3rem;"></i>
         </a>
     </div>
@@ -2381,29 +2405,29 @@
             <div>
                 <h4>Explore</h4>
                 <ul>
-                    <li><a href="ai-tools">All AI Tools</a></li>
-                    <li><a href="ai-tools/ai-writing/">AI Writing Tools</a></li>
-                    <li><a href="ai-tools/ai-code/">AI Coding Tools</a></li>
-                    <li><a href="ai-tools/ai-image-gen/">AI Image Generators</a></li>
-                    <li><a href="developer-tools">Developer Tools</a></li>
+                    <li><a href="/ai-tools">All AI Tools</a></li>
+                    <li><a href="/ai-tools/ai-writing/">AI Writing Tools</a></li>
+                    <li><a href="/ai-tools/ai-code/">AI Coding Tools</a></li>
+                    <li><a href="/ai-tools/ai-image-gen/">AI Image Generators</a></li>
+                    <li><a href="/developer-tools/">Developer Tools</a></li>
                 </ul>
             </div>
             <div>
                 <h4>Guides</h4>
                 <ul>
-                    <li><a href="best-ai-coding-tools">Best AI Coding Tools</a></li>
-                    <li><a href="best-free-ai-image-generators">Best Free AI Image Generators</a></li>
-                    <li><a href="json-vs-yaml">JSON vs YAML</a></li>
-                    <li><a href="guides">All guides →</a></li>
+                    <li><a href="/best-ai-coding-tools">Best AI Coding Tools</a></li>
+                    <li><a href="/best-free-ai-image-generators">Best Free AI Image Generators</a></li>
+                    <li><a href="/json-vs-yaml">JSON vs YAML</a></li>
+                    <li><a href="/guides">All guides →</a></li>
                 </ul>
             </div>
             <div>
                 <h4>Legal</h4>
                 <ul>
-                    <li><a href="privacy">Privacy Policy</a></li>
-                    <li><a href="terms">Terms of Service</a></li>
-                    <li><a href="about">About</a></li>
-                    <li><a href="contact">Contact</a></li>
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -2425,6 +2449,10 @@
     const CATEGORIES = [...new Set(AI_TOOLS.map(t => t.category))];
     const CATEGORY_COUNTS = {};
     CATEGORIES.forEach(c => CATEGORY_COUNTS[c] = AI_TOOLS.filter(t => t.category === c).length);
+
+    // Runtime stat binding — counts always derive from the dataset
+    document.querySelectorAll('[data-stat="ai-count"]').forEach(e => e.textContent = AI_TOOLS.length);
+    document.querySelectorAll('[data-stat="category-count"]').forEach(e => e.textContent = CATEGORIES.length);
 
     let activeCategory = 'All';
     let searchQuery = '';
@@ -2558,14 +2586,25 @@
 
     // Theme toggle
     const themeToggle = document.getElementById('theme-toggle');
+    if (localStorage.getItem('toolboxpro-theme') === 'light' || (!localStorage.getItem('toolboxpro-theme') && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+        document.documentElement.classList.add('light');
+    }
     if (themeToggle) {
+        const themeIcon = themeToggle.querySelector('i');
+        const syncThemeIcon = () => {
+            const isLight = document.documentElement.classList.contains('light');
+            themeIcon.classList.toggle('fa-sun', !isLight);
+            themeIcon.classList.toggle('fa-moon', isLight);
+        };
+        syncThemeIcon();
         themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('light-theme');
-            const icon = themeToggle.querySelector('i');
-            icon.classList.toggle('fa-sun');
-            icon.classList.toggle('fa-moon');
+            document.documentElement.classList.toggle('light');
+            localStorage.setItem('toolboxpro-theme', document.documentElement.classList.contains('light') ? 'light' : 'dark');
+            syncThemeIcon();
         });
     }
     </script>
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
+    <script src="../smooth-scroll.js" defer></script>
 </body>
 </html>

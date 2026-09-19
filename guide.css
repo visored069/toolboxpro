@@ -2,14 +2,14 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-        --bg: #030303;
-        --bg-card: rgba(255, 255, 255, 0.03);
-        --bg-soft: rgba(255, 255, 255, 0.05);
-        --border: rgba(255, 255, 255, 0.08);
-        --border-hover: rgba(255, 255, 255, 0.16);
+        --bg: #0a0a0f;
+        --bg-card: rgba(255, 255, 255, 0.055);
+        --bg-soft: rgba(255, 255, 255, 0.08);
+        --border: rgba(255, 255, 255, 0.10);
+        --border-hover: rgba(255, 255, 255, 0.18);
         --text: #fafafa;
-        --text-secondary: #a1a1aa;
-        --text-muted: #71717a;
+        --text-secondary: #b8b8c6;
+        --text-muted: #8e8e9c;
         --accent: #818cf8;
         --accent-hover: #a5b4fc;
         --accent-soft: rgba(99, 102, 241, 0.12);
@@ -32,14 +32,22 @@
 
     /* ===== HEADER ===== */
     header {
-        padding: 1rem 2rem;
-        border-bottom: 1px solid var(--border);
-        background: rgba(3,3,3,0.75);
-        backdrop-filter: blur(24px) saturate(1.4);
-        -webkit-backdrop-filter: blur(24px) saturate(1.4);
+        margin: 1rem auto 0; max-width: 1440px; width: calc(100% - 2.5rem);
+        padding: 0.65rem 1.75rem;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: rgba(10, 10, 15, 0.62);
+        backdrop-filter: blur(24px) saturate(1.5);
+        -webkit-backdrop-filter: blur(24px) saturate(1.5);
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
         position: sticky;
-        top: 0;
+        top: 0.75rem;
         z-index: 100;
+    }
+    html.light header {
+        background: rgba(250, 250, 250, 0.72);
+        border-color: rgba(0, 0, 0, 0.10);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
     }
     .header-inner {
         max-width: 960px;
@@ -635,3 +643,21 @@ details.gfaq p { margin: 0.75rem 0 0; color: var(--text-secondary); font-size: 0
     .mobile-menu-toggle.open .hamburger-line:nth-child(2) { opacity: 0; }
     .mobile-menu-toggle.open .hamburger-line:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 }
+
+
+    /* === Light theme (unified) === */
+    html.light {
+        --bg: #fafafa;
+        --bg-card: rgba(0, 0, 0, 0.025);
+        --bg-soft: rgba(0, 0, 0, 0.05);
+        --border: rgba(0, 0, 0, 0.10);
+        --border-hover: rgba(0, 0, 0, 0.18);
+        --text: #09090b;
+        --text-secondary: #52525b;
+        --text-muted: #71717a;
+        --accent-soft: rgba(99, 102, 241, 0.10);
+        --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+        --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+        --shadow-lg: 0 8px 32px rgba(0,0,0,0.10);
+    }
+    html.light body { background: #fafafa; color: #09090b; }

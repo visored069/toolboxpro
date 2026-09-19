@@ -31,7 +31,12 @@ function normTarget(raw, fromFile) {
     t = t.split('#')[0];
     if (!t) return null; // pure anchor
     if (t === '/') return 'index.html';
-    if (t.startsWith('/')) t = t.slice(1);
+    if (t.startsWith('/')) { t = t.slice(1); }
+    else {
+        // resolve ../ and ./ segments against the referring page's directory
+        const baseDir = path.dirname(fromFile);
+        t = path.normalize(path.join(baseDir, t)).split(path.sep).join('/');
+    }
     if (t.endsWith('/')) t += 'index.html';
     // clean URL: no extension -> try .html
     if (!path.extname(t)) {

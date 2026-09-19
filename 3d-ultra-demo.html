@@ -119,6 +119,8 @@ body{font-family:'Inter',-apple-system,sans-serif;background:#000;color:#fafafa;
 /* ===== RESPONSIVE ===== */
 @media(max-width:768px){.card-grid{grid-template-columns:1fr}.stats-row{grid-template-columns:repeat(2,1fr)}}
 </style>
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css">
+    <script>try{if(localStorage.getItem('toolboxpro-theme')==='light'||(!localStorage.getItem('toolboxpro-theme')&&window.matchMedia('(prefers-color-scheme: light)').matches))document.documentElement.classList.add('light');}catch(e){}</script>
 </head>
 <body>
 
@@ -555,5 +557,7 @@ document.querySelectorAll('.rv').forEach(el => obs.observe(el));
 })();
 </script>
 
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
+    <script src="smooth-scroll.js" defer></script>
 </body>
 </html>

@@ -26,6 +26,8 @@
         .error-links a { padding:0.5rem 1rem; background:rgba(255,255,255,0.03); border:1px solid var(--border-color); border-radius:8px; color:var(--text-secondary); text-decoration:none; transition:all 0.3s; }
         .error-links a:hover { background:rgba(108,92,231,0.15); border-color:rgba(108,92,231,0.3); color:white; }
     </style>
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css">
+    <script>try{if(localStorage.getItem('toolboxpro-theme')==='light'||(!localStorage.getItem('toolboxpro-theme')&&window.matchMedia('(prefers-color-scheme: light)').matches))document.documentElement.classList.add('light');}catch(e){}</script>
 </head>
 <body>
     <div class="bg-animation"></div>
@@ -37,6 +39,7 @@
                 <span class="logo-text">AI Directories</span>
             </a>
             <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button><nav aria-label="Main navigation" id="main-nav">
+                <a href="./" id="nav-home">Home</a>
                 <a href="ai-tools/" id="nav-ai">AI Tools</a>
                 <a href="developer-tools" id="nav-devtools">Developer Tools</a>
                 <a href="guides" id="nav-guides">Guides</a>
@@ -66,5 +69,7 @@
     </div>
 
     <script src="components.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
+    <script src="smooth-scroll.js" defer></script>
 </body>
 </html>
