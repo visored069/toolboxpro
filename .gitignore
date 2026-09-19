@@ -1,2 +1,6 @@
 .vercel
 .env*
+
+# Agent/skill setup (keep configs + skill docs, ignore heavy binaries & local settings)
+.claude/settings.local.json
+.claude/skills/impeccable/scripts/bin/

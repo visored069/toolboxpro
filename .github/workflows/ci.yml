@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # full history: gen-sitemap derives lastmod from git dates
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Registry guardrail (claims, structure, colors)
+        run: node lint-registry.js
+
+      - name: Sitemap freshness + canonical parity
+        run: node gen-sitemap.js
+
+      - name: Sitemap is committed and current
+        run: |
+          if ! git diff --exit-code sitemap.xml; then
+            echo "::error::sitemap.xml is stale — run 'node gen-sitemap.js' after dataset changes and commit the result."
+            exit 1
+          fi
+
+      - name: Internal link integrity
+        run: node check-links.js
