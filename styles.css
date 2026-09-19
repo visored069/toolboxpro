@@ -1796,3 +1796,7 @@ textarea[id], input[id] { touch-action: manipulation; }
   .ai-card-fav { width: 42px; height: 42px; top: 8px; right: 8px; font-size: 1rem; }
   .category-pill, .filter-tab { min-height: 44px; }
 }
+
+/* ===== Trust indicator ===== */
+.trust-line{text-align:center;color:var(--text-muted,#8b93a7);font-size:.85rem;margin:8px auto 0;display:flex;align-items:center;justify-content:center;gap:8px;}
+.trust-line i{color:#10b981;}

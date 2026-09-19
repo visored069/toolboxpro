@@ -215,8 +215,9 @@ function filterTools(query, category) {
     cards.forEach(function(card) {
         var name = (card.getAttribute('data-name') || '').toLowerCase();
         var tags = (card.getAttribute('data-tags') || '').toLowerCase();
+        var desc = (card.getAttribute('data-desc') || '').toLowerCase();
         var cardCategory = card.getAttribute('data-category') || '';
-        var matchesSearch = !query || name.indexOf(query) !== -1 || tags.indexOf(query) !== -1;
+        var matchesSearch = !query || name.indexOf(query) !== -1 || tags.indexOf(query) !== -1 || desc.indexOf(query) !== -1;
         var matchesCategory = category === 'all' || cardCategory === category;
         if (matchesSearch && matchesCategory) {
             card.classList.remove('hidden');
@@ -460,7 +461,7 @@ function initPersonalSections() {
     if (!favSec && !recSec) return;
 
     function cardHtml(t, isFav) {
-        return '<a href="' + t.slug + '" class="tool-card dyn-card reveal" data-name="' + t.name + '" data-tags="' + t.keywords + '" data-category="' + t.category + '">' +
+        return '<a href="' + t.slug + '" class="tool-card dyn-card reveal" data-name="' + t.name + '" data-tags="' + t.keywords + '" data-desc="' + t.description + '" data-category="' + t.category + '">' +
             '<div class="tool-icon"><i class="fas ' + t.icon + '"></i></div>' +
             '<h3>' + t.name + '</h3>' +
             '<p>' + t.description + '</p>' +

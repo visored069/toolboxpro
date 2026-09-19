@@ -20,6 +20,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2">
     <link rel="stylesheet" href="/styles.css">
+
+    <style>
+    .hub-toolbar { max-width: 640px; margin: 0 auto 28px; }
+    .hub-search { position: relative; display: flex; align-items: center; }
+    .hub-search i { position: absolute; left: 16px; color: var(--text-muted, #8b93a7); pointer-events: none; }
+    .hub-search input { width: 100%; padding: 14px 44px 14px 44px; border-radius: 12px; border: 1px solid var(--glass-border, #2a3040); background: var(--glass-bg, rgba(255,255,255,.04)); color: var(--text-primary, #fff); font-size: 0.98rem; outline: none; transition: border-color .2s, box-shadow .2s; }
+    .hub-search input:focus { border-color: var(--accent-1, #6c5ce7); box-shadow: 0 0 0 3px rgba(108,92,231,.18); }
+    .hub-search-clear { position: absolute; right: 10px; background: none; border: none; color: var(--text-muted, #8b93a7); cursor: pointer; font-size: 1rem; padding: 6px; }
+    .hub-count { text-align: center; color: var(--text-muted, #8b93a7); font-size: .85rem; margin-top: 10px; }
+    .hub-zero { max-width: 560px; margin: 26px auto; text-align: center; padding: 36px 24px; border: 1px dashed var(--glass-border, #2a3040); border-radius: 16px; }
+    .hub-zero-icon { font-size: 2rem; color: var(--text-muted, #8b93a7); margin-bottom: 12px; }
+    .hub-zero h3 { margin: 0 0 6px; }
+    .hub-zero p { color: var(--text-muted, #8b93a7); margin: 0 0 18px; font-size: .92rem; }
+    .ai-feat-price { display: inline-block; font-size: .62rem; font-weight: 700; letter-spacing: .06em; color: #10b981; border: 1px solid rgba(16,185,129,.35); border-radius: 6px; padding: 2px 7px; width: max-content; }
+    .hub-recent { margin-bottom: 40px; }
+    @media (max-width: 640px) { .hub-search input { padding: 14px 16px 14px 42px; } .hub-search-clear { display: none !important; } }
+    </style>
 </head>
 <body>
 <header>
@@ -44,13 +61,36 @@
             <h1 style="font-size:2.2rem;margin:0 0 8px;">Free Developer Tools</h1>
             <p style="color:var(--text-secondary,#94a3b8);max-width:680px;">Fast browser-based utilities for developers, builders and AI enthusiasts. 26 tools, no signup, everything runs locally in your browser — your data never leaves your device.</p>
         </section>
-        <div class="ai-feat-grid">
+
+        <div class="hub-toolbar">
+            <div class="hub-search" role="search">
+                <i class="fas fa-magnifying-glass" aria-hidden="true"></i>
+                <input type="text" id="hub-search" placeholder="Search 26 tools — name, category, or description…" autocomplete="off" aria-label="Search developer tools">
+                <button type="button" id="hub-search-clear" class="hub-search-clear" aria-label="Clear search" style="display:none;"><i class="fas fa-xmark" aria-hidden="true"></i></button>
+            </div>
+            <p class="hub-count" id="hub-count" role="status" aria-live="polite" style="display:none;"></p>
+            <div class="hub-zero" id="hub-zero" style="display:none;" role="status">
+                <div class="hub-zero-icon" aria-hidden="true"><i class="fas fa-ghost"></i></div>
+                <h3>No tools match &quot;<span id="hub-zero-q"></span>&quot;</h3>
+                <p>Try a shorter term — or browse the full list on the homepage.</p>
+                <button type="button" class="hero-btn ghost" id="hub-zero-clear"><i class="fas fa-rotate-left" aria-hidden="true"></i> Clear search</button>
+            </div>
+        </div>
+
+
+        <section class="hub-recent" id="hub-recent" style="display:none;" aria-labelledby="hub-recent-heading">
+            <div class="section-header"><h2 id="hub-recent-heading">🕓 Recently Used</h2><span class="badge">THIS DEVICE</span></div>
+            <div class="ai-feat-grid" id="hub-recent-grid"></div>
+        </section>
+
+        <div class="ai-feat-grid" id="hub-grid">
                     <a class="ai-feat-card" href="/json-formatter">
                         <div class="ai-feat-icon" style="background:rgba(129,140,248,.12);color:#818cf8;"><i class="fas fa-code" aria-hidden="true"></i></div>
                         <div class="ai-feat-body">
                             <span class="ai-feat-name">JSON Formatter</span>
                             <span class="ai-feat-desc">Format, validate, and beautify your JSON data instantly.</span>
                             <span class="ai-feat-cat">Developer</span>
+                            <span class="ai-feat-price">FREE</span>
                         </div>
                         <i class="fas fa-arrow-right ai-feat-arrow" aria-hidden="true"></i>
                     </a>
@@ -61,6 +101,7 @@
                             <span class="ai-feat-name">JSON to YAML</span>
                             <span class="ai-feat-desc">Convert between JSON and YAML instantly — both directions, in your browser.</span>
                             <span class="ai-feat-cat">Developer</span>
+                            <span class="ai-feat-price">FREE</span>
                         </div>
                         <i class="fas fa-arrow-right ai-feat-arrow" aria-hidden="true"></i>
                     </a>
@@ -71,6 +112,7 @@
                             <span class="ai-feat-name">JWT Decoder</span>
                             <span class="ai-feat-desc">Decode JWT tokens and inspect headers, payloads, and expiry dates locally.</span>
                             <span class="ai-feat-cat">Security</span>
+                            <span class="ai-feat-price">FREE</span>
                         </div>
                         <i class="fas fa-arrow-right ai-feat-arrow" aria-hidden="true"></i>
                     </a>
@@ -81,6 +123,7 @@
                             <span class="ai-feat-name">XML Formatter</span>
                             <span class="ai-feat-desc">Format, minify, and validate XML with proper indentation.</span>
                             <span class="ai-feat-cat">Developer</span>
+                            <span class="ai-feat-price">FREE</span>
                         </div>
                         <i class="fas fa-arrow-right ai-feat-arrow" aria-hidden="true"></i>
                     </a>
@@ -91,6 +134,7 @@
                             <span class="ai-feat-name">URL Parser</span>
                             <span class="ai-feat-desc">Break any URL into protocol, host, path, and query parameters.</span>
                             <span class="ai-feat-cat">Developer</span>
+                            <span class="ai-feat-price">FREE</span>
                         </div>
                         <i class="fas fa-arrow-right ai-feat-arrow" aria-hidden="true"></i>
                     </a>
@@ -101,6 +145,7 @@
                             <span class="ai-feat-name">HTML Entity Converter</span>
                             <span class="ai-feat-desc">Escape and unescape HTML entities — convert code to safe display text.</span>
                             <span class="ai-feat-cat">Developer</span>
+                            <span class="ai-feat-price">FREE</span>
                         </div>
                         <i class="fas fa-arrow-right ai-feat-arrow" aria-hidden="true"></i>
                     </a>
@@ -111,6 +156,7 @@
                             <span class="ai-feat-name">Image to Base64</span>
                             <span class="ai-feat-desc">Convert any image to a Base64 data URI — private, in your browser.</span>
                             <span class="ai-feat-cat">Developer</span>
+                            <span class="ai-feat-price">FREE</span>
                         </div>
                         <i class="fas fa-arrow-right ai-feat-arrow" aria-hidden="true"></i>
                     </a>
@@ -121,6 +167,7 @@
                             <span class="ai-feat-name">Word Counter</span>
                             <span class="ai-feat-desc">Count words, characters, sentences, and paragraphs in real time.</span>
                             <span class="ai-feat-cat">Writing</span>
+                            <span class="ai-feat-price">FREE</span>
                         </div>
                         <i class="fas fa-arrow-right ai-feat-arrow" aria-hidden="true"></i>
                     </a>
@@ -131,6 +178,7 @@
                             <span class="ai-feat-name">Password Generator</span>
                             <span class="ai-feat-desc">Generate secure, cryptographically random passwords with strength meter.</span>
                             <span class="ai-feat-cat">Security</span>
+                            <span class="ai-feat-price">FREE</span>
                         </div>
                         <i class="fas fa-arrow-right ai-feat-arrow" aria-hidden="true"></i>
                     </a>
@@ -141,6 +189,7 @@
                             <span class="ai-feat-name">Color Picker</span>
                             <span class="ai-feat-desc">Pick colors and get HEX, RGB, and HSL values with palette suggestions.</span>
                             <span class="ai-feat-cat">Design</span>
+                            <span class="ai-feat-price">FREE</span>
                         </div>
                         <i class="fas fa-arrow-right ai-feat-arrow" aria-hidden="true"></i>
                     </a>
@@ -151,6 +200,7 @@
                             <span class="ai-feat-name">Base64 Encoder/Decoder</span>
                             <span class="ai-feat-desc">Encode and decode Base64 strings instantly in your browser.</span>
                             <span class="ai-feat-cat">Developer</span>
+                            <span class="ai-feat-price">FREE</span>
                         </div>
                         <i class="fas fa-arrow-right ai-feat-arrow" aria-hidden="true"></i>
                     </a>
@@ -161,6 +211,7 @@
                             <span class="ai-feat-name">URL Encoder/Decoder</span>
                             <span class="ai-feat-desc">Encode and decode URLs and query strings safely.</span>
                             <span class="ai-feat-cat">Developer</span>
+                            <span class="ai-feat-price">FREE</span>
                         </div>
                         <i class="fas fa-arrow-right ai-feat-arrow" aria-hidden="true"></i>
                     </a>
@@ -171,6 +222,7 @@
                             <span class="ai-feat-name">Lorem Ipsum Generator</span>
                             <span class="ai-feat-desc">Generate placeholder text (Lorem Ipsum) for designs and mockups.</span>
                             <span class="ai-feat-cat">Design</span>
+                            <span class="ai-feat-price">FREE</span>
                         </div>
                         <i class="fas fa-arrow-right ai-feat-arrow" aria-hidden="true"></i>
                     </a>
@@ -181,6 +233,7 @@
                             <span class="ai-feat-name">QR Code Generator</span>
                             <span class="ai-feat-desc">Create QR codes for URLs, text, and Wi-Fi with custom colors.</span>
                             <span class="ai-feat-cat">Utility</span>
+                            <span class="ai-feat-price">FREE</span>
                         </div>
                         <i class="fas fa-arrow-right ai-feat-arrow" aria-hidden="true"></i>
                     </a>
@@ -191,6 +244,7 @@
                             <span class="ai-feat-name">Hash Generator</span>
                             <span class="ai-feat-desc">Generate MD5, SHA-1, and SHA-256 hashes from any text.</span>
                             <span class="ai-feat-cat">Security</span>
+                            <span class="ai-feat-price">FREE</span>
                         </div>
                         <i class="fas fa-arrow-right ai-feat-arrow" aria-hidden="true"></i>
                     </a>
@@ -201,6 +255,7 @@
                             <span class="ai-feat-name">Text Case Converter</span>
                             <span class="ai-feat-desc">Convert text between UPPERCASE, lowercase, Title Case, and Sentence case.</span>
                             <span class="ai-feat-cat">Writing</span>
+                            <span class="ai-feat-price">FREE</span>
                         </div>
                         <i class="fas fa-arrow-right ai-feat-arrow" aria-hidden="true"></i>
                     </a>
@@ -211,6 +266,7 @@
                             <span class="ai-feat-name">UUID Generator</span>
                             <span class="ai-feat-desc">Generate random v4 UUIDs instantly with one click copy.</span>
                             <span class="ai-feat-cat">Developer</span>
+                            <span class="ai-feat-price">FREE</span>
                         </div>
                         <i class="fas fa-arrow-right ai-feat-arrow" aria-hidden="true"></i>
                     </a>
@@ -221,6 +277,7 @@
                             <span class="ai-feat-name">JSON to CSV</span>
                             <span class="ai-feat-desc">Convert JSON arrays to CSV format for spreadsheets instantly.</span>
                             <span class="ai-feat-cat">Developer</span>
+                            <span class="ai-feat-price">FREE</span>
                         </div>
                         <i class="fas fa-arrow-right ai-feat-arrow" aria-hidden="true"></i>
                     </a>
@@ -231,6 +288,7 @@
                             <span class="ai-feat-name">Regex Tester</span>
                             <span class="ai-feat-desc">Test regular expressions against sample text with match highlighting.</span>
                             <span class="ai-feat-cat">Developer</span>
+                            <span class="ai-feat-price">FREE</span>
                         </div>
                         <i class="fas fa-arrow-right ai-feat-arrow" aria-hidden="true"></i>
                     </a>
@@ -241,6 +299,7 @@
                             <span class="ai-feat-name">Markdown Preview</span>
                             <span class="ai-feat-desc">Write Markdown and see the rendered preview side by side.</span>
                             <span class="ai-feat-cat">Developer</span>
+                            <span class="ai-feat-price">FREE</span>
                         </div>
                         <i class="fas fa-arrow-right ai-feat-arrow" aria-hidden="true"></i>
                     </a>
@@ -251,6 +310,7 @@
                             <span class="ai-feat-name">CSS Minifier</span>
                             <span class="ai-feat-desc">Compress and beautify CSS with size-savings stats.</span>
                             <span class="ai-feat-cat">Developer</span>
+                            <span class="ai-feat-price">FREE</span>
                         </div>
                         <i class="fas fa-arrow-right ai-feat-arrow" aria-hidden="true"></i>
                     </a>
@@ -261,6 +321,7 @@
                             <span class="ai-feat-name">Timestamp Converter</span>
                             <span class="ai-feat-desc">Convert Unix timestamps to human dates and back, live as you type.</span>
                             <span class="ai-feat-cat">Developer</span>
+                            <span class="ai-feat-price">FREE</span>
                         </div>
                         <i class="fas fa-arrow-right ai-feat-arrow" aria-hidden="true"></i>
                     </a>
@@ -271,6 +332,7 @@
                             <span class="ai-feat-name">IP Lookup</span>
                             <span class="ai-feat-desc">Look up any public IP address — location, ISP, and timezone.</span>
                             <span class="ai-feat-cat">Utility</span>
+                            <span class="ai-feat-price">FREE</span>
                         </div>
                         <i class="fas fa-arrow-right ai-feat-arrow" aria-hidden="true"></i>
                     </a>
@@ -281,6 +343,7 @@
                             <span class="ai-feat-name">Random Number Generator</span>
                             <span class="ai-feat-desc">Generate random numbers in any range, decimals or integers, dice mode.</span>
                             <span class="ai-feat-cat">Utility</span>
+                            <span class="ai-feat-price">FREE</span>
                         </div>
                         <i class="fas fa-arrow-right ai-feat-arrow" aria-hidden="true"></i>
                     </a>
@@ -291,6 +354,7 @@
                             <span class="ai-feat-name">HTML to Text</span>
                             <span class="ai-feat-desc">Strip HTML tags and extract clean plain text from markup.</span>
                             <span class="ai-feat-cat">Developer</span>
+                            <span class="ai-feat-price">FREE</span>
                         </div>
                         <i class="fas fa-arrow-right ai-feat-arrow" aria-hidden="true"></i>
                     </a>
@@ -301,6 +365,7 @@
                             <span class="ai-feat-name">Text Diff Checker</span>
                             <span class="ai-feat-desc">Compare two texts and highlight added/removed lines.</span>
                             <span class="ai-feat-cat">Writing</span>
+                            <span class="ai-feat-price">FREE</span>
                         </div>
                         <i class="fas fa-arrow-right ai-feat-arrow" aria-hidden="true"></i>
                     </a>
@@ -355,8 +420,67 @@
             <p style="margin-top:8px;font-size:inherit;color:inherit;">Built by <a href="https://x.com/portfoliomate/status/2098498135396090165" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Portfolio Mate</a> — I design and build sites like this one. <a href="https://x.com/portfoliomate/status/2098498135396090165" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">See my work →</a></p>
         </div>
     </footer>
+
+    <script>
+    // Hub search + recents — client-side only, registry-derived
+    document.addEventListener('DOMContentLoaded', function () {
+        var input = document.getElementById('hub-search');
+        var grid = document.getElementById('hub-grid');
+        var zero = document.getElementById('hub-zero');
+        var count = document.getElementById('hub-count');
+        var clearBtn = document.getElementById('hub-search-clear');
+        if (!input || !grid || !window.ToolRegistry) return;
+
+        function apply() {
+            var q = input.value.toLowerCase().trim();
+            clearBtn.style.display = q ? '' : 'none';
+            var cards = grid.querySelectorAll('.ai-feat-card');
+            var visible = 0;
+            cards.forEach(function (card) {
+                var hay = (card.getAttribute('data-search') || (card.textContent + ' ' + (card.getAttribute('href') || ''))).toLowerCase();
+                var show = !q || hay.indexOf(q) !== -1;
+                card.style.display = show ? '' : 'none';
+                if (show) visible++;
+            });
+            if (q) {
+                count.innerHTML = 'Showing <strong>' + visible + '</strong> of ' + cards.length + ' tools';
+                count.style.display = 'block';
+            } else { count.style.display = 'none'; }
+            var zq = document.getElementById('hub-zero-q');
+            if (zq) zq.textContent = input.value.trim();
+            zero.style.display = (q && visible === 0) ? 'block' : 'none';
+        }
+        // build search corpus from registry (name + category + description)
+        if (window.ToolRegistry) {
+            ToolRegistry.tools.forEach(function (t) {
+                var card = grid.querySelector('.ai-feat-card[href="/' + t.slug + '"]');
+                if (card) card.setAttribute('data-search', (t.name + ' ' + t.category + ' ' + t.description + ' ' + (t.keywords || '')).toLowerCase());
+            });
+        }
+        input.addEventListener('input', apply);
+        clearBtn.addEventListener('click', function () { input.value = ''; apply(); input.focus(); });
+        var zc = document.getElementById('hub-zero-clear');
+        if (zc) zc.addEventListener('click', function () { input.value = ''; apply(); });
+
+        // recents strip (top 5, registry-rendered, hidden when empty)
+        var sec = document.getElementById('hub-recent');
+        var rgrid = document.getElementById('hub-recent-grid');
+        if (sec && rgrid && window.AIRegistry !== undefined) {
+            var rec = ToolRegistry.getRecent().slice(0, 5);
+            if (rec.length) {
+                rgrid.innerHTML = rec.map(function (slug) {
+                    var t = ToolRegistry.bySlug(slug);
+                    if (!t) return '';
+                    return '<a class="ai-feat-card" href="/' + t.slug + '"><div class="ai-feat-icon"><i class="fas ' + t.icon + '" aria-hidden="true"></i></div><div class="ai-feat-body"><span class="ai-feat-name">' + t.name + '</span><span class="ai-feat-desc">' + t.description + '</span><span class="ai-feat-cat">' + t.category + '</span></div><i class="fas fa-arrow-right ai-feat-arrow" aria-hidden="true"></i></a>';
+                }).join('');
+                sec.style.display = 'block';
+            }
+        }
+    });
+    </script>
     <script>document.querySelectorAll('#footer-year').forEach(function(e){e.textContent=new Date().getFullYear();});</script>
 <script src="/ai-registry.js" defer></script>
+<script src="/tool-registry.js" defer></script>
     <script src="/components.js" defer></script>
     <script src="/command-palette.js" defer></script>
 </body>

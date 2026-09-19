@@ -144,8 +144,8 @@
     <main id="main-content">
         <section class="hero">
             <div class="hero-mesh"></div>
-            <h1 class="typewriter-text" id="typewriter-text">Discover AI Tools That Actually Help</h1>
-            <p>Curated AI tools and free browser utilities for coding, writing, design, productivity, research and more.</p>
+            <h1 class="typewriter-text" id="typewriter-text">Find the Right AI Tool in Seconds</h1>
+            <p>Explore <span data-stat="ai-count">80</span>+ curated AI tools and <span data-stat="dev-count">26</span> free browser-based developer tools — no hype, no signup required.</p>
             <div class="ai-quick-search" role="search">
                 <i class="fas fa-magnifying-glass ai-qs-icon" aria-hidden="true"></i>
                 <input type="text" id="ai-quick-search" placeholder="Search AI tools — name, category, or what you need…"
@@ -436,7 +436,7 @@
                 <h3 id="no-results-title">No tools found</h3>
                 <p id="no-results-msg">Try a different search term or category.</p>
                 <div class="no-results-suggestions" id="no-results-suggestions" aria-label="Suggested searches">
-                    <span class="suggestion-label">Popular searches</span>
+                    <span class="suggestion-label">Try searching for</span>
                     <div class="suggestion-chips" id="suggestion-chips"></div>
                 </div>
                 <button class="btn-primary no-results-reset" onclick="resetAllFilters()"><i class="fas fa-rotate-left" aria-hidden="true"></i> Reset search &amp; filters</button>
@@ -444,169 +444,169 @@
 
             <!-- Tools Grid -->
             <div class="tools-grid">
-                <a href="json-formatter" class="tool-card" data-name="JSON Formatter" data-tags="json format validate beautify" data-category="Developer">
+                <a href="json-formatter" class="tool-card" data-name="JSON Formatter" data-tags="json format validate beautify" data-category="Developer" data-desc="Format, validate, and beautify your JSON data instantly.">
                     <div class="tool-icon"><i class="fas fa-code" aria-hidden="true"></i></div>
                     <h3>JSON Formatter</h3>
                     <p>Format, validate, and beautify your JSON data instantly.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
-                <a href="word-counter" class="tool-card" data-name="Word Counter" data-tags="word count characters sentences paragraphs" data-category="Writing">
+                <a href="word-counter" class="tool-card" data-name="Word Counter" data-tags="word count characters sentences paragraphs" data-category="Writing" data-desc="Count words, characters, sentences, and paragraphs in real time.">
                     <div class="tool-icon"><i class="fas fa-font" aria-hidden="true"></i></div>
                     <h3>Word Counter</h3>
                     <p>Count words, characters, sentences, and paragraphs.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Writing</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
-                <a href="password-generator" class="tool-card" data-name="Password Generator" data-tags="password generate secure random" data-category="Security">
+                <a href="password-generator" class="tool-card" data-name="Password Generator" data-tags="password generate secure random" data-category="Security" data-desc="Generate secure, cryptographically random passwords with strength meter.">
                     <div class="tool-icon"><i class="fas fa-lock" aria-hidden="true"></i></div>
                     <h3>Password Generator</h3>
                     <p>Generate strong, secure passwords instantly.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Security</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
-                <a href="color-picker" class="tool-card" data-name="Color Picker" data-tags="color hex rgb hsl pick palette design" data-category="Design">
+                <a href="color-picker" class="tool-card" data-name="Color Picker" data-tags="color hex rgb hsl pick palette design" data-category="Design" data-desc="Pick colors and get HEX, RGB, and HSL values with palette suggestions.">
                     <div class="tool-icon"><i class="fas fa-palette" aria-hidden="true"></i></div>
                     <h3>Color Picker</h3>
                     <p>Pick colors and get HEX, RGB, HSL values.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Design</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
-                <a href="base64-encoder-decoder" class="tool-card" data-name="Base64 Encoder/Decoder" data-tags="base64 encode decode" data-category="Developer">
+                <a href="base64-encoder-decoder" class="tool-card" data-name="Base64 Encoder/Decoder" data-tags="base64 encode decode" data-category="Developer" data-desc="Encode and decode Base64 strings instantly in your browser.">
                     <div class="tool-icon"><i class="fas fa-exchange-alt" aria-hidden="true"></i></div>
                     <h3>Base64 Encoder/Decoder</h3>
                     <p>Encode and decode Base64 strings easily.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
-                <a href="url-encoder-decoder" class="tool-card" data-name="URL Encoder/Decoder" data-tags="url encode decode percent" data-category="Developer">
+                <a href="url-encoder-decoder" class="tool-card" data-name="URL Encoder/Decoder" data-tags="url encode decode percent" data-category="Developer" data-desc="Encode and decode URLs and query strings safely.">
                     <div class="tool-icon"><i class="fas fa-link" aria-hidden="true"></i></div>
                     <h3>URL Encoder/Decoder</h3>
                     <p>Encode and decode URLs for web development.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
-                <a href="lorem-ipsum-generator" class="tool-card" data-name="Lorem Ipsum Generator" data-tags="lorem ipsum placeholder text dummy" data-category="Design">
+                <a href="lorem-ipsum-generator" class="tool-card" data-name="Lorem Ipsum Generator" data-tags="lorem ipsum placeholder text dummy" data-category="Design" data-desc="Generate placeholder text (Lorem Ipsum) for designs and mockups.">
                     <div class="tool-icon"><i class="fas fa-paragraph" aria-hidden="true"></i></div>
                     <h3>Lorem Ipsum Generator</h3>
                     <p>Generate placeholder text for your designs.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Design</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
-                <a href="qr-code-generator" class="tool-card" data-name="QR Code Generator" data-tags="qr code generate scan" data-category="Utility">
+                <a href="qr-code-generator" class="tool-card" data-name="QR Code Generator" data-tags="qr code generate scan" data-category="Utility" data-desc="Create QR codes for URLs, text, and Wi-Fi with custom colors.">
                     <div class="tool-icon"><i class="fas fa-qrcode" aria-hidden="true"></i></div>
                     <h3>QR Code Generator</h3>
                     <p>Create QR codes for any text or URL.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Utility</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
-                <a href="hash-generator" class="tool-card" data-name="Hash Generator" data-tags="hash md5 sha1 sha256" data-category="Security">
+                <a href="hash-generator" class="tool-card" data-name="Hash Generator" data-tags="hash md5 sha1 sha256" data-category="Security" data-desc="Generate MD5, SHA-1, and SHA-256 hashes from any text.">
                     <div class="tool-icon"><i class="fas fa-fingerprint" aria-hidden="true"></i></div>
                     <h3>Hash Generator</h3>
                     <p>Generate MD5, SHA-1, and SHA-256 hashes.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Security</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
-                <a href="text-case-converter" class="tool-card" data-name="Text Case Converter" data-tags="text case upper lower title sentence" data-category="Writing">
+                <a href="text-case-converter" class="tool-card" data-name="Text Case Converter" data-tags="text case upper lower title sentence" data-category="Writing" data-desc="Convert text between UPPERCASE, lowercase, Title Case, and Sentence case.">
                     <div class="tool-icon"><i class="fas fa-text-height" aria-hidden="true"></i></div>
                     <h3>Text Case Converter</h3>
                     <p>Convert text to UPPERCASE, lowercase, Title Case & more.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Writing</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
-                <a href="uuid-generator" class="tool-card" data-name="UUID Generator" data-tags="uuid guid generate unique identifier" data-category="Developer">
+                <a href="uuid-generator" class="tool-card" data-name="UUID Generator" data-tags="uuid guid generate unique identifier" data-category="Developer" data-desc="Generate random v4 UUIDs instantly with one click copy.">
                     <div class="tool-icon"><i class="fas fa-random" aria-hidden="true"></i></div>
                     <h3>UUID Generator</h3>
                     <p>Generate cryptographically secure UUID v4 identifiers.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
-                <a href="json-to-csv" class="tool-card" data-name="JSON to CSV" data-tags="json csv convert export spreadsheet" data-category="Developer">
+                <a href="json-to-csv" class="tool-card" data-name="JSON to CSV" data-tags="json csv convert export spreadsheet" data-category="Developer" data-desc="Convert JSON arrays to CSV format for spreadsheets instantly.">
                     <div class="tool-icon"><i class="fas fa-file-csv" aria-hidden="true"></i></div>
                     <h3>JSON to CSV</h3>
                     <p>Convert JSON arrays to CSV format with one click.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
-                <a href="regex-tester" class="tool-card" data-name="Regex Tester" data-tags="regex regular expression pattern match test" data-category="Developer">
+                <a href="regex-tester" class="tool-card" data-name="Regex Tester" data-tags="regex regular expression pattern match test" data-category="Developer" data-desc="Test regular expressions against sample text with match highlighting.">
                     <div class="tool-icon"><i class="fas fa-search" aria-hidden="true"></i></div>
                     <h3>Regex Tester</h3>
                     <p>Test regular expressions with real-time matching.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
-                <a href="markdown-preview" class="tool-card" data-name="Markdown Preview" data-tags="markdown md preview editor render" data-category="Developer">
+                <a href="markdown-preview" class="tool-card" data-name="Markdown Preview" data-tags="markdown md preview editor render" data-category="Developer" data-desc="Write Markdown and see the rendered preview side by side.">
                     <div class="tool-icon"><i class="fas fa-eye" aria-hidden="true"></i></div>
                     <h3>Markdown Preview</h3>
                     <p>Write Markdown and see live preview instantly.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
                 <!-- NEW TOOLS -->
-                <a href="css-minifier" class="tool-card" data-name="CSS Minifier" data-tags="css minify compress beautify format stylesheet" data-category="Developer">
+                <a href="css-minifier" class="tool-card" data-name="CSS Minifier" data-tags="css minify compress beautify format stylesheet" data-category="Developer" data-desc="Compress and beautify CSS with size-savings stats.">
                     <span class="tool-new-badge">NEW</span>
                     <div class="tool-icon"><i class="fas fa-compress-arrows-alt" aria-hidden="true"></i></div>
                     <h3>CSS Minifier</h3>
                     <p>Minify and beautify CSS code to reduce file size.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
-                <a href="timestamp-converter" class="tool-card" data-name="Timestamp Converter" data-tags="timestamp unix date time convert epoch" data-category="Developer">
+                <a href="timestamp-converter" class="tool-card" data-name="Timestamp Converter" data-tags="timestamp unix date time convert epoch" data-category="Developer" data-desc="Convert Unix timestamps to human dates and back, live as you type.">
                     <span class="tool-new-badge">NEW</span>
                     <div class="tool-icon"><i class="fas fa-clock" aria-hidden="true"></i></div>
                     <h3>Timestamp Converter</h3>
                     <p>Convert Unix timestamps to human-readable dates.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
-                <a href="ip-lookup" class="tool-card" data-name="IP Lookup" data-tags="ip address lookup location geolocation" data-category="Utility">
+                <a href="ip-lookup" class="tool-card" data-name="IP Lookup" data-tags="ip address lookup location geolocation" data-category="Utility" data-desc="Look up any public IP address — location, ISP, and timezone.">
                     <span class="tool-new-badge">NEW</span>
                     <div class="tool-icon"><i class="fas fa-globe" aria-hidden="true"></i></div>
                     <h3>IP Lookup</h3>
                     <p>Check your public IP address and connection details.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Utility</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
-                <a href="random-number-generator" class="tool-card" data-name="Random Number Generator" data-tags="random number integer decimal dice" data-category="Utility">
+                <a href="random-number-generator" class="tool-card" data-name="Random Number Generator" data-tags="random number integer decimal dice" data-category="Utility" data-desc="Generate random numbers in any range, decimals or integers, dice mode.">
                     <span class="tool-new-badge">NEW</span>
                     <div class="tool-icon"><i class="fas fa-dice" aria-hidden="true"></i></div>
                     <h3>Random Number Generator</h3>
                     <p>Generate secure random integers and decimals.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Utility</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
-                <a href="html-to-text" class="tool-card" data-name="HTML to Text" data-tags="html strip tags text extract convert" data-category="Developer">
+                <a href="html-to-text" class="tool-card" data-name="HTML to Text" data-tags="html strip tags text extract convert" data-category="Developer" data-desc="Strip HTML tags and extract clean plain text from markup.">
                     <span class="tool-new-badge">NEW</span>
                     <div class="tool-icon"><i class="fas fa-file-alt" aria-hidden="true"></i></div>
                     <h3>HTML to Text</h3>
                     <p>Strip HTML tags and extract clean text instantly.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
-                <a href="text-diff-checker" class="tool-card" data-name="Text Diff Checker" data-tags="text diff compare difference highlight" data-category="Writing">
+                <a href="text-diff-checker" class="tool-card" data-name="Text Diff Checker" data-tags="text diff compare difference highlight" data-category="Writing" data-desc="Compare two texts and highlight added/removed lines.">
                     <span class="tool-new-badge">NEW</span>
                     <div class="tool-icon"><i class="fas fa-not-equal" aria-hidden="true"></i></div>
                     <h3>Text Diff Checker</h3>
                     <p>Compare two texts side by side and find differences.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Writing</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
-                <a href="json-to-yaml" class="tool-card" data-name="JSON to YAML" data-tags="json yaml convert transform config" data-category="Developer">
+                <a href="json-to-yaml" class="tool-card" data-name="JSON to YAML" data-tags="json yaml convert transform config" data-category="Developer" data-desc="Convert between JSON and YAML instantly — both directions, in your browser.">
                     <span class="tool-new-badge">NEW</span>
                     <div class="tool-icon"><i class="fas fa-right-left" aria-hidden="true"></i></div>
                     <h3>JSON to YAML</h3>
                     <p>Convert between JSON and YAML in both directions.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
-                <a href="jwt-decoder" class="tool-card" data-name="JWT Decoder" data-tags="jwt token decode header payload expiry" data-category="Security">
+                <a href="jwt-decoder" class="tool-card" data-name="JWT Decoder" data-tags="jwt token decode header payload expiry" data-category="Security" data-desc="Decode JWT tokens and inspect headers, payloads, and expiry dates locally.">
                     <span class="tool-new-badge">NEW</span>
                     <div class="tool-icon"><i class="fas fa-id-card" aria-hidden="true"></i></div>
                     <h3>JWT Decoder</h3>
                     <p>Inspect JWT headers, payloads, and expiry locally.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Security</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
-                <a href="xml-formatter" class="tool-card" data-name="XML Formatter" data-tags="xml format minify validate pretty indent" data-category="Developer">
+                <a href="xml-formatter" class="tool-card" data-name="XML Formatter" data-tags="xml format minify validate pretty indent" data-category="Developer" data-desc="Format, minify, and validate XML with proper indentation.">
                     <span class="tool-new-badge">NEW</span>
                     <div class="tool-icon"><i class="fas fa-file-code" aria-hidden="true"></i></div>
                     <h3>XML Formatter</h3>
                     <p>Format, minify, and validate XML with clean indentation.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
-                <a href="url-parser" class="tool-card" data-name="URL Parser" data-tags="url parse query string parameters host path utm" data-category="Developer">
+                <a href="url-parser" class="tool-card" data-name="URL Parser" data-tags="url parse query string parameters host path utm" data-category="Developer" data-desc="Break any URL into protocol, host, path, and query parameters.">
                     <span class="tool-new-badge">NEW</span>
                     <div class="tool-icon"><i class="fas fa-scissors" aria-hidden="true"></i></div>
                     <h3>URL Parser</h3>
                     <p>Break URLs into protocol, host, path, and query params.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
-                <a href="html-entity-converter" class="tool-card" data-name="HTML Entity Converter" data-tags="html entities escape unescape encode decode ampersand" data-category="Developer">
+                <a href="html-entity-converter" class="tool-card" data-name="HTML Entity Converter" data-tags="html entities escape unescape encode decode ampersand" data-category="Developer" data-desc="Escape and unescape HTML entities — convert code to safe display text.">
                     <span class="tool-new-badge">NEW</span>
                     <div class="tool-icon"><i class="fas fa-code" aria-hidden="true"></i></div>
                     <h3>HTML Entity Converter</h3>
                     <p>Escape and unescape HTML entities instantly.</p>
                     <div class="tool-card-footer"><span class="tool-tag">Developer</span><span class="open-tool-hint">Open Tool <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
                 </a>
-                <a href="image-to-base64" class="tool-card" data-name="Image to Base64" data-tags="image base64 data uri convert embed" data-category="Developer">
+                <a href="image-to-base64" class="tool-card" data-name="Image to Base64" data-tags="image base64 data uri convert embed" data-category="Developer" data-desc="Convert any image to a Base64 data URI — private, in your browser.">
                     <span class="tool-new-badge">NEW</span>
                     <div class="tool-icon"><i class="fas fa-image" aria-hidden="true"></i></div>
                     <h3>Image to Base64</h3>
@@ -615,6 +615,8 @@
                 </a>
             </div>
         </section>
+
+            <p class="trust-line"><i class="fas fa-lock" aria-hidden="true"></i> Browser-based · Your data stays on your device</p>
 
         <!-- Useful Guides -->
         <section class="section" aria-labelledby="guides-heading">

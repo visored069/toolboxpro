@@ -1,5 +1,5 @@
 // ===== AI Directories Service Worker =====
-const CACHE_NAME = 'ai-directories-v8';
+const CACHE_NAME = 'ai-directories-v10';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -79,12 +79,31 @@ self.addEventListener('activate', function(event) {
   self.clients.claim();
 });
 
-// Fetch: cache-first for same-origin, network-first for external
+// Fetch: network-first for page navigations (fresh content when online, cache as
+// offline fallback), cache-first with background revalidate for static assets.
 self.addEventListener('fetch', function(event) {
   var url = new URL(event.request.url);
 
   // Only handle same-origin requests
   if (url.origin !== location.origin) {
+    return;
+  }
+
+  // Navigations: always try the network first so users never see stale pages
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request).then(function(response) {
+        if (response && response.status === 200) {
+          var copy = response.clone();
+          caches.open(CACHE_NAME).then(function(cache) { cache.put(event.request, copy); });
+        }
+        return response;
+      }).catch(function() {
+        return caches.match(event.request).then(function(cached) {
+          return cached || caches.match('/index.html');
+        });
+      })
+    );
     return;
   }
 

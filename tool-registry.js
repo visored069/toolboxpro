@@ -89,7 +89,7 @@
             } catch (e) { return []; }
         },
         _write: function (key, arr) {
-            try { localStorage.setItem(key, JSON.stringify(arr.slice(0, key === this.recentKey ? 6 : 50))); } catch (e) {}
+            try { localStorage.setItem(key, JSON.stringify(arr.slice(0, key === this.recentKey ? 5 : 50))); } catch (e) {}
         },
         getFavorites: function () { return this._read(this.favKey); },
         isFavorite: function (slug) { return this.getFavorites().indexOf(slug) !== -1; },
