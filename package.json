@@ -3,7 +3,9 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
-    "build": "echo 'static site: no build step required'"
+    "build": "node lint-registry.js && node gen-sitemap.js && node check-links.js && echo 'static site: checks passed, no build step required'",
+    "lint:data": "node lint-registry.js",
+    "lint:links": "node check-links.js"
   },
   "dependencies": {}
 }
