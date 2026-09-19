@@ -1,5 +1,5 @@
 /*
- * Link integrity checker for ToolBox Pro (static site).
+ * Link integrity checker for AI Directories (static site).
  * - Every local href/src in .html files must resolve to a real file.
  *   Clean URLs ("json-formatter") map to "json-formatter.html".
  * - Also checks url(...) refs and known asset strings inside .js files.

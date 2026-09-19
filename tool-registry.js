@@ -1,5 +1,5 @@
 /*
- * ToolBox Pro — Centralized Tool Registry
+ * AI Directories — Centralized Tool Registry
  * Single source of truth for all developer tools.
  * Counts and related tools are GENERATED from this file — never hardcode.
  * To add a tool: add an entry here + create <slug>.html.
@@ -115,8 +115,8 @@
             var credit = footer.querySelector('.footer-bottom');
             var html = '<div class="footer-content">' +
                 '<div><div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;">' +
-                '<div style="width:35px;height:35px;background:var(--gradient-1);border-radius:8px;display:flex;align-items:center;justify-content:center;"><i class="fas fa-toolbox" style="color:white;" aria-hidden="true"></i></div>' +
-                '<span style="font-weight:700;font-size:1.1rem;">ToolBox Pro</span></div>' +
+                '<div style="width:35px;height:35px;background:var(--gradient-1);border-radius:8px;display:flex;align-items:center;justify-content:center;"><i class="fas fa-compass" style="color:white;" aria-hidden="true"></i></div>' +
+                '<span style="font-weight:700;font-size:1.1rem;">AI Directories</span></div>' +
                 '<p style="color:var(--text-secondary);font-size:0.85rem;">Free online developer tools for everyone.</p></div>' +
                 '<div><h4>Quick Links</h4><ul><li><a href="/">Home</a></li><li><a href="ai-tools">AI Tools Directory</a></li><li><a href="guides">Guides</a></li><li><a href="about">About Us</a></li><li><a href="contact">Contact</a></li></ul></div>' +
                 '<div><h4>Popular Tools</h4><ul><li><a href="json-formatter">JSON Formatter</a></li><li><a href="password-generator">Password Generator</a></li><li><a href="qr-code-generator">QR Code Generator</a></li><li><a href="word-counter">Word Counter</a></li></ul></div>' +

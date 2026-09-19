@@ -1,6 +1,6 @@
 /*
  * AI Directories — shared theme toggle for pages without components.js.
- * Applies html.light + persists to the site-wide 'toolboxpro-theme' key.
+ * Applies html.light + persists to the site-wide theme key (legacy toolboxpro-* keys kept for visitor data compat).
  * Initial application happens in <head> (no-flash); this only wires the button.
  */
 (function () {

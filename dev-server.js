@@ -51,4 +51,4 @@ http.createServer((req, res) => {
     res.writeHead(200, { 'Content-Type': MIME[ext] || 'application/octet-stream', 'Cache-Control': 'no-cache' });
     res.end(data);
   });
-}).listen(PORT, () => console.log('ToolBox Pro dev server at http://127.0.0.1:' + PORT));
+}).listen(PORT, () => console.log('AI Directories dev server at http://127.0.0.1:' + PORT));

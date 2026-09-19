@@ -1,4 +1,4 @@
-// ===== ToolBox Pro -- Cinematic Components v4 =====
+// ===== AI Directories — Cinematic Components v4 =====
 
 // Homepage-only ambient effects: tool pages stay lightweight (INP/LCP budget)
 var IS_HOMEPAGE = !!(document.getElementById('typewriter-text') || document.getElementById('tools-grid'));
