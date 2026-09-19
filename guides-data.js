@@ -1,5 +1,5 @@
 /*
- * ToolBox Pro — Guide Registry
+ * AI Directories — Guide Registry
  * To add a new guide: append an entry here, then create <slug>.html.
  * The /guides index page renders this list automatically.
  * Fields: slug (URL), title, description, icon (Font Awesome class),
