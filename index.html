@@ -76,6 +76,35 @@
     }
     </script>
     <script>try{if(localStorage.getItem('toolboxpro-theme')==='light'||(!localStorage.getItem('toolboxpro-theme')&&window.matchMedia('(prefers-color-scheme: light)').matches))document.documentElement.classList.add('light');}catch(e){}</script>
+    <script>
+    /* Preloader safety net — arms before first paint, releases after 4s only if
+       the normal dismiss path never ran (CDN script stalled or inline script
+       threw). On a normal load the preloader is already gone by 4s, so the
+       release is a no-op. Timer-only by design: a 'load' disarm listener would
+       cut short deliberate post-load holds. Display is force-cleared because a
+       'hidden' class transition can be suppressed if styles are interrupted. */
+    (function(){
+        if (window.__plNet) return; window.__plNet = true;
+        var released = false;
+        try { document.documentElement.classList.add('pl-armed'); } catch (e) {}
+        function release(){
+            if (released) return; released = true;
+            try {
+                var pl = document.getElementById('preloader');
+                if (pl) {
+                    pl.style.display = 'none';
+                    pl.classList.add('hidden');
+                    if (pl.parentNode) pl.parentNode.removeChild(pl);
+                }
+                if (document.body && !document.body.classList.contains('loaded')) document.body.classList.add('loaded');
+                document.documentElement.classList.remove('pl-armed');
+                try { document.dispatchEvent(new CustomEvent('aid:preloader-fallback')); } catch (e) {}
+            } catch (e) { /* never let the net itself break the page */ }
+        }
+        /* Timer-only: on success the element is already removed, so this is a no-op */
+        setTimeout(release, 4000);
+    })();
+    </script>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -104,7 +133,6 @@
     <!-- 3D Background (renders on production/Vercel, disabled in preview webview) -->
     <canvas id="scene3d" style="display:none"></canvas>
     <canvas id="shader-bg" style="display:none"></canvas>
-    <a href="#main-content" class="skip-link">Skip to content</a>
     <!-- Cinematic background layers -->
     <canvas id="particle-canvas"></canvas>
     <div class="bg-animation" aria-hidden="true"></div>

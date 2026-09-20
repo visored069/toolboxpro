@@ -1,5 +1,15 @@
 // ===== AI Directories Service Worker =====
-const CACHE_NAME = 'ai-directories-v16';
+const CACHE_NAME = 'ai-directories-v20';
+
+// Observability: log unexpected failures without changing behavior.
+// Expected paths (offline fallbacks, skipped background refreshes while
+// offline) stay quiet — see the fetch handler below.
+self.addEventListener('error', function(event) {
+  console.error('[SW] Error:', event.message || event);
+});
+self.addEventListener('unhandledrejection', function(event) {
+  console.error('[SW] Unhandled rejection:', event.reason);
+});
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -15,7 +25,6 @@ const STATIC_ASSETS = [
   '/contact.html',
   '/privacy.html',
   '/terms.html',
-  '/ai-tools.html',
   '/ai-registry.js',
   '/ai-tools/',
   '/ai-tools/ai-code/',
@@ -61,6 +70,11 @@ self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open(CACHE_NAME).then(function(cache) {
       return cache.addAll(STATIC_ASSETS);
+    }).catch(function(err) {
+      // Install still fails (unchanged behavior) — but the log now names the
+      // failing entry instead of an anonymous unhandled rejection.
+      console.error('[SW] Precache failed — service worker not installed:', err);
+      throw err;
     })
   );
   self.skipWaiting();
@@ -74,6 +88,9 @@ self.addEventListener('activate', function(event) {
         keys.filter(function(key) { return key !== CACHE_NAME; })
             .map(function(key) { return caches.delete(key); })
       );
+    }).catch(function(err) {
+      // Old-cache cleanup is best-effort; never block activation on it.
+      console.warn('[SW] Old cache cleanup failed:', err);
     })
   );
   self.clients.claim();
@@ -83,6 +100,11 @@ self.addEventListener('activate', function(event) {
 // offline fallback), cache-first with background revalidate for static assets.
 self.addEventListener('fetch', function(event) {
   var url = new URL(event.request.url);
+
+  // API routes (e.g. /api/feedback) must always hit the network — never cached, never served from cache
+  if (url.pathname.indexOf('/api/') === 0) {
+    return;
+  }
 
   // Only handle same-origin requests
   if (url.origin !== location.origin) {
@@ -95,10 +117,13 @@ self.addEventListener('fetch', function(event) {
       fetch(event.request).then(function(response) {
         if (response && response.status === 200) {
           var copy = response.clone();
-          caches.open(CACHE_NAME).then(function(cache) { cache.put(event.request, copy); });
+          caches.open(CACHE_NAME).then(function(cache) { cache.put(event.request, copy); }).catch(function(err) {
+            console.warn('[SW] Navigation cache update failed:', err);
+          });
         }
         return response;
       }).catch(function() {
+        // Expected offline fallback — deliberately silent.
         return caches.match(event.request).then(function(cached) {
           return cached || caches.match('/index.html');
         });
@@ -115,9 +140,15 @@ self.addEventListener('fetch', function(event) {
           if (response && response.status === 200) {
             caches.open(CACHE_NAME).then(function(cache) {
               cache.put(event.request, response);
+            }).catch(function(err) {
+              console.warn('[SW] Cache update failed:', err);
             });
           }
-        }).catch(function() {});
+        }).catch(function(err) {
+          // Expected while offline (the cached response is already in use).
+          // Debug-level so normal consoles stay clean; visible when debugging.
+          console.debug('[SW] Background refresh skipped:', err && err.message);
+        });
         return cached;
       }
 
@@ -133,6 +164,8 @@ self.addEventListener('fetch', function(event) {
         var responseToCache = response.clone();
         caches.open(CACHE_NAME).then(function(cache) {
           cache.put(event.request, responseToCache);
+        }).catch(function(err) {
+          console.warn('[SW] Cache update failed:', err);
         });
         return response;
       }).catch(function() {
@@ -140,6 +173,10 @@ self.addEventListener('fetch', function(event) {
         if (event.request.mode === 'navigate') {
           return caches.match('/index.html');
         }
+        // Non-navigation cache miss while offline: fail the request cleanly.
+        // Returning a real Response avoids a SW-internal TypeError from an
+        // undefined respondWith value.
+        return Response.error();
       });
     })
   );

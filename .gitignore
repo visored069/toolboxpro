@@ -8,3 +8,11 @@
 # Local admin dashboard (never deploy)
 registry-dashboard.html
 link-report.md
+
+# Freebuff runtime artifacts (logs/pids from dev-server & preview sessions)
+.freebuff/*.log
+.freebuff/*.log.err
+.freebuff/pid.txt
+
+# Separate embedded git repository (own project, excluded from site tooling)
+facelessforge/

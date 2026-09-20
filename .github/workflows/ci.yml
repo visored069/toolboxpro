@@ -36,27 +36,14 @@ jobs:
       - name: Internal link integrity
         run: node check-links.js
 
-  deploy:
-    # Gate: production deploys only after checks pass (on master pushes).
-    # Requires two repo secrets (Settings → Secrets → Actions):
-    #   VERCEL_DEPLOY_HOOK_URL — from Vercel → Settings → Git Integration → Deploy Hook
-    #   (optional) VERCEL_TOKEN — to verify the deployment URL afterwards
-    needs: checks
-    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Trigger Vercel production deploy
-        if: ${{ vars.VERCEL_DEPLOY_GATE != 'manual-only' }}
-        env:
-          HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
-        run: |
-          if [ -z "$HOOK" ]; then
-            echo "::warning::VERCEL_DEPLOY_HOOK_URL secret not set — Vercel's own Git integration deployed this push before CI could gate it. Add the hook to enforce the gate."
-            exit 0
-          fi
-          HTTP=$(curl -s -o /dev/null -w "%{http_code}" -X POST "$HOOK")
-          echo "deploy hook responded: $HTTP"
-          [ "$HTTP" = "200" ] || { echo "::error::Deploy hook failed ($HTTP)"; exit 1; }
+  # Deployment: Vercel's native Git integration deploys production on every
+  # push to master — no deploy job here, by design. A `deploy` job that pings
+  # VERCEL_DEPLOY_HOOK_URL only made sense as a post-checks gate; without the
+  # secret it warned and exited 0 while Git integration had already deployed,
+  # so the "gate" was decorative. To re-introduce a real gate:
+  #   1) disable Vercel Git integration (Vercel → Settings → Git),
+  #   2) add a deploy hook URL as the VERCEL_DEPLOY_HOOK_URL secret,
+  #   3) restore a deploy job here that needs: [checks] and POSTs the hook.
 
   link-rot:
     # Weekly external URL check for the whole directory (AI + dev tools).

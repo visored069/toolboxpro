@@ -343,7 +343,7 @@ function buildEmptyState(query, category) {
     if (msgEl) {
         if (query && category !== 'all') msgEl.textContent = 'No ' + category.toLowerCase() + ' tools match that search. Try another term or clear the category filter.';
         else if (query) msgEl.textContent = 'Check the spelling, or try one of these popular searches instead.';
-        else msgEl.textContent = 'Try a different category, or reset to browse all 20 tools.';
+        else msgEl.textContent = 'Try a different category, or reset to browse all ' + (window.ToolRegistry ? ToolRegistry.count() : document.querySelectorAll('.tool-card').length) + ' tools.';
     }
     if (sugWrap && sugChips) {
         if (query) {
@@ -863,22 +863,80 @@ function initFeedback() {
             var message = textarea ? textarea.value.trim() : '';
             if (!selectedEmoji && !message) { showToast('Pick a rating or leave a message!'); return; }
             var feedback = { page: window.location.pathname, rating: selectedEmoji, message: message, timestamp: new Date().toISOString() };
-            var stored = JSON.parse(localStorage.getItem('toolboxpro-feedback') || '[]');
-            stored.push(feedback);
-            localStorage.setItem('toolboxpro-feedback', JSON.stringify(stored));
-            panel.querySelector('.feedback-form').style.display = 'none';
+            var form = panel.querySelector('.feedback-form');
             var thanks = document.getElementById('feedback-thanks');
-            if (thanks) thanks.style.display = 'block';
-            setTimeout(function() {
-                panel.classList.remove('open'); panel.querySelector('.feedback-form').style.display = 'block';
+            var resetUi = function() {
+                panel.classList.remove('open');
+                if (form) form.style.display = 'block';
                 if (thanks) thanks.style.display = 'none';
                 if (textarea) textarea.value = '';
                 panel.querySelectorAll('.feedback-emoji').forEach(function(b) { b.classList.remove('selected'); });
                 selectedEmoji = '';
-            }, 2500);
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = '';
+                submitBtn.textContent = 'Send Feedback';
+            };
+            // Server is the source of truth: the thanks state is shown only
+            // after /api/feedback accepts the submission (2xx). On failure the
+            // draft is queued in localStorage for a later retry and the user
+            // is told it did NOT send — never a false success.
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = '0.6';
+            submitBtn.textContent = 'Sending\u2026';
+            feedbackPost(feedback).then(function() {
+                if (form) form.style.display = 'none';
+                if (thanks) thanks.style.display = 'block';
+                setTimeout(resetUi, 2500);
+                feedbackFlushQueue(); // opportunistic: deliver anything queued while offline
+            }).catch(function() {
+                feedbackWriteQueue(feedbackReadQueue().concat([feedback]));
+                showToast('Feedback not sent \u2014 check your connection and try again.');
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = '';
+                submitBtn.textContent = 'Send Feedback';
+            });
         });
     }
 }
+
+// --- Feedback delivery: POST to /api/feedback ---
+// localStorage holds an UNSENT queue only (offline recovery). It is never
+// treated as successful delivery. Success UI requires a 2xx from the server.
+var FEEDBACK_ENDPOINT = '/api/feedback';
+function feedbackReadQueue() {
+    try {
+        var raw = JSON.parse(localStorage.getItem('toolboxpro-feedback') || '[]');
+        return Array.isArray(raw) ? raw : [];
+    } catch (e) { return []; }
+}
+function feedbackWriteQueue(items) {
+    try { localStorage.setItem('toolboxpro-feedback', JSON.stringify(items.slice(0, 10))); } catch (e) {}
+}
+function feedbackPost(item) {
+    return fetch(FEEDBACK_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(item)
+    }).then(function(res) {
+        if (!res.ok) throw new Error('feedback endpoint returned ' + res.status);
+        return true;
+    });
+}
+function feedbackFlushQueue() {
+    var queue = feedbackReadQueue();
+    if (!queue.length) return;
+    var remaining = [];
+    var chain = Promise.resolve();
+    queue.forEach(function(item) {
+        chain = chain.then(function() {
+            return feedbackPost(item).catch(function() { remaining.push(item); });
+        });
+    });
+    chain.then(function() { feedbackWriteQueue(remaining); });
+}
+// Retry anything left unsent on page load and when connectivity returns.
+feedbackFlushQueue();
+window.addEventListener('online', feedbackFlushQueue);
 
 // --- Performance Monitoring ---
 function initPerformance() {
@@ -974,8 +1032,26 @@ function initPageTransitions() {
     document.addEventListener('click', function(e) {
         var link = e.target.closest('a[href]');
         if (!link) return;
+        // Native browser behavior always wins: let the browser handle
+        // already-handled events, modified/auxiliary clicks (new tab/window,
+        // downloads), cross-context targets, and explicit download links.
+        // The overlay must never hijack these.
+        if (e.defaultPrevented) return;
+        if (e.button !== 0) return;
+        if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+        if (link.target && link.target !== '_self') return;
+        if (link.hasAttribute('download')) return;
         var href = link.getAttribute('href');
-        if (!href || href.charAt(0) === '#' || href.indexOf('http') === 0 || href.indexOf('mailto:') === 0 || href.indexOf('tel:') === 0) return;
+        if (!href || href.charAt(0) === '#') return;
+        // Only same-origin http(s) links may be intercepted. Everything else —
+        // external origins, protocol-relative // URLs, and any other scheme
+        // (mailto:, tel:, javascript:, data:, blob:, ...) — is native-browser
+        // territory. URL normalization also handles uppercase schemes that the
+        // old prefix check missed.
+        var resolved;
+        try { resolved = new URL(href, window.location.href); } catch (err) { return; }
+        if (resolved.protocol !== 'http:' && resolved.protocol !== 'https:') return;
+        if (resolved.origin !== window.location.origin) return;
         // Skip external links, same-page anchors, and feedback/cookie buttons
         if (link.classList.contains('cookie-btn') || link.classList.contains('pwa-dismiss') || link.classList.contains('pwa-install-btn')) return;
         e.preventDefault();

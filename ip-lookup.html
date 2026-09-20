@@ -260,7 +260,7 @@
             <div class="shortcuts-header"><h3><i class="fas fa-keyboard" aria-hidden="true"></i> Keyboard Shortcuts</h3><button class="shortcuts-close" onclick="closeShortcuts()" aria-label="Close"><i class="fas fa-times"></i></button></div>
             <div class="shortcuts-list">
                 <div class="shortcut-item"><span class="shortcut-desc">Focus search</span><span class="shortcut-keys"><kbd>Ctrl</kbd><kbd>K</kbd></span></div>
-                <div class="shortcut-item"><span class="shortcut-desc">Toggle dark mode</span><span class="shortcut-keys"><kbd>Ctrl</kbd><kbd></kbd></span></div>
+                <div class="shortcut-item"><span class="shortcut-desc">Toggle dark mode</span><span class="shortcut-keys"><kbd>Ctrl</kbd><kbd>\</kbd></span></div>
                 <div class="shortcut-item"><span class="shortcut-desc">Show shortcuts</span><span class="shortcut-keys"><kbd>?</kbd></span></div>
                 <div class="shortcut-item"><span class="shortcut-desc">Close modal</span><span class="shortcut-keys"><kbd>Esc</kbd></span></div>
             </div>
@@ -282,12 +282,21 @@
 
     <script src="components.js"></script>
     <script>
+        // Request timeout: a hung API response must never leave the spinner
+        // spinning forever. AbortController is the native mechanism — no deps.
+        const IP_LOOKUP_TIMEOUT_MS = 8000;
+        function fetchWithTimeout(url, ms) {
+            const controller = new AbortController();
+            const timer = setTimeout(() => controller.abort(), ms);
+            return fetch(url, { signal: controller.signal }).finally(() => clearTimeout(timer));
+        }
+
         async function lookupIP() {
             document.getElementById('ip-loading').style.display = 'block';
             document.getElementById('ip-results').style.display = 'none';
             document.getElementById('ip-error').style.display = 'none';
             try {
-                const resp = await fetch('https://ipapi.co/json/');
+                const resp = await fetchWithTimeout('https://ipapi.co/json/', IP_LOOKUP_TIMEOUT_MS);
                 if (!resp.ok) throw new Error('API error');
                 const data = await resp.json();
                 document.getElementById('ip-address').textContent = data.ip;
@@ -307,6 +316,9 @@
                     'ASN:           ' + (data.asn || 'N/A');
                 document.getElementById('ip-results').style.display = 'block';
             } catch (e) {
+                // Timeouts, network failures, and bad responses all land here:
+                // the loading state always exits (finally block) and the user
+                // gets the honest error message — never a stuck spinner.
                 document.getElementById('ip-error').style.display = 'block';
             } finally {
                 document.getElementById('ip-loading').style.display = 'none';

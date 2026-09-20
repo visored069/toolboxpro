@@ -734,7 +734,7 @@
             "position": 62,
             "item": {
               "@type": "SoftwareApplication",
-              "name": " Julius AI",
+              "name": "Julius AI",
               "applicationCategory": "AI Productivity",
               "url": "https://aidirectories.in/ai-tools/julius-ai",
               "description": "AI data analyst. Upload files, ask questions in natural language, get charts and insights instantly."
@@ -1526,6 +1526,44 @@
         html.light .fc-link { color: #4f46e5; }
 </style>
     <script>try{if(localStorage.getItem('toolboxpro-theme')==='light'||(!localStorage.getItem('toolboxpro-theme')&&window.matchMedia('(prefers-color-scheme: light)').matches))document.documentElement.classList.add('light');}catch(e){}</script>
+    <script>
+    /* Preloader safety net — arms before first paint. This page's normal path
+       holds the preloader until 'load' + 1500ms, so the net is load-aware and
+       can never cut that deliberate hold short on slow connections: if 'load'
+       fires, the net waits until load + 1600ms; if 'load' never fires (true
+       hang), the net releases at an 8s hard ceiling. On a normal load the
+       preloader is already gone, so the release is a no-op. Display is
+       force-cleared because a 'hidden' class transition can be suppressed if
+       styles are interrupted. */
+    (function(){
+        if (window.__plNet) return; window.__plNet = true;
+        var released = false;
+        var loadAt = 0;
+        window.addEventListener('load', function(){ if (!loadAt) loadAt = Date.now(); });
+        function release(){
+            if (released) return; released = true;
+            try {
+                var pl = document.getElementById('preloader');
+                if (pl) {
+                    pl.style.display = 'none';
+                    pl.classList.add('hidden');
+                    if (pl.parentNode) pl.parentNode.removeChild(pl);
+                }
+                try { document.dispatchEvent(new CustomEvent('aid:preloader-fallback')); } catch (e) {}
+            } catch (e) { /* never let the net itself break the page */ }
+        }
+        function check(){
+            if (loadAt) {
+                var wait = loadAt + 1600 - Date.now();
+                if (wait > 0) { setTimeout(check, wait); return; }
+                release(); return;
+            }
+            if (Date.now() < 8000) { setTimeout(check, 8000 - Date.now()); return; }
+            release();
+        }
+        setTimeout(check, 4000);
+    })();
+    </script>
 </head>
 <body>
     <!-- Preloader -->
@@ -2954,7 +2992,7 @@
                 <div class="tool-card-header">
                     <div class="tool-icon" style="background:#6366f118;color:#6366f1"><i class="fas fa-chart-bar" aria-hidden="true"></i></div>
                     <div class="tool-info">
-                        <div class="tool-name"> Julius AI</div>
+                        <div class="tool-name">Julius AI</div>
                         <div class="tool-company">Julius</div>
                     </div>
                 </div>
