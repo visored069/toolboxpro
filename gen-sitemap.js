@@ -37,7 +37,7 @@ function walk(dir, acc) {
     return acc;
 }
 const raw = walk('.', []);
-const EXCLUDE = [/og-image$/, /^3d-/, /^dev-server/, /-test$/, /-demo$/, /^test-/, /^404$/, /^premium$/, /noindex/];
+const EXCLUDE = [/og-image$/, /^3d-/, /^dev-server/, /-test$/, /-demo$/, /^test-/, /^404$/, /^premium$/, /noindex/, /^registry-dashboard$/];
 const pages = raw
     .map(p => p.split(path.sep).join('/').replace(/\/index$/, ''))
     .map(p => (p === '.' || p === '' ? '/' : '/' + p))
