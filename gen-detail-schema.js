@@ -10,7 +10,7 @@ const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
 
-const SITE = 'https://aidirectories.in';
+const SITE = 'https://www.aidirectories.in';
 const MARKER = 'aid:schema';
 
 // ---------- registry ----------

@@ -12,7 +12,7 @@ const path = require('path');
 const { execSync } = require('child_process');
 const vm = require('vm');
 
-const SITE = 'https://aidirectories.in';
+const SITE = 'https://www.aidirectories.in';
 const TODAY = new Date().toISOString().slice(0, 10);
 
 // ---------- load registry for lastVerified ----------

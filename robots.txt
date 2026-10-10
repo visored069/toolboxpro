@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://aidirectories.in/sitemap.xml
+Sitemap: https://www.aidirectories.in/sitemap.xml

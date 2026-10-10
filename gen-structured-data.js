@@ -9,7 +9,7 @@
 const fs = require('fs');
 const vm = require('vm');
 
-const SITE = 'https://aidirectories.in';
+const SITE = 'https://www.aidirectories.in';
 const FILE = 'ai-tools/index.html';
 
 // ---------- load registry ----------

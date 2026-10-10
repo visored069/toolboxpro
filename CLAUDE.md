@@ -1,7 +1,7 @@
 # AI Directories — Agent Working Rules
 
 Project: AI Directories (formerly ToolBox Pro) — static AI-tools directory + 26 browser-based developer tools.
-Live: https://toolboxpro-theta.vercel.app/ → canonical https://aidirectories.in
+Live: https://toolboxpro-theta.vercel.app/ → canonical https://www.aidirectories.in
 
 ## Standing defaults (apply to EVERY task)
 

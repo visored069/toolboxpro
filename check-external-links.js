@@ -37,7 +37,7 @@ function fetchOnce(url, method) {
         if (!/^https:$/.test(u.protocol)) return resolve({ status: 0, error: 'not https' });
         const mod = u.protocol === 'https:' ? https : http;
         const req = mod.request(u, { method, timeout: TIMEOUT_MS, headers: {
-            'User-Agent': 'Mozilla/5.0 (compatible; AIDirectoriesLinkCheck/1.0; +https://aidirectories.in)',
+            'User-Agent': 'Mozilla/5.0 (compatible; AIDirectoriesLinkCheck/1.0; +https://www.aidirectories.in)',
             'Accept': 'text/html,application/xhtml+xml,*/*;q=0.8',
         } }, res => {
             // consume body so socket frees
