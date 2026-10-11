@@ -32,6 +32,7 @@
 <link rel="stylesheet" href="tool-page-shared.css">
     <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css">
     <script>try{if(localStorage.getItem('toolboxpro-theme')==='light'||(!localStorage.getItem('toolboxpro-theme')&&window.matchMedia('(prefers-color-scheme: light)').matches))document.documentElement.classList.add('light');}catch(e){}</script>
+    <!-- Analytics is consent-gated via components.js; no GA block remains in this page. -->
 </head>
 <body>
     <!-- Page Transition Overlay -->
@@ -188,8 +189,8 @@ utm_source = newsletter</code></pre></div>
 
     <!-- Cookie Consent Banner -->
     <div class="cookie-banner" id="cookie-banner">
-        <div class="cookie-content"><div class="cookie-icon">🍪</div><div class="cookie-text"><strong>We use cookies</strong><p>We use localStorage to save your preferences. No tracking. <a href="privacy">Learn more</a></p></div></div>
-        <div class="cookie-actions"><button class="cookie-btn cookie-accept" onclick="acceptCookies()">Accept</button><button class="cookie-btn cookie-dismiss" onclick="dismissCookies()">Decline</button></div>
+        <div class="cookie-content"><div class="cookie-icon">🍪</div><div class="cookie-text"><strong>We use cookies</strong><p>We use localStorage to save your preferences. We do not do any tracking. Google Analytics is used only with your consent. <a href="privacy">Learn more</a></p></div></div>
+        <div class="cookie-actions"><button class="cookie-btn cookie-accept" onclick="acceptCookies()">Accept analytics</button><button class="cookie-btn cookie-dismiss" onclick="dismissCookies()">Decline analytics</button></div>
     </div>
 
     <!-- Keyboard Shortcuts Modal -->

@@ -32,6 +32,7 @@
     </script>
     <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css">
     <script>try{if(localStorage.getItem('toolboxpro-theme')==='light'||(!localStorage.getItem('toolboxpro-theme')&&window.matchMedia('(prefers-color-scheme: light)').matches))document.documentElement.classList.add('light');}catch(e){}</script>
+
 </head>
 <body>
 <header>
@@ -153,9 +154,15 @@
             <p>© <span id="footer-year">2026</span> AI Directories. All rights reserved. Built with ❤️</p>
             <p style="margin-top:8px;font-size:inherit;color:inherit;">Built by <a href="https://x.com/portfoliomate/status/2098498135396090165" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Portfolio Mate</a> — I design and build sites like this one. <a href="https://x.com/portfoliomate/status/2098498135396090165" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">See my work →</a></p>
         </div>
+    <div class="cookie-banner" id="cookie-banner" role="region" aria-label="Cookie consent">
+        <div class="cookie-content"><div class="cookie-icon">🍪</div><div class="cookie-text"><strong>We use cookies</strong><p>We use localStorage to save your preferences (theme, dismissed banners). We use Google Analytics only after you choose to accept analytics. <a href="/privacy">Learn more</a></p></div></div>
+        <div class="cookie-actions"><button class="cookie-btn cookie-accept" onclick="acceptCookies()">Accept analytics</button><button class="cookie-btn cookie-dismiss" onclick="dismissCookies()">Decline analytics</button></div>
+    </div>
+
     </footer>
     <script>document.querySelectorAll('#footer-year').forEach(function(e){e.textContent=new Date().getFullYear();});</script>
 <script src="/ai-registry.js" defer></script>
+
     <script src="/components.js" defer></script>
     <script src="/command-palette.js" defer></script>
     <script>

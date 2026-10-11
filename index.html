@@ -796,12 +796,13 @@
             <div class="cookie-icon">🍪</div>
             <div class="cookie-text">
                 <strong>We use cookies</strong>
-                <p>We use localStorage to save your preferences (theme, dismissed banners). No tracking cookies. <a href="privacy">Learn more</a></p>
+                <p>We use localStorage to save your preferences (theme, dismissed banners). We use Google Analytics only after you choose to accept analytics. <a href="privacy">Learn more</a></p>
+                <!-- Analytics is consent-gated via components.js; no GA block remains in this page. -->
             </div>
         </div>
         <div class="cookie-actions">
-            <button class="cookie-btn cookie-accept" onclick="acceptCookies()">Accept</button>
-            <button class="cookie-btn cookie-dismiss" onclick="dismissCookies()">Decline</button>
+                <button class="cookie-btn cookie-accept" onclick="acceptCookies()">Accept analytics</button>
+                <button class="cookie-btn cookie-dismiss" onclick="dismissCookies()">Decline analytics</button>
         </div>
     </div>
 
@@ -817,10 +818,10 @@
     </div>
 
 
-    <script src="tool-registry.js"></script>
-    <script src="ai-registry.js" defer></script>
+    <script src="/tool-registry.js"></script>
+    <script src="/ai-registry.js" defer></script>
     <script src="command-palette.js" defer></script>
-    <script src="components.js"></script>
+    <script src="/components.js" defer></script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Category tab counts generated from the central registry — never hardcoded

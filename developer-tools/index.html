@@ -39,6 +39,7 @@
     </style>
     <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css">
     <script>try{if(localStorage.getItem('toolboxpro-theme')==='light'||(!localStorage.getItem('toolboxpro-theme')&&window.matchMedia('(prefers-color-scheme: light)').matches))document.documentElement.classList.add('light');}catch(e){}</script>
+
 </head>
 <body>
 <header>
@@ -79,7 +80,6 @@
                 <button type="button" class="hero-btn ghost" id="hub-zero-clear"><i class="fas fa-rotate-left" aria-hidden="true"></i> Clear search</button>
             </div>
         </div>
-
 
         <section class="hub-recent" id="hub-recent" style="display:none;" aria-labelledby="hub-recent-heading">
             <div class="section-header"><h2 id="hub-recent-heading">🕓 Recently Used</h2><span class="badge">THIS DEVICE</span></div>
@@ -481,9 +481,7 @@
         }
     });
     </script>
-    <script>document.querySelectorAll('#footer-year').forEach(function(e){e.textContent=new Date().getFullYear();});</script>
-<script src="/ai-registry.js" defer></script>
-<script src="/tool-registry.js" defer></script>
+    <script>document.querySelectorAll('#footer-year').forEach(function(e){e.textContent=new Date().getFullYear();});</script>    <script src="/tool-registry.js" defer></script>
     <script src="/components.js" defer></script>
     <script src="/command-palette.js" defer></script>
     <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>

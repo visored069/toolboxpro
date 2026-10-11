@@ -124,6 +124,7 @@
 <link rel="stylesheet" href="tool-page-shared.css">
     <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css">
     <script>try{if(localStorage.getItem('toolboxpro-theme')==='light'||(!localStorage.getItem('toolboxpro-theme')&&window.matchMedia('(prefers-color-scheme: light)').matches))document.documentElement.classList.add('light');}catch(e){}</script>
+
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to content</a>
@@ -168,7 +169,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- SEO content (static, injected by inject-seo-content.js) -->
     <section class="seo-content" aria-label="About this tool">
                 <p class="seo-intro">Markdown is the lightweight formatting language used everywhere from READMEs to chat apps: # for headings, ** for bold, backticks for code. This tool renders your Markdown side by side with the formatted result as you type, so you can check syntax before publishing.</p>
@@ -262,8 +263,8 @@
 
     <!-- Cookie Consent Banner -->
     <div class="cookie-banner" id="cookie-banner">
-        <div class="cookie-content"><div class="cookie-icon">🍪</div><div class="cookie-text"><strong>We use cookies</strong><p>We use localStorage to save your preferences. No tracking. <a href="privacy">Learn more</a></p></div></div>
-        <div class="cookie-actions"><button class="cookie-btn cookie-accept" onclick="acceptCookies()">Accept</button><button class="cookie-btn cookie-dismiss" onclick="dismissCookies()">Decline</button></div>
+        <div class="cookie-content"><div class="cookie-icon">🍪</div><div class="cookie-text"><strong>We use cookies</strong><p>We use localStorage to save your preferences (theme, dismissed banners). We use Google Analytics only after you choose to accept analytics. <a href="privacy">Learn more</a></p></div></div>
+        <div class="cookie-actions"><button class="cookie-btn cookie-accept" onclick="acceptCookies()">Accept analytics</button><button class="cookie-btn cookie-dismiss" onclick="dismissCookies()">Decline analytics</button></div>
     </div>
 
     <!-- Keyboard Shortcuts Modal -->
@@ -291,7 +292,7 @@
     </div>
 
     <!-- Analytics Badge -->
-    <script src="components.js"></script>
+    <script src="/components.js" defer></script>
     <script>
         function renderMarkdown() {
             let md = document.getElementById('md-input').value;

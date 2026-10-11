@@ -959,20 +959,81 @@ function initPerformance() {
 }
 
 // --- Cookie Consent Banner ---
+// This site uses two consent signals:
+//  * toolboxpro-cookies-accepted  - existing UI acknowledge flag
+//  * toolboxpro-analytics-consent - explicit analytics consent flag
+// The old shared flag alone is NOT treated as proof of analytics consent.
+var COOKIES_FLAG = 'toolboxpro-cookies-accepted';
+var ANALYTICS_FLAG = 'toolboxpro-analytics-consent';
+
+function hasAnalyticsConsent() {
+    try {
+        return localStorage.getItem(ANALYTICS_FLAG) === 'granted';
+    } catch (e) {
+        return false;
+    }
+}
+
 function initCookieBanner() {
     var banner = document.getElementById('cookie-banner');
-    if (!banner || localStorage.getItem('toolboxpro-cookies-accepted')) return;
+    if (!banner || localStorage.getItem(COOKIES_FLAG)) return;
     setTimeout(function() { banner.classList.add('visible'); }, 2000);
 }
 function acceptCookies() {
-    localStorage.setItem('toolboxpro-cookies-accepted', '1');
+    try { localStorage.setItem(ANALYTICS_FLAG, 'granted'); } catch (e) {}
+    try { localStorage.setItem(COOKIES_FLAG, '1'); } catch (e) {}
     var banner = document.getElementById('cookie-banner');
-    if (banner) banner.classList.remove('visible');
+    if (banner) {
+        banner.classList.remove('visible');
+        banner.setAttribute('aria-live', 'off');
+    }
+    enableAnalytics();
 }
 function dismissCookies() {
-    localStorage.setItem('toolboxpro-cookies-accepted', '1');
+    try { localStorage.setItem(COOKIES_FLAG, '1'); } catch (e) {}
+    try { localStorage.removeItem(ANALYTICS_FLAG); } catch (e) {}
     var banner = document.getElementById('cookie-banner');
-    if (banner) banner.classList.remove('visible');
+    if (banner) {
+        banner.classList.remove('visible');
+        banner.setAttribute('aria-live', 'off');
+    }
+    revokeAnalyticsConsent();
+}
+
+// --- Analytics (consent-gated) ---
+// Analytics is loaded only after explicit consent. The gtag.js script is not
+// injected on the document before that point, so no analytics request is made
+// and no pageview is sent without consent.
+var ANALYTICS_ID = 'G-T63M8RS7M2';
+var ANALYTICS_LOADED = false;
+var ANALYTICS_SCRIPT_INJECTED = false;
+
+function enableAnalytics() {
+    if (ANALYTICS_LOADED || ANALYTICS_SCRIPT_INJECTED) return;
+    ANALYTICS_SCRIPT_INJECTED = true;
+    // Only create the bootstrap after consent. Do not rely on the inline head
+    // block in the HTML; re-initialize here so the same consent path governs
+    // every public page.
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function() { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', ANALYTICS_ID);
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + ANALYTICS_ID;
+    s.setAttribute('nonce', '');
+    document.head.appendChild(s);
+    ANALYTICS_LOADED = true;
+}
+
+function revokeAnalyticsConsent() {
+    // If analytics has already loaded this page, use the supported GA4 consent
+    // update path to deny analytics_storage and stop further analytics collection
+    // as far as the gtag consent implementation allows.
+    // Removing the injected script node alone does not stop an already-running tag.
+    if (typeof window.gtag === 'function') {
+        try { window.gtag('consent', 'update', { analytics_storage: 'denied' }); } catch (e) {}
+    }
 }
 
 // --- Mobile Menu ---
@@ -1200,6 +1261,15 @@ document.addEventListener('DOMContentLoaded', function() {
     initCookieBanner();
     initMobileMenu();
     initKeyboardShortcuts();
+
+    // Restore analytics on later visits when the visitor previously accepted,
+    // without requiring another click. This is the only place analytics is
+    // re-enabled after the unconditional HTML blocks were removed.
+    try {
+        if (localStorage.getItem(ANALYTICS_FLAG) === 'granted') {
+            enableAnalytics();
+        }
+    } catch (e) {}
 
     var yearEl = document.getElementById('footer-year');
     if (yearEl) yearEl.textContent = String(new Date().getFullYear());

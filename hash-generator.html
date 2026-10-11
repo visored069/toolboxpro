@@ -102,6 +102,7 @@
 <link rel="stylesheet" href="tool-page-shared.css">
     <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css">
     <script>try{if(localStorage.getItem('toolboxpro-theme')==='light'||(!localStorage.getItem('toolboxpro-theme')&&window.matchMedia('(prefers-color-scheme: light)').matches))document.documentElement.classList.add('light');}catch(e){}</script>
+
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to content</a>
@@ -163,7 +164,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- SEO content (static, injected by inject-seo-content.js) -->
     <section class="seo-content" aria-label="About this tool">
                 <p class="seo-intro">A hash function converts any text into a fixed-length fingerprint: the same input always yields the same output, and even a one-character change produces a completely different hash. This tool computes MD5, SHA-1, and SHA-256 hashes locally in your browser.</p>
@@ -254,8 +255,8 @@
 
     <!-- Cookie Consent Banner -->
     <div class="cookie-banner" id="cookie-banner">
-        <div class="cookie-content"><div class="cookie-icon">🍪</div><div class="cookie-text"><strong>We use cookies</strong><p>We use localStorage to save your preferences. No tracking. <a href="privacy">Learn more</a></p></div></div>
-        <div class="cookie-actions"><button class="cookie-btn cookie-accept" onclick="acceptCookies()">Accept</button><button class="cookie-btn cookie-dismiss" onclick="dismissCookies()">Decline</button></div>
+        <div class="cookie-content"><div class="cookie-icon">🍪</div><div class="cookie-text"><strong>We use cookies</strong><p>We use localStorage to save your preferences (theme, dismissed banners). We use Google Analytics only after you choose to accept analytics. <a href="privacy">Learn more</a></p></div></div>
+        <div class="cookie-actions"><button class="cookie-btn cookie-accept" onclick="acceptCookies()">Accept analytics</button><button class="cookie-btn cookie-dismiss" onclick="dismissCookies()">Decline analytics</button></div>
     </div>
 
     <!-- Keyboard Shortcuts Modal -->
@@ -283,7 +284,7 @@
     </div>
 
     <!-- Analytics Badge -->
-    <script src="components.js"></script>
+    <script src="/components.js" defer></script>
     <script>
         /*
          * Canonical MD5 (Joseph Myers' public-domain implementation, verbatim structure).
@@ -291,7 +292,7 @@
          */
         function md5cycle(x, k) {
             var a = x[0], b = x[1], c = x[2], d = x[3];
-        
+
             a = ff(a, b, c, d, k[0], 7, -680876936);
             d = ff(d, a, b, c, k[1], 12, -389564586);
             c = ff(c, d, a, b, k[2], 17, 606105819);
@@ -308,7 +309,7 @@
             d = ff(d, a, b, c, k[13], 12, -40341101);
             c = ff(c, d, a, b, k[14], 17, -1502002290);
             b = ff(b, c, d, a, k[15], 22, 1236535329);
-        
+
             a = gg(a, b, c, d, k[1], 5, -165796510);
             d = gg(d, a, b, c, k[6], 9, -1069501632);
             c = gg(c, d, a, b, k[11], 14, 643717713);
@@ -325,7 +326,7 @@
             d = gg(d, a, b, c, k[2], 9, -51403784);
             c = gg(c, d, a, b, k[7], 14, 1735328473);
             b = gg(b, c, d, a, k[12], 20, -1926607734);
-        
+
             a = hh(a, b, c, d, k[5], 4, -378558);
             d = hh(d, a, b, c, k[8], 11, -2022574463);
             c = hh(c, d, a, b, k[11], 16, 1839030562);
@@ -342,7 +343,7 @@
             d = hh(d, a, b, c, k[12], 11, -421815835);
             c = hh(c, d, a, b, k[15], 16, 530742520);
             b = hh(b, c, d, a, k[2], 23, -995338651);
-        
+
             a = ii(a, b, c, d, k[0], 6, -198630844);
             d = ii(d, a, b, c, k[7], 10, 1126891415);
             c = ii(c, d, a, b, k[14], 15, -1416354905);
@@ -359,13 +360,13 @@
             d = ii(d, a, b, c, k[11], 10, -1120210379);
             c = ii(c, d, a, b, k[2], 15, 718787259);
             b = ii(b, c, d, a, k[9], 21, -343485551);
-        
+
             x[0] = add32(a, x[0]);
             x[1] = add32(b, x[1]);
             x[2] = add32(c, x[2]);
             x[3] = add32(d, x[3]);
         }
-        
+
         function cmn(q, a, b, x, s, t) {
             a = add32(add32(a, q), add32(x, t));
             return add32((a << s) | (a >>> (32 - s)), b);
@@ -374,7 +375,7 @@
         function gg(a, b, c, d, x, s, t) { return cmn((b & d) | (c & (~d)), a, b, x, s, t); }
         function hh(a, b, c, d, x, s, t) { return cmn(b ^ c ^ d, a, b, x, s, t); }
         function ii(a, b, c, d, x, s, t) { return cmn(c ^ (b | (~d)), a, b, x, s, t); }
-        
+
         function md51(s) {
             var n = s.length, state = [1732584193, -271733879, -1732584194, 271733878], i;
             for (i = 64; i <= s.length; i += 64) {
@@ -393,7 +394,7 @@
             md5cycle(state, tail);
             return state;
         }
-        
+
         function md5blk(s) {
             var md5blks = [], i;
             for (i = 0; i < 64; i += 4) {
@@ -401,7 +402,7 @@
             }
             return md5blks;
         }
-        
+
         var hex_chr = '0123456789abcdef'.split('');
         function rhex(n) {
             var s = '', j = 0;
@@ -411,8 +412,8 @@
         }
         function hex(x) { for (var i = 0; i < x.length; i++) x[i] = rhex(x[i]); return x.join(''); }
         function add32(a, b) { return (a + b) & 0xFFFFFFFF; }
-        
-        
+
+
         window.md5 = function (s) { return hex(md51(unescape(encodeURIComponent(s)))); };
         // SHA-1 / SHA-256 via Web Crypto
         async function shaHex(algo, str) {

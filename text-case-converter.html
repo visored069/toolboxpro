@@ -102,6 +102,7 @@
 <link rel="stylesheet" href="tool-page-shared.css">
     <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css">
     <script>try{if(localStorage.getItem('toolboxpro-theme')==='light'||(!localStorage.getItem('toolboxpro-theme')&&window.matchMedia('(prefers-color-scheme: light)').matches))document.documentElement.classList.add('light');}catch(e){}</script>
+
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to content</a>
@@ -139,7 +140,7 @@
             <label>Enter your text</label>
             <textarea class="tool-textarea" id="text-input" placeholder="Type or paste your text here..."></textarea>
         </div>
-        
+
         <div class="btn-group" style="margin-bottom:1.5rem;">
             <button class="tool-btn btn-primary" onclick="convertCase('upper')"><i class="fas fa-arrow-up" aria-hidden="true"></i> UPPERCASE</button>
             <button class="tool-btn btn-secondary" onclick="convertCase('lower')"><i class="fas fa-arrow-down" aria-hidden="true"></i> lowercase</button>
@@ -156,7 +157,7 @@
         </div>
         <button class="tool-btn btn-primary" onclick="copyElement('text-output')"><i class="fas fa-copy" aria-hidden="true"></i> Copy</button>
     </div>
-    
+
     <!-- SEO content (static, injected by inject-seo-content.js) -->
     <section class="seo-content" aria-label="About this tool">
                 <p class="seo-intro">Convert text between UPPERCASE, lowercase, Title Case, Sentence case, alternating case, and inverse case — instantly, with one click per format. Handy for headlines, constants, cleaning up accidentally-capslocked text, and formatting conventions.</p>
@@ -247,8 +248,8 @@
 
     <!-- Cookie Consent Banner -->
     <div class="cookie-banner" id="cookie-banner">
-        <div class="cookie-content"><div class="cookie-icon">🍪</div><div class="cookie-text"><strong>We use cookies</strong><p>We use localStorage to save your preferences. No tracking. <a href="privacy">Learn more</a></p></div></div>
-        <div class="cookie-actions"><button class="cookie-btn cookie-accept" onclick="acceptCookies()">Accept</button><button class="cookie-btn cookie-dismiss" onclick="dismissCookies()">Decline</button></div>
+        <div class="cookie-content"><div class="cookie-icon">🍪</div><div class="cookie-text"><strong>We use cookies</strong><p>We use localStorage to save your preferences (theme, dismissed banners). We use Google Analytics only after you choose to accept analytics. <a href="privacy">Learn more</a></p></div></div>
+        <div class="cookie-actions"><button class="cookie-btn cookie-accept" onclick="acceptCookies()">Accept analytics</button><button class="cookie-btn cookie-dismiss" onclick="dismissCookies()">Decline analytics</button></div>
     </div>
 
     <!-- Keyboard Shortcuts Modal -->
@@ -276,7 +277,7 @@
     </div>
 
     <!-- Analytics Badge -->
-    <script src="components.js"></script>
+    <script src="/components.js" defer></script>
     <script>
         function convertCase(type) {
             const text = document.getElementById('text-input').value;
